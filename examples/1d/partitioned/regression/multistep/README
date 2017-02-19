@@ -1,0 +1,16 @@
+
+This example is a basic regression of a dynamically created synthetic
+dataset consisting of 3 zero order intervals.
+
+Instructions:
+
+> make
+> python mkdata.py
+> ./multistep
+> python plot_misfit.py
+> python plot_mean.py
+> python plot_median.py
+> python plot_mode.py
+> python plot_credible.py
+> python plot_partition_count_histogram.py
+> python plot_partition_x_hist.py

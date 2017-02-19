@@ -1,0 +1,221 @@
+\hypertarget{position__map2d_8h}{}\section{position\+\_\+map2d.\+h File Reference}
+\label{position__map2d_8h}\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+{\ttfamily \#include $<$rjmcmc/bbox2d.\+h$>$}\\*
+Include dependency graph for position\+\_\+map2d.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \+\_\+position\+\_\+map2d \hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5}{position\+\_\+map2d\+\_\+type\+\_\+t} \{ \hyperlink{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5a9399c6b848659de2ee2410fe8bc68be3}{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+L\+I\+N\+E\+AR} = 0, 
+\hyperlink{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5af3fad80005fa8b65765ed075f2a8edfc}{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+D\+E\+L\+A\+U\+N\+AY}, 
+\hyperlink{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5ad2b85c7566d6e86d078e1302706aa620}{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+Q\+U\+A\+D\+T\+R\+EE}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{position__map2d_8h_a561402ac1f9fec62530177b10b7b3e2b}{position\+\_\+map2d\+\_\+set\+\_\+type} (\hyperlink{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5}{position\+\_\+map2d\+\_\+type\+\_\+t} t)
+\item 
+\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$ \hyperlink{position__map2d_8h_a8d275904529aafae1a04e92e1e11b4aa}{position\+\_\+map2d\+\_\+create} (int max\+\_\+partitions, double xmin, double xmax, double ymin, double ymax)
+\item 
+void \hyperlink{position__map2d_8h_a5a3e29882c984502aaac3b4a38df3612}{position\+\_\+map2d\+\_\+destroy} (\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$p)
+\item 
+void \hyperlink{position__map2d_8h_a6a3e43bda48ddd011b8837334cc3dbe6}{position\+\_\+map2d\+\_\+clone} (const \hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$src, \hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$dst)
+\item 
+int \hyperlink{position__map2d_8h_a3fd59943e89fc40c2121a841f2e75647}{position\+\_\+map2d\+\_\+insert} (\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d_8h_a15a5b3a7d5843d26ab4a08b64caa90e8}{position\+\_\+map2d\+\_\+delete} (\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$p, int iy, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d_8h_a7539aec5f41a7ce84dbd334f87deadf3}{position\+\_\+map2d\+\_\+move} (\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$p, int iy, double new\+\_\+x, double new\+\_\+y, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d_8h_a3e35892090c691bdcfbe307e4245cf5e}{position\+\_\+map2d\+\_\+nearest} (\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, double $\ast$nx, double $\ast$ny, int include\+\_\+boundary\+\_\+points)
+\item 
+int \hyperlink{position__map2d_8h_a51bd9ca77bea757b104470ba20ebf920}{position\+\_\+map2d\+\_\+enclosing\+\_\+triangle} (\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, int $\ast$ta, int $\ast$tb, int $\ast$tc, double $\ast$ba, double $\ast$bb, double $\ast$bc)
+\item 
+int \hyperlink{position__map2d_8h_a6db4ff0f17d45bcc231e5354b635602b}{position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index} (\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$p, int iy, double $\ast$\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double $\ast$\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+int \hyperlink{position__map2d_8h_a4ef0bbd835766f1e1a1da177fd210dc3}{position\+\_\+map2d\+\_\+polygon\+\_\+bound} (\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$p, int iy, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d_8h_a357a204dcd80e31ce208ae0b39045029}{position\+\_\+map2d\+\_\+validate} (\hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+t@{position\+\_\+map2d\+\_\+t}}
+\index{position\+\_\+map2d\+\_\+t@{position\+\_\+map2d\+\_\+t}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+t}{position_map2d_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct \+\_\+position\+\_\+map2d {\bf position\+\_\+map2d\+\_\+t}}\hypertarget{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{}\label{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}
+
+
+\subsection{Enumeration Type Documentation}
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+type\+\_\+t@{position\+\_\+map2d\+\_\+type\+\_\+t}}
+\index{position\+\_\+map2d\+\_\+type\+\_\+t@{position\+\_\+map2d\+\_\+type\+\_\+t}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+type\+\_\+t}{position_map2d_type_t}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf position\+\_\+map2d\+\_\+type\+\_\+t}}\hypertarget{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5}{}\label{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+L\+I\+N\+E\+AR@{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+L\+I\+N\+E\+AR}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+L\+I\+N\+E\+AR@{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+L\+I\+N\+E\+AR}}\item[{\em 
+P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+L\+I\+N\+E\+AR\hypertarget{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5a9399c6b848659de2ee2410fe8bc68be3}{}\label{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5a9399c6b848659de2ee2410fe8bc68be3}
+}]\index{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+D\+E\+L\+A\+U\+N\+AY@{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+D\+E\+L\+A\+U\+N\+AY}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+D\+E\+L\+A\+U\+N\+AY@{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+D\+E\+L\+A\+U\+N\+AY}}\item[{\em 
+P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+D\+E\+L\+A\+U\+N\+AY\hypertarget{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5af3fad80005fa8b65765ed075f2a8edfc}{}\label{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5af3fad80005fa8b65765ed075f2a8edfc}
+}]\index{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+Q\+U\+A\+D\+T\+R\+EE@{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+Q\+U\+A\+D\+T\+R\+EE}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+Q\+U\+A\+D\+T\+R\+EE@{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+Q\+U\+A\+D\+T\+R\+EE}}\item[{\em 
+P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+M\+A\+P2\+D\+\_\+\+Q\+U\+A\+D\+T\+R\+EE\hypertarget{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5ad2b85c7566d6e86d078e1302706aa620}{}\label{position__map2d_8h_abcc1be4e88fc396ac5d24e010ee363e5ad2b85c7566d6e86d078e1302706aa620}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+clone@{position\+\_\+map2d\+\_\+clone}}
+\index{position\+\_\+map2d\+\_\+clone@{position\+\_\+map2d\+\_\+clone}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+clone(const position\+\_\+map2d\+\_\+t $\ast$src, position\+\_\+map2d\+\_\+t $\ast$dst)}{position_map2d_clone(const position_map2d_t *src, position_map2d_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void position\+\_\+map2d\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf position\+\_\+map2d\+\_\+t} $\ast$}]{src, }
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a6a3e43bda48ddd011b8837334cc3dbe6}{}\label{position__map2d_8h_a6a3e43bda48ddd011b8837334cc3dbe6}
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+clone(), and part2d\+\_\+regression\+\_\+rj\+\_\+clone().
+
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+create@{position\+\_\+map2d\+\_\+create}}
+\index{position\+\_\+map2d\+\_\+create@{position\+\_\+map2d\+\_\+create}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+create(int max\+\_\+partitions, double xmin, double xmax, double ymin, double ymax)}{position_map2d_create(int max_partitions, double xmin, double xmax, double ymin, double ymax)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf position\+\_\+map2d\+\_\+t}$\ast$ position\+\_\+map2d\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+\_\+partitions, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a8d275904529aafae1a04e92e1e11b4aa}{}\label{position__map2d_8h_a8d275904529aafae1a04e92e1e11b4aa}
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+create(), and part2d\+\_\+regression\+\_\+rj\+\_\+create().
+
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+delete@{position\+\_\+map2d\+\_\+delete}}
+\index{position\+\_\+map2d\+\_\+delete@{position\+\_\+map2d\+\_\+delete}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delete(position\+\_\+map2d\+\_\+t $\ast$p, int iy, bbox2d\+\_\+t $\ast$bound)}{position_map2d_delete(position_map2d_t *p, int iy, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delete (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a15a5b3a7d5843d26ab4a08b64caa90e8}{}\label{position__map2d_8h_a15a5b3a7d5843d26ab4a08b64caa90e8}
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+delpoint(), and part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death().
+
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+destroy@{position\+\_\+map2d\+\_\+destroy}}
+\index{position\+\_\+map2d\+\_\+destroy@{position\+\_\+map2d\+\_\+destroy}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+destroy(position\+\_\+map2d\+\_\+t $\ast$p)}{position_map2d_destroy(position_map2d_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}void position\+\_\+map2d\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a5a3e29882c984502aaac3b4a38df3612}{}\label{position__map2d_8h_a5a3e29882c984502aaac3b4a38df3612}
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+destroy(), and part2d\+\_\+regression\+\_\+rj\+\_\+destroy().
+
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+enclosing\+\_\+triangle@{position\+\_\+map2d\+\_\+enclosing\+\_\+triangle}}
+\index{position\+\_\+map2d\+\_\+enclosing\+\_\+triangle@{position\+\_\+map2d\+\_\+enclosing\+\_\+triangle}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+enclosing\+\_\+triangle(position\+\_\+map2d\+\_\+t $\ast$p, double x, double y, int $\ast$ta, int $\ast$tb, int $\ast$tc, double $\ast$ba, double $\ast$bb, double $\ast$bc)}{position_map2d_enclosing_triangle(position_map2d_t *p, double x, double y, int *ta, int *tb, int *tc, double *ba, double *bb, double *bc)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+enclosing\+\_\+triangle (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{int $\ast$}]{ta, }
+\item[{int $\ast$}]{tb, }
+\item[{int $\ast$}]{tc, }
+\item[{double $\ast$}]{ba, }
+\item[{double $\ast$}]{bb, }
+\item[{double $\ast$}]{bc}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a51bd9ca77bea757b104470ba20ebf920}{}\label{position__map2d_8h_a51bd9ca77bea757b104470ba20ebf920}
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+insert@{position\+\_\+map2d\+\_\+insert}}
+\index{position\+\_\+map2d\+\_\+insert@{position\+\_\+map2d\+\_\+insert}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+insert(position\+\_\+map2d\+\_\+t $\ast$p, double x, double y, bbox2d\+\_\+t $\ast$bound)}{position_map2d_insert(position_map2d_t *p, double x, double y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+insert (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a3fd59943e89fc40c2121a841f2e75647}{}\label{position__map2d_8h_a3fd59943e89fc40c2121a841f2e75647}
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+addpoint(), part2d\+\_\+forwardmodel\+\_\+initialize(), part2d\+\_\+forwardmodel\+\_\+load(), part2d\+\_\+regression\+\_\+rj\+\_\+initialize(), and part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth().
+
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+move@{position\+\_\+map2d\+\_\+move}}
+\index{position\+\_\+map2d\+\_\+move@{position\+\_\+map2d\+\_\+move}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+move(position\+\_\+map2d\+\_\+t $\ast$p, int iy, double new\+\_\+x, double new\+\_\+y, bbox2d\+\_\+t $\ast$bound)}{position_map2d_move(position_map2d_t *p, int iy, double new_x, double new_y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{double}]{new\+\_\+x, }
+\item[{double}]{new\+\_\+y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a7539aec5f41a7ce84dbd334f87deadf3}{}\label{position__map2d_8h_a7539aec5f41a7ce84dbd334f87deadf3}
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+movepoint(), and part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move().
+
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+nearest@{position\+\_\+map2d\+\_\+nearest}}
+\index{position\+\_\+map2d\+\_\+nearest@{position\+\_\+map2d\+\_\+nearest}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+nearest(position\+\_\+map2d\+\_\+t $\ast$p, double x, double y, double $\ast$nx, double $\ast$ny, int include\+\_\+boundary\+\_\+points)}{position_map2d_nearest(position_map2d_t *p, double x, double y, double *nx, double *ny, int include_boundary_points)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+nearest (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double $\ast$}]{nx, }
+\item[{double $\ast$}]{ny, }
+\item[{int}]{include\+\_\+boundary\+\_\+points}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a3e35892090c691bdcfbe307e4245cf5e}{}\label{position__map2d_8h_a3e35892090c691bdcfbe307e4245cf5e}
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part2d\+\_\+forwardmodel\+\_\+value\+\_\+at(), and part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre().
+
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+polygon\+\_\+bound@{position\+\_\+map2d\+\_\+polygon\+\_\+bound}}
+\index{position\+\_\+map2d\+\_\+polygon\+\_\+bound@{position\+\_\+map2d\+\_\+polygon\+\_\+bound}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+polygon\+\_\+bound(position\+\_\+map2d\+\_\+t $\ast$p, int iy, bbox2d\+\_\+t $\ast$bound)}{position_map2d_polygon_bound(position_map2d_t *p, int iy, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+polygon\+\_\+bound (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a4ef0bbd835766f1e1a1da177fd210dc3}{}\label{position__map2d_8h_a4ef0bbd835766f1e1a1da177fd210dc3}
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index@{position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index}}
+\index{position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index@{position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index(position\+\_\+map2d\+\_\+t $\ast$p, int iy, double $\ast$x, double $\ast$y)}{position_map2d_position_of_index(position_map2d_t *p, int iy, double *x, double *y)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a6db4ff0f17d45bcc231e5354b635602b}{}\label{position__map2d_8h_a6db4ff0f17d45bcc231e5354b635602b}
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+partition\+\_\+centre(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), part2d\+\_\+forwardmodel\+\_\+save(), part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), and part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move().
+
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+set\+\_\+type@{position\+\_\+map2d\+\_\+set\+\_\+type}}
+\index{position\+\_\+map2d\+\_\+set\+\_\+type@{position\+\_\+map2d\+\_\+set\+\_\+type}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+set\+\_\+type(position\+\_\+map2d\+\_\+type\+\_\+t t)}{position_map2d_set_type(position_map2d_type_t t)}}]{\setlength{\rightskip}{0pt plus 5cm}void position\+\_\+map2d\+\_\+set\+\_\+type (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+type\+\_\+t}}]{t}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a561402ac1f9fec62530177b10b7b3e2b}{}\label{position__map2d_8h_a561402ac1f9fec62530177b10b7b3e2b}
+\index{position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}!position\+\_\+map2d\+\_\+validate@{position\+\_\+map2d\+\_\+validate}}
+\index{position\+\_\+map2d\+\_\+validate@{position\+\_\+map2d\+\_\+validate}!position\+\_\+map2d.\+h@{position\+\_\+map2d.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+validate(position\+\_\+map2d\+\_\+t $\ast$p)}{position_map2d_validate(position_map2d_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+validate (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d_8h_a357a204dcd80e31ce208ae0b39045029}{}\label{position__map2d_8h_a357a204dcd80e31ce208ae0b39045029}

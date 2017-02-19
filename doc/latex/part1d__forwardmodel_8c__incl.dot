@@ -1,0 +1,35 @@
+digraph "part1d_forwardmodel.c"
+{
+  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
+  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
+  Node1 [label="part1d_forwardmodel.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="stdio.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="stdlib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="math.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="rjmcmc/part1d_forwardmodel.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$part1d__forwardmodel_8h.html"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="rjmcmc/forwardmodelparameter.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$forwardmodelparameter_8h.html"];
+  Node5 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="rjmcmc/rjmcmc_random.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rjmcmc__random_8h.html"];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="rjmcmc/position_map1d.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$position__map1d_8h.html"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="rjmcmc/rjmcmc_util.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rjmcmc__util_8h.html"];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="rjmcmc/forwardmodel\l_util.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$forwardmodel__util_8h.html"];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="rjmcmc/rjmcmc_defines.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rjmcmc__defines_8h.html"];
+  Node11 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="rjmcmc/rjmcmc_debug.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rjmcmc__debug_8h.html"];
+  Node12 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="stdarg.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node12 -> Node14 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="rjmcmc/rjmcmc.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rjmcmc_8h.html"];
+  Node14 -> Node15 [color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="rjmcmc/rjmcmc_config.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rjmcmc__config_8h.html"];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+}

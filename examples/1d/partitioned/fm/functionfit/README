@@ -1,0 +1,12 @@
+
+This forward model example is a simple fitting of a synthetic function
+with multitple discontinuities with added noise.
+
+Instructions:
+
+> make
+> ./functionfit
+> python plot_misfit.py
+> python plot_mean.py 
+> python plot_partition_count_histogram.py
+> python plot_partition_x_hist.py

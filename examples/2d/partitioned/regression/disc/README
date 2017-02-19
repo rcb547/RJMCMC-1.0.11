@@ -1,0 +1,14 @@
+
+This example uses runs a regression over a synthetic dataset consisting of 
+a raised disc surface. 
+
+Instructions:
+
+> make
+> python mkdata.py
+> ./disc
+> python plot_mean.py
+> python plot_median.py
+> python plot_partition_count_histogram.py
+
+

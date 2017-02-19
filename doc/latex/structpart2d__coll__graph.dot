@@ -1,0 +1,16 @@
+digraph "part2d"
+{
+  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
+  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
+  Node1 [label="part2d",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" proposed\ncurrent" ];
+  Node2 [label="_part2d_regression_rj",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__part2d__regression__rj.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" models" ];
+  Node3 [label="_model",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__model.html"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" results" ];
+  Node4 [label="_resultset2d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__resultset2d.html"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" dataset" ];
+  Node5 [label="_dataset2d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__dataset2d.html"];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" points" ];
+  Node6 [label="_point2d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__point2d.html"];
+}

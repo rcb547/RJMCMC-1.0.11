@@ -1,0 +1,12 @@
+
+This example is a basic regression of a dynamically created synthetic
+dataset.
+
+Instructions:
+
+> make
+> ./regression
+> python plot_misfit.py
+> python plot_mean.py
+> python plot_partition_count_histogram.py
+> python plot_partition_x_hist.py

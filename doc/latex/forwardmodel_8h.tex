@@ -1,0 +1,951 @@
+\hypertarget{forwardmodel_8h}{}\section{forwardmodel.\+h File Reference}
+\label{forwardmodel_8h}\index{forwardmodel.\+h@{forwardmodel.\+h}}
+
+
+Simple Forward Model Routines.  
+
+
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+config.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/resultsetfm.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/resultset1dfm.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/resultset2dfm.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/bbox2d.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+random.\+h$>$}\\*
+Include dependency graph for forwardmodel.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef double($\ast$ \hyperlink{forwardmodel_8h_a094bcc9790c7865c0a721078d5334420}{single\+\_\+fm\+\_\+likelihood\+\_\+t}) (void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int n, const double $\ast$values)
+\item 
+typedef double($\ast$ \hyperlink{forwardmodel_8h_a20a68d1e54609fed41954a0469e16d2c}{single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t}) (void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int nvalues, const double $\ast$values, int hierarchical\+\_\+proposal, int nhierarchicalvalues, const double $\ast$hierarchicalvalues, double $\ast$logdet\+Ce)
+\item 
+typedef struct \hyperlink{struct__part1d__fm__likelihood__state}{\+\_\+part1d\+\_\+fm\+\_\+likelihood\+\_\+state} \hyperlink{forwardmodel_8h_ab3cac657468dcba4666b4eb0e6014c97}{part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}
+\item 
+typedef const double $\ast$($\ast$ \hyperlink{forwardmodel_8h_ae0748a5b083292dc628303c679b25b2f}{part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t}) (\hyperlink{forwardmodel_8h_ab3cac657468dcba4666b4eb0e6014c97}{part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+typedef double($\ast$ \hyperlink{forwardmodel_8h_a55c6095922233bbf09da18c6f3735642}{part1d\+\_\+fm\+\_\+likelihood\+\_\+t}) (void $\ast$userarg, int npartitions, const double $\ast$partition\+\_\+boundaries, int nglobalparameters, const double $\ast$global\+\_\+parameters, \hyperlink{forwardmodel_8h_ab3cac657468dcba4666b4eb0e6014c97}{part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, \hyperlink{forwardmodel_8h_ae0748a5b083292dc628303c679b25b2f}{part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} value\+\_\+at, \hyperlink{forwardmodel_8h_ae0748a5b083292dc628303c679b25b2f}{part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} gradient\+\_\+at)
+\item 
+typedef struct \hyperlink{struct__part1d__fm__hierarchical__likelihood__state}{\+\_\+part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state} \hyperlink{forwardmodel_8h_a2026ad82eb4444663fea75d67fd619d3}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t}
+\item 
+typedef const double $\ast$($\ast$ \hyperlink{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t}) (\hyperlink{forwardmodel_8h_a2026ad82eb4444663fea75d67fd619d3}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+typedef double($\ast$ \hyperlink{forwardmodel_8h_ab52d410e89a70e92c92362c32d135e45}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}) (void $\ast$userarg, int npartitions, const double $\ast$partition\+\_\+boundaries, int nglobalparameters, const double $\ast$global\+\_\+parameters, int hierarchical, int nhierarchicalparameters, const double $\ast$heirarchical\+\_\+parameters, \hyperlink{forwardmodel_8h_a2026ad82eb4444663fea75d67fd619d3}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, \hyperlink{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t} value\+\_\+at, \hyperlink{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t} gradient\+\_\+at, double $\ast$logdetce)
+\item 
+typedef struct \hyperlink{struct__part2d__fm__likelihood__state}{\+\_\+part2d\+\_\+fm\+\_\+likelihood\+\_\+state} \hyperlink{forwardmodel_8h_a98fb20f9b43766d69f349eea85d1b7f0}{part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}
+\item 
+typedef const double $\ast$($\ast$ \hyperlink{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t}) (\hyperlink{forwardmodel_8h_a98fb20f9b43766d69f349eea85d1b7f0}{part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+typedef double($\ast$ \hyperlink{forwardmodel_8h_accf0a94dea281d398d639a612dcc8197}{part2d\+\_\+fm\+\_\+likelihood\+\_\+t}) (void $\ast$userarg, int nglobalparameters, const double $\ast$global\+\_\+parameters, \hyperlink{forwardmodel_8h_a98fb20f9b43766d69f349eea85d1b7f0}{part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, \hyperlink{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} value\+\_\+at, \hyperlink{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} gradient\+\_\+at, const \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+typedef double($\ast$ \hyperlink{forwardmodel_8h_a150ffbf03b04c658872258953574b7e5}{part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}) (void $\ast$userarg, int nglobalparameters, const double $\ast$global\+\_\+parameters, int hierarchical, int nhierarchicalparameters, const double $\ast$hierarchical\+\_\+parameters, \hyperlink{forwardmodel_8h_a98fb20f9b43766d69f349eea85d1b7f0}{part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, \hyperlink{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} value\+\_\+at, \hyperlink{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} gradient\+\_\+at, const \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound, double $\ast$logdetce)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{resultsetfm_8h_a6d6d798339572d2abc96b66e97ea62ac}{resultsetfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_a65b1200fd2ef808c85b1915fa1413b58}{single\+\_\+forwardmodel} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters}, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$\hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}, \hyperlink{forwardmodel_8h_a094bcc9790c7865c0a721078d5334420}{single\+\_\+fm\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int \hyperlink{rjmcmcf__mpi_8h_a30e374d8d017c0854f714c208aea6512}{samples}, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, int results)
+\begin{DoxyCompactList}\small\item\em Single Partition Forward Model. \end{DoxyCompactList}\item 
+\hyperlink{resultsetfm_8h_a6d6d798339572d2abc96b66e97ea62ac}{resultsetfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_a95b892df15e3e7b58497a68af64a7b0d}{single\+\_\+forwardmodel\+\_\+hierarchical} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters}, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$\hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}, int nhierarchicalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$hierarchicalparameters, \hyperlink{forwardmodel_8h_a20a68d1e54609fed41954a0469e16d2c}{single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int nsamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, int results)
+\begin{DoxyCompactList}\small\item\em Single Partition Forward Model with Hierarchical Noise. \end{DoxyCompactList}\item 
+\hyperlink{resultset1dfm_8h_a71ecc06ecc2e037129e00433985a6637}{resultset1dfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_a852beb6cfb6875927200fa90d6d60d6e}{part1d\+\_\+forwardmodel} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int minpart, int maxpart, double minx, double maxx, int xsamples, int ysamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pd, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{forwardmodel_8h_a55c6095922233bbf09da18c6f3735642}{part1d\+\_\+fm\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int results)
+\begin{DoxyCompactList}\small\item\em A partitioned 1d forward model. \end{DoxyCompactList}\item 
+\hyperlink{resultset1dfm_8h_a71ecc06ecc2e037129e00433985a6637}{resultset1dfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_a267826c400d1ae8be3473c4bdc03e05b}{part1d\+\_\+forwardmodel\+\_\+hierarchical} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int minpart, int maxpart, double minx, double maxx, int xsamples, int ysamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pd, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, int nhierarchicalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$hierarchical\+\_\+parameters, \hyperlink{forwardmodel_8h_ab52d410e89a70e92c92362c32d135e45}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int results)
+\begin{DoxyCompactList}\small\item\em Partitioned 1d forwardmodel with hierarchical parameters. \end{DoxyCompactList}\item 
+\hyperlink{resultset1dfm_8h_a71ecc06ecc2e037129e00433985a6637}{resultset1dfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_a736c12ab94ec4dd7e785baa8b028c6e6}{part1d\+\_\+forwardmodel\+\_\+natural} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pd, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{forwardmodel_8h_a55c6095922233bbf09da18c6f3735642}{part1d\+\_\+fm\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int results)
+\begin{DoxyCompactList}\small\item\em Natural partitioned forward model. \end{DoxyCompactList}\item 
+\hyperlink{resultset1dfm_8h_a71ecc06ecc2e037129e00433985a6637}{resultset1dfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_ad6b46c9104fbbea5c119bc64e8f29190}{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pd, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, int nhierarchicalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$hierarchical\+\_\+parameters, \hyperlink{forwardmodel_8h_ab52d410e89a70e92c92362c32d135e45}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int results)
+\begin{DoxyCompactList}\small\item\em Natural partitioned forward model with hierarchical parameters. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{forwardmodel_8h_a16c7c80dea7aefdbb9d8464633ef1277}{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pd, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, int nhierarchicalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$hierarchical\+\_\+parameters, \hyperlink{forwardmodel_8h_ab52d410e89a70e92c92362c32d135e45}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int results)
+\item 
+int \hyperlink{forwardmodel_8h_a1a36aef21631f55a82528e22b81510f4}{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+step} (void $\ast$state)
+\item 
+\hyperlink{resultset1dfm_8h_a71ecc06ecc2e037129e00433985a6637}{resultset1dfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_a7ccaf8818bd8d6cbf67253f181ed5949}{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+finish} (void $\ast$state)
+\item 
+\hyperlink{resultset1dfm_8h_a71ecc06ecc2e037129e00433985a6637}{resultset1dfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_aa87c57a06b38510d6580c524dc31ba9f}{part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pd, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{forwardmodel_8h_a55c6095922233bbf09da18c6f3735642}{part1d\+\_\+fm\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int results)
+\begin{DoxyCompactList}\small\item\em Cubic partitioned 1d forward model. \end{DoxyCompactList}\item 
+\hyperlink{resultset2dfm_8h_a24e8e056571b4ea36ad75ac908973669}{resultset2dfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_a1a30e27827e21f0906d74634c611cc54}{part2d\+\_\+forwardmodel} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int thin, int minpart, int maxpart, int initpart, double minx, double maxx, double miny, double maxy, int xsamples, int ysamples, int zsamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pdx, double pdy, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{forwardmodel_8h_accf0a94dea281d398d639a612dcc8197}{part2d\+\_\+fm\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int results)
+\begin{DoxyCompactList}\small\item\em A partitioned 2d forward model. \end{DoxyCompactList}\item 
+\hyperlink{resultset2dfm_8h_a24e8e056571b4ea36ad75ac908973669}{resultset2dfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_a0c79b83c0b31d163b242e9ef9bece73a}{part2d\+\_\+forwardmodel\+\_\+restartable} (const char $\ast$model\+\_\+file\+\_\+in, const char $\ast$model\+\_\+file\+\_\+out, int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int thin, int minpart, int maxpart, int initpart, double xmin, double xmax, double ymin, double ymax, int xsamples, int ysamples, int zsamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pdx, double pdy, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{forwardmodel_8h_accf0a94dea281d398d639a612dcc8197}{part2d\+\_\+fm\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int results)
+\item 
+\hyperlink{resultset2dfm_8h_a24e8e056571b4ea36ad75ac908973669}{resultset2dfm\+\_\+t} $\ast$ \hyperlink{forwardmodel_8h_a7f812853c942aeb44dd57ce2823a8523}{part2d\+\_\+forwardmodel\+\_\+hierarchical} (int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int thin, int minpart, int maxpart, int initpart, double minx, double maxx, double miny, double maxy, int xsamples, int ysamples, int zsamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pdx, double pdy, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, int nhierarchicalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$hierarchical\+\_\+parameters, \hyperlink{forwardmodel_8h_a150ffbf03b04c658872258953574b7e5}{part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t} lp, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}, int results)
+\begin{DoxyCompactList}\small\item\em A partitioned 2d forward model with hierarchical parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simple Forward Model Routines. 
+
+The Forward Model routines allow the user to supply their own likelihood functions where a forward model is required to transform the data an error model other than uncorrelated gaussian noise is required.
+
+These methods use callback functions to perform the forward model calculations. See the \hyperlink{forwardmodel_8h_a094bcc9790c7865c0a721078d5334420}{single\+\_\+fm\+\_\+likelihood\+\_\+t}, \hyperlink{forwardmodel_8h_a20a68d1e54609fed41954a0469e16d2c}{single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t}, \hyperlink{forwardmodel_8h_a55c6095922233bbf09da18c6f3735642}{part1d\+\_\+fm\+\_\+likelihood\+\_\+t}, \hyperlink{forwardmodel_8h_ab52d410e89a70e92c92362c32d135e45}{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}, \hyperlink{forwardmodel_8h_accf0a94dea281d398d639a612dcc8197}{part2d\+\_\+fm\+\_\+likelihood\+\_\+t} and \hyperlink{forwardmodel_8h_a150ffbf03b04c658872258953574b7e5}{part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t} types for the signatures of these functions.
+
+The examples under the 1d/single/fm, 1d/partitioned/fm and 2d/partitioned/fm directories are instructive in the use of these methods. 
+
+\subsection{Typedef Documentation}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t@{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t}}
+\index{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t@{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t}{part1d_fm_hierarchical_likelihood_state_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state} {\bf part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t}}\hypertarget{forwardmodel_8h_a2026ad82eb4444663fea75d67fd619d3}{}\label{forwardmodel_8h_a2026ad82eb4444663fea75d67fd619d3}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t@{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}}
+\index{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t@{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}{part1d_fm_hierarchical_likelihood_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef double($\ast$ part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t) (void $\ast$userarg, int npartitions, const double $\ast$partition\+\_\+boundaries, int nglobalparameters, const double $\ast$global\+\_\+parameters, int hierarchical, int nhierarchicalparameters, const double $\ast$heirarchical\+\_\+parameters, {\bf part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, {\bf part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t} value\+\_\+at, {\bf part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t} gradient\+\_\+at, double $\ast$logdetce)}\hypertarget{forwardmodel_8h_ab52d410e89a70e92c92362c32d135e45}{}\label{forwardmodel_8h_ab52d410e89a70e92c92362c32d135e45}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t@{part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t}}
+\index{part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t@{part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t}{part1d_fm_hierarchical_value_at_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef const double$\ast$($\ast$ part1d\+\_\+fm\+\_\+hierarchical\+\_\+value\+\_\+at\+\_\+t) ({\bf part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, double {\bf x})}\hypertarget{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{}\label{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}.\end{Desc}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t@{part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}}
+\index{part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t@{part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}{part1d_fm_likelihood_state_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+part1d\+\_\+fm\+\_\+likelihood\+\_\+state} {\bf part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}}\hypertarget{forwardmodel_8h_ab3cac657468dcba4666b4eb0e6014c97}{}\label{forwardmodel_8h_ab3cac657468dcba4666b4eb0e6014c97}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+fm\+\_\+likelihood\+\_\+t@{part1d\+\_\+fm\+\_\+likelihood\+\_\+t}}
+\index{part1d\+\_\+fm\+\_\+likelihood\+\_\+t@{part1d\+\_\+fm\+\_\+likelihood\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+fm\+\_\+likelihood\+\_\+t}{part1d_fm_likelihood_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef double($\ast$ part1d\+\_\+fm\+\_\+likelihood\+\_\+t) (void $\ast$userarg, int npartitions, const double $\ast$partition\+\_\+boundaries, int nglobalparameters, const double $\ast$global\+\_\+parameters, {\bf part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, {\bf part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} value\+\_\+at, {\bf part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} gradient\+\_\+at)}\hypertarget{forwardmodel_8h_a55c6095922233bbf09da18c6f3735642}{}\label{forwardmodel_8h_a55c6095922233bbf09da18c6f3735642}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t@{part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t}}
+\index{part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t@{part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t}{part1d_fm_value_at_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef const double$\ast$($\ast$ part1d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t) ({\bf part1d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, double {\bf x})}\hypertarget{forwardmodel_8h_ae0748a5b083292dc628303c679b25b2f}{}\label{forwardmodel_8h_ae0748a5b083292dc628303c679b25b2f}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2functionfit_2functionfit_8c-example}{1d/partitioned/fm/functionfit/functionfit.\+c}, and \hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}.\end{Desc}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t@{part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}}
+\index{part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t@{part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}{part2d_fm_hierarchical_likelihood_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef double($\ast$ part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t) (void $\ast$userarg, int nglobalparameters, const double $\ast$global\+\_\+parameters, int hierarchical, int nhierarchicalparameters, const double $\ast$hierarchical\+\_\+parameters, {\bf part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, {\bf part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} value\+\_\+at, {\bf part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} gradient\+\_\+at, const {\bf bbox2d\+\_\+t} $\ast$bound, double $\ast$logdetce)}\hypertarget{forwardmodel_8h_a150ffbf03b04c658872258953574b7e5}{}\label{forwardmodel_8h_a150ffbf03b04c658872258953574b7e5}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t@{part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}}
+\index{part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t@{part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}{part2d_fm_likelihood_state_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+part2d\+\_\+fm\+\_\+likelihood\+\_\+state} {\bf part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t}}\hypertarget{forwardmodel_8h_a98fb20f9b43766d69f349eea85d1b7f0}{}\label{forwardmodel_8h_a98fb20f9b43766d69f349eea85d1b7f0}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part2d\+\_\+fm\+\_\+likelihood\+\_\+t@{part2d\+\_\+fm\+\_\+likelihood\+\_\+t}}
+\index{part2d\+\_\+fm\+\_\+likelihood\+\_\+t@{part2d\+\_\+fm\+\_\+likelihood\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+fm\+\_\+likelihood\+\_\+t}{part2d_fm_likelihood_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef double($\ast$ part2d\+\_\+fm\+\_\+likelihood\+\_\+t) (void $\ast$userarg, int nglobalparameters, const double $\ast$global\+\_\+parameters, {\bf part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, {\bf part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} value\+\_\+at, {\bf part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t} gradient\+\_\+at, const {\bf bbox2d\+\_\+t} $\ast$bound)}\hypertarget{forwardmodel_8h_accf0a94dea281d398d639a612dcc8197}{}\label{forwardmodel_8h_accf0a94dea281d398d639a612dcc8197}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t@{part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t}}
+\index{part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t@{part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t}{part2d_fm_value_at_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef const double$\ast$($\ast$ part2d\+\_\+fm\+\_\+value\+\_\+at\+\_\+t) ({\bf part2d\+\_\+fm\+\_\+likelihood\+\_\+state\+\_\+t} $\ast$state, double {\bf x}, double {\bf y})}\hypertarget{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{}\label{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{2d_2partitioned_2fm_2regression_2regression_8c-example}{2d/partitioned/fm/regression/regression.\+c}.\end{Desc}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t@{single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t}}
+\index{single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t@{single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t}{single_fm_likelihood_hierarchical_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef double($\ast$ single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t) (void $\ast${\bf user\+\_\+arg}, int nvalues, const double $\ast$values, int hierarchical\+\_\+proposal, int nhierarchicalvalues, const double $\ast$hierarchicalvalues, double $\ast$logdet\+Ce)}\hypertarget{forwardmodel_8h_a20a68d1e54609fed41954a0469e16d2c}{}\label{forwardmodel_8h_a20a68d1e54609fed41954a0469e16d2c}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!single\+\_\+fm\+\_\+likelihood\+\_\+t@{single\+\_\+fm\+\_\+likelihood\+\_\+t}}
+\index{single\+\_\+fm\+\_\+likelihood\+\_\+t@{single\+\_\+fm\+\_\+likelihood\+\_\+t}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{single\+\_\+fm\+\_\+likelihood\+\_\+t}{single_fm_likelihood_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef double($\ast$ single\+\_\+fm\+\_\+likelihood\+\_\+t) (void $\ast${\bf user\+\_\+arg}, int n, const double $\ast$values)}\hypertarget{forwardmodel_8h_a094bcc9790c7865c0a721078d5334420}{}\label{forwardmodel_8h_a094bcc9790c7865c0a721078d5334420}
+
+
+\subsection{Function Documentation}
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+forwardmodel@{part1d\+\_\+forwardmodel}}
+\index{part1d\+\_\+forwardmodel@{part1d\+\_\+forwardmodel}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel(int burnin, int total, int minpart, int maxpart, double minx, double maxx, int xsamples, int ysamples, double credible\+\_\+interval, double pd, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, part1d\+\_\+fm\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int results)}{part1d_forwardmodel(int burnin, int total, int minpart, int maxpart, double minx, double maxx, int xsamples, int ysamples, double credible_interval, double pd, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, part1d_fm_likelihood_t lp, void *user_arg, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset1dfm\+\_\+t}$\ast$ part1d\+\_\+forwardmodel (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{minpart, }
+\item[{int}]{maxpart, }
+\item[{double}]{minx, }
+\item[{double}]{maxx, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pd, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf part1d\+\_\+fm\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a852beb6cfb6875927200fa90d6d60d6e}{}\label{forwardmodel_8h_a852beb6cfb6875927200fa90d6d60d6e}
+
+
+A partitioned 1d forward model. 
+
+This method performs a transdimensional mcmc forward model with zero order fitting within each partition. For a detailed description of this method, see {\bfseries [bodin\+Thesis]}.
+
+The return value calculated should be the negative log likelihood as in the \hyperlink{forwardmodel_8h_a65b1200fd2ef808c85b1915fa1413b58}{single\+\_\+forwardmodel} method which is essentially the weighted sum of square errors.
+
+The callback function supplied to the lp parameter is where the forward model is implemented. This function must match the signature of the \hyperlink{forwardmodel_8h_a55c6095922233bbf09da18c6f3735642}{part1d\+\_\+fm\+\_\+likelihood\+\_\+t} type. The parameters passed to the this callback give you opaque access to the proposed model for which the log likelihood needs to be computed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em burnin} & The number of burn in iterations. \\
+\hline
+{\em total} & The total number of iterations (must be greater than burnin). \\
+\hline
+{\em minpart} & The minimum number of partitions, this should be 2. \\
+\hline
+{\em maxpart} & The maximum number of partitions. \\
+\hline
+{\em minx} & The lower bound value of the x coordinate \\
+\hline
+{\em maxx} & The upper bound value of the x coordinate. \\
+\hline
+{\em xsamples} & When producing mean curves etc, the number of discretization steps used for constructing the curve. A value of 100 suits most cases. \\
+\hline
+{\em ysamples} & Results such as median, mode, credible intervals are computed using a histogram of values, this parameter sets the number of bins for this histogram. A value of 100 suits most cases. \\
+\hline
+{\em credible\+\_\+interval} & The credible interval expressed as a percentage between 0 and 1. \\
+\hline
+{\em pd} & The standard deviation of the perturb partition boundary (move) step. \\
+\hline
+{\em random} & User supplied uniform random number generator. \\
+\hline
+{\em normal} & User supplied normal random number generator. \\
+\hline
+{\em nglobalparameters} & The number of global parameters. \\
+\hline
+{\em global\+\_\+parameters} & An array of global parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em nlocalparameters} & The number of local parameters. \\
+\hline
+{\em local\+\_\+parameters} & An array of local parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em lp} & The hierarchical likelihood function. \\
+\hline
+{\em user\+\_\+arg} & A pointer to user data that will be supplied to the likelihood function. \\
+\hline
+{\em results} & The results desired as a bitwise or\textquotesingle{}ing of \hyperlink{resultset1dfm_8h_afc3b11f934a94a4c1e202e3c6bf776df}{resultset1dfm\+\_\+result\+\_\+t} values.\\
+\hline
+\end{DoxyParams}
+For an example of using this function, see the example 1d/single/fm/partitioned/functionfit/functionfit.\+c 
+
+References \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::accept, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::arg, part1dfm\+::cb, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::compute\+\_\+misfit, part1dfm\+::current, \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, part1dfm\+::global\+\_\+parameters, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::initialize\+\_\+state, part1dfm\+::local\+\_\+parameters, part1dfm\+::lp, part1dfm\+::maxpart, part1dfm\+::mf\+\_\+global\+\_\+parameters, part1dfm\+::mf\+\_\+gradients, part1dfm\+::mf\+\_\+partitions, part1dfm\+::mf\+\_\+values, part1dfm\+::minpart, part1dfm\+::nglobalparameters, part1dfm\+::nlocalparameters, part1dfm\+::normal, part1dfm\+::nprocesses, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+RO, part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::perturb\+\_\+process, part1dfm\+::proddelta\+\_\+l, part1dfm\+::proposed, part1dfm\+::random, part1dfm\+::results, resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+2d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+2d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::select\+\_\+process, part1dfm\+::user\+\_\+arg, part1dfm\+::x, part1dfm\+::xmax, part1dfm\+::xmin, part1dfm\+::xsamples, and part1dfm\+::y.
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+forwardmodel\+\_\+hierarchical@{part1d\+\_\+forwardmodel\+\_\+hierarchical}}
+\index{part1d\+\_\+forwardmodel\+\_\+hierarchical@{part1d\+\_\+forwardmodel\+\_\+hierarchical}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+hierarchical(int burnin, int total, int minpart, int maxpart, double minx, double maxx, int xsamples, int ysamples, double credible\+\_\+interval, double pd, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, int nhierarchicalparameters, const forwardmodelparameter\+\_\+t $\ast$hierarchical\+\_\+parameters, part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int results)}{part1d_forwardmodel_hierarchical(int burnin, int total, int minpart, int maxpart, double minx, double maxx, int xsamples, int ysamples, double credible_interval, double pd, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, int nhierarchicalparameters, const forwardmodelparameter_t *hierarchical_parameters, part1d_fm_hierarchical_likelihood_t lp, void *user_arg, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset1dfm\+\_\+t}$\ast$ part1d\+\_\+forwardmodel\+\_\+hierarchical (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{minpart, }
+\item[{int}]{maxpart, }
+\item[{double}]{minx, }
+\item[{double}]{maxx, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pd, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{int}]{nhierarchicalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{hierarchical\+\_\+parameters, }
+\item[{{\bf part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a267826c400d1ae8be3473c4bdc03e05b}{}\label{forwardmodel_8h_a267826c400d1ae8be3473c4bdc03e05b}
+
+
+Partitioned 1d forwardmodel with hierarchical parameters. 
+
+This method is the same as the \hyperlink{forwardmodel_8h_a852beb6cfb6875927200fa90d6d60d6e}{part1d\+\_\+forwardmodel} except it also solves for hierarchical parameters that are used to construct the covariance matrix. See {\bfseries [bodin2012A]} for an example application of hierarchical solving.
+
+
+\begin{DoxyParams}{Parameters}
+{\em burnin} & The number of burn in iterations. \\
+\hline
+{\em total} & The total number of iterations (must be greater than burnin). \\
+\hline
+{\em minpart} & The minimum number of partitions, this should be 2. \\
+\hline
+{\em maxpart} & The maximum number of partitions. \\
+\hline
+{\em minx} & The lower bound value of the x coordinate \\
+\hline
+{\em maxx} & The upper bound value of the x coordinate. \\
+\hline
+{\em xsamples} & When producing mean curves etc, the number of discretization steps used for constructing the curve. A value of 100 suits most cases. \\
+\hline
+{\em ysamples} & Results such as median, mode, credible intervals are computed using a histogram of values, this parameter sets the number of bins for this histogram. A value of 100 suits most cases. \\
+\hline
+{\em credible\+\_\+interval} & The credible interval expressed as a percentage between 0 and 1. \\
+\hline
+{\em pd} & The standard deviation of the perturb partition boundary (move) step. \\
+\hline
+{\em random} & User supplied uniform random number generator. \\
+\hline
+{\em normal} & User supplied normal random number generator. \\
+\hline
+{\em nglobalparameters} & The number of global parameters. \\
+\hline
+{\em global\+\_\+parameters} & An array of global parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em nlocalparameters} & The number of local parameters. \\
+\hline
+{\em local\+\_\+parameters} & An array of local parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em nhierarchicalparameters} & The number of hierarchical parameters. \\
+\hline
+{\em hierarchical\+\_\+parameters} & An array of hierarchical parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em lp} & The hierarchical likelihood function. \\
+\hline
+{\em user\+\_\+arg} & A pointer to user data that will be supplied to the likelihood function. \\
+\hline
+{\em results} & The results desired as a bitwise or\textquotesingle{}ing of \hyperlink{resultset1dfm_8h_afc3b11f934a94a4c1e202e3c6bf776df}{resultset1dfm\+\_\+result\+\_\+t} values.\\
+\hline
+\end{DoxyParams}
+For an example of using this function, see the example 1d/single/fm/partitioned/regression/regression.\+c 
+
+References \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::accept, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::arg, part1dfm\+::cb, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::compute\+\_\+misfit, part1dfm\+::current, part1dfm\+::current\+\_\+like, part1dfm\+::current\+\_\+logdetce, \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, part1dfm\+::global\+\_\+parameters, part1dfm\+::hierarchical\+\_\+parameters, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::initialize\+\_\+state, part1dfm\+::local\+\_\+parameters, part1dfm\+::lp, part1dfm\+::maxpart, part1dfm\+::mf\+\_\+global\+\_\+parameters, part1dfm\+::mf\+\_\+gradients, part1dfm\+::mf\+\_\+partitions, part1dfm\+::mf\+\_\+values, part1dfm\+::minpart, part1dfm\+::nglobalparameters, part1dfm\+::nhierarchicalparameters, part1dfm\+::nlocalparameters, part1dfm\+::normal, N\+P\+R\+O\+C\+E\+S\+S\+ES, part1dfm\+::nprocesses, N\+P\+R\+O\+C\+E\+S\+S\+E\+S\+\_\+\+N\+O\+G\+L\+O\+B\+AL, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+RO, part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::perturb\+\_\+process, part1dfm\+::proddelta\+\_\+l, part1dfm\+::proposed, part1dfm\+::proposed\+\_\+like, part1dfm\+::proposed\+\_\+logdetce, part1dfm\+::random, part1dfm\+::results, resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+2d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+2d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::select\+\_\+process, part1dfm\+::user\+\_\+arg, part1dfm\+::x, part1dfm\+::xmax, part1dfm\+::xmin, part1dfm\+::xsamples, and part1dfm\+::y.
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+forwardmodel\+\_\+natural@{part1d\+\_\+forwardmodel\+\_\+natural}}
+\index{part1d\+\_\+forwardmodel\+\_\+natural@{part1d\+\_\+forwardmodel\+\_\+natural}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+natural(int burnin, int total, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double credible\+\_\+interval, double pd, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, part1d\+\_\+fm\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int results)}{part1d_forwardmodel_natural(int burnin, int total, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double credible_interval, double pd, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, part1d_fm_likelihood_t lp, void *user_arg, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset1dfm\+\_\+t}$\ast$ part1d\+\_\+forwardmodel\+\_\+natural (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{minpart, }
+\item[{int}]{maxpart, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pd, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf part1d\+\_\+fm\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a736c12ab94ec4dd7e785baa8b028c6e6}{}\label{forwardmodel_8h_a736c12ab94ec4dd7e785baa8b028c6e6}
+
+
+Natural partitioned forward model. 
+
+This method is similar to the \hyperlink{forwardmodel_8h_a852beb6cfb6875927200fa90d6d60d6e}{part1d\+\_\+forwardmodel} method except that instead of fitting zero order values in each partition, a continuous function is constructed using joined line segments between partition boundaries. For an example application of this method see {\bfseries [hopcroft2007A]}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em burnin} & The number of burn in iterations. \\
+\hline
+{\em total} & The total number of iterations (must be greater than burnin). \\
+\hline
+{\em minpart} & The minimum number of partitions, this should be 2. \\
+\hline
+{\em maxpart} & The maximum number of partitions. \\
+\hline
+{\em minx} & The lower bound value of the x coordinate \\
+\hline
+{\em maxx} & The upper bound value of the x coordinate. \\
+\hline
+{\em xsamples} & When producing mean curves etc, the number of discretization steps used for constructing the curve. A value of 100 suits most cases. \\
+\hline
+{\em ysamples} & Results such as median, mode, credible intervals are computed using a histogram of values, this parameter sets the number of bins for this histogram. A value of 100 suits most cases. \\
+\hline
+{\em credible\+\_\+interval} & The credible interval expressed as a percentage between 0 and 1. \\
+\hline
+{\em pd} & The standard deviation of the perturb partition boundary (move) step. \\
+\hline
+{\em random} & User supplied uniform random number generator. \\
+\hline
+{\em normal} & User supplied normal random number generator. \\
+\hline
+{\em nglobalparameters} & The number of global parameters. \\
+\hline
+{\em global\+\_\+parameters} & An array of global parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em nlocalparameters} & The number of local parameters. \\
+\hline
+{\em local\+\_\+parameters} & An array of local parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em lp} & The hierarchical likelihood function. \\
+\hline
+{\em user\+\_\+arg} & A pointer to user data that will be supplied to the likelihood function. \\
+\hline
+{\em results} & The results desired as a bitwise or\textquotesingle{}ing of \hyperlink{resultset1dfm_8h_afc3b11f934a94a4c1e202e3c6bf776df}{resultset1dfm\+\_\+result\+\_\+t} values. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::accept, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::arg, part1dfm\+::cb, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::compute\+\_\+misfit, part1dfm\+::current, \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, part1dfm\+::global\+\_\+parameters, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::initialize\+\_\+state, part1dfm\+::local\+\_\+parameters, part1dfm\+::lp, part1dfm\+::maxpart, part1dfm\+::mf\+\_\+global\+\_\+parameters, part1dfm\+::mf\+\_\+gradients, part1dfm\+::mf\+\_\+partitions, part1dfm\+::mf\+\_\+values, part1dfm\+::minpart, part1dfm\+::nglobalparameters, part1dfm\+::nlocalparameters, part1dfm\+::normal, part1dfm\+::nprocesses, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+N\+A\+T\+U\+R\+AL, part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::perturb\+\_\+process, part1dfm\+::proddelta\+\_\+l, part1dfm\+::proposed, part1dfm\+::random, part1dfm\+::results, resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+2d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+2d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::select\+\_\+process, part1dfm\+::user\+\_\+arg, part1dfm\+::x, part1dfm\+::xmax, part1dfm\+::xmin, part1dfm\+::xsamples, and part1dfm\+::y.
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+natural\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical@{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical}}
+\index{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical@{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(int burnin, int total, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double credible\+\_\+interval, double pd, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, int nhierarchicalparameters, const forwardmodelparameter\+\_\+t $\ast$hierarchical\+\_\+parameters, part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int results)}{part1d_forwardmodel_natural_hierarchical(int burnin, int total, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double credible_interval, double pd, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, int nhierarchicalparameters, const forwardmodelparameter_t *hierarchical_parameters, part1d_fm_hierarchical_likelihood_t lp, void *user_arg, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset1dfm\+\_\+t}$\ast$ part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{minpart, }
+\item[{int}]{maxpart, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pd, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{int}]{nhierarchicalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{hierarchical\+\_\+parameters, }
+\item[{{\bf part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_ad6b46c9104fbbea5c119bc64e8f29190}{}\label{forwardmodel_8h_ad6b46c9104fbbea5c119bc64e8f29190}
+
+
+Natural partitioned forward model with hierarchical parameters. 
+
+This method is the same as the \hyperlink{forwardmodel_8h_a267826c400d1ae8be3473c4bdc03e05b}{part1d\+\_\+forwardmodel\+\_\+hierarchical} except it uses joined line segments between partition boundaries rather than zero order fits within each partition to fit the data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em burnin} & The number of burn in iterations. \\
+\hline
+{\em total} & The total number of iterations (must be greater than burnin). \\
+\hline
+{\em minpart} & The minimum number of partitions, this should be 2. \\
+\hline
+{\em maxpart} & The maximum number of partitions. \\
+\hline
+{\em minx} & The lower bound value of the x coordinate \\
+\hline
+{\em maxx} & The upper bound value of the x coordinate. \\
+\hline
+{\em xsamples} & When producing mean curves etc, the number of discretization steps used for constructing the curve. A value of 100 suits most cases. \\
+\hline
+{\em ysamples} & Results such as median, mode, credible intervals are computed using a histogram of values, this parameter sets the number of bins for this histogram. A value of 100 suits most cases. \\
+\hline
+{\em credible\+\_\+interval} & The credible interval expressed as a percentage between 0 and 1. \\
+\hline
+{\em pd} & The standard deviation of the perturb partition boundary (move) step. \\
+\hline
+{\em random} & User supplied uniform random number generator. \\
+\hline
+{\em normal} & User supplied normal random number generator. \\
+\hline
+{\em nglobalparameters} & The number of global parameters. \\
+\hline
+{\em global\+\_\+parameters} & An array of global parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em nlocalparameters} & The number of local parameters. \\
+\hline
+{\em local\+\_\+parameters} & An array of local parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em nhierarchicalparameters} & The number of hierarchical parameters. \\
+\hline
+{\em hierarchical\+\_\+parameters} & An array of hierarchical parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em lp} & The hierarchical likelihood function. \\
+\hline
+{\em user\+\_\+arg} & A pointer to user data that will be supplied to the likelihood function. \\
+\hline
+{\em results} & The results desired as a bitwise or\textquotesingle{}ing of \hyperlink{resultset1dfm_8h_afc3b11f934a94a4c1e202e3c6bf776df}{resultset1dfm\+\_\+result\+\_\+t} values. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::accept, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::arg, part1dfm\+::cb, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::compute\+\_\+misfit, part1dfm\+::current, \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, part1dfm\+::global\+\_\+parameters, part1dfm\+::hierarchical\+\_\+parameters, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::initialize\+\_\+state, part1dfm\+::local\+\_\+parameters, part1dfm\+::lp, part1dfm\+::maxpart, part1dfm\+::mf\+\_\+global\+\_\+parameters, part1dfm\+::mf\+\_\+gradients, part1dfm\+::mf\+\_\+partitions, part1dfm\+::mf\+\_\+values, part1dfm\+::minpart, part1dfm\+::nglobalparameters, part1dfm\+::nhierarchicalparameters, part1dfm\+::nlocalparameters, part1dfm\+::normal, N\+P\+R\+O\+C\+E\+S\+S\+ES, part1dfm\+::nprocesses, N\+P\+R\+O\+C\+E\+S\+S\+E\+S\+\_\+\+N\+O\+G\+L\+O\+B\+AL, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+N\+A\+T\+U\+R\+AL, part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::perturb\+\_\+process, part1dfm\+::proddelta\+\_\+l, part1dfm\+::proposed, part1dfm\+::random, part1dfm\+::results, resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+2d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+2d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::select\+\_\+process, part1dfm\+::user\+\_\+arg, part1dfm\+::x, part1dfm\+::xmax, part1dfm\+::xmin, part1dfm\+::xsamples, and part1dfm\+::y.
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+finish@{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+finish}}
+\index{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+finish@{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+finish}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+finish(void $\ast$state)}{part1d_forwardmodel_natural_hierarchical_finish(void *state)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset1dfm\+\_\+t}$\ast$ part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+finish (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{state}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a7ccaf8818bd8d6cbf67253f181ed5949}{}\label{forwardmodel_8h_a7ccaf8818bd8d6cbf67253f181ed5949}
+
+
+References part1dfm\+::current, part1dfm\+::mf\+\_\+global\+\_\+parameters, part1dfm\+::mf\+\_\+gradients, part1dfm\+::mf\+\_\+partitions, part1dfm\+::mf\+\_\+values, part1dfm\+::nlocalparameters, part1d\+\_\+forwardmodel\+\_\+destroy(), part1dfm\+::proposed, part1dfm\+::results, resultset1dfm\+\_\+assemble\+\_\+results(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+2d(), part1dfm\+::x, and part1dfm\+::y.
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+finish\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init@{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init}}
+\index{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init@{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(int burnin, int total, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double credible\+\_\+interval, double pd, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, int nhierarchicalparameters, const forwardmodelparameter\+\_\+t $\ast$hierarchical\+\_\+parameters, part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int results)}{part1d_forwardmodel_natural_hierarchical_init(int burnin, int total, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double credible_interval, double pd, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, int nhierarchicalparameters, const forwardmodelparameter_t *hierarchical_parameters, part1d_fm_hierarchical_likelihood_t lp, void *user_arg, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{minpart, }
+\item[{int}]{maxpart, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pd, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{int}]{nhierarchicalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{hierarchical\+\_\+parameters, }
+\item[{{\bf part1d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a16c7c80dea7aefdbb9d8464633ef1277}{}\label{forwardmodel_8h_a16c7c80dea7aefdbb9d8464633ef1277}
+
+
+References \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::accept, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::arg, part1dfm\+::cb, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::compute\+\_\+misfit, part1dfm\+::current, \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, part1dfm\+::global\+\_\+parameters, part1dfm\+::hierarchical\+\_\+parameters, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::initialize\+\_\+state, part1dfm\+::local\+\_\+parameters, part1dfm\+::lp, part1dfm\+::maxpart, part1dfm\+::mf\+\_\+global\+\_\+parameters, part1dfm\+::mf\+\_\+gradients, part1dfm\+::mf\+\_\+partitions, part1dfm\+::mf\+\_\+values, part1dfm\+::minpart, part1dfm\+::nglobalparameters, part1dfm\+::nhierarchicalparameters, part1dfm\+::nlocalparameters, part1dfm\+::normal, N\+P\+R\+O\+C\+E\+S\+S\+ES, part1dfm\+::nprocesses, N\+P\+R\+O\+C\+E\+S\+S\+E\+S\+\_\+\+N\+O\+G\+L\+O\+B\+AL, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+N\+A\+T\+U\+R\+AL, part1d\+\_\+forwardmodel\+\_\+create(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::perturb\+\_\+process, part1dfm\+::proddelta\+\_\+l, part1dfm\+::proposed, part1dfm\+::random, part1dfm\+::results, resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+2d(), rjmcmc\+\_\+engine\+\_\+init(), rjmcmc\+\_\+error(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::select\+\_\+process, part1dfm\+::user\+\_\+arg, part1dfm\+::x, part1dfm\+::xmax, part1dfm\+::xmin, part1dfm\+::xsamples, and part1dfm\+::y.
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+step@{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+step}}
+\index{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+step@{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+step}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+step(void $\ast$state)}{part1d_forwardmodel_natural_hierarchical_step(void *state)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+step (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{state}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a1a36aef21631f55a82528e22b81510f4}{}\label{forwardmodel_8h_a1a36aef21631f55a82528e22b81510f4}
+
+
+References part1dfm\+::cb, and rjmcmc\+\_\+engine\+\_\+step().
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+step\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic@{part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic}}
+\index{part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic@{part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(int burnin, int total, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double credible\+\_\+interval, double pd, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, part1d\+\_\+fm\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int results)}{part1d_forwardmodel_zero_cubic(int burnin, int total, int minpart, int maxpart, double xmin, double xmax, int xsamples, int ysamples, double credible_interval, double pd, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, part1d_fm_likelihood_t lp, void *user_arg, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset1dfm\+\_\+t}$\ast$ part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{minpart, }
+\item[{int}]{maxpart, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pd, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf part1d\+\_\+fm\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_aa87c57a06b38510d6580c524dc31ba9f}{}\label{forwardmodel_8h_aa87c57a06b38510d6580c524dc31ba9f}
+
+
+Cubic partitioned 1d forward model. 
+
+Experimental$\ast$$\ast$ code similar to \hyperlink{forwardmodel_8h_a736c12ab94ec4dd7e785baa8b028c6e6}{part1d\+\_\+forwardmodel\+\_\+natural} except that instead of joining partitions with straight line segments, piecewise cubic segments are used with the gradients set to zero at the partition boundary. 
+
+References \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::accept, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::arg, part1dfm\+::cb, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::compute\+\_\+misfit, part1dfm\+::current, \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, part1dfm\+::global\+\_\+parameters, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::initialize\+\_\+state, part1dfm\+::local\+\_\+parameters, part1dfm\+::lp, part1dfm\+::maxpart, part1dfm\+::mf\+\_\+global\+\_\+parameters, part1dfm\+::mf\+\_\+gradients, part1dfm\+::mf\+\_\+partitions, part1dfm\+::mf\+\_\+values, part1dfm\+::minpart, part1dfm\+::nglobalparameters, part1dfm\+::nlocalparameters, part1dfm\+::normal, part1dfm\+::nprocesses, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+R\+O\+\_\+\+C\+U\+B\+IC, part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::perturb\+\_\+process, part1dfm\+::proddelta\+\_\+l, part1dfm\+::proposed, part1dfm\+::random, part1dfm\+::results, resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+2d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+2d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::select\+\_\+process, part1dfm\+::user\+\_\+arg, part1dfm\+::x, part1dfm\+::xmax, part1dfm\+::xmin, part1dfm\+::xsamples, and part1dfm\+::y.
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part2d\+\_\+forwardmodel@{part2d\+\_\+forwardmodel}}
+\index{part2d\+\_\+forwardmodel@{part2d\+\_\+forwardmodel}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+forwardmodel(int burnin, int total, int thin, int minpart, int maxpart, int initpart, double minx, double maxx, double miny, double maxy, int xsamples, int ysamples, int zsamples, double credible\+\_\+interval, double pdx, double pdy, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, part2d\+\_\+fm\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int results)}{part2d_forwardmodel(int burnin, int total, int thin, int minpart, int maxpart, int initpart, double minx, double maxx, double miny, double maxy, int xsamples, int ysamples, int zsamples, double credible_interval, double pdx, double pdy, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, part2d_fm_likelihood_t lp, void *user_arg, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset2dfm\+\_\+t}$\ast$ part2d\+\_\+forwardmodel (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{thin, }
+\item[{int}]{minpart, }
+\item[{int}]{maxpart, }
+\item[{int}]{initpart, }
+\item[{double}]{minx, }
+\item[{double}]{maxx, }
+\item[{double}]{miny, }
+\item[{double}]{maxy, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{int}]{zsamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pdx, }
+\item[{double}]{pdy, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf part2d\+\_\+fm\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a1a30e27827e21f0906d74634c611cc54}{}\label{forwardmodel_8h_a1a30e27827e21f0906d74634c611cc54}
+
+
+A partitioned 2d forward model. 
+
+This method performs a transdimensional mcmc forward model with zero order fitting within each partition. In the 2d case, the partitions are defined as voronoi cells. For a detailed description of this method, see {\bfseries [bodin\+Thesis]}.
+
+The return value calculated should be the negative log likelihood as in the \hyperlink{forwardmodel_8h_a65b1200fd2ef808c85b1915fa1413b58}{single\+\_\+forwardmodel} method which is essentially the weighted sum of square errors.
+
+The callback function supplied to the lp parameter is where the forward model is implemented. This function must match the signature of the \hyperlink{forwardmodel_8h_accf0a94dea281d398d639a612dcc8197}{part2d\+\_\+fm\+\_\+likelihood\+\_\+t} type. The parameters passed to the this callback give you opaque access to the proposed model for which the log likelihood needs to be computed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em burnin} & The number of burn in iterations. \\
+\hline
+{\em total} & The total number of iterations (must be greater than burnin). \\
+\hline
+{\em minpart} & The minimum number of partitions, this should be 2. \\
+\hline
+{\em maxpart} & The maximum number of partitions. \\
+\hline
+{\em initpart} & The initial number of partitions. \\
+\hline
+{\em minx} & The lower bound value of the x coordinate \\
+\hline
+{\em maxx} & The upper bound value of the x coordinate. \\
+\hline
+{\em miny} & The lower bound value of the y coordinate \\
+\hline
+{\em maxy} & The upper bound value of the y coordinate. \\
+\hline
+{\em xsamples} & When producing mean curves etc, the number of discretization steps used for constructing the curve. A value of 100 suits most cases. \\
+\hline
+{\em ysamples} & When producing mean curves etc, the number of discretization steps used for constructing the curve. A value of 100 suits most cases. \\
+\hline
+{\em zsamples} & Results such as median, mode, credible intervals are computed using a histogram of values, this parameter sets the number of bins for this histogram. A value of 100 suits most cases. \\
+\hline
+{\em credible\+\_\+interval} & The credible interval expressed as a percentage between 0 and 1. \\
+\hline
+{\em pdx} & The standard deviation of the perturb partition boundary (move) step in the x direction. \\
+\hline
+{\em pdy} & The standard deviation of the perturb partition boundary (move) step in the y direction. \\
+\hline
+{\em random} & User supplied uniform random number generator. \\
+\hline
+{\em normal} & User supplied normal random number generator. \\
+\hline
+{\em nglobalparameters} & The number of global parameters. \\
+\hline
+{\em global\+\_\+parameters} & An array of global parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em nlocalparameters} & The number of local parameters. \\
+\hline
+{\em local\+\_\+parameters} & An array of local parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em lp} & The likelihood function. \\
+\hline
+{\em user\+\_\+arg} & A pointer to user data that will be supplied to the likelihood function. \\
+\hline
+{\em results} & The results desired as a bitwise or\textquotesingle{}ing of \hyperlink{resultset1dfm_8h_afc3b11f934a94a4c1e202e3c6bf776df}{resultset1dfm\+\_\+result\+\_\+t} values.\\
+\hline
+\end{DoxyParams}
+For an example of using this function, see the example 2d/partitioned/fm/regression/regression.\+h 
+
+References N\+P\+R\+O\+C\+E\+S\+S\+ES, part2dfm\+::nprocesses, N\+P\+R\+O\+C\+E\+S\+S\+E\+S\+\_\+\+N\+O\+G\+L\+O\+B\+AL, part2dfm\+::results, resultset2dfm\+\_\+assemble\+\_\+results(), rjmcmc\+\_\+engine\+\_\+run(), and rjmcmc\+\_\+error().
+
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part2d\+\_\+forwardmodel\+\_\+hierarchical@{part2d\+\_\+forwardmodel\+\_\+hierarchical}}
+\index{part2d\+\_\+forwardmodel\+\_\+hierarchical@{part2d\+\_\+forwardmodel\+\_\+hierarchical}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+forwardmodel\+\_\+hierarchical(int burnin, int total, int thin, int minpart, int maxpart, int initpart, double minx, double maxx, double miny, double maxy, int xsamples, int ysamples, int zsamples, double credible\+\_\+interval, double pdx, double pdy, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, int nhierarchicalparameters, const forwardmodelparameter\+\_\+t $\ast$hierarchical\+\_\+parameters, part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int results)}{part2d_forwardmodel_hierarchical(int burnin, int total, int thin, int minpart, int maxpart, int initpart, double minx, double maxx, double miny, double maxy, int xsamples, int ysamples, int zsamples, double credible_interval, double pdx, double pdy, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, int nhierarchicalparameters, const forwardmodelparameter_t *hierarchical_parameters, part2d_fm_hierarchical_likelihood_t lp, void *user_arg, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset2dfm\+\_\+t}$\ast$ part2d\+\_\+forwardmodel\+\_\+hierarchical (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{thin, }
+\item[{int}]{minpart, }
+\item[{int}]{maxpart, }
+\item[{int}]{initpart, }
+\item[{double}]{minx, }
+\item[{double}]{maxx, }
+\item[{double}]{miny, }
+\item[{double}]{maxy, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{int}]{zsamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pdx, }
+\item[{double}]{pdy, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{int}]{nhierarchicalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{hierarchical\+\_\+parameters, }
+\item[{{\bf part2d\+\_\+fm\+\_\+hierarchical\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a7f812853c942aeb44dd57ce2823a8523}{}\label{forwardmodel_8h_a7f812853c942aeb44dd57ce2823a8523}
+
+
+A partitioned 2d forward model with hierarchical parameters. 
+
+This method is the same as the \hyperlink{forwardmodel_8h_a1a30e27827e21f0906d74634c611cc54}{part2d\+\_\+forwardmodel} method except it also solves for hierarchical parameters that are used to construct the covariance matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em burnin} & The number of burn in iterations. \\
+\hline
+{\em total} & The total number of iterations (must be greater than burnin). \\
+\hline
+{\em thin} & The number of samples to skip when averaging (0 means none). \\
+\hline
+{\em minpart} & The minimum number of partitions, this should be 2. \\
+\hline
+{\em maxpart} & The maximum number of partitions. \\
+\hline
+{\em initpart} & The initial number of partitions. \\
+\hline
+{\em minx} & The lower bound value of the x coordinate \\
+\hline
+{\em maxx} & The upper bound value of the x coordinate. \\
+\hline
+{\em miny} & The lower bound value of the y coordinate \\
+\hline
+{\em maxy} & The upper bound value of the y coordinate. \\
+\hline
+{\em xsamples} & When producing mean curves etc, the number of discretization steps used for constructing the curve. A value of 100 suits most cases. \\
+\hline
+{\em ysamples} & When producing mean curves etc, the number of discretization steps used for constructing the curve. A value of 100 suits most cases. \\
+\hline
+{\em zsamples} & Results such as median, mode, credible intervals are computed using a histogram of values, this parameter sets the number of bins for this histogram. A value of 100 suits most cases. \\
+\hline
+{\em credible\+\_\+interval} & The credible interval expressed as a percentage between 0 and 1. \\
+\hline
+{\em pdx} & The standard deviation of the perturb partition boundary (move) step in the x direction. \\
+\hline
+{\em pdy} & The standard deviation of the perturb partition boundary (move) step in the y direction. \\
+\hline
+{\em random} & User supplied uniform random number generator. \\
+\hline
+{\em normal} & User supplied normal random number generator. \\
+\hline
+{\em nglobalparameters} & The number of global parameters. \\
+\hline
+{\em global\+\_\+parameters} & An array of global parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em nlocalparameters} & The number of local parameters. \\
+\hline
+{\em local\+\_\+parameters} & An array of local parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em nhierarchicalparameters} & The number of hierarchical parameters. \\
+\hline
+{\em hierarchical\+\_\+parameters} & An array of hierarchical parameters (their min, max and perturbation standard deviations). \\
+\hline
+{\em lp} & The likelihood function. \\
+\hline
+{\em user\+\_\+arg} & A pointer to user data that will be supplied to the likelihood function. \\
+\hline
+{\em results} & The results desired as a bitwise or\textquotesingle{}ing of \hyperlink{resultset1dfm_8h_afc3b11f934a94a4c1e202e3c6bf776df}{resultset1dfm\+\_\+result\+\_\+t} values.\\
+\hline
+\end{DoxyParams}
+For an example of using this function, see the example 2d/partitioned/fm/regression/regression.\+h 
+
+References part2dfm\+::bound, part2dfm\+::current, \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, part2dfm\+::global\+\_\+parameters, part2dfm\+::hierarchical\+\_\+parameters, part2dfm\+::initpart, part2dfm\+::local\+\_\+parameters, part2dfm\+::lp, part2dfm\+::maxpart, part2dfm\+::mf\+\_\+gradients, part2dfm\+::mf\+\_\+values, part2dfm\+::minpart, part2dfm\+::nglobalparameters, part2dfm\+::nhierarchicalparameters, part2dfm\+::nlocalparameters, part2dfm\+::normal, N\+P\+R\+O\+C\+E\+S\+S\+ES, part2dfm\+::nprocesses, N\+P\+R\+O\+C\+E\+S\+S\+E\+S\+\_\+\+N\+O\+G\+L\+O\+B\+AL, P\+A\+R\+T2\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+RO, part2d\+\_\+forwardmodel\+\_\+create(), part2d\+\_\+forwardmodel\+\_\+destroy(), part2dfm\+::proddelta\+\_\+l, part2dfm\+::proposed, part2dfm\+::random, part2dfm\+::results, resultset2dfm\+\_\+assemble\+\_\+results(), resultset2dfm\+\_\+create(), resultset2dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), resultset2dfm\+\_\+fill\+\_\+ycoord\+\_\+vector(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+3d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+3d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), part2dfm\+::user\+\_\+arg, part2dfm\+::x, bbox2d\+::xmax, bbox2d\+::xmin, part2dfm\+::xsamples, part2dfm\+::y, bbox2d\+::ymax, bbox2d\+::ymin, part2dfm\+::ysamples, and part2dfm\+::z.
+
+
+
+Referenced by part2d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!part2d\+\_\+forwardmodel\+\_\+restartable@{part2d\+\_\+forwardmodel\+\_\+restartable}}
+\index{part2d\+\_\+forwardmodel\+\_\+restartable@{part2d\+\_\+forwardmodel\+\_\+restartable}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+forwardmodel\+\_\+restartable(const char $\ast$model\+\_\+file\+\_\+in, const char $\ast$model\+\_\+file\+\_\+out, int burnin, int total, int thin, int minpart, int maxpart, int initpart, double xmin, double xmax, double ymin, double ymax, int xsamples, int ysamples, int zsamples, double credible\+\_\+interval, double pdx, double pdy, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, part2d\+\_\+fm\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int results)}{part2d_forwardmodel_restartable(const char *model_file_in, const char *model_file_out, int burnin, int total, int thin, int minpart, int maxpart, int initpart, double xmin, double xmax, double ymin, double ymax, int xsamples, int ysamples, int zsamples, double credible_interval, double pdx, double pdy, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, part2d_fm_likelihood_t lp, void *user_arg, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset2dfm\+\_\+t}$\ast$ part2d\+\_\+forwardmodel\+\_\+restartable (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{model\+\_\+file\+\_\+in, }
+\item[{const char $\ast$}]{model\+\_\+file\+\_\+out, }
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{thin, }
+\item[{int}]{minpart, }
+\item[{int}]{maxpart, }
+\item[{int}]{initpart, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{int}]{zsamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pdx, }
+\item[{double}]{pdy, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf part2d\+\_\+fm\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a0c79b83c0b31d163b242e9ef9bece73a}{}\label{forwardmodel_8h_a0c79b83c0b31d163b242e9ef9bece73a}
+
+
+References part2dfm\+::bound, part2dfm\+::checkpoint\+\_\+interval, part2dfm\+::checkpoint\+\_\+prefix, part2dfm\+::current, \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, part2dfm\+::global\+\_\+parameters, part2dfm\+::initpart, part2dfm\+::local\+\_\+parameters, part2dfm\+::lp, part2dfm\+::maxpart, part2dfm\+::mf\+\_\+gradients, part2dfm\+::mf\+\_\+values, part2dfm\+::minpart, part2dfm\+::mpirank, part2dfm\+::nglobalparameters, part2dfm\+::nlocalparameters, part2dfm\+::normal, N\+P\+R\+O\+C\+E\+S\+S\+ES, part2dfm\+::nprocesses, N\+P\+R\+O\+C\+E\+S\+S\+E\+S\+\_\+\+N\+O\+G\+L\+O\+B\+AL, P\+A\+R\+T2\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+RO, part2d\+\_\+forwardmodel\+\_\+create(), part2d\+\_\+forwardmodel\+\_\+destroy(), part2d\+\_\+forwardmodel\+\_\+load(), part2d\+\_\+forwardmodel\+\_\+save(), part2dfm\+::proddelta\+\_\+l, part2dfm\+::proposed, part2dfm\+::random, part2dfm\+::results, resultset2dfm\+\_\+assemble\+\_\+results(), resultset2dfm\+\_\+create(), resultset2dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), resultset2dfm\+\_\+fill\+\_\+ycoord\+\_\+vector(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+3d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+3d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), part2dfm\+::user\+\_\+arg, part2dfm\+::x, bbox2d\+::xmax, bbox2d\+::xmin, part2dfm\+::xsamples, part2dfm\+::y, bbox2d\+::ymax, bbox2d\+::ymin, part2dfm\+::ysamples, and part2dfm\+::z.
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!single\+\_\+forwardmodel@{single\+\_\+forwardmodel}}
+\index{single\+\_\+forwardmodel@{single\+\_\+forwardmodel}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{single\+\_\+forwardmodel(int burnin, int total, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nparameters, const forwardmodelparameter\+\_\+t $\ast$parameters, single\+\_\+fm\+\_\+likelihood\+\_\+t lp, void $\ast$user\+\_\+arg, int samples, double credible\+\_\+interval, int results)}{single_forwardmodel(int burnin, int total, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nparameters, const forwardmodelparameter_t *parameters, single_fm_likelihood_t lp, void *user_arg, int samples, double credible_interval, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultsetfm\+\_\+t}$\ast$ single\+\_\+forwardmodel (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{parameters, }
+\item[{{\bf single\+\_\+fm\+\_\+likelihood\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{samples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a65b1200fd2ef808c85b1915fa1413b58}{}\label{forwardmodel_8h_a65b1200fd2ef808c85b1915fa1413b58}
+
+
+Single Partition Forward Model. 
+
+A single partition 1D forward model is essentially attempting to solve for a number of parameters. A range of these parameters is supplied via the parameters parameter.
+
+The user supplied callback function, lp, will be passed at each iteration a set of parameters in an array. The callback should calculate negative log likelihood of the model (note that multiplicative and additive constants can be left out as these will cancel) . For an uncorrelated gaussian, this simplifies to (and removing the additive constant)\+:
+
+\[ \log({\mathrm{likelihood}}) = \sum_{i = 1}^n \frac{\left(g\left(m\right)_i - d_i\right)^2}{2 \sigma_i^2} \]
+
+From the actual likelihood\+:
+
+\[ \Pr(d|m) = \frac{1}{\prod_{i=1}^n \sqrt{2 \pi \cdot \sigma_i^2}} \exp{\left( \sum_{i = 1}^n \frac{-\left(g\left(m\right)_i - d_i\right)^2}{2\sigma_i^2}\right)} \]
+
+Where $g(m)_i$ is the data/model generated from the parameters passed to the function, $d_i$ is the data/model to compare, and . $\sigma_i$ is the variance of the noise or uncertainty in the data. If the variance is not known and set to unity, the simulation will tend to overfit the data (unless the variance is actually near 1). In this case it is recommended that the \hyperlink{forwardmodel_8h_a95b892df15e3e7b58497a68af64a7b0d}{single\+\_\+forwardmodel\+\_\+hierarchical} function be used instead as it will also perturb an estimate of $\sigma$. Note that we don\textquotesingle{}t need to calculate the scaling constant for the gaussian probability in this case since it is cancelled out in the M\+C\+MC step. This is not the case for the hierarchical version \hyperlink{forwardmodel_8h_a95b892df15e3e7b58497a68af64a7b0d}{single\+\_\+forwardmodel\+\_\+hierarchical}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em burnin} & The number of burn in iterations. \\
+\hline
+{\em total} & The total number of iterations (must be greater than burnin). \\
+\hline
+{\em random} & User supplied uniform random number generator. \\
+\hline
+{\em normal} & User supplied normal random number generator. \\
+\hline
+{\em nparameters} & The number of parameters in the forward model. \\
+\hline
+{\em parameters} & The array of parameter information. \\
+\hline
+{\em lp} & The hierarchical likelihood function. \\
+\hline
+{\em user\+\_\+arg} & A pointer to user data that will be supplied to the likelihood function. \\
+\hline
+{\em samples} & Results such as median, mode, credible intervals are computed using a histogram of values, this parameter sets the number of bins for this histogram. A value of 100 suits most cases. \\
+\hline
+{\em credible\+\_\+interval} & The credible interval expressed as a percentage between 0 and 1. \\
+\hline
+{\em results} & The results desired as a bitwise or\textquotesingle{}ing of \hyperlink{resultsetfm_8h_a0a616a91a93740d092f8eee57f16b920}{resultsetfm\+\_\+result\+\_\+t} values.\\
+\hline
+\end{DoxyParams}
+For an example of using this function, see the example 1d/single/fm/simpleimage/simpleimage.\+c 
+
+References fmsingle\+::current, fmsingle\+::current\+\_\+hierarchical, fmsingle\+::current\+\_\+like, fmsingle\+::current\+\_\+logdetce, fmsingle\+::hierarchicalparameters, fmsingle\+::lp, fmsingle\+::lp\+\_\+hierarchical, fmsingle\+::nhierarchicalparameters, fmsingle\+::normal, fmsingle\+::nparameters, fmsingle\+::nsamples, fmsingle\+::out, fmsingle\+::parameters, fmsingle\+::process, fmsingle\+::proposed, fmsingle\+::proposed\+\_\+hierarchical, fmsingle\+::proposed\+\_\+like, fmsingle\+::proposed\+\_\+logdetce, fmsingle\+::random, fmsingle\+::results, resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), samples, and fmsingle\+::user\+\_\+arg.
+
+
+
+Referenced by single\+\_\+forwardmodel\+\_\+f().
+
+\index{forwardmodel.\+h@{forwardmodel.\+h}!single\+\_\+forwardmodel\+\_\+hierarchical@{single\+\_\+forwardmodel\+\_\+hierarchical}}
+\index{single\+\_\+forwardmodel\+\_\+hierarchical@{single\+\_\+forwardmodel\+\_\+hierarchical}!forwardmodel.\+h@{forwardmodel.\+h}}
+\subsubsection[{\texorpdfstring{single\+\_\+forwardmodel\+\_\+hierarchical(int burnin, int total, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int nparameters, const forwardmodelparameter\+\_\+t $\ast$parameters, int nhierarchicalparameters, const forwardmodelparameter\+\_\+t $\ast$hierarchicalparameters, single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t lp, void $\ast$user\+\_\+arg, int nsamples, double credible\+\_\+interval, int results)}{single_forwardmodel_hierarchical(int burnin, int total, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int nparameters, const forwardmodelparameter_t *parameters, int nhierarchicalparameters, const forwardmodelparameter_t *hierarchicalparameters, single_fm_likelihood_hierarchical_t lp, void *user_arg, int nsamples, double credible_interval, int results)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultsetfm\+\_\+t}$\ast$ single\+\_\+forwardmodel\+\_\+hierarchical (
+\begin{DoxyParamCaption}
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{nparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{parameters, }
+\item[{int}]{nhierarchicalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{hierarchicalparameters, }
+\item[{{\bf single\+\_\+fm\+\_\+likelihood\+\_\+hierarchical\+\_\+t}}]{lp, }
+\item[{void $\ast$}]{user\+\_\+arg, }
+\item[{int}]{nsamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{int}]{results}
+\end{DoxyParamCaption}
+)}\hypertarget{forwardmodel_8h_a95b892df15e3e7b58497a68af64a7b0d}{}\label{forwardmodel_8h_a95b892df15e3e7b58497a68af64a7b0d}
+
+
+Single Partition Forward Model with Hierarchical Noise. 
+
+This forward model adds a custom number of hierarchical parameters that affect the scaling constant of the likelihood and therefore the log(likelihood) that needs to be returned from the likelihood function.
+
+The general gaussian probability is\+:
+
+\[ \Pr() = \frac{1}{(2 \pi)^{n/2} |C_e|} \exp{-\frac{1}{2}(g(m) - d)^T C_e^{-1} (g(m) - d)} \]
+
+Where $ C_e $ is the covariance matrix that is generated from the hierarchical parameters. In the simplest case you would have 1 hierarchical parameter with the diagonal of the covariance matrix set to this value.
+
+The callback function now needs to calculate the entire likelihood value but only when the hierarchical parameters are perturbed. To facilitate this and to allow some efficiency gains in not having to continuously evaluate the determinant of the covariance matrix, the callback function only needs to return the positive value of the exponential term above, ie $\frac{1}{2}(g(m) - d)^T C_e^{-1} (g(m) - d)$, and the determinant of the covariance when needed. This is indicated with the hierarchical parameter to the callback function. In psuedo code, the callback function should follow the following pattern\+: \begin{DoxyVerb}loglikelihood = calculate_log_likelihood();
+if (hierarchical == 1) {
+     logdetce = calculate_log_detCe();
+} 
+
+return loglikelihood;
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em burnin} & The number of burn in iterations. \\
+\hline
+{\em total} & The total number of iterations (must be greater than burnin). \\
+\hline
+{\em random} & User supplied uniform random number generator. \\
+\hline
+{\em normal} & User supplied normal random number generator. \\
+\hline
+{\em nparameters} & The number of parameters in the forward model. \\
+\hline
+{\em parameters} & The array of parameter information. \\
+\hline
+{\em nhierarchicalparameters} & The number of hierarchical parameters to sample \\
+\hline
+{\em hierarchicalparameters} & \\
+\hline
+{\em lp} & The hierarchical likelihood function. Note that this has a different signature than the \hyperlink{forwardmodel_8h_a65b1200fd2ef808c85b1915fa1413b58}{single\+\_\+forwardmodel} function parameter of the same name. \\
+\hline
+{\em user\+\_\+arg} & A pointer to user data that will be supplied to the likelihood function. \\
+\hline
+{\em nsamples} & The number of data points used in calculating the likelihood. \\
+\hline
+{\em credible\+\_\+interval} & The credible interval expressed as a percentage between 0 and 1. \\
+\hline
+{\em results} & The results desired as a bitwise or\textquotesingle{}ing of \hyperlink{resultsetfm_8h_a0a616a91a93740d092f8eee57f16b920}{resultsetfm\+\_\+result\+\_\+t} values.\\
+\hline
+\end{DoxyParams}
+For an example of using this function, see the example 1d/single/fm/simpleimage/simpleimage.\+c 
+
+References fmsingle\+::current, fmsingle\+::current\+\_\+hierarchical, fmsingle\+::current\+\_\+like, fmsingle\+::current\+\_\+logdetce, \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, \+\_\+forwardmodelparameter\+::fstd\+\_\+value, fmsingle\+::hierarchicalparameters, fmsingle\+::lp, fmsingle\+::lp\+\_\+hierarchical, fmsingle\+::nhierarchicalparameters, fmsingle\+::normal, fmsingle\+::nparameters, fmsingle\+::nsamples, fmsingle\+::out, fmsingle\+::parameters, fmsingle\+::process, fmsingle\+::proposed, fmsingle\+::proposed\+\_\+hierarchical, fmsingle\+::proposed\+\_\+like, fmsingle\+::proposed\+\_\+logdetce, fmsingle\+::random, fmsingle\+::results, resultsetfm\+\_\+accept(), resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+propose(), resultsetfm\+\_\+sample(), resultsetfm\+\_\+sample\+\_\+hierarchical(), resultsetfm\+\_\+sample\+\_\+misfit(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), samples, and fmsingle\+::user\+\_\+arg.
+
+
+
+Referenced by single\+\_\+forwardmodel\+\_\+hierarchical\+\_\+f().
+

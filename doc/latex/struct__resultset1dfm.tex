@@ -1,0 +1,293 @@
+\hypertarget{struct__resultset1dfm}{}\section{\+\_\+resultset1dfm Struct Reference}
+\label{struct__resultset1dfm}\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+
+
+Collaboration diagram for \+\_\+resultset1dfm\+:
+% FIG 0
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{struct__resultset1dfm_a85df836eee4586560d60c48f1b0db18d}{results}
+\item 
+int \hyperlink{struct__resultset1dfm_ac508f47e9939e53ba04095f440f3cc40}{burnin}
+\item 
+int \hyperlink{struct__resultset1dfm_a5d28e0bc99107bfa56c1a2c9a3d396ee}{total}
+\item 
+int \hyperlink{struct__resultset1dfm_ac46e8e3d7ddd1db6b6aa33458ef219ea}{xsamples}
+\item 
+int \hyperlink{struct__resultset1dfm_a21e88b0c502b9145a86a57a016b3daf6}{ysamples}
+\item 
+int \hyperlink{struct__resultset1dfm_a7383532ed70917d51d6f99036eca98b0}{nglobalparameters}
+\item 
+const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$ \hyperlink{struct__resultset1dfm_ac0512f402d548dc832a201bad68d9dad}{global\+\_\+parameters}
+\item 
+int \hyperlink{struct__resultset1dfm_a576efbe00bd3e77e8a80c6e275e2f72a}{nlocalparameters}
+\item 
+const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$ \hyperlink{struct__resultset1dfm_acdda95a91c2722e8dae38e82a955d1f0}{local\+\_\+parameters}
+\item 
+int \hyperlink{struct__resultset1dfm_ab9a205a37ed1e99e0f292a8a81e4fa8a}{maxpartitions}
+\item 
+double \hyperlink{struct__resultset1dfm_a9e1fe0d3ff10ba63d5616d65dce41589}{xmin}
+\item 
+double \hyperlink{struct__resultset1dfm_ade4d1f92f73dffdbe895a37491976102}{xmax}
+\item 
+int \hyperlink{struct__resultset1dfm_a881dce3156e105e5a37de87f25a6b6ab}{nprocesses}
+\item 
+int $\ast$ \hyperlink{struct__resultset1dfm_a1caf2d73d2edbdcaae8588a8a61447a9}{propose}
+\item 
+int $\ast$ \hyperlink{struct__resultset1dfm_a7afcfc316c2b6634844c1467b1417b97}{accept}
+\item 
+int $\ast$ \hyperlink{struct__resultset1dfm_a3f6c790571a841a65e43b825be59b958}{propose\+\_\+local}
+\item 
+int $\ast$ \hyperlink{struct__resultset1dfm_ae4760c6b41373090251048f441c602f7}{accept\+\_\+local}
+\item 
+double $\ast$ \hyperlink{struct__resultset1dfm_af30e93b1c8aeefcf1af09d032f0ff61e}{misfit}
+\item 
+int $\ast$ \hyperlink{struct__resultset1dfm_a90991b169a7704488c71cb36047260b9}{partitions}
+\item 
+int $\ast$ \hyperlink{struct__resultset1dfm_aff0d258369cc09d605b366d220bff236}{partition\+\_\+x\+\_\+hist}
+\item 
+double $\ast$$\ast$ \hyperlink{struct__resultset1dfm_a0e078ab646d4c91612604d3fdd2dba92}{global}
+\item 
+double $\ast$$\ast$ \hyperlink{struct__resultset1dfm_adb8f083b8d35b6edb2193e2dec73bac3}{local\+\_\+mean}
+\item 
+int \hyperlink{struct__resultset1dfm_a263def7ce34e2c3d9cd0a50ad0c9b067}{nhierarchical}
+\item 
+double $\ast$$\ast$ \hyperlink{struct__resultset1dfm_a0623b9e2d931dd305e86cb3580867143}{hierarchical}
+\item 
+int $\ast$$\ast$$\ast$ \hyperlink{struct__resultset1dfm_a14bbf9b5794558c13c2a3ba55304947a}{histogram}
+\item 
+double $\ast$$\ast$ \hyperlink{struct__resultset1dfm_aeb9c76e57ac7f44fb7a10777b418359f}{local\+\_\+median}
+\item 
+double $\ast$$\ast$ \hyperlink{struct__resultset1dfm_a9f756b2dcafab255fcd1cd2180d167af}{local\+\_\+mode}
+\item 
+double \hyperlink{struct__resultset1dfm_a0680986edd1f0b2afb06b6f02d68e736}{credible\+\_\+interval}
+\item 
+double $\ast$$\ast$ \hyperlink{struct__resultset1dfm_acb42fb536fad644f52fa1fe83ca503d3}{local\+\_\+cred\+\_\+min}
+\item 
+double $\ast$$\ast$ \hyperlink{struct__resultset1dfm_af48b2482fb58423ec1caeb2a94796e08}{local\+\_\+cred\+\_\+max}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2functionfit_2functionfit_8c-example}{1d/partitioned/fm/functionfit/functionfit.\+c}, and \hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}.\end{Desc}
+
+
+\subsection{Field Documentation}
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!accept@{accept}}
+\index{accept@{accept}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{accept}{accept}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ \+\_\+resultset1dfm\+::accept}\hypertarget{struct__resultset1dfm_a7afcfc316c2b6634844c1467b1417b97}{}\label{struct__resultset1dfm_a7afcfc316c2b6634844c1467b1417b97}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+accept(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+accept(), and resultset1dfm\+\_\+get\+\_\+accept\+\_\+f().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!accept\+\_\+local@{accept\+\_\+local}}
+\index{accept\+\_\+local@{accept\+\_\+local}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{accept\+\_\+local}{accept_local}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ \+\_\+resultset1dfm\+::accept\+\_\+local}\hypertarget{struct__resultset1dfm_ae4760c6b41373090251048f441c602f7}{}\label{struct__resultset1dfm_ae4760c6b41373090251048f441c602f7}
+
+
+Referenced by resultset1dfm\+\_\+accept\+\_\+local\+\_\+value(), resultset1dfm\+\_\+create(), and resultset1dfm\+\_\+destroy().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!burnin@{burnin}}
+\index{burnin@{burnin}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{burnin}{burnin}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::burnin}\hypertarget{struct__resultset1dfm_ac508f47e9939e53ba04095f440f3cc40}{}\label{struct__resultset1dfm_ac508f47e9939e53ba04095f440f3cc40}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), and resultset1dfm\+\_\+sample\+\_\+local\+\_\+parameter().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!credible\+\_\+interval@{credible\+\_\+interval}}
+\index{credible\+\_\+interval@{credible\+\_\+interval}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{credible\+\_\+interval}{credible_interval}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+resultset1dfm\+::credible\+\_\+interval}\hypertarget{struct__resultset1dfm_a0680986edd1f0b2afb06b6f02d68e736}{}\label{struct__resultset1dfm_a0680986edd1f0b2afb06b6f02d68e736}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), and resultset1dfm\+\_\+create().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!global@{global}}
+\index{global@{global}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{global}{global}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ \+\_\+resultset1dfm\+::global}\hypertarget{struct__resultset1dfm_a0e078ab646d4c91612604d3fdd2dba92}{}\label{struct__resultset1dfm_a0e078ab646d4c91612604d3fdd2dba92}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+global\+\_\+parameter(), resultset1dfm\+\_\+get\+\_\+global\+\_\+parameter\+\_\+f(), and resultset1dfm\+\_\+sample\+\_\+global\+\_\+parameter().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!global\+\_\+parameters@{global\+\_\+parameters}}
+\index{global\+\_\+parameters@{global\+\_\+parameters}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{global\+\_\+parameters}{global_parameters}}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf forwardmodelparameter\+\_\+t}$\ast$ \+\_\+resultset1dfm\+::global\+\_\+parameters}\hypertarget{struct__resultset1dfm_ac0512f402d548dc832a201bad68d9dad}{}\label{struct__resultset1dfm_ac0512f402d548dc832a201bad68d9dad}
+
+
+Referenced by resultset1dfm\+\_\+create().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!hierarchical@{hierarchical}}
+\index{hierarchical@{hierarchical}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{hierarchical}{hierarchical}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ \+\_\+resultset1dfm\+::hierarchical}\hypertarget{struct__resultset1dfm_a0623b9e2d931dd305e86cb3580867143}{}\label{struct__resultset1dfm_a0623b9e2d931dd305e86cb3580867143}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+hierarchical(), resultset1dfm\+\_\+get\+\_\+hierarchical\+\_\+f(), and resultset1dfm\+\_\+sample\+\_\+hierarchical().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!histogram@{histogram}}
+\index{histogram@{histogram}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{histogram}{histogram}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$$\ast$$\ast$ \+\_\+resultset1dfm\+::histogram}\hypertarget{struct__resultset1dfm_a14bbf9b5794558c13c2a3ba55304947a}{}\label{struct__resultset1dfm_a14bbf9b5794558c13c2a3ba55304947a}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+histogram(), and resultset1dfm\+\_\+sample\+\_\+local\+\_\+parameter().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!local\+\_\+cred\+\_\+max@{local\+\_\+cred\+\_\+max}}
+\index{local\+\_\+cred\+\_\+max@{local\+\_\+cred\+\_\+max}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{local\+\_\+cred\+\_\+max}{local_cred_max}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ \+\_\+resultset1dfm\+::local\+\_\+cred\+\_\+max}\hypertarget{struct__resultset1dfm_af48b2482fb58423ec1caeb2a94796e08}{}\label{struct__resultset1dfm_af48b2482fb58423ec1caeb2a94796e08}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+max(), and resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+max\+\_\+f().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!local\+\_\+cred\+\_\+min@{local\+\_\+cred\+\_\+min}}
+\index{local\+\_\+cred\+\_\+min@{local\+\_\+cred\+\_\+min}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{local\+\_\+cred\+\_\+min}{local_cred_min}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ \+\_\+resultset1dfm\+::local\+\_\+cred\+\_\+min}\hypertarget{struct__resultset1dfm_acb42fb536fad644f52fa1fe83ca503d3}{}\label{struct__resultset1dfm_acb42fb536fad644f52fa1fe83ca503d3}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+min(), and resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+min\+\_\+f().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!local\+\_\+mean@{local\+\_\+mean}}
+\index{local\+\_\+mean@{local\+\_\+mean}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{local\+\_\+mean}{local_mean}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ \+\_\+resultset1dfm\+::local\+\_\+mean}\hypertarget{struct__resultset1dfm_adb8f083b8d35b6edb2193e2dec73bac3}{}\label{struct__resultset1dfm_adb8f083b8d35b6edb2193e2dec73bac3}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mean(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mean\+\_\+f(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+median\+\_\+f(), and resultset1dfm\+\_\+sample\+\_\+local\+\_\+parameter().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!local\+\_\+median@{local\+\_\+median}}
+\index{local\+\_\+median@{local\+\_\+median}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{local\+\_\+median}{local_median}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ \+\_\+resultset1dfm\+::local\+\_\+median}\hypertarget{struct__resultset1dfm_aeb9c76e57ac7f44fb7a10777b418359f}{}\label{struct__resultset1dfm_aeb9c76e57ac7f44fb7a10777b418359f}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+median(), and resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+median\+\_\+f().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!local\+\_\+mode@{local\+\_\+mode}}
+\index{local\+\_\+mode@{local\+\_\+mode}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{local\+\_\+mode}{local_mode}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ \+\_\+resultset1dfm\+::local\+\_\+mode}\hypertarget{struct__resultset1dfm_a9f756b2dcafab255fcd1cd2180d167af}{}\label{struct__resultset1dfm_a9f756b2dcafab255fcd1cd2180d167af}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mode(), and resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mode\+\_\+f().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!local\+\_\+parameters@{local\+\_\+parameters}}
+\index{local\+\_\+parameters@{local\+\_\+parameters}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{local\+\_\+parameters}{local_parameters}}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf forwardmodelparameter\+\_\+t}$\ast$ \+\_\+resultset1dfm\+::local\+\_\+parameters}\hypertarget{struct__resultset1dfm_acdda95a91c2722e8dae38e82a955d1f0}{}\label{struct__resultset1dfm_acdda95a91c2722e8dae38e82a955d1f0}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+ycoord\+\_\+vector(), and resultset1dfm\+\_\+sample\+\_\+local\+\_\+parameter().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!maxpartitions@{maxpartitions}}
+\index{maxpartitions@{maxpartitions}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{maxpartitions}{maxpartitions}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::maxpartitions}\hypertarget{struct__resultset1dfm_ab9a205a37ed1e99e0f292a8a81e4fa8a}{}\label{struct__resultset1dfm_ab9a205a37ed1e99e0f292a8a81e4fa8a}
+
+
+Referenced by resultset1dfm\+\_\+create(), and resultset1dfm\+\_\+get\+\_\+max\+\_\+partitions().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!misfit@{misfit}}
+\index{misfit@{misfit}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{misfit}{misfit}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+resultset1dfm\+::misfit}\hypertarget{struct__resultset1dfm_af30e93b1c8aeefcf1af09d032f0ff61e}{}\label{struct__resultset1dfm_af30e93b1c8aeefcf1af09d032f0ff61e}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+misfit(), resultset1dfm\+\_\+get\+\_\+misfit\+\_\+f(), and resultset1dfm\+\_\+sample\+\_\+misfit().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!nglobalparameters@{nglobalparameters}}
+\index{nglobalparameters@{nglobalparameters}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{nglobalparameters}{nglobalparameters}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::nglobalparameters}\hypertarget{struct__resultset1dfm_a7383532ed70917d51d6f99036eca98b0}{}\label{struct__resultset1dfm_a7383532ed70917d51d6f99036eca98b0}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+global\+\_\+parameter(), resultset1dfm\+\_\+get\+\_\+global\+\_\+parameter\+\_\+f(), and resultset1dfm\+\_\+sample\+\_\+global\+\_\+parameter().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!nhierarchical@{nhierarchical}}
+\index{nhierarchical@{nhierarchical}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{nhierarchical}{nhierarchical}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::nhierarchical}\hypertarget{struct__resultset1dfm_a263def7ce34e2c3d9cd0a50ad0c9b067}{}\label{struct__resultset1dfm_a263def7ce34e2c3d9cd0a50ad0c9b067}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+hierarchical(), resultset1dfm\+\_\+get\+\_\+hierarchical\+\_\+f(), and resultset1dfm\+\_\+sample\+\_\+hierarchical().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!nlocalparameters@{nlocalparameters}}
+\index{nlocalparameters@{nlocalparameters}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{nlocalparameters}{nlocalparameters}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::nlocalparameters}\hypertarget{struct__resultset1dfm_a576efbe00bd3e77e8a80c6e275e2f72a}{}\label{struct__resultset1dfm_a576efbe00bd3e77e8a80c6e275e2f72a}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+accept\+\_\+local\+\_\+value(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+histogram(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mean(), resultset1dfm\+\_\+propose\+\_\+local\+\_\+value(), and resultset1dfm\+\_\+sample\+\_\+local\+\_\+parameter().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!nprocesses@{nprocesses}}
+\index{nprocesses@{nprocesses}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{nprocesses}{nprocesses}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::nprocesses}\hypertarget{struct__resultset1dfm_a881dce3156e105e5a37de87f25a6b6ab}{}\label{struct__resultset1dfm_a881dce3156e105e5a37de87f25a6b6ab}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+accept(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+get\+\_\+accept(), resultset1dfm\+\_\+get\+\_\+nparameters(), resultset1dfm\+\_\+get\+\_\+propose(), and resultset1dfm\+\_\+propose().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!partition\+\_\+x\+\_\+hist@{partition\+\_\+x\+\_\+hist}}
+\index{partition\+\_\+x\+\_\+hist@{partition\+\_\+x\+\_\+hist}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{partition\+\_\+x\+\_\+hist}{partition_x_hist}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ \+\_\+resultset1dfm\+::partition\+\_\+x\+\_\+hist}\hypertarget{struct__resultset1dfm_aff0d258369cc09d605b366d220bff236}{}\label{struct__resultset1dfm_aff0d258369cc09d605b366d220bff236}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+partition\+\_\+x\+\_\+histogram(), resultset1dfm\+\_\+get\+\_\+partition\+\_\+x\+\_\+histogram\+\_\+f(), and resultset1dfm\+\_\+sample\+\_\+partition\+\_\+x().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!partitions@{partitions}}
+\index{partitions@{partitions}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{partitions}{partitions}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ \+\_\+resultset1dfm\+::partitions}\hypertarget{struct__resultset1dfm_a90991b169a7704488c71cb36047260b9}{}\label{struct__resultset1dfm_a90991b169a7704488c71cb36047260b9}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+partitions(), resultset1dfm\+\_\+get\+\_\+partitions\+\_\+f(), and resultset1dfm\+\_\+sample\+\_\+npartitions().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!propose@{propose}}
+\index{propose@{propose}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{propose}{propose}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ \+\_\+resultset1dfm\+::propose}\hypertarget{struct__resultset1dfm_a1caf2d73d2edbdcaae8588a8a61447a9}{}\label{struct__resultset1dfm_a1caf2d73d2edbdcaae8588a8a61447a9}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+get\+\_\+propose(), resultset1dfm\+\_\+get\+\_\+propose\+\_\+f(), and resultset1dfm\+\_\+propose().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!propose\+\_\+local@{propose\+\_\+local}}
+\index{propose\+\_\+local@{propose\+\_\+local}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{propose\+\_\+local}{propose_local}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ \+\_\+resultset1dfm\+::propose\+\_\+local}\hypertarget{struct__resultset1dfm_a3f6c790571a841a65e43b825be59b958}{}\label{struct__resultset1dfm_a3f6c790571a841a65e43b825be59b958}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), and resultset1dfm\+\_\+propose\+\_\+local\+\_\+value().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!results@{results}}
+\index{results@{results}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{results}{results}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::results}\hypertarget{struct__resultset1dfm_a85df836eee4586560d60c48f1b0db18d}{}\label{struct__resultset1dfm_a85df836eee4586560d60c48f1b0db18d}
+
+
+Referenced by resultset1dfm\+\_\+create().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!total@{total}}
+\index{total@{total}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{total}{total}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::total}\hypertarget{struct__resultset1dfm_a5d28e0bc99107bfa56c1a2c9a3d396ee}{}\label{struct__resultset1dfm_a5d28e0bc99107bfa56c1a2c9a3d396ee}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+get\+\_\+global\+\_\+parameter\+\_\+f(), resultset1dfm\+\_\+get\+\_\+hierarchical\+\_\+f(), resultset1dfm\+\_\+get\+\_\+misfit\+\_\+f(), resultset1dfm\+\_\+get\+\_\+partitions\+\_\+f(), resultset1dfm\+\_\+get\+\_\+total(), resultset1dfm\+\_\+sample\+\_\+global\+\_\+parameter(), resultset1dfm\+\_\+sample\+\_\+hierarchical(), resultset1dfm\+\_\+sample\+\_\+local\+\_\+parameter(), resultset1dfm\+\_\+sample\+\_\+misfit(), and resultset1dfm\+\_\+sample\+\_\+npartitions().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!xmax@{xmax}}
+\index{xmax@{xmax}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{xmax}{xmax}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+resultset1dfm\+::xmax}\hypertarget{struct__resultset1dfm_ade4d1f92f73dffdbe895a37491976102}{}\label{struct__resultset1dfm_ade4d1f92f73dffdbe895a37491976102}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), and resultset1dfm\+\_\+sample\+\_\+partition\+\_\+x().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!xmin@{xmin}}
+\index{xmin@{xmin}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{xmin}{xmin}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+resultset1dfm\+::xmin}\hypertarget{struct__resultset1dfm_a9e1fe0d3ff10ba63d5616d65dce41589}{}\label{struct__resultset1dfm_a9e1fe0d3ff10ba63d5616d65dce41589}
+
+
+Referenced by resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), and resultset1dfm\+\_\+sample\+\_\+partition\+\_\+x().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!xsamples@{xsamples}}
+\index{xsamples@{xsamples}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{xsamples}{xsamples}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::xsamples}\hypertarget{struct__resultset1dfm_ac46e8e3d7ddd1db6b6aa33458ef219ea}{}\label{struct__resultset1dfm_ac46e8e3d7ddd1db6b6aa33458ef219ea}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+destroy(), resultset1dfm\+\_\+fill\+\_\+xcoord\+\_\+vector(), resultset1dfm\+\_\+fill\+\_\+ycoord\+\_\+vector(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+max\+\_\+f(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+min\+\_\+f(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+histogram\+\_\+f(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mean\+\_\+f(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+median\+\_\+f(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mode\+\_\+f(), resultset1dfm\+\_\+get\+\_\+partition\+\_\+x\+\_\+histogram\+\_\+f(), resultset1dfm\+\_\+get\+\_\+xsamples(), resultset1dfm\+\_\+sample\+\_\+local\+\_\+parameter(), and resultset1dfm\+\_\+sample\+\_\+partition\+\_\+x().
+
+\index{\+\_\+resultset1dfm@{\+\_\+resultset1dfm}!ysamples@{ysamples}}
+\index{ysamples@{ysamples}!\+\_\+resultset1dfm@{\+\_\+resultset1dfm}}
+\subsubsection[{\texorpdfstring{ysamples}{ysamples}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultset1dfm\+::ysamples}\hypertarget{struct__resultset1dfm_a21e88b0c502b9145a86a57a016b3daf6}{}\label{struct__resultset1dfm_a21e88b0c502b9145a86a57a016b3daf6}
+
+
+Referenced by M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+assemble\+\_\+results(), resultset1dfm\+\_\+create(), resultset1dfm\+\_\+fill\+\_\+ycoord\+\_\+vector(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+histogram\+\_\+f(), and resultset1dfm\+\_\+sample\+\_\+local\+\_\+parameter().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{resultset1dfm_8c}{resultset1dfm.\+c}\end{DoxyCompactItemize}

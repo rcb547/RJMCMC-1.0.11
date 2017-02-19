@@ -1,0 +1,23 @@
+
+This example performs regression on a synthetic cubic dataset with
+added noise.
+
+Instructions:
+
+> python mkdata.py
+> ./cubic
+
+Or for estimating error:
+
+> ./cubic -l
+
+> python plot_misfit.py
+> python plot_credible.py
+> python plot_mean.py
+> python plot_median.py
+> python plot_mode.py
+> python plot_order.py
+
+And if you have run with the -l (error estimation) option:
+
+> python plot_lambda.py

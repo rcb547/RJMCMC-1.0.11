@@ -1,0 +1,15 @@
+
+This example uses runs a regression over a synthetic dataset consisting of 
+a Gaussian surface. This example also highlights the use of the regression
+callback functions.
+
+Instructions:
+
+> make
+> python mkdata.py
+> ./callbackex
+> python plot_mean.py
+> python plot_median.py
+> python plot_partition_count_histogram.py
+
+

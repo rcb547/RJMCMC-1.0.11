@@ -1,0 +1,14 @@
+digraph "rjmcmc_defines.h"
+{
+  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
+  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
+  Node1 [label="rjmcmc_defines.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="rjmcmc/rjmcmc_debug.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rjmcmc__debug_8h.html"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="stdarg.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="rjmcmc/rjmcmc.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rjmcmc_8h.html"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="rjmcmc/rjmcmc_config.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rjmcmc__config_8h.html"];
+}

@@ -1,0 +1,259 @@
+\hypertarget{quadtree_8c}{}\section{quadtree.\+c File Reference}
+\label{quadtree_8c}\index{quadtree.\+c@{quadtree.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$float.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/quadtree.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+util.\+h$>$}\\*
+Include dependency graph for quadtree.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__point}{\+\_\+point}
+\item 
+struct \hyperlink{struct__quadtree__leaf}{\+\_\+quadtree\+\_\+leaf}
+\item 
+struct \hyperlink{struct__quadtree__node}{\+\_\+quadtree\+\_\+node}
+\item 
+struct \hyperlink{struct__quadtree}{\+\_\+quadtree}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{quadtree_8c_a147188aaddbe058a112a8b8602e35a99}{T\+E\+S\+T\+\_\+\+N\+E\+I\+G\+H\+B\+O\+U\+RS}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__point}{\+\_\+point} \hyperlink{quadtree_8c_a10113fa111734396b2066f3fa38c9584}{point\+\_\+t}
+\item 
+typedef struct \hyperlink{struct__quadtree__leaf}{\+\_\+quadtree\+\_\+leaf} \hyperlink{quadtree_8c_a587c3c1eecbb2ec8d1c244316581bfdd}{quadtree\+\_\+leaf\+\_\+t}
+\item 
+typedef struct \hyperlink{struct__quadtree__node}{\+\_\+quadtree\+\_\+node} \hyperlink{quadtree_8c_ad63e20da3252f1c7ac0ec1fb59ab1e61}{quadtree\+\_\+node\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$ \hyperlink{quadtree_8c_a2e175bc67e082f61e2d2cb521ecd97a8}{quadtree\+\_\+create} (int maxpoints, int maxlevels, double xmin, double xmax, double ymin, double ymax)
+\item 
+void \hyperlink{quadtree_8c_ad2349cd327b8d2ed3edd514945873490}{quadtree\+\_\+destroy} (\hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$q)
+\item 
+int \hyperlink{quadtree_8c_a8f0898e18f5b6de6fcbad859a0ef6e44}{quadtree\+\_\+clone} (const \hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$src, \hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$dst)
+\item 
+int \hyperlink{quadtree_8c_a0fe416639b434b6f0944b0bb21ec9cf7}{quadtree\+\_\+add} (\hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$q, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{quadtree_8c_a428597f37d9d8b6db8c6f7933f6d52dc}{quadtree\+\_\+delete} (\hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$q, int pi, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{quadtree_8c_ab5f2a689a48d99aae3cbee2a727956b0}{quadtree\+\_\+shift\+\_\+replace} (\hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$q, int pi)
+\item 
+int \hyperlink{quadtree_8c_a818cb6631c3b00b33c6dbcdb501f90a0}{quadtree\+\_\+nearest} (\hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$q, int include\+\_\+corners, double px, double py)
+\item 
+int \hyperlink{quadtree_8c_ad3fb184b452c570db4446cb39a1b19b2}{quadtree\+\_\+point\+\_\+of\+\_\+index} (const \hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$q, int i, double $\ast$px, double $\ast$py)
+\item 
+int \hyperlink{quadtree_8c_aa7332467a021b8d7050d9c6a9545c48c}{quadtree\+\_\+index\+\_\+of\+\_\+point} (const \hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$q, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+int \hyperlink{quadtree_8c_ae1ba12be4fe350b3cd2e20ead603bbb5}{quadtree\+\_\+npoints} (const \hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$q)
+\item 
+int \hyperlink{quadtree_8c_a4ce9ca8a82d6a84cce937cbb74996a44}{quadtree\+\_\+polygon\+\_\+bound} (const \hyperlink{quadtree_8h_a2448b8536f876c42956d31e5c111192c}{quadtree\+\_\+t} $\ast$q, int i, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{quadtree.\+c@{quadtree.\+c}!T\+E\+S\+T\+\_\+\+N\+E\+I\+G\+H\+B\+O\+U\+RS@{T\+E\+S\+T\+\_\+\+N\+E\+I\+G\+H\+B\+O\+U\+RS}}
+\index{T\+E\+S\+T\+\_\+\+N\+E\+I\+G\+H\+B\+O\+U\+RS@{T\+E\+S\+T\+\_\+\+N\+E\+I\+G\+H\+B\+O\+U\+RS}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T\+\_\+\+N\+E\+I\+G\+H\+B\+O\+U\+RS}{TEST_NEIGHBOURS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+S\+T\+\_\+\+N\+E\+I\+G\+H\+B\+O\+U\+RS}\hypertarget{quadtree_8c_a147188aaddbe058a112a8b8602e35a99}{}\label{quadtree_8c_a147188aaddbe058a112a8b8602e35a99}
+
+
+\subsection{Typedef Documentation}
+\index{quadtree.\+c@{quadtree.\+c}!point\+\_\+t@{point\+\_\+t}}
+\index{point\+\_\+t@{point\+\_\+t}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{point\+\_\+t}{point_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+point} {\bf point\+\_\+t}}\hypertarget{quadtree_8c_a10113fa111734396b2066f3fa38c9584}{}\label{quadtree_8c_a10113fa111734396b2066f3fa38c9584}
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+leaf\+\_\+t@{quadtree\+\_\+leaf\+\_\+t}}
+\index{quadtree\+\_\+leaf\+\_\+t@{quadtree\+\_\+leaf\+\_\+t}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+leaf\+\_\+t}{quadtree_leaf_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+quadtree\+\_\+leaf} {\bf quadtree\+\_\+leaf\+\_\+t}}\hypertarget{quadtree_8c_a587c3c1eecbb2ec8d1c244316581bfdd}{}\label{quadtree_8c_a587c3c1eecbb2ec8d1c244316581bfdd}
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+node\+\_\+t@{quadtree\+\_\+node\+\_\+t}}
+\index{quadtree\+\_\+node\+\_\+t@{quadtree\+\_\+node\+\_\+t}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+node\+\_\+t}{quadtree_node_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+quadtree\+\_\+node} {\bf quadtree\+\_\+node\+\_\+t}}\hypertarget{quadtree_8c_ad63e20da3252f1c7ac0ec1fb59ab1e61}{}\label{quadtree_8c_ad63e20da3252f1c7ac0ec1fb59ab1e61}
+
+
+\subsection{Function Documentation}
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+add@{quadtree\+\_\+add}}
+\index{quadtree\+\_\+add@{quadtree\+\_\+add}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+add(quadtree\+\_\+t $\ast$q, double x, double y, bbox2d\+\_\+t $\ast$bound)}{quadtree_add(quadtree_t *q, double x, double y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int quadtree\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{{\bf quadtree\+\_\+t} $\ast$}]{q, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_a0fe416639b434b6f0944b0bb21ec9cf7}{}\label{quadtree_8c_a0fe416639b434b6f0944b0bb21ec9cf7}
+
+
+References \+\_\+quadtree\+::head, \+\_\+quadtree\+::maxpoints, \+\_\+quadtree\+::np, \+\_\+quadtree\+::point, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+quadtree\+\_\+insert(), and position\+\_\+map2d\+\_\+quadtree\+\_\+move().
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+clone@{quadtree\+\_\+clone}}
+\index{quadtree\+\_\+clone@{quadtree\+\_\+clone}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+clone(const quadtree\+\_\+t $\ast$src, quadtree\+\_\+t $\ast$dst)}{quadtree_clone(const quadtree_t *src, quadtree_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}int quadtree\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf quadtree\+\_\+t} $\ast$}]{src, }
+\item[{{\bf quadtree\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_a8f0898e18f5b6de6fcbad859a0ef6e44}{}\label{quadtree_8c_a8f0898e18f5b6de6fcbad859a0ef6e44}
+
+
+References \+\_\+quadtree\+::head, \+\_\+quadtree\+::np, \+\_\+quadtree\+::point, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+quadtree\+\_\+clone().
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+create@{quadtree\+\_\+create}}
+\index{quadtree\+\_\+create@{quadtree\+\_\+create}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+create(int maxpoints, int maxlevels, double xmin, double xmax, double ymin, double ymax)}{quadtree_create(int maxpoints, int maxlevels, double xmin, double xmax, double ymin, double ymax)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf quadtree\+\_\+t}$\ast$ quadtree\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{maxpoints, }
+\item[{int}]{maxlevels, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_a2e175bc67e082f61e2d2cb521ecd97a8}{}\label{quadtree_8c_a2e175bc67e082f61e2d2cb521ecd97a8}
+
+
+References \+\_\+quadtree\+::bound, \+\_\+quadtree\+::head, \+\_\+quadtree\+::maxpoints, \+\_\+quadtree\+::np, \+\_\+quadtree\+::point, \+\_\+point\+::x, bbox2d\+::xmax, bbox2d\+::xmin, \+\_\+point\+::y, bbox2d\+::ymax, and bbox2d\+::ymin.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+quadtree\+\_\+create().
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+delete@{quadtree\+\_\+delete}}
+\index{quadtree\+\_\+delete@{quadtree\+\_\+delete}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+delete(quadtree\+\_\+t $\ast$q, int pi, bbox2d\+\_\+t $\ast$bound)}{quadtree_delete(quadtree_t *q, int pi, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int quadtree\+\_\+delete (
+\begin{DoxyParamCaption}
+\item[{{\bf quadtree\+\_\+t} $\ast$}]{q, }
+\item[{int}]{pi, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_a428597f37d9d8b6db8c6f7933f6d52dc}{}\label{quadtree_8c_a428597f37d9d8b6db8c6f7933f6d52dc}
+
+
+References \+\_\+quadtree\+::head, \+\_\+quadtree\+::np, \+\_\+quadtree\+::point, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+quadtree\+\_\+delete(), and position\+\_\+map2d\+\_\+quadtree\+\_\+move().
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+destroy@{quadtree\+\_\+destroy}}
+\index{quadtree\+\_\+destroy@{quadtree\+\_\+destroy}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+destroy(quadtree\+\_\+t $\ast$q)}{quadtree_destroy(quadtree_t *q)}}]{\setlength{\rightskip}{0pt plus 5cm}void quadtree\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf quadtree\+\_\+t} $\ast$}]{q}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_ad2349cd327b8d2ed3edd514945873490}{}\label{quadtree_8c_ad2349cd327b8d2ed3edd514945873490}
+
+
+References \+\_\+quadtree\+::head, and \+\_\+quadtree\+::point.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+quadtree\+\_\+destroy().
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+index\+\_\+of\+\_\+point@{quadtree\+\_\+index\+\_\+of\+\_\+point}}
+\index{quadtree\+\_\+index\+\_\+of\+\_\+point@{quadtree\+\_\+index\+\_\+of\+\_\+point}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+index\+\_\+of\+\_\+point(const quadtree\+\_\+t $\ast$q, double x, double y)}{quadtree_index_of_point(const quadtree_t *q, double x, double y)}}]{\setlength{\rightskip}{0pt plus 5cm}int quadtree\+\_\+index\+\_\+of\+\_\+point (
+\begin{DoxyParamCaption}
+\item[{const {\bf quadtree\+\_\+t} $\ast$}]{q, }
+\item[{double}]{x, }
+\item[{double}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_aa7332467a021b8d7050d9c6a9545c48c}{}\label{quadtree_8c_aa7332467a021b8d7050d9c6a9545c48c}
+
+
+References \+\_\+quadtree\+::np, \+\_\+quadtree\+::point, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+nearest@{quadtree\+\_\+nearest}}
+\index{quadtree\+\_\+nearest@{quadtree\+\_\+nearest}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+nearest(quadtree\+\_\+t $\ast$q, int include\+\_\+corners, double px, double py)}{quadtree_nearest(quadtree_t *q, int include_corners, double px, double py)}}]{\setlength{\rightskip}{0pt plus 5cm}int quadtree\+\_\+nearest (
+\begin{DoxyParamCaption}
+\item[{{\bf quadtree\+\_\+t} $\ast$}]{q, }
+\item[{int}]{include\+\_\+corners, }
+\item[{double}]{px, }
+\item[{double}]{py}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_a818cb6631c3b00b33c6dbcdb501f90a0}{}\label{quadtree_8c_a818cb6631c3b00b33c6dbcdb501f90a0}
+
+
+References \+\_\+quadtree\+::head.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+quadtree\+\_\+nearest().
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+npoints@{quadtree\+\_\+npoints}}
+\index{quadtree\+\_\+npoints@{quadtree\+\_\+npoints}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+npoints(const quadtree\+\_\+t $\ast$q)}{quadtree_npoints(const quadtree_t *q)}}]{\setlength{\rightskip}{0pt plus 5cm}int quadtree\+\_\+npoints (
+\begin{DoxyParamCaption}
+\item[{const {\bf quadtree\+\_\+t} $\ast$}]{q}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_ae1ba12be4fe350b3cd2e20ead603bbb5}{}\label{quadtree_8c_ae1ba12be4fe350b3cd2e20ead603bbb5}
+
+
+References \+\_\+quadtree\+::np.
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+point\+\_\+of\+\_\+index@{quadtree\+\_\+point\+\_\+of\+\_\+index}}
+\index{quadtree\+\_\+point\+\_\+of\+\_\+index@{quadtree\+\_\+point\+\_\+of\+\_\+index}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+point\+\_\+of\+\_\+index(const quadtree\+\_\+t $\ast$q, int i, double $\ast$px, double $\ast$py)}{quadtree_point_of_index(const quadtree_t *q, int i, double *px, double *py)}}]{\setlength{\rightskip}{0pt plus 5cm}int quadtree\+\_\+point\+\_\+of\+\_\+index (
+\begin{DoxyParamCaption}
+\item[{const {\bf quadtree\+\_\+t} $\ast$}]{q, }
+\item[{int}]{i, }
+\item[{double $\ast$}]{px, }
+\item[{double $\ast$}]{py}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_ad3fb184b452c570db4446cb39a1b19b2}{}\label{quadtree_8c_ad3fb184b452c570db4446cb39a1b19b2}
+
+
+References \+\_\+quadtree\+::np, \+\_\+quadtree\+::point, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+quadtree\+\_\+nearest(), and position\+\_\+map2d\+\_\+quadtree\+\_\+position\+\_\+of\+\_\+index().
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+polygon\+\_\+bound@{quadtree\+\_\+polygon\+\_\+bound}}
+\index{quadtree\+\_\+polygon\+\_\+bound@{quadtree\+\_\+polygon\+\_\+bound}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+polygon\+\_\+bound(const quadtree\+\_\+t $\ast$q, int i, bbox2d\+\_\+t $\ast$bound)}{quadtree_polygon_bound(const quadtree_t *q, int i, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int quadtree\+\_\+polygon\+\_\+bound (
+\begin{DoxyParamCaption}
+\item[{const {\bf quadtree\+\_\+t} $\ast$}]{q, }
+\item[{int}]{i, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_a4ce9ca8a82d6a84cce937cbb74996a44}{}\label{quadtree_8c_a4ce9ca8a82d6a84cce937cbb74996a44}
+
+
+References \+\_\+quadtree\+\_\+node\+::bound, \+\_\+quadtree\+::bound, \+\_\+quadtree\+\_\+node\+::child, \+\_\+quadtree\+\_\+node\+::cx, \+\_\+quadtree\+\_\+node\+::cy, \+\_\+quadtree\+\_\+node\+::data, \+\_\+point\+::dx, \+\_\+point\+::dy, \+\_\+quadtree\+\_\+node\+::grand\+\_\+children, \+\_\+quadtree\+\_\+node\+::leaf, \+\_\+quadtree\+\_\+node\+::node, \+\_\+quadtree\+\_\+leaf\+::np, \+\_\+quadtree\+::np, \+\_\+quadtree\+\_\+leaf\+::point, \+\_\+quadtree\+::point, rjmcmc\+\_\+create\+\_\+int\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+int\+\_\+array\+\_\+1d(), \+\_\+point\+::x, bbox2d\+::xmax, bbox2d\+::xmin, \+\_\+point\+::y, bbox2d\+::ymax, and bbox2d\+::ymin.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+quadtree\+\_\+polygon\+\_\+bound().
+
+\index{quadtree.\+c@{quadtree.\+c}!quadtree\+\_\+shift\+\_\+replace@{quadtree\+\_\+shift\+\_\+replace}}
+\index{quadtree\+\_\+shift\+\_\+replace@{quadtree\+\_\+shift\+\_\+replace}!quadtree.\+c@{quadtree.\+c}}
+\subsubsection[{\texorpdfstring{quadtree\+\_\+shift\+\_\+replace(quadtree\+\_\+t $\ast$q, int pi)}{quadtree_shift_replace(quadtree_t *q, int pi)}}]{\setlength{\rightskip}{0pt plus 5cm}int quadtree\+\_\+shift\+\_\+replace (
+\begin{DoxyParamCaption}
+\item[{{\bf quadtree\+\_\+t} $\ast$}]{q, }
+\item[{int}]{pi}
+\end{DoxyParamCaption}
+)}\hypertarget{quadtree_8c_ab5f2a689a48d99aae3cbee2a727956b0}{}\label{quadtree_8c_ab5f2a689a48d99aae3cbee2a727956b0}
+
+
+References \+\_\+quadtree\+::head, \+\_\+quadtree\+::np, \+\_\+quadtree\+::point, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+quadtree\+\_\+move().
+

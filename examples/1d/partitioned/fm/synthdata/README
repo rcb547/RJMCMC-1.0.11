@@ -1,0 +1,12 @@
+
+This example is a basic regression of a synthetic dataset with a number
+of discontinuities.
+
+Instructions:
+
+> make
+> ./synthdata
+> python plot_misfit.py
+> python plot_mean.py
+> python plot_partition_count_histogram.py
+> python plot_partition_x_hist.py

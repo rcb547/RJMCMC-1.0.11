@@ -1,0 +1,8 @@
+digraph "_part2d_forwardmodel"
+{
+  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
+  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
+  Node1 [label="_part2d_forwardmodel",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" model_gradients\nmodels" ,fontname="FreeSans.ttf"];
+  Node2 [label="_model",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__model.html"];
+}

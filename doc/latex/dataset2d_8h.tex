@@ -1,0 +1,146 @@
+\hypertarget{dataset2d_8h}{}\section{dataset2d.\+h File Reference}
+\label{dataset2d_8h}\index{dataset2d.\+h@{dataset2d.\+h}}
+
+
+2D Dataset Storage  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__point2d}{\+\_\+point2d}
+\item 
+struct \hyperlink{struct__dataset2d}{\+\_\+dataset2d}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__point2d}{\+\_\+point2d} \hyperlink{dataset2d_8h_a4ad5b5647046e2b43db49be39bdd5413}{point2d\+\_\+t}
+\item 
+typedef struct \hyperlink{struct__dataset2d}{\+\_\+dataset2d} \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$ \hyperlink{dataset2d_8h_a9999a5e95e29939f4c9382cb77584bb9}{dataset2d\+\_\+allocate} (int npoints)
+\begin{DoxyCompactList}\small\item\em Create a new empty dataset. \end{DoxyCompactList}\item 
+void \hyperlink{dataset2d_8h_a24b470e01459e7413b80f8f38a5b9fd3}{dataset2d\+\_\+destroy} (\hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$d)
+\begin{DoxyCompactList}\small\item\em Destroy a dataset. \end{DoxyCompactList}\item 
+\hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$ \hyperlink{dataset2d_8h_a91faa110511acf5d304ccd5f18f1d1da}{dataset2d\+\_\+load\+\_\+fixed} (const char $\ast$filename, double sigma)
+\begin{DoxyCompactList}\small\item\em Load a dataset with a fixed noise parameter. \end{DoxyCompactList}\item 
+\hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$ \hyperlink{dataset2d_8h_ab156d7d436201cff1836ed674bf13c0c}{dataset2d\+\_\+load\+\_\+known} (const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Load a dataset with known noise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+2D Dataset Storage 
+
+The \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} type is used for storing a 2D dataset with optional noise parameters. 
+
+\subsection{Typedef Documentation}
+\index{dataset2d.\+h@{dataset2d.\+h}!dataset2d\+\_\+t@{dataset2d\+\_\+t}}
+\index{dataset2d\+\_\+t@{dataset2d\+\_\+t}!dataset2d.\+h@{dataset2d.\+h}}
+\subsubsection[{\texorpdfstring{dataset2d\+\_\+t}{dataset2d_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+dataset2d} {\bf dataset2d\+\_\+t}}\hypertarget{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{}\label{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}
+\index{dataset2d.\+h@{dataset2d.\+h}!point2d\+\_\+t@{point2d\+\_\+t}}
+\index{point2d\+\_\+t@{point2d\+\_\+t}!dataset2d.\+h@{dataset2d.\+h}}
+\subsubsection[{\texorpdfstring{point2d\+\_\+t}{point2d_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+point2d} {\bf point2d\+\_\+t}}\hypertarget{dataset2d_8h_a4ad5b5647046e2b43db49be39bdd5413}{}\label{dataset2d_8h_a4ad5b5647046e2b43db49be39bdd5413}
+
+
+\subsection{Function Documentation}
+\index{dataset2d.\+h@{dataset2d.\+h}!dataset2d\+\_\+allocate@{dataset2d\+\_\+allocate}}
+\index{dataset2d\+\_\+allocate@{dataset2d\+\_\+allocate}!dataset2d.\+h@{dataset2d.\+h}}
+\subsubsection[{\texorpdfstring{dataset2d\+\_\+allocate(int npoints)}{dataset2d_allocate(int npoints)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset2d\+\_\+t}$\ast$ dataset2d\+\_\+allocate (
+\begin{DoxyParamCaption}
+\item[{int}]{npoints}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset2d_8h_a9999a5e95e29939f4c9382cb77584bb9}{}\label{dataset2d_8h_a9999a5e95e29939f4c9382cb77584bb9}
+
+
+Create a new empty dataset. 
+
+Allocate a new \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} object of a given size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & maximum number of points. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+dataset2d\+::lambdamax, \+\_\+dataset2d\+::lambdamin, \+\_\+dataset2d\+::lambdastd, \+\_\+point2d\+::n, \+\_\+dataset1d\+::npoints, \+\_\+dataset2d\+::npoints, \+\_\+dataset2d\+::points, \+\_\+point2d\+::x, \+\_\+dataset2d\+::xmax, \+\_\+dataset2d\+::xmin, \+\_\+point2d\+::y, \+\_\+dataset2d\+::ymax, \+\_\+dataset2d\+::ymin, \+\_\+point2d\+::z, \+\_\+dataset2d\+::zmax, and \+\_\+dataset2d\+::zmin.
+
+
+
+Referenced by dataset2d\+\_\+load\+\_\+fixed(), and dataset2d\+\_\+load\+\_\+known().
+
+\index{dataset2d.\+h@{dataset2d.\+h}!dataset2d\+\_\+destroy@{dataset2d\+\_\+destroy}}
+\index{dataset2d\+\_\+destroy@{dataset2d\+\_\+destroy}!dataset2d.\+h@{dataset2d.\+h}}
+\subsubsection[{\texorpdfstring{dataset2d\+\_\+destroy(dataset2d\+\_\+t $\ast$d)}{dataset2d_destroy(dataset2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}void dataset2d\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf dataset2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset2d_8h_a24b470e01459e7413b80f8f38a5b9fd3}{}\label{dataset2d_8h_a24b470e01459e7413b80f8f38a5b9fd3}
+
+
+Destroy a dataset. 
+
+Deallocate an existing \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The dataset to destroy. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+dataset2d\+::points.
+
+\index{dataset2d.\+h@{dataset2d.\+h}!dataset2d\+\_\+load\+\_\+fixed@{dataset2d\+\_\+load\+\_\+fixed}}
+\index{dataset2d\+\_\+load\+\_\+fixed@{dataset2d\+\_\+load\+\_\+fixed}!dataset2d.\+h@{dataset2d.\+h}}
+\subsubsection[{\texorpdfstring{dataset2d\+\_\+load\+\_\+fixed(const char $\ast$filename, double sigma)}{dataset2d_load_fixed(const char *filename, double sigma)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset2d\+\_\+t}$\ast$ dataset2d\+\_\+load\+\_\+fixed (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename, }
+\item[{double}]{sigma}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset2d_8h_a91faa110511acf5d304ccd5f18f1d1da}{}\label{dataset2d_8h_a91faa110511acf5d304ccd5f18f1d1da}
+
+
+Load a dataset with a fixed noise parameter. 
+
+Loads a file containing x, y, z coordinates and applies a fixed noise level to each data point. The expected format is a text file containing space separated x, y and z coordinates on each line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to load. \\
+\hline
+{\em sigma} & The fixed noise level. \\
+\hline
+\end{DoxyParams}
+
+
+References dataset2d\+\_\+allocate(), \+\_\+point2d\+::n, \+\_\+dataset2d\+::points, rjmcmc\+\_\+error(), \+\_\+point2d\+::x, x, \+\_\+dataset2d\+::xmax, \+\_\+dataset1d\+::xmin, \+\_\+dataset2d\+::xmin, \+\_\+point2d\+::y, y, \+\_\+dataset2d\+::ymax, \+\_\+dataset1d\+::ymin, \+\_\+dataset2d\+::ymin, \+\_\+point2d\+::z, z, \+\_\+dataset2d\+::zmax, and \+\_\+dataset2d\+::zmin.
+
+\index{dataset2d.\+h@{dataset2d.\+h}!dataset2d\+\_\+load\+\_\+known@{dataset2d\+\_\+load\+\_\+known}}
+\index{dataset2d\+\_\+load\+\_\+known@{dataset2d\+\_\+load\+\_\+known}!dataset2d.\+h@{dataset2d.\+h}}
+\subsubsection[{\texorpdfstring{dataset2d\+\_\+load\+\_\+known(const char $\ast$filename)}{dataset2d_load_known(const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset2d\+\_\+t}$\ast$ dataset2d\+\_\+load\+\_\+known (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset2d_8h_ab156d7d436201cff1836ed674bf13c0c}{}\label{dataset2d_8h_ab156d7d436201cff1836ed674bf13c0c}
+
+
+Load a dataset with known noise. 
+
+Loads a file containing x, y, z coordinates and noise. The expected format is a text file containing space separated x, y and z coordinates and noise on each line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to load. \\
+\hline
+\end{DoxyParams}
+
+
+References dataset2d\+\_\+allocate(), \+\_\+point2d\+::n, \+\_\+dataset2d\+::points, rjmcmc\+\_\+error(), \+\_\+point2d\+::x, x, \+\_\+dataset2d\+::xmax, \+\_\+dataset1d\+::xmin, \+\_\+dataset2d\+::xmin, \+\_\+point2d\+::y, y, \+\_\+dataset2d\+::ymax, \+\_\+dataset1d\+::ymin, \+\_\+dataset2d\+::ymin, \+\_\+point2d\+::z, z, \+\_\+dataset2d\+::zmax, and \+\_\+dataset2d\+::zmin.
+

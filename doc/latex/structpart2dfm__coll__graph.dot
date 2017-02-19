@@ -1,0 +1,21 @@
+digraph "part2dfm"
+{
+  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
+  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="part2dfm",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" lp" ];
+  Node2 [label="_part2d_fm_likelihood\l_state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__part2d__fm__likelihood__state.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" model" ];
+  Node3 [label="_part2d_forwardmodel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__part2d__forwardmodel.html"];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" model_gradients\nmodels" ];
+  Node4 [label="_model",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__model.html"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" results" ];
+  Node5 [label="_resultset2dfm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__resultset2dfm.html"];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" local_parameters\nglobal_parameters" ];
+  Node6 [label="_forwardmodelparameter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__forwardmodelparameter.html"];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" bound\npbound" ];
+  Node7 [label="bbox2d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structbbox2d.html"];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" local_parameters\nglobal_parameters\nhierarchical_parameters" ];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" proposed\ncurrent" ];
+}

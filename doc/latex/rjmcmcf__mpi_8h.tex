@@ -1,0 +1,191 @@
+\hypertarget{rjmcmcf__mpi_8h}{}\section{rjmcmcf\+\_\+mpi.\+h File Reference}
+\label{rjmcmcf__mpi_8h}\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \hyperlink{rjmcmcf__mpi_8h_a15a9e570dce32d7333ba70e4f41dd886}{!type} (c\+\_\+ptr) function M\+P\+I\+\_\+single\+\_\+forwardmodel\+\_\+f(\&burnin
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \&comm \hyperlink{rjmcmcf__mpi_8h_a616de1bf0c59845613650026f844fada}{bind} (C) \hyperlink{rjmcmcf_8h_a821b46c311d079e47b9c09782230af02}{use}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \&comm intrinsic\+::iso\+\_\+c\+\_\+binding import \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_ac685108a07b8058ecc1b0cf4a8dd7dd8}{integer} (kind=c\+\_\+int)
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \&comm intrinsic\+::iso\+\_\+c\+\_\+binding import \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6b0cbbe450e3c15c21f401a2ae56ba53}{intent} (in)
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \&comm intrinsic\+::iso\+\_\+c\+\_\+binding import \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} value\+::burnin \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{value\+::total} \hyperlink{rjmcmcf__mpi_8h_aa3f37b68540a53cbee74fd2f1aa399d8}{procedure} (rjmcmc\+\_\+uniform\+\_\+rand)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}{likelihood}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_a30e374d8d017c0854f714c208aea6512}{samples}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_a141ddf12f08f2f9e95036a6cd06324ff}{requested\+\_\+results}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_a53444b4c2f1bed79dc9d81c1375a3dae}{mpisize}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_aa638dce228df69587d0bf089358637da}{mpirank}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \& \hyperlink{rjmcmcf__mpi_8h_a2b5687688a1de905e5c06a65264ae216}{root}
+\item 
+$\ast$fortran $\ast$interface!\+Single partition forward model \&comm intrinsic\+::iso\+\_\+c\+\_\+binding import \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} value\+::burnin \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{value\+::total} \hyperlink{rjmcmcf__mpi_8h_a5cd556e77e736d33e34f0ff1c28ff565}{pointer}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!"!type@{"!type}}
+\index{"!type@{"!type}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{"!type(c\+\_\+ptr) function M\+P\+I\+\_\+single\+\_\+forwardmodel\+\_\+f(\&burnin}{!type(c_ptr) function MPI_single_forwardmodel_f(&burnin}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model !type (
+\begin{DoxyParamCaption}
+\item[{c\+\_\+ptr}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmcf__mpi_8h_a15a9e570dce32d7333ba70e4f41dd886}{}\label{rjmcmcf__mpi_8h_a15a9e570dce32d7333ba70e4f41dd886}
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!bind@{bind}}
+\index{bind@{bind}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{bind(\+C) use}{bind(C) use}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& comm bind (
+\begin{DoxyParamCaption}
+\item[{C}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmcf__mpi_8h_a616de1bf0c59845613650026f844fada}{}\label{rjmcmcf__mpi_8h_a616de1bf0c59845613650026f844fada}
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!integer@{integer}}
+\index{integer@{integer}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{integer(kind=c\+\_\+int)}{integer(kind=c_int)}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$fortran $\ast$interface!\+Single partition forward model \&comm intrinsic\+::iso\+\_\+c\+\_\+binding import {\bf forwardmodelparameter\+\_\+t} value\+::burnin integer (
+\begin{DoxyParamCaption}
+\item[{kind}]{ = {\ttfamily c\+\_\+int}}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmcf__mpi_8h_ac685108a07b8058ecc1b0cf4a8dd7dd8}{}\label{rjmcmcf__mpi_8h_ac685108a07b8058ecc1b0cf4a8dd7dd8}
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!intent@{intent}}
+\index{intent@{intent}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{intent(in)}{intent(in)}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$fortran $\ast$interface!\+Single partition forward model \&comm intrinsic\+::iso\+\_\+c\+\_\+binding import {\bf forwardmodelparameter\+\_\+t} value\+::burnin {\bf value\+::total} intent (
+\begin{DoxyParamCaption}
+\item[{in}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmcf__mpi_8h_a6b0cbbe450e3c15c21f401a2ae56ba53}{}\label{rjmcmcf__mpi_8h_a6b0cbbe450e3c15c21f401a2ae56ba53}
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!procedure@{procedure}}
+\index{procedure@{procedure}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{procedure(rjmcmc\+\_\+uniform\+\_\+rand)}{procedure(rjmcmc_uniform_rand)}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& comm intrinsic \+:: iso\+\_\+c\+\_\+binding import {\bf forwardmodelparameter\+\_\+t} value \+:: burnin value \+:: {\bf total} procedure (
+\begin{DoxyParamCaption}
+\item[{rjmcmc\+\_\+uniform\+\_\+rand}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmcf__mpi_8h_aa3f37b68540a53cbee74fd2f1aa399d8}{}\label{rjmcmcf__mpi_8h_aa3f37b68540a53cbee74fd2f1aa399d8}
+
+
+\subsection{Variable Documentation}
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!credible\+\_\+interval@{credible\+\_\+interval}}
+\index{credible\+\_\+interval@{credible\+\_\+interval}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{credible\+\_\+interval}{credible_interval}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& credible\+\_\+interval}\hypertarget{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{}\label{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}
+
+
+Referenced by M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+checkpoint\+\_\+restart(), resultset1d\+\_\+create(), and resultset2d\+\_\+create().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!likelihood@{likelihood}}
+\index{likelihood@{likelihood}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{likelihood}{likelihood}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& likelihood}\hypertarget{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}{}\label{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}
+
+
+Referenced by rjmcmc\+\_\+engine\+\_\+restart().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!mpirank@{mpirank}}
+\index{mpirank@{mpirank}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{mpirank}{mpirank}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& mpirank}\hypertarget{rjmcmcf__mpi_8h_aa638dce228df69587d0bf089358637da}{}\label{rjmcmcf__mpi_8h_aa638dce228df69587d0bf089358637da}
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!mpisize@{mpisize}}
+\index{mpisize@{mpisize}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{mpisize}{mpisize}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& mpisize}\hypertarget{rjmcmcf__mpi_8h_a53444b4c2f1bed79dc9d81c1375a3dae}{}\label{rjmcmcf__mpi_8h_a53444b4c2f1bed79dc9d81c1375a3dae}
+
+
+Referenced by M\+P\+I\+\_\+resultset1d\+\_\+assemble\+\_\+results(), M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), M\+P\+I\+\_\+resultset2dfm\+\_\+assemble\+\_\+results(), and M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!normal@{normal}}
+\index{normal@{normal}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{normal}{normal}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& normal}\hypertarget{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{}\label{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}
+
+
+Referenced by curvefit\+\_\+sample(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+lambda(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+value(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+lambda(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+zero\+\_\+initialize(), part1d\+\_\+zero\+\_\+propose\+\_\+birth(), part1d\+\_\+zero\+\_\+propose\+\_\+death(), part1d\+\_\+zero\+\_\+propose\+\_\+lambda(), part1d\+\_\+zero\+\_\+propose\+\_\+move(), part1d\+\_\+zero\+\_\+propose\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+lambda(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(), and single1d\+\_\+regression\+\_\+propose\+\_\+lambda().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!nparameters@{nparameters}}
+\index{nparameters@{nparameters}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{nparameters}{nparameters}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& nparameters}\hypertarget{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{}\label{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}.\end{Desc}
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!parameters@{parameters}}
+\index{parameters@{parameters}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{parameters}{parameters}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& parameters}\hypertarget{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{}\label{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, and \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}.\end{Desc}
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!pointer@{pointer}}
+\index{pointer@{pointer}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{pointer}{pointer}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& comm intrinsic \+:: iso\+\_\+c\+\_\+binding import {\bf forwardmodelparameter\+\_\+t} value \+:: burnin value \+:: {\bf total} pointer}\hypertarget{rjmcmcf__mpi_8h_a5cd556e77e736d33e34f0ff1c28ff565}{}\label{rjmcmcf__mpi_8h_a5cd556e77e736d33e34f0ff1c28ff565}
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!random@{random}}
+\index{random@{random}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{random}{random}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& random}\hypertarget{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{}\label{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}
+
+
+Referenced by part1d\+\_\+natural\+\_\+rj\+\_\+initialize(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+birth(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+death(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+lambda(), part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+lambda(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+zero\+\_\+initialize(), part1d\+\_\+zero\+\_\+propose\+\_\+birth(), and single1d\+\_\+regression\+\_\+propose\+\_\+lambda().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!requested\+\_\+results@{requested\+\_\+results}}
+\index{requested\+\_\+results@{requested\+\_\+results}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{requested\+\_\+results}{requested_results}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& requested\+\_\+results}\hypertarget{rjmcmcf__mpi_8h_a141ddf12f08f2f9e95036a6cd06324ff}{}\label{rjmcmcf__mpi_8h_a141ddf12f08f2f9e95036a6cd06324ff}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, and \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}.\end{Desc}
+
+
+Referenced by M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+checkpoint\+\_\+restart().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!root@{root}}
+\index{root@{root}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{root}{root}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& root}\hypertarget{rjmcmcf__mpi_8h_a2b5687688a1de905e5c06a65264ae216}{}\label{rjmcmcf__mpi_8h_a2b5687688a1de905e5c06a65264ae216}
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!samples@{samples}}
+\index{samples@{samples}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{samples}{samples}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& samples}\hypertarget{rjmcmcf__mpi_8h_a30e374d8d017c0854f714c208aea6512}{}\label{rjmcmcf__mpi_8h_a30e374d8d017c0854f714c208aea6512}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, and \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}.\end{Desc}
+
+
+Referenced by M\+P\+I\+\_\+single\+\_\+forwardmodel(), M\+P\+I\+\_\+single\+\_\+forwardmodel\+\_\+hierarchical(), single\+\_\+forwardmodel(), and single\+\_\+forwardmodel\+\_\+hierarchical().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!total@{total}}
+\index{total@{total}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{total}{total}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& total}\hypertarget{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{}\label{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2functionfit_2functionfit_8c-example}{1d/partitioned/fm/functionfit/functionfit.\+c}, \hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}, \hyperlink{1d_2partitioned_2regression_2multiquad_2multiquad_8c-example}{1d/partitioned/regression/multiquad/multiquad.\+c}, \hyperlink{1d_2partitioned_2regression_2multistep_2multistep_8c-example}{1d/partitioned/regression/multistep/multistep.\+c}, \hyperlink{1d_2partitioned_2regression_2sawtooth_2sawtooth_8c-example}{1d/partitioned/regression/sawtooth/sawtooth.\+c}, \hyperlink{1d_2partitioned_2regression_2zeromultistep_2zeromultistep_8c-example}{1d/partitioned/regression/zeromultistep/zeromultistep.\+c}, \hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}, \hyperlink{1d_2single_2regression_2cubic_2cubic_8c-example}{1d/single/regression/cubic/cubic.\+c}, \hyperlink{2d_2partitioned_2fm_2regression_2regression_8c-example}{2d/partitioned/fm/regression/regression.\+c}, \hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}, \hyperlink{2d_2partitioned_2regression_2disc_2disc_8c-example}{2d/partitioned/regression/disc/disc.\+c}, and \hyperlink{2d_2partitioned_2regression_2square_2square_8c-example}{2d/partitioned/regression/square/square.\+c}.\end{Desc}
+
+
+Referenced by M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+checkpoint\+\_\+restart(), and part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init().
+
+\index{rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}!user\+\_\+arg@{user\+\_\+arg}}
+\index{user\+\_\+arg@{user\+\_\+arg}!rjmcmcf\+\_\+mpi.\+h@{rjmcmcf\+\_\+mpi.\+h}}
+\subsubsection[{\texorpdfstring{user\+\_\+arg}{user_arg}}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ fortran$\ast$ interface ! Single partition forward model \& user\+\_\+arg}\hypertarget{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{}\label{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2functionfit_2functionfit_8c-example}{1d/partitioned/fm/functionfit/functionfit.\+c}, \hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}, \hyperlink{1d_2partitioned_2regression_2zeromultistep_2zeromultistep_8c-example}{1d/partitioned/regression/zeromultistep/zeromultistep.\+c}, \hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}, and \hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}.\end{Desc}
+
+
+Referenced by mpi\+\_\+part1d\+\_\+forwardmodel\+\_\+f(), mpi\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+f(), mpi\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+f(), mpi\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+f(), mpi\+\_\+part2d\+\_\+forwardmodel\+\_\+f(), mpi\+\_\+part2d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+f(), mpi\+\_\+part2d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+restartable\+\_\+f(), part1d\+\_\+forwardmodel\+\_\+f(), part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+f(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+f(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+f(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init\+\_\+f(), part2d\+\_\+forwardmodel\+\_\+f(), and part2d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+f().
+

@@ -1,0 +1,110 @@
+\hypertarget{rjmcmc__random_8h}{}\section{rjmcmc\+\_\+random.\+h File Reference}
+\label{rjmcmc__random_8h}\index{rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef double($\ast$ \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}) (void)
+\item 
+typedef double($\ast$ \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}) (void)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{rjmcmc__random_8h_a0cbc991b84d0f6b749e9b45cbc018d2a}{rjmcmc\+\_\+seed} (int s)
+\item 
+double \hyperlink{rjmcmc__random_8h_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\+\_\+uniform} (void)
+\item 
+double \hyperlink{rjmcmc__random_8h_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\+\_\+normal} (void)
+\item 
+double \hyperlink{rjmcmc__random_8h_a0b36a423f216c171bdf51e93e014d816}{rjmcmc\+\_\+random\+\_\+choose\+\_\+double} (double low, double high, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} rand)
+\item 
+int \hyperlink{rjmcmc__random_8h_a089078efdf0d848ff730b3da5c353170}{rjmcmc\+\_\+random\+\_\+choose\+\_\+int} (int low, int high, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} rand)
+\item 
+int \hyperlink{rjmcmc__random_8h_a4517477a7bdd91927aa90684fc88ae99}{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval} (const double $\ast$cdf, int n, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} rand)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}!rjmcmc\+\_\+normal\+\_\+rand\+\_\+t@{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}
+\index{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t@{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}!rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}{rjmcmc_normal_rand_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef double($\ast$ rjmcmc\+\_\+normal\+\_\+rand\+\_\+t) (void)}\hypertarget{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{}\label{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}
+\index{rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}!rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t@{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}
+\index{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t@{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}!rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}{rjmcmc_uniform_rand_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef double($\ast$ rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t) (void)}\hypertarget{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{}\label{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}
+
+
+\subsection{Function Documentation}
+\index{rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}!rjmcmc\+\_\+normal@{rjmcmc\+\_\+normal}}
+\index{rjmcmc\+\_\+normal@{rjmcmc\+\_\+normal}!rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+normal(void)}{rjmcmc_normal(void)}}]{\setlength{\rightskip}{0pt plus 5cm}double rjmcmc\+\_\+normal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8h_a0f9b049cec5095e2e1c1b3488de1d5c0}{}\label{rjmcmc__random_8h_a0f9b049cec5095e2e1c1b3488de1d5c0}
+
+
+References wellrng\+\_\+init\+\_\+simple(), and wellrng\+\_\+sample().
+
+\index{rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}!rjmcmc\+\_\+random\+\_\+choose\+\_\+double@{rjmcmc\+\_\+random\+\_\+choose\+\_\+double}}
+\index{rjmcmc\+\_\+random\+\_\+choose\+\_\+double@{rjmcmc\+\_\+random\+\_\+choose\+\_\+double}!rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+random\+\_\+choose\+\_\+double(double low, double high, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t rand)}{rjmcmc_random_choose_double(double low, double high, rjmcmc_uniform_rand_t rand)}}]{\setlength{\rightskip}{0pt plus 5cm}double rjmcmc\+\_\+random\+\_\+choose\+\_\+double (
+\begin{DoxyParamCaption}
+\item[{double}]{low, }
+\item[{double}]{high, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{rand}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8h_a0b36a423f216c171bdf51e93e014d816}{}\label{rjmcmc__random_8h_a0b36a423f216c171bdf51e93e014d816}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+natural\+\_\+rj\+\_\+initialize(), part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+zero\+\_\+initialize(), part1d\+\_\+zero\+\_\+propose\+\_\+birth(), part1d\+\_\+zero\+\_\+propose\+\_\+death(), part1d\+\_\+zero\+\_\+propose\+\_\+move(), part1d\+\_\+zero\+\_\+propose\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+initialize(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part2d\+\_\+regression\+\_\+rj\+\_\+initialize(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), single1d\+\_\+regression\+\_\+initialize(), and single\+\_\+forwardmodel\+\_\+hierarchical().
+
+\index{rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}!rjmcmc\+\_\+random\+\_\+choose\+\_\+int@{rjmcmc\+\_\+random\+\_\+choose\+\_\+int}}
+\index{rjmcmc\+\_\+random\+\_\+choose\+\_\+int@{rjmcmc\+\_\+random\+\_\+choose\+\_\+int}!rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+random\+\_\+choose\+\_\+int(int low, int high, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t rand)}{rjmcmc_random_choose_int(int low, int high, rjmcmc_uniform_rand_t rand)}}]{\setlength{\rightskip}{0pt plus 5cm}int rjmcmc\+\_\+random\+\_\+choose\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{int}]{low, }
+\item[{int}]{high, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{rand}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8h_a089078efdf0d848ff730b3da5c353170}{}\label{rjmcmc__random_8h_a089078efdf0d848ff730b3da5c353170}
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+checkpoint\+\_\+restart(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+restartable(), M\+P\+I\+\_\+single1d\+\_\+regression(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+value(), part1d\+\_\+regression(), part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(), part1d\+\_\+zero\+\_\+propose\+\_\+death(), part1d\+\_\+zero\+\_\+propose\+\_\+lambda(), part1d\+\_\+zero\+\_\+propose\+\_\+move(), part1d\+\_\+zero\+\_\+propose\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), part2d\+\_\+regression(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+lambda(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(), single1d\+\_\+regression\+\_\+initialize(), and single\+\_\+forwardmodel\+\_\+hierarchical().
+
+\index{rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}!rjmcmc\+\_\+random\+\_\+choose\+\_\+interval@{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval}}
+\index{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval@{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval}!rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval(const double $\ast$cdf, int n, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t rand)}{rjmcmc_random_choose_interval(const double *cdf, int n, rjmcmc_uniform_rand_t rand)}}]{\setlength{\rightskip}{0pt plus 5cm}int rjmcmc\+\_\+random\+\_\+choose\+\_\+interval (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{cdf, }
+\item[{int}]{n, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{rand}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8h_a4517477a7bdd91927aa90684fc88ae99}{}\label{rjmcmc__random_8h_a4517477a7bdd91927aa90684fc88ae99}
+
+
+Referenced by part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), and single1d\+\_\+regression\+\_\+propose\+\_\+value().
+
+\index{rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}!rjmcmc\+\_\+seed@{rjmcmc\+\_\+seed}}
+\index{rjmcmc\+\_\+seed@{rjmcmc\+\_\+seed}!rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+seed(int s)}{rjmcmc_seed(int s)}}]{\setlength{\rightskip}{0pt plus 5cm}void rjmcmc\+\_\+seed (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8h_a0cbc991b84d0f6b749e9b45cbc018d2a}{}\label{rjmcmc__random_8h_a0cbc991b84d0f6b749e9b45cbc018d2a}
+
+
+References wellrng\+\_\+destroy(), and wellrng\+\_\+init\+\_\+simple().
+
+\index{rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}!rjmcmc\+\_\+uniform@{rjmcmc\+\_\+uniform}}
+\index{rjmcmc\+\_\+uniform@{rjmcmc\+\_\+uniform}!rjmcmc\+\_\+random.\+h@{rjmcmc\+\_\+random.\+h}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+uniform(void)}{rjmcmc_uniform(void)}}]{\setlength{\rightskip}{0pt plus 5cm}double rjmcmc\+\_\+uniform (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8h_ab82b2ece8acc3f5a05ff2f270794f9be}{}\label{rjmcmc__random_8h_ab82b2ece8acc3f5a05ff2f270794f9be}
+
+
+References wellrng\+\_\+init\+\_\+simple(), and wellrng\+\_\+sample().
+

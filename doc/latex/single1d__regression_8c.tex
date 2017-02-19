@@ -1,0 +1,249 @@
+\hypertarget{single1d__regression_8c}{}\section{single1d\+\_\+regression.\+c File Reference}
+\label{single1d__regression_8c}\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/single1d\+\_\+regression.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/curvefit.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+util.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+random.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+debug.\+h$>$}\\*
+Include dependency graph for single1d\+\_\+regression.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__single1d__regression}{\+\_\+single1d\+\_\+regression}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$ \hyperlink{single1d__regression_8c_af6038956008437af7af5b269eaa18b36}{single1d\+\_\+regression\+\_\+create} (int max\+\_\+order, double xmin, double xmax, const double $\ast$kcdf)
+\item 
+void \hyperlink{single1d__regression_8c_abe1123330c401375de32e4b17720a48b}{single1d\+\_\+regression\+\_\+destroy} (\hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$s)
+\item 
+void \hyperlink{single1d__regression_8c_acc1756ea8cc8b58b2f04c3ca13a6aa00}{single1d\+\_\+regression\+\_\+clone} (const \hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$src, \hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$dst)
+\item 
+double \hyperlink{single1d__regression_8c_a20c67cc7f025e374d69a5be0a70c10b5}{single1d\+\_\+regression\+\_\+value\+\_\+at} (\hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$s, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+double \hyperlink{single1d__regression_8c_a8953362a562287dcfd3798e31a1b3236}{single1d\+\_\+regression\+\_\+misfit} (\hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$s, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$dataset)
+\item 
+int \hyperlink{single1d__regression_8c_a38c486ff5318597dd768205877e865a5}{single1d\+\_\+regression\+\_\+evaluate} (\hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$s, double xmin, double xmax, int nsamples, double $\ast$\hyperlink{rjmcmcf__mpi_8h_a30e374d8d017c0854f714c208aea6512}{samples})
+\item 
+int \hyperlink{single1d__regression_8c_a89075aac169d44e51aac3faecee5f6a5}{single1d\+\_\+regression\+\_\+initialize} (\hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$s, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$data, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal})
+\item 
+int \hyperlink{single1d__regression_8c_a2af4ddeb0dc1729fd26f4ca034d0e389}{single1d\+\_\+regression\+\_\+propose\+\_\+value} (const \hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$current, \hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$proposed, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$dataset, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$value\+\_\+prob)
+\item 
+int \hyperlink{single1d__regression_8c_a17d5005b606610e7b7a0cbe150c3e507}{single1d\+\_\+regression\+\_\+propose\+\_\+lambda} (const \hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$current, \hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$proposed, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$dataset, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$lambda\+\_\+prob)
+\item 
+int \hyperlink{single1d__regression_8c_aa2458f8ab7f4cb15e1b23ee25ee30e5a}{single1d\+\_\+regression\+\_\+order} (const \hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$current)
+\item 
+double \hyperlink{single1d__regression_8c_aab0d63ae695e062d070e3afdea2377ab}{single1d\+\_\+regression\+\_\+lambda} (const \hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$current)
+\item 
+int \hyperlink{single1d__regression_8c_a393529cc07462605fd219a881a0255d7}{single1d\+\_\+evaluate\+\_\+pk} (\hyperlink{single1d__regression_8h_a3add7bb996ad3a6f4f4bcf2f2d18f58c}{single1d\+\_\+regression\+\_\+t} $\ast$s, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$data, const double $\ast$fixedprior, double auto\+\_\+z, double $\ast$mean\+\_\+misfit, double $\ast$det\+Cm, double $\ast$autoprior, double $\ast$$\ast$S, double $\ast$pk, double $\ast$kcdf, double $\ast$$\ast$mean, double $\ast$$\ast$sigma)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+evaluate\+\_\+pk@{single1d\+\_\+evaluate\+\_\+pk}}
+\index{single1d\+\_\+evaluate\+\_\+pk@{single1d\+\_\+evaluate\+\_\+pk}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+evaluate\+\_\+pk(single1d\+\_\+regression\+\_\+t $\ast$s, const dataset1d\+\_\+t $\ast$data, const double $\ast$fixedprior, double auto\+\_\+z, double $\ast$mean\+\_\+misfit, double $\ast$det\+Cm, double $\ast$autoprior, double $\ast$$\ast$\+S, double $\ast$pk, double $\ast$kcdf, double $\ast$$\ast$mean, double $\ast$$\ast$sigma)}{single1d_evaluate_pk(single1d_regression_t *s, const dataset1d_t *data, const double *fixedprior, double auto_z, double *mean_misfit, double *detCm, double *autoprior, double **S, double *pk, double *kcdf, double **mean, double **sigma)}}]{\setlength{\rightskip}{0pt plus 5cm}int single1d\+\_\+evaluate\+\_\+pk (
+\begin{DoxyParamCaption}
+\item[{{\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{s, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{data, }
+\item[{const double $\ast$}]{fixedprior, }
+\item[{double}]{auto\+\_\+z, }
+\item[{double $\ast$}]{mean\+\_\+misfit, }
+\item[{double $\ast$}]{det\+Cm, }
+\item[{double $\ast$}]{autoprior, }
+\item[{double $\ast$$\ast$}]{S, }
+\item[{double $\ast$}]{pk, }
+\item[{double $\ast$}]{kcdf, }
+\item[{double $\ast$$\ast$}]{mean, }
+\item[{double $\ast$$\ast$}]{sigma}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_a393529cc07462605fd219a881a0255d7}{}\label{single1d__regression_8c_a393529cc07462605fd219a881a0255d7}
+
+
+References \+\_\+single1d\+\_\+regression\+::cf, curvefit\+\_\+evaluate\+\_\+pk(), \+\_\+single1d\+\_\+regression\+::max\+\_\+order, and \+\_\+dataset1d\+::npoints.
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+clone@{single1d\+\_\+regression\+\_\+clone}}
+\index{single1d\+\_\+regression\+\_\+clone@{single1d\+\_\+regression\+\_\+clone}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+clone(const single1d\+\_\+regression\+\_\+t $\ast$src, single1d\+\_\+regression\+\_\+t $\ast$dst)}{single1d_regression_clone(const single1d_regression_t *src, single1d_regression_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void single1d\+\_\+regression\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{src, }
+\item[{{\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_acc1756ea8cc8b58b2f04c3ca13a6aa00}{}\label{single1d__regression_8c_acc1756ea8cc8b58b2f04c3ca13a6aa00}
+
+
+References \+\_\+single1d\+\_\+regression\+::a, \+\_\+single1d\+\_\+regression\+::lambda, \+\_\+single1d\+\_\+regression\+::max\+\_\+order, \+\_\+single1d\+\_\+regression\+::order, and rjmcmc\+\_\+error().
+
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression(), single1d\+\_\+regression\+\_\+propose\+\_\+lambda(), and single1d\+\_\+regression\+\_\+propose\+\_\+value().
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+create@{single1d\+\_\+regression\+\_\+create}}
+\index{single1d\+\_\+regression\+\_\+create@{single1d\+\_\+regression\+\_\+create}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+create(int max\+\_\+order, double xmin, double xmax, const double $\ast$kcdf)}{single1d_regression_create(int max_order, double xmin, double xmax, const double *kcdf)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf single1d\+\_\+regression\+\_\+t}$\ast$ single1d\+\_\+regression\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+\_\+order, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{const double $\ast$}]{kcdf}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_af6038956008437af7af5b269eaa18b36}{}\label{single1d__regression_8c_af6038956008437af7af5b269eaa18b36}
+
+
+References \+\_\+single1d\+\_\+regression\+::a, \+\_\+single1d\+\_\+regression\+::cf, curvefit\+\_\+create(), \+\_\+single1d\+\_\+regression\+::kcdf, \+\_\+single1d\+\_\+regression\+::max\+\_\+order, rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), \+\_\+single1d\+\_\+regression\+::xmax, and \+\_\+single1d\+\_\+regression\+::xmin.
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+destroy@{single1d\+\_\+regression\+\_\+destroy}}
+\index{single1d\+\_\+regression\+\_\+destroy@{single1d\+\_\+regression\+\_\+destroy}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+destroy(single1d\+\_\+regression\+\_\+t $\ast$s)}{single1d_regression_destroy(single1d_regression_t *s)}}]{\setlength{\rightskip}{0pt plus 5cm}void single1d\+\_\+regression\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_abe1123330c401375de32e4b17720a48b}{}\label{single1d__regression_8c_abe1123330c401375de32e4b17720a48b}
+
+
+References \+\_\+single1d\+\_\+regression\+::a, \+\_\+single1d\+\_\+regression\+::cf, curvefit\+\_\+destroy(), and rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d().
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+evaluate@{single1d\+\_\+regression\+\_\+evaluate}}
+\index{single1d\+\_\+regression\+\_\+evaluate@{single1d\+\_\+regression\+\_\+evaluate}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+evaluate(single1d\+\_\+regression\+\_\+t $\ast$s, double xmin, double xmax, int nsamples, double $\ast$samples)}{single1d_regression_evaluate(single1d_regression_t *s, double xmin, double xmax, int nsamples, double *samples)}}]{\setlength{\rightskip}{0pt plus 5cm}int single1d\+\_\+regression\+\_\+evaluate (
+\begin{DoxyParamCaption}
+\item[{{\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{s, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{int}]{nsamples, }
+\item[{double $\ast$}]{samples}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_a38c486ff5318597dd768205877e865a5}{}\label{single1d__regression_8c_a38c486ff5318597dd768205877e865a5}
+
+
+References single1d\+\_\+regression\+\_\+value\+\_\+at().
+
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+initialize@{single1d\+\_\+regression\+\_\+initialize}}
+\index{single1d\+\_\+regression\+\_\+initialize@{single1d\+\_\+regression\+\_\+initialize}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+initialize(single1d\+\_\+regression\+\_\+t $\ast$s, const dataset1d\+\_\+t $\ast$data, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal)}{single1d_regression_initialize(single1d_regression_t *s, const dataset1d_t *data, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal)}}]{\setlength{\rightskip}{0pt plus 5cm}int single1d\+\_\+regression\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{{\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{s, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{data, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_a89075aac169d44e51aac3faecee5f6a5}{}\label{single1d__regression_8c_a89075aac169d44e51aac3faecee5f6a5}
+
+
+References \+\_\+single1d\+\_\+regression\+::lambda, \+\_\+dataset1d\+::lambdamax, \+\_\+dataset1d\+::lambdamin, \+\_\+dataset1d\+::lambdastd, \+\_\+single1d\+\_\+regression\+::max\+\_\+order, \+\_\+single1d\+\_\+regression\+::order, rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), and rjmcmc\+\_\+random\+\_\+choose\+\_\+int().
+
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+lambda@{single1d\+\_\+regression\+\_\+lambda}}
+\index{single1d\+\_\+regression\+\_\+lambda@{single1d\+\_\+regression\+\_\+lambda}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+lambda(const single1d\+\_\+regression\+\_\+t $\ast$current)}{single1d_regression_lambda(const single1d_regression_t *current)}}]{\setlength{\rightskip}{0pt plus 5cm}double single1d\+\_\+regression\+\_\+lambda (
+\begin{DoxyParamCaption}
+\item[{const {\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{current}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_aab0d63ae695e062d070e3afdea2377ab}{}\label{single1d__regression_8c_aab0d63ae695e062d070e3afdea2377ab}
+
+
+References \+\_\+single1d\+\_\+regression\+::lambda.
+
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+misfit@{single1d\+\_\+regression\+\_\+misfit}}
+\index{single1d\+\_\+regression\+\_\+misfit@{single1d\+\_\+regression\+\_\+misfit}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+misfit(single1d\+\_\+regression\+\_\+t $\ast$s, const dataset1d\+\_\+t $\ast$dataset)}{single1d_regression_misfit(single1d_regression_t *s, const dataset1d_t *dataset)}}]{\setlength{\rightskip}{0pt plus 5cm}double single1d\+\_\+regression\+\_\+misfit (
+\begin{DoxyParamCaption}
+\item[{{\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{s, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{dataset}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_a8953362a562287dcfd3798e31a1b3236}{}\label{single1d__regression_8c_a8953362a562287dcfd3798e31a1b3236}
+
+
+References \+\_\+single1d\+\_\+regression\+::lambda, \+\_\+dataset1d\+::lambdastd, \+\_\+point1d\+::n, \+\_\+dataset1d\+::npoints, \+\_\+dataset1d\+::points, single1d\+\_\+regression\+\_\+value\+\_\+at(), \+\_\+point1d\+::x, \+\_\+point1d\+::y, and y.
+
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+order@{single1d\+\_\+regression\+\_\+order}}
+\index{single1d\+\_\+regression\+\_\+order@{single1d\+\_\+regression\+\_\+order}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+order(const single1d\+\_\+regression\+\_\+t $\ast$current)}{single1d_regression_order(const single1d_regression_t *current)}}]{\setlength{\rightskip}{0pt plus 5cm}int single1d\+\_\+regression\+\_\+order (
+\begin{DoxyParamCaption}
+\item[{const {\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{current}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_aa2458f8ab7f4cb15e1b23ee25ee30e5a}{}\label{single1d__regression_8c_aa2458f8ab7f4cb15e1b23ee25ee30e5a}
+
+
+References \+\_\+single1d\+\_\+regression\+::order.
+
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+propose\+\_\+lambda@{single1d\+\_\+regression\+\_\+propose\+\_\+lambda}}
+\index{single1d\+\_\+regression\+\_\+propose\+\_\+lambda@{single1d\+\_\+regression\+\_\+propose\+\_\+lambda}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+propose\+\_\+lambda(const single1d\+\_\+regression\+\_\+t $\ast$current, single1d\+\_\+regression\+\_\+t $\ast$proposed, const dataset1d\+\_\+t $\ast$dataset, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$lambda\+\_\+prob)}{single1d_regression_propose_lambda(const single1d_regression_t *current, single1d_regression_t *proposed, const dataset1d_t *dataset, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *lambda_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int single1d\+\_\+regression\+\_\+propose\+\_\+lambda (
+\begin{DoxyParamCaption}
+\item[{const {\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{current, }
+\item[{{\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{dataset, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{lambda\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_a17d5005b606610e7b7a0cbe150c3e507}{}\label{single1d__regression_8c_a17d5005b606610e7b7a0cbe150c3e507}
+
+
+References \+\_\+single1d\+\_\+regression\+::a, \+\_\+single1d\+\_\+regression\+::cf, curvefit\+\_\+compute(), curvefit\+\_\+sample(), \+\_\+single1d\+\_\+regression\+::lambda, \+\_\+dataset1d\+::lambdamax, \+\_\+dataset1d\+::lambdastd, normal, \+\_\+dataset1d\+::npoints, \+\_\+single1d\+\_\+regression\+::order, random, and single1d\+\_\+regression\+\_\+clone().
+
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+propose\+\_\+value@{single1d\+\_\+regression\+\_\+propose\+\_\+value}}
+\index{single1d\+\_\+regression\+\_\+propose\+\_\+value@{single1d\+\_\+regression\+\_\+propose\+\_\+value}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+propose\+\_\+value(const single1d\+\_\+regression\+\_\+t $\ast$current, single1d\+\_\+regression\+\_\+t $\ast$proposed, const dataset1d\+\_\+t $\ast$dataset, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$value\+\_\+prob)}{single1d_regression_propose_value(const single1d_regression_t *current, single1d_regression_t *proposed, const dataset1d_t *dataset, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *value_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int single1d\+\_\+regression\+\_\+propose\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{const {\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{current, }
+\item[{{\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{dataset, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{value\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_a2af4ddeb0dc1729fd26f4ca034d0e389}{}\label{single1d__regression_8c_a2af4ddeb0dc1729fd26f4ca034d0e389}
+
+
+References \+\_\+single1d\+\_\+regression\+::kcdf, \+\_\+single1d\+\_\+regression\+::max\+\_\+order, \+\_\+single1d\+\_\+regression\+::order, rjmcmc\+\_\+random\+\_\+choose\+\_\+interval(), and single1d\+\_\+regression\+\_\+clone().
+
+
+
+Referenced by M\+P\+I\+\_\+single1d\+\_\+regression().
+
+\index{single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}!single1d\+\_\+regression\+\_\+value\+\_\+at@{single1d\+\_\+regression\+\_\+value\+\_\+at}}
+\index{single1d\+\_\+regression\+\_\+value\+\_\+at@{single1d\+\_\+regression\+\_\+value\+\_\+at}!single1d\+\_\+regression.\+c@{single1d\+\_\+regression.\+c}}
+\subsubsection[{\texorpdfstring{single1d\+\_\+regression\+\_\+value\+\_\+at(single1d\+\_\+regression\+\_\+t $\ast$s, double x)}{single1d_regression_value_at(single1d_regression_t *s, double x)}}]{\setlength{\rightskip}{0pt plus 5cm}double single1d\+\_\+regression\+\_\+value\+\_\+at (
+\begin{DoxyParamCaption}
+\item[{{\bf single1d\+\_\+regression\+\_\+t} $\ast$}]{s, }
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}\hypertarget{single1d__regression_8c_a20c67cc7f025e374d69a5be0a70c10b5}{}\label{single1d__regression_8c_a20c67cc7f025e374d69a5be0a70c10b5}
+
+
+References \+\_\+single1d\+\_\+regression\+::a, \+\_\+single1d\+\_\+regression\+::order, and x.
+
+
+
+Referenced by single1d\+\_\+regression\+\_\+evaluate(), and single1d\+\_\+regression\+\_\+misfit().
+

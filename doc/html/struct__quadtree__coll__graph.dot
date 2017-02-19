@@ -1,0 +1,16 @@
+digraph "_quadtree"
+{
+  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
+  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
+  Node1 [label="_quadtree",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" point" ,fontname="FreeSans.ttf"];
+  Node2 [label="_point",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__point.html"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" bound" ,fontname="FreeSans.ttf"];
+  Node3 [label="bbox2d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structbbox2d.html"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" head" ,fontname="FreeSans.ttf"];
+  Node4 [label="_quadtree_node",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__quadtree__node.html"];
+  Node3 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" bound" ,fontname="FreeSans.ttf"];
+  Node4 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" child" ,fontname="FreeSans.ttf"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" leaf" ,fontname="FreeSans.ttf"];
+  Node5 [label="_quadtree_leaf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__quadtree__leaf.html"];
+}

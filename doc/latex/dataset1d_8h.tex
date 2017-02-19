@@ -1,0 +1,287 @@
+\hypertarget{dataset1d_8h}{}\section{dataset1d.\+h File Reference}
+\label{dataset1d_8h}\index{dataset1d.\+h@{dataset1d.\+h}}
+
+
+1D Dataset Storage  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__point1d}{\+\_\+point1d}
+\item 
+struct \hyperlink{struct__dataset1d}{\+\_\+dataset1d}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__point1d}{\+\_\+point1d} \hyperlink{dataset1d_8h_a97fb1604d71a5eeb5c0d33355d52def3}{point1d\+\_\+t}
+\item 
+typedef struct \hyperlink{struct__dataset1d}{\+\_\+dataset1d} \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$ \hyperlink{dataset1d_8h_a9ab44013b199e6e82a36e3db8063660d}{dataset1d\+\_\+create} (int size)
+\begin{DoxyCompactList}\small\item\em Create a new empty dataset. \end{DoxyCompactList}\item 
+void \hyperlink{dataset1d_8h_ac9590ebb60877e8fe57e84455471a5da}{dataset1d\+\_\+destroy} (\hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$d)
+\begin{DoxyCompactList}\small\item\em Destroy a dataset. \end{DoxyCompactList}\item 
+\hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$ \hyperlink{dataset1d_8h_a8a3dee8031d5f30f9698874806bb33be}{dataset1d\+\_\+load\+\_\+fixed} (const char $\ast$filename, double n)
+\begin{DoxyCompactList}\small\item\em Load a dataset with a fixed noise parameter. \end{DoxyCompactList}\item 
+\hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$ \hyperlink{dataset1d_8h_a12b327d93f135ffa89af1d4d2359f771}{dataset1d\+\_\+load\+\_\+known} (const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Load a dataset with known noise. \end{DoxyCompactList}\item 
+\hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$ \hyperlink{dataset1d_8h_a1abdf51cdefded138e54900404a67b39}{dataset1d\+\_\+create\+\_\+from\+\_\+array} (const double $\ast$\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, const double $\ast$\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, const double $\ast$n, int size)
+\begin{DoxyCompactList}\small\item\em Create a dataset from arrays. \end{DoxyCompactList}\item 
+void \hyperlink{dataset1d_8h_a180a06c700169d8a4f53ad43acefb62d}{dataset1d\+\_\+sort} (\hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$d)
+\begin{DoxyCompactList}\small\item\em Reorder dataset by x coordinate. \end{DoxyCompactList}\item 
+int \hyperlink{dataset1d_8h_aede15cbc8cde49f7bffc3c4347469960}{dataset1d\+\_\+range} (const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$data, double xl, double xr, int $\ast$xi, int $\ast$xj)
+\begin{DoxyCompactList}\small\item\em Subset of a dataset. \end{DoxyCompactList}\item 
+int \hyperlink{dataset1d_8h_afdb9d9401e23abc1b56c51b516ad1225}{dataset1d\+\_\+mean\+\_\+variance} (const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$d, int xi, int xj, double $\ast$mean, double $\ast$variance)
+\begin{DoxyCompactList}\small\item\em Compute the mean and variance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+1D Dataset Storage 
+
+The \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} type is used for storing a 1D dataset with optional noise parameters. 
+
+\subsection{Typedef Documentation}
+\index{dataset1d.\+h@{dataset1d.\+h}!dataset1d\+\_\+t@{dataset1d\+\_\+t}}
+\index{dataset1d\+\_\+t@{dataset1d\+\_\+t}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{dataset1d\+\_\+t}{dataset1d_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+dataset1d} {\bf dataset1d\+\_\+t}}\hypertarget{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{}\label{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}
+\index{dataset1d.\+h@{dataset1d.\+h}!point1d\+\_\+t@{point1d\+\_\+t}}
+\index{point1d\+\_\+t@{point1d\+\_\+t}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{point1d\+\_\+t}{point1d_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+point1d} {\bf point1d\+\_\+t}}\hypertarget{dataset1d_8h_a97fb1604d71a5eeb5c0d33355d52def3}{}\label{dataset1d_8h_a97fb1604d71a5eeb5c0d33355d52def3}
+
+
+\subsection{Function Documentation}
+\index{dataset1d.\+h@{dataset1d.\+h}!dataset1d\+\_\+create@{dataset1d\+\_\+create}}
+\index{dataset1d\+\_\+create@{dataset1d\+\_\+create}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{dataset1d\+\_\+create(int size)}{dataset1d_create(int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset1d\+\_\+t}$\ast$ dataset1d\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset1d_8h_a9ab44013b199e6e82a36e3db8063660d}{}\label{dataset1d_8h_a9ab44013b199e6e82a36e3db8063660d}
+
+
+Create a new empty dataset. 
+
+Allocate a new \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} object of a given size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & maximum number of points. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+dataset1d\+::lambdamax, \+\_\+dataset1d\+::lambdamin, \+\_\+dataset1d\+::lambdastd, \+\_\+dataset1d\+::npoints, \+\_\+dataset1d\+::points, rjmcmc\+\_\+fatal(), \+\_\+dataset1d\+::xmax, \+\_\+dataset1d\+::xmin, \+\_\+dataset1d\+::ymax, and \+\_\+dataset1d\+::ymin.
+
+
+
+Referenced by dataset1d\+\_\+create\+\_\+from\+\_\+array(), dataset1d\+\_\+load\+\_\+fixed(), and dataset1d\+\_\+load\+\_\+known().
+
+\index{dataset1d.\+h@{dataset1d.\+h}!dataset1d\+\_\+create\+\_\+from\+\_\+array@{dataset1d\+\_\+create\+\_\+from\+\_\+array}}
+\index{dataset1d\+\_\+create\+\_\+from\+\_\+array@{dataset1d\+\_\+create\+\_\+from\+\_\+array}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{dataset1d\+\_\+create\+\_\+from\+\_\+array(const double $\ast$x, const double $\ast$y, const double $\ast$n, int size)}{dataset1d_create_from_array(const double *x, const double *y, const double *n, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset1d\+\_\+t}$\ast$ dataset1d\+\_\+create\+\_\+from\+\_\+array (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{x, }
+\item[{const double $\ast$}]{y, }
+\item[{const double $\ast$}]{n, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset1d_8h_a1abdf51cdefded138e54900404a67b39}{}\label{dataset1d_8h_a1abdf51cdefded138e54900404a67b39}
+
+
+Create a dataset from arrays. 
+
+Creates a \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} object from existing arrays of coordinates and noise. The arrays are copied into the \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinates \\
+\hline
+{\em y} & Y coordinates \\
+\hline
+{\em n} & Noise values per point  size The number of (X, Y, N) tuples. \\
+\hline
+\end{DoxyParams}
+
+
+References dataset1d\+\_\+create(), \+\_\+point1d\+::n, \+\_\+dataset1d\+::points, \+\_\+point1d\+::x, \+\_\+dataset1d\+::xmax, \+\_\+dataset1d\+::xmin, \+\_\+point1d\+::y, \+\_\+dataset1d\+::ymax, and \+\_\+dataset1d\+::ymin.
+
+\index{dataset1d.\+h@{dataset1d.\+h}!dataset1d\+\_\+destroy@{dataset1d\+\_\+destroy}}
+\index{dataset1d\+\_\+destroy@{dataset1d\+\_\+destroy}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{dataset1d\+\_\+destroy(dataset1d\+\_\+t $\ast$d)}{dataset1d_destroy(dataset1d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}void dataset1d\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf dataset1d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset1d_8h_ac9590ebb60877e8fe57e84455471a5da}{}\label{dataset1d_8h_ac9590ebb60877e8fe57e84455471a5da}
+
+
+Destroy a dataset. 
+
+Deallocate an existing \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The dataset to destroy. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+dataset1d\+::points.
+
+\index{dataset1d.\+h@{dataset1d.\+h}!dataset1d\+\_\+load\+\_\+fixed@{dataset1d\+\_\+load\+\_\+fixed}}
+\index{dataset1d\+\_\+load\+\_\+fixed@{dataset1d\+\_\+load\+\_\+fixed}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{dataset1d\+\_\+load\+\_\+fixed(const char $\ast$filename, double n)}{dataset1d_load_fixed(const char *filename, double n)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset1d\+\_\+t}$\ast$ dataset1d\+\_\+load\+\_\+fixed (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename, }
+\item[{double}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset1d_8h_a8a3dee8031d5f30f9698874806bb33be}{}\label{dataset1d_8h_a8a3dee8031d5f30f9698874806bb33be}
+
+
+Load a dataset with a fixed noise parameter. 
+
+Loads a file containing x, y coordinates and applies a fixed noise level to each data point. The expected format is a text file containing space separated x and y coordinates on each line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to load. \\
+\hline
+{\em n} & The fixed noise level. \\
+\hline
+\end{DoxyParams}
+
+
+References dataset1d\+\_\+create(), \+\_\+point1d\+::n, \+\_\+dataset1d\+::points, rjmcmc\+\_\+error(), \+\_\+point1d\+::x, x, \+\_\+dataset1d\+::xmax, \+\_\+dataset1d\+::xmin, \+\_\+point1d\+::y, y, \+\_\+dataset1d\+::ymax, and \+\_\+dataset1d\+::ymin.
+
+\index{dataset1d.\+h@{dataset1d.\+h}!dataset1d\+\_\+load\+\_\+known@{dataset1d\+\_\+load\+\_\+known}}
+\index{dataset1d\+\_\+load\+\_\+known@{dataset1d\+\_\+load\+\_\+known}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{dataset1d\+\_\+load\+\_\+known(const char $\ast$filename)}{dataset1d_load_known(const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset1d\+\_\+t}$\ast$ dataset1d\+\_\+load\+\_\+known (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset1d_8h_a12b327d93f135ffa89af1d4d2359f771}{}\label{dataset1d_8h_a12b327d93f135ffa89af1d4d2359f771}
+
+
+Load a dataset with known noise. 
+
+Loads a file containing x, y coordinates and noise. The expected format is a text file containing space separated x and y coordinates and noise on each line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to load. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+curvefit\+\_\+result\+::b, dataset1d\+\_\+create(), \+\_\+point1d\+::n, \+\_\+dataset1d\+::points, rjmcmc\+\_\+error(), \+\_\+point1d\+::x, x, \+\_\+dataset1d\+::xmax, \+\_\+dataset1d\+::xmin, \+\_\+point1d\+::y, y, \+\_\+dataset1d\+::ymax, and \+\_\+dataset1d\+::ymin.
+
+\index{dataset1d.\+h@{dataset1d.\+h}!dataset1d\+\_\+mean\+\_\+variance@{dataset1d\+\_\+mean\+\_\+variance}}
+\index{dataset1d\+\_\+mean\+\_\+variance@{dataset1d\+\_\+mean\+\_\+variance}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{dataset1d\+\_\+mean\+\_\+variance(const dataset1d\+\_\+t $\ast$d, int xi, int xj, double $\ast$mean, double $\ast$variance)}{dataset1d_mean_variance(const dataset1d_t *d, int xi, int xj, double *mean, double *variance)}}]{\setlength{\rightskip}{0pt plus 5cm}int dataset1d\+\_\+mean\+\_\+variance (
+\begin{DoxyParamCaption}
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{xi, }
+\item[{int}]{xj, }
+\item[{double $\ast$}]{mean, }
+\item[{double $\ast$}]{variance}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset1d_8h_afdb9d9401e23abc1b56c51b516ad1225}{}\label{dataset1d_8h_afdb9d9401e23abc1b56c51b516ad1225}
+
+
+Compute the mean and variance. 
+
+Computes the mean and variance of a set of data points in a given range of indices.
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} object \\
+\hline
+{\em xi} & The first point to include in the mean/variance \\
+\hline
+{\em xj} & The last point to include in the mean/variance \\
+\hline
+{\em mean} & The mean output \\
+\hline
+{\em variance} & The variance output.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of points in the range or -\/1 on error. 
+\end{DoxyReturn}
+
+
+References \+\_\+dataset1d\+::npoints, \+\_\+dataset1d\+::points, rjmcmc\+\_\+error(), and \+\_\+point1d\+::y.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+propose\+\_\+birth(), part1d\+\_\+zero\+\_\+propose\+\_\+death(), and part1d\+\_\+zero\+\_\+propose\+\_\+move().
+
+\index{dataset1d.\+h@{dataset1d.\+h}!dataset1d\+\_\+range@{dataset1d\+\_\+range}}
+\index{dataset1d\+\_\+range@{dataset1d\+\_\+range}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{dataset1d\+\_\+range(const dataset1d\+\_\+t $\ast$data, double xl, double xr, int $\ast$xi, int $\ast$xj)}{dataset1d_range(const dataset1d_t *data, double xl, double xr, int *xi, int *xj)}}]{\setlength{\rightskip}{0pt plus 5cm}int dataset1d\+\_\+range (
+\begin{DoxyParamCaption}
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{data, }
+\item[{double}]{xl, }
+\item[{double}]{xr, }
+\item[{int $\ast$}]{xi, }
+\item[{int $\ast$}]{xj}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset1d_8h_aede15cbc8cde49f7bffc3c4347469960}{}\label{dataset1d_8h_aede15cbc8cde49f7bffc3c4347469960}
+
+
+Subset of a dataset. 
+
+Outputs the indices of the subset of a dataset that is within a given range of x coordinates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} object \\
+\hline
+{\em xl} & The left x-\/coordinate of the range. \\
+\hline
+{\em xr} & The right x-\/coordinate of the range. \\
+\hline
+{\em xi} & The index of the first data point in the x-\/coordinate range. \\
+\hline
+{\em xj} & The index of the last data point in the x-\/coordinate range.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of data points in the x-\/coordinate range or -\/1 on error. 
+\end{DoxyReturn}
+
+
+References \+\_\+dataset1d\+::npoints, \+\_\+dataset1d\+::points, and \+\_\+point1d\+::x.
+
+
+
+Referenced by part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(), part1d\+\_\+zero\+\_\+propose\+\_\+birth(), part1d\+\_\+zero\+\_\+propose\+\_\+death(), and part1d\+\_\+zero\+\_\+propose\+\_\+move().
+
+\index{dataset1d.\+h@{dataset1d.\+h}!dataset1d\+\_\+sort@{dataset1d\+\_\+sort}}
+\index{dataset1d\+\_\+sort@{dataset1d\+\_\+sort}!dataset1d.\+h@{dataset1d.\+h}}
+\subsubsection[{\texorpdfstring{dataset1d\+\_\+sort(dataset1d\+\_\+t $\ast$d)}{dataset1d_sort(dataset1d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}void dataset1d\+\_\+sort (
+\begin{DoxyParamCaption}
+\item[{{\bf dataset1d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset1d_8h_a180a06c700169d8a4f53ad43acefb62d}{}\label{dataset1d_8h_a180a06c700169d8a4f53ad43acefb62d}
+
+
+Reorder dataset by x coordinate. 
+
+Sorts the points within the dataset to ascending in x-\/coordinate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} object to sort. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+dataset1d\+::npoints, \+\_\+dataset1d\+::points, and rjmcmc\+\_\+error().
+

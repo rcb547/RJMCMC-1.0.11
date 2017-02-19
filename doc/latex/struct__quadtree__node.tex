@@ -1,0 +1,91 @@
+\hypertarget{struct__quadtree__node}{}\section{\+\_\+quadtree\+\_\+node Struct Reference}
+\label{struct__quadtree__node}\index{\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}}
+
+
+Collaboration diagram for \+\_\+quadtree\+\_\+node\+:
+% FIG 0
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} \hyperlink{struct__quadtree__node_ae7ad530aa3d2191e2039867a9699bdd9}{bound}
+\item 
+double \hyperlink{struct__quadtree__node_a38a4256186a36066306a04b1c2be35fb}{cx}
+\item 
+double \hyperlink{struct__quadtree__node_a35d069b1ce9dbfb2f5e076f73650b12c}{cy}
+\item 
+int \hyperlink{struct__quadtree__node_a34ce0a3ded8087cfbe58e637f07d2dc3}{node}
+\item 
+int \hyperlink{struct__quadtree__node_a440a869717a3b5d9700101d013f397e6}{grand\+\_\+children}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\hyperlink{quadtree_8c_ad63e20da3252f1c7ac0ec1fb59ab1e61}{quadtree\_node\_t} $\ast$ \hyperlink{struct__quadtree__node_ac18415fd1443c1a44323ce4867b717b7}{child} \mbox{[}4\mbox{]}\\
+\>\hyperlink{quadtree_8c_a587c3c1eecbb2ec8d1c244316581bfdd}{quadtree\_leaf\_t} \hyperlink{struct__quadtree__node_a3f18cf00c4055c9474dad3ca25f4b6f4}{leaf}\\
+\} \hyperlink{struct__quadtree__node_a443be2ffd807ed9551ed1fc61b21276f}{data}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\index{\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}!bound@{bound}}
+\index{bound@{bound}!\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}}
+\subsubsection[{\texorpdfstring{bound}{bound}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bbox2d\+\_\+t} \+\_\+quadtree\+\_\+node\+::bound}\hypertarget{struct__quadtree__node_ae7ad530aa3d2191e2039867a9699bdd9}{}\label{struct__quadtree__node_ae7ad530aa3d2191e2039867a9699bdd9}
+
+
+Referenced by quadtree\+\_\+polygon\+\_\+bound().
+
+\index{\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}!child@{child}}
+\index{child@{child}!\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}}
+\subsubsection[{\texorpdfstring{child}{child}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf quadtree\+\_\+node\+\_\+t}$\ast$ \+\_\+quadtree\+\_\+node\+::child\mbox{[}4\mbox{]}}\hypertarget{struct__quadtree__node_ac18415fd1443c1a44323ce4867b717b7}{}\label{struct__quadtree__node_ac18415fd1443c1a44323ce4867b717b7}
+
+
+Referenced by quadtree\+\_\+polygon\+\_\+bound().
+
+\index{\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}!cx@{cx}}
+\index{cx@{cx}!\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}}
+\subsubsection[{\texorpdfstring{cx}{cx}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+quadtree\+\_\+node\+::cx}\hypertarget{struct__quadtree__node_a38a4256186a36066306a04b1c2be35fb}{}\label{struct__quadtree__node_a38a4256186a36066306a04b1c2be35fb}
+
+
+Referenced by quadtree\+\_\+polygon\+\_\+bound().
+
+\index{\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}!cy@{cy}}
+\index{cy@{cy}!\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}}
+\subsubsection[{\texorpdfstring{cy}{cy}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+quadtree\+\_\+node\+::cy}\hypertarget{struct__quadtree__node_a35d069b1ce9dbfb2f5e076f73650b12c}{}\label{struct__quadtree__node_a35d069b1ce9dbfb2f5e076f73650b12c}
+
+
+Referenced by quadtree\+\_\+polygon\+\_\+bound().
+
+\index{\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}!data@{data}}
+\index{data@{data}!\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}}
+\subsubsection[{\texorpdfstring{data}{data}}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \}   \+\_\+quadtree\+\_\+node\+::data}\hypertarget{struct__quadtree__node_a443be2ffd807ed9551ed1fc61b21276f}{}\label{struct__quadtree__node_a443be2ffd807ed9551ed1fc61b21276f}
+
+
+Referenced by quadtree\+\_\+polygon\+\_\+bound().
+
+\index{\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}!grand\+\_\+children@{grand\+\_\+children}}
+\index{grand\+\_\+children@{grand\+\_\+children}!\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}}
+\subsubsection[{\texorpdfstring{grand\+\_\+children}{grand_children}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+quadtree\+\_\+node\+::grand\+\_\+children}\hypertarget{struct__quadtree__node_a440a869717a3b5d9700101d013f397e6}{}\label{struct__quadtree__node_a440a869717a3b5d9700101d013f397e6}
+
+
+Referenced by quadtree\+\_\+polygon\+\_\+bound().
+
+\index{\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}!leaf@{leaf}}
+\index{leaf@{leaf}!\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}}
+\subsubsection[{\texorpdfstring{leaf}{leaf}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf quadtree\+\_\+leaf\+\_\+t} \+\_\+quadtree\+\_\+node\+::leaf}\hypertarget{struct__quadtree__node_a3f18cf00c4055c9474dad3ca25f4b6f4}{}\label{struct__quadtree__node_a3f18cf00c4055c9474dad3ca25f4b6f4}
+
+
+Referenced by quadtree\+\_\+polygon\+\_\+bound().
+
+\index{\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}!node@{node}}
+\index{node@{node}!\+\_\+quadtree\+\_\+node@{\+\_\+quadtree\+\_\+node}}
+\subsubsection[{\texorpdfstring{node}{node}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+quadtree\+\_\+node\+::node}\hypertarget{struct__quadtree__node_a34ce0a3ded8087cfbe58e637f07d2dc3}{}\label{struct__quadtree__node_a34ce0a3ded8087cfbe58e637f07d2dc3}
+
+
+Referenced by quadtree\+\_\+polygon\+\_\+bound().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{quadtree_8c}{quadtree.\+c}\end{DoxyCompactItemize}

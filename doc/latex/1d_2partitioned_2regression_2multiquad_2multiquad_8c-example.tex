@@ -1,0 +1,324 @@
+\hypertarget{1d_2partitioned_2regression_2multiquad_2multiquad_8c-example}{}\section{1d/partitioned/regression/multiquad/multiquad.\+c}
+
+\begin{DoxyCodeInclude}
+
+\textcolor{preprocessor}{#include <stdio.h>}
+\textcolor{preprocessor}{#include <stdlib.h>}
+\textcolor{preprocessor}{#include <math.h>}
+\textcolor{preprocessor}{#include <getopt.h>}
+
+\textcolor{preprocessor}{#include <\hyperlink{regression_8h}{rjmcmc/regression.h}>}
+\textcolor{preprocessor}{#include <\hyperlink{rjmcmc__random_8h}{rjmcmc/rjmcmc\_random.h}>}
+
+\textcolor{preprocessor}{#include <\hyperlink{rjmcmc__util_8h}{rjmcmc/rjmcmc\_util.h}>}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{char} short\_options[] = \textcolor{stringliteral}{"nO:lh"};
+
+\textcolor{keyword}{static} \textcolor{keyword}{struct }option long\_options[] = \{
+  \{\textcolor{stringliteral}{"natural"}, 0, 0, \textcolor{charliteral}{'n'}\},
+  \{\textcolor{stringliteral}{"max-order"}, 1, 0, \textcolor{charliteral}{'O'}\},
+  \{\textcolor{stringliteral}{"lambda"}, 0, 0, \textcolor{charliteral}{'l'}\},
+  \{\textcolor{stringliteral}{"help"}, 0, 0, \textcolor{charliteral}{'h'}\},
+  \{0, 0, 0, 0\}
+\};
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} usage(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pname);
+
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]) 
+\{
+  \textcolor{keywordtype}{int} \hyperlink{wellrng_8c_a6ce17b018c47d0f1d0e53a458f741ad3}{c};
+  \textcolor{keywordtype}{int} option\_index;
+
+  \hyperlink{struct__dataset1d}{dataset1d\_t} *data;
+  \hyperlink{struct__resultset1d}{resultset1d\_t} *results;
+
+  \textcolor{keywordtype}{int} burnin = 1000;
+  \textcolor{keywordtype}{int} \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total} = 50000;
+  \textcolor{keywordtype}{int} min\_part = 2;
+  \textcolor{keywordtype}{int} max\_part = 20;
+  \textcolor{keywordtype}{int} max\_order = 4;
+  \textcolor{keywordtype}{int} xsamples = 100;
+  \textcolor{keywordtype}{int} ysamples = 500;
+  \textcolor{keywordtype}{double} confidence = 0.95;
+  \textcolor{keywordtype}{double} pd = 10.0;
+  \textcolor{keywordtype}{double} pv = 25.0;
+
+  \textcolor{keywordtype}{int} nproc;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{double} *v;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{int} *iv;
+  \textcolor{keywordtype}{int} i;
+  \textcolor{keywordtype}{int} natural = 0;
+  \textcolor{keywordtype}{int} use\_lambda = 0;
+
+  \textcolor{keywordtype}{double} *xcoords;
+  \textcolor{keywordtype}{int} xcl;
+
+  data = \hyperlink{dataset1d_8c_a12b327d93f135ffa89af1d4d2359f771}{dataset1d\_load\_known}(\textcolor{stringliteral}{"data.txt"});
+  \textcolor{keywordflow}{if} (data == NULL) \{
+    fprintf(stderr, 
+            \textcolor{stringliteral}{"error: unable to load data, "}
+            \textcolor{stringliteral}{"has it been created with the script?\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  option\_index = 0;
+  \textcolor{keywordflow}{while} (1) \{
+
+    c = getopt\_long(argc, argv, short\_options, long\_options, &option\_index);
+    \textcolor{keywordflow}{if} (c == -1) \{
+      \textcolor{keywordflow}{break};
+    \}
+
+    \textcolor{keywordflow}{switch} (c) \{
+    \textcolor{keywordflow}{case} \textcolor{charliteral}{'n'}:
+      natural = 1;
+      \textcolor{keywordflow}{break};
+
+    \textcolor{keywordflow}{case} \textcolor{charliteral}{'O'}:
+      max\_order = atoi(optarg);
+      \textcolor{keywordflow}{break};
+
+    \textcolor{keywordflow}{case} \textcolor{charliteral}{'l'}:
+      use\_lambda = 1;
+      \textcolor{keywordflow}{break};
+
+    \textcolor{keywordflow}{default}:
+      fprintf(stderr, \textcolor{stringliteral}{"error: invalid option\(\backslash\)n"});
+      \textcolor{keywordflow}{return} -1;
+
+    \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:
+      usage(argv[0]);
+      \textcolor{keywordflow}{return} -1;
+    \}
+  \}
+
+  \textcolor{comment}{/*}
+\textcolor{comment}{   * Set the data bounds}
+\textcolor{comment}{   */}
+  data->\hyperlink{struct__dataset1d_ae96bdad176cb1e2ff691de6cd46b577b}{xmin} = 0.0;
+  data->\hyperlink{struct__dataset1d_a006b76fa7e80e3220e6ad66a1ee0b83f}{xmax} = 100.0;
+  data->\hyperlink{struct__dataset1d_afaee8c7cef9ae50d6c7387f3ac7d4379}{ymin} = -50.0;
+  data->\hyperlink{struct__dataset1d_aa852aa13aa0a0d4e2b0a8bf83d03fc70}{ymax} = 150.0;
+
+  \textcolor{keywordflow}{if} (use\_lambda) \{
+    data->\hyperlink{struct__dataset1d_ad4d2e3a3d2eb35338ce1d819142cefb8}{lambdamin} = 0.5;
+    data->\hyperlink{struct__dataset1d_ac07faf1146371645b1cb77495f866f48}{lambdamax} = 2.0;
+    data->\hyperlink{struct__dataset1d_ab5344ed7583036bc0dc1b9e769273c85}{lambdastd} = 0.1;
+  \}
+
+  \textcolor{keywordflow}{if} (natural) \{
+    results = \hyperlink{regression__part1d__natural_8c_abd2a0dc74a4bb3934c21c7864759bbbd}{part1d\_natural\_regression}(data,
+                                        burnin,
+                                        total,
+                                        min\_part,
+                                        max\_part,
+                                        xsamples,
+                                        ysamples,
+                                        confidence,
+                                        pv,
+                                        pd,
+                                        \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform},
+                                        \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal},
+                                        \hyperlink{resultset1d_8h_a1fffe49407333be24faf49976523f7a0a944620d1080545b601f582941a221aab}{RESULTSET1D\_MEAN} |
+                                        \hyperlink{resultset1d_8h_a1fffe49407333be24faf49976523f7a0a991da5651d2bf5024d0592bcfa17ea1d}{RESULTSET1D\_MEDIAN} |
+                                        \hyperlink{resultset1d_8h_a1fffe49407333be24faf49976523f7a0a50c541d6d4444d695fdba9591085c80c}{RESULTSET1D\_MODE} |
+                                        \hyperlink{resultset1d_8h_a1fffe49407333be24faf49976523f7a0a0f5016ee227f1d4ba85b7e2e68e4e070}{RESULTSET1D\_CREDIBLE},
+                                        NULL,
+                                        NULL);
+  \} \textcolor{keywordflow}{else} \{
+    results = \hyperlink{regression__part1d_8c_a17bc74fa9fb9c6287ab4e19751c6bb17}{part1d\_regression}(data,
+                                burnin,
+                                total,
+                                min\_part,
+                                max\_part,
+                                max\_order,
+                                xsamples,
+                                ysamples,
+                                confidence,
+                                pd,
+                                \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform},
+                                \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal},
+                                \hyperlink{resultset1d_8h_a1fffe49407333be24faf49976523f7a0a944620d1080545b601f582941a221aab}{RESULTSET1D\_MEAN} |
+                                \hyperlink{resultset1d_8h_a1fffe49407333be24faf49976523f7a0a991da5651d2bf5024d0592bcfa17ea1d}{RESULTSET1D\_MEDIAN} |
+                                \hyperlink{resultset1d_8h_a1fffe49407333be24faf49976523f7a0a50c541d6d4444d695fdba9591085c80c}{RESULTSET1D\_MODE} |
+                                \hyperlink{resultset1d_8h_a1fffe49407333be24faf49976523f7a0a0f5016ee227f1d4ba85b7e2e68e4e070}{RESULTSET1D\_CREDIBLE},
+                                NULL,
+                                NULL);
+  \}
+
+  \textcolor{keywordflow}{if} (results == NULL) \{
+    fprintf(stderr, 
+            \textcolor{stringliteral}{"error: failed to run regression\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  xcl = xsamples;
+  xcoords = \hyperlink{rjmcmc__util_8c_a26a1113b542fb7250c98e13b8465332b}{rjmcmc\_create\_array\_1d}(xcl);
+  \textcolor{keywordflow}{if} (xcoords == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to create array for xsamples\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \hyperlink{resultset1d_8c_a3b0f55d9a6a6bb474afd207109391022}{resultset1d\_fill\_xcoord\_vector}(results, xcoords);
+
+  v = \hyperlink{resultset1d_8c_a17635e6ee35cb202c65bad75ab4d364b}{resultset1d\_get\_misfit}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get misfit data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a3cdc9584ffb43795673f8013b1e6b8cc}{rjmcmc\_save\_vector}(\textcolor{stringliteral}{"multiquad.misfit"}, v, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save misfit data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{keywordflow}{if} (use\_lambda) \{
+    v = \hyperlink{resultset1d_8c_a3d066ca2a721c587909d04e3f68924c3}{resultset1d\_get\_lambda}(results);
+    \textcolor{keywordflow}{if} (v == NULL) \{
+      fprintf(stderr, \textcolor{stringliteral}{"error: failed to get sigma data\(\backslash\)n"});
+      \textcolor{keywordflow}{return} -1;
+    \}
+    \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a3cdc9584ffb43795673f8013b1e6b8cc}{rjmcmc\_save\_vector}(\textcolor{stringliteral}{"multiquad.sigma"}, v, total) < 0) \{
+      fprintf(stderr, \textcolor{stringliteral}{"error: failed to save sigma data\(\backslash\)n"});
+      \textcolor{keywordflow}{return} -1;
+    \}
+    \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a92fed2455e249dd7336f119415d0de78}{rjmcmc\_save\_vector\_as\_histogram}(\textcolor{stringliteral}{"multiquad.sigma\_hist"},
+                                        data->\hyperlink{struct__dataset1d_ad4d2e3a3d2eb35338ce1d819142cefb8}{lambdamin},
+                                        data->\hyperlink{struct__dataset1d_ac07faf1146371645b1cb77495f866f48}{lambdamax},
+                                        xsamples,
+                                        v, total) < 0) \{
+      fprintf(stderr, \textcolor{stringliteral}{"error: failed to save sigma histogram\(\backslash\)n"});
+      \textcolor{keywordflow}{return} -1;
+    \}
+  \}
+
+  iv = \hyperlink{resultset1d_8c_a61522d2beced60ac4698e6f17d94f8b7}{resultset1d\_get\_partitions}(results);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a287599dc8c2060a831324f4c49988d97}{rjmcmc\_save\_int\_vector}(\textcolor{stringliteral}{"multiquad.partitions"}, iv, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a6e92f3fbaa4acb4bec85c5c900614e92}{rjmcmc\_save\_int\_vector\_as\_histogram}(\textcolor{stringliteral}{"multiquad.partition\_hist"},
+                                          2,
+                                          max\_part,
+                                          iv, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partition histogram data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  iv = \hyperlink{resultset1d_8c_a66cd00d991da3dbe85c29279177eac41}{resultset1d\_get\_partition\_x\_histogram}(results);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get partition histogram\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_aad0eefc8da54924e51302b75300ec0c3}{rjmcmc\_save\_int\_coords}(\textcolor{stringliteral}{"multiquad.partition\_x\_hist"},
+                             xcoords,
+                             iv,
+                             xsamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partition x histogram\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  v = \hyperlink{resultset1d_8c_a7975654c6f565aa437eee9f858b26eae}{resultset1d\_get\_mean}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get mean data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a2420a7bb203e76de5ca03bc4dea299c0}{rjmcmc\_save\_coords}(\textcolor{stringliteral}{"multiquad.mean"}, xcoords, v, xsamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save mean data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  v = \hyperlink{resultset1d_8c_a69c7a52dbca7affe007a52ffc961f4b0}{resultset1d\_get\_median}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get median data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a2420a7bb203e76de5ca03bc4dea299c0}{rjmcmc\_save\_coords}(\textcolor{stringliteral}{"multiquad.median"}, xcoords, v, xsamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save median data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  v = \hyperlink{resultset1d_8c_a0419790bcb6c8770aa7376d602c92988}{resultset1d\_get\_mode}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get mode data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a2420a7bb203e76de5ca03bc4dea299c0}{rjmcmc\_save\_coords}(\textcolor{stringliteral}{"multiquad.mode"}, xcoords, v, xsamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save mode data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  v = \hyperlink{resultset1d_8c_ae723bf4f7c1c305f106f0d51c4ce2a35}{resultset1d\_get\_credible\_min}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get credible\_min data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a2420a7bb203e76de5ca03bc4dea299c0}{rjmcmc\_save\_coords}(\textcolor{stringliteral}{"multiquad.credible\_min"}, xcoords, v, xsamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save credible\_min data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  v = \hyperlink{resultset1d_8c_a8f79ccf031407bb8d6c77221c902a9f1}{resultset1d\_get\_credible\_max}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get credible\_max data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a2420a7bb203e76de5ca03bc4dea299c0}{rjmcmc\_save\_coords}(\textcolor{stringliteral}{"multiquad.credible\_max"}, xcoords, v, xsamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save credible\_max data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  iv = \hyperlink{resultset1d_8c_a4f87da1d21bb56c667d7a93685806bde}{resultset1d\_get\_order}(results);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get order data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a287599dc8c2060a831324f4c49988d97}{rjmcmc\_save\_int\_vector}(\textcolor{stringliteral}{"multiquad.order"}, iv, max\_order + 1) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save order data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  iv = \hyperlink{resultset1d_8c_a756a23e1ee2e722a0a3b9edd7aaa13fd}{resultset1d\_get\_propose}(results, &nproc);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get propose counts\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{for} (i = 0; i < nproc; i ++) \{
+    printf(\textcolor{stringliteral}{"%6d "}, iv[i]);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+
+  iv = \hyperlink{resultset1d_8c_a1daaf3302eac0215f318737470a36b4b}{resultset1d\_get\_accept}(results, &nproc);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get accept counts\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{for} (i = 0; i < nproc; i ++) \{
+    printf(\textcolor{stringliteral}{"%6d "}, iv[i]);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+
+  \hyperlink{rjmcmc__util_8c_a66c84ced6c0367edf1e03c8c92f3e48d}{rjmcmc\_destroy\_array\_1d}(xcoords);
+  \hyperlink{resultset1d_8c_aa4dd7e845bf0fa7775d2193202a6e6a7}{resultset1d\_destroy}(results);
+
+  \textcolor{keywordflow}{return} 0;
+\}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} usage(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pname)
+\{
+  fprintf(stderr, 
+          \textcolor{stringliteral}{"usage: %s [options]\(\backslash\)n"}
+          \textcolor{stringliteral}{"where options is on or more of:\(\backslash\)n"}
+          \textcolor{stringliteral}{"\(\backslash\)n"}
+          \textcolor{stringliteral}{" -n|--natural            use natural regression method\(\backslash\)n"}
+          \textcolor{stringliteral}{" -O|--max-order  <int>   maximum order for normal regression\(\backslash\)n"}
+          \textcolor{stringliteral}{"\(\backslash\)n"}
+          \textcolor{stringliteral}{" -h|--help               show usage information\(\backslash\)n"}
+          \textcolor{stringliteral}{"\(\backslash\)n"},
+          pname);
+\}
+\end{DoxyCodeInclude}
+ 

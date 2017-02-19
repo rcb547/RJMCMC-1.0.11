@@ -1,0 +1,115 @@
+\hypertarget{single2d__regression_8h}{}\section{single2d\+\_\+regression.\+h File Reference}
+\label{single2d__regression_8h}\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \+\_\+single2d\+\_\+regression \hyperlink{single2d__regression_8h_aad26ee7402b3ce732e03da461edd6df8}{d\+\_\+regression\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+single2d\+\_\+regression\+\_\+t $\ast$ \hyperlink{single2d__regression_8h_affc1880292a1bcbcc5e86db452c5c332}{single2d\+\_\+regression\+\_\+create} (int max\+\_\+order, double xmin, double xmax, double ymin, double ymax)
+\item 
+void \hyperlink{single2d__regression_8h_a6a02ab553c78191fdfb8e00aab3773dc}{single2d\+\_\+regression\+\_\+destroy} (single2d\+\_\+regression\+\_\+t $\ast$s2d)
+\item 
+void \hyperlink{single2d__regression_8h_abbc49ad1d42db2acc3d1455b6adb6395}{single2d\+\_\+regression\+\_\+clone} (const single2d\+\_\+regression\+\_\+t $\ast$src, single2d\+\_\+regression\+\_\+t $\ast$dst)
+\item 
+double \hyperlink{single2d__regression_8h_ac8c0b6eea5cd09993cb92340c42e094c}{single2d\+\_\+regression\+\_\+misfit} (single2d\+\_\+regression\+\_\+t $\ast$s, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$dataset)
+\item 
+int \hyperlink{single2d__regression_8h_a3e91b5b0741139e54f569890583184d7}{single2d\+\_\+regression\+\_\+initialize} (single2d\+\_\+regression\+\_\+t $\ast$s, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$datasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal})
+\item 
+int \hyperlink{single2d__regression_8h_aa8c952083ae436791eb8546bf7b630d3}{single2d\+\_\+regression\+\_\+propose\+\_\+value} (const single2d\+\_\+regression\+\_\+t $\ast$current, single2d\+\_\+regression\+\_\+t $\ast$proposed, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$dataset, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$value\+\_\+prob)
+\item 
+int \hyperlink{single2d__regression_8h_a8b34c5c3bcfb24633ff74f33f36975bf}{single2d\+\_\+regression\+\_\+propose\+\_\+order} (const single2d\+\_\+regression\+\_\+t $\ast$current, single2d\+\_\+regression\+\_\+t $\ast$proposed, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$dataset, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$order\+\_\+prob)
+\item 
+int \hyperlink{single2d__regression_8h_affc76aa547e00dc538aee94f63dcfa51}{single2d\+\_\+regression\+\_\+propose\+\_\+sigma} (const single2d\+\_\+regression\+\_\+t $\ast$current, single2d\+\_\+regression\+\_\+t $\ast$proposed, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$dataset, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$sigma\+\_\+prob)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}!d\+\_\+regression\+\_\+t@{d\+\_\+regression\+\_\+t}}
+\index{d\+\_\+regression\+\_\+t@{d\+\_\+regression\+\_\+t}!single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsubsection[{\texorpdfstring{d\+\_\+regression\+\_\+t}{d_regression_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct \+\_\+single2d\+\_\+regression {\bf d\+\_\+regression\+\_\+t}}\hypertarget{single2d__regression_8h_aad26ee7402b3ce732e03da461edd6df8}{}\label{single2d__regression_8h_aad26ee7402b3ce732e03da461edd6df8}
+
+
+\subsection{Function Documentation}
+\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}!single2d\+\_\+regression\+\_\+clone@{single2d\+\_\+regression\+\_\+clone}}
+\index{single2d\+\_\+regression\+\_\+clone@{single2d\+\_\+regression\+\_\+clone}!single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsubsection[{\texorpdfstring{single2d\+\_\+regression\+\_\+clone(const single2d\+\_\+regression\+\_\+t $\ast$src, single2d\+\_\+regression\+\_\+t $\ast$dst)}{single2d_regression_clone(const single2d_regression_t *src, single2d_regression_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void single2d\+\_\+regression\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const single2d\+\_\+regression\+\_\+t $\ast$}]{src, }
+\item[{single2d\+\_\+regression\+\_\+t $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{single2d__regression_8h_abbc49ad1d42db2acc3d1455b6adb6395}{}\label{single2d__regression_8h_abbc49ad1d42db2acc3d1455b6adb6395}
+\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}!single2d\+\_\+regression\+\_\+create@{single2d\+\_\+regression\+\_\+create}}
+\index{single2d\+\_\+regression\+\_\+create@{single2d\+\_\+regression\+\_\+create}!single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsubsection[{\texorpdfstring{single2d\+\_\+regression\+\_\+create(int max\+\_\+order, double xmin, double xmax, double ymin, double ymax)}{single2d_regression_create(int max_order, double xmin, double xmax, double ymin, double ymax)}}]{\setlength{\rightskip}{0pt plus 5cm}single2d\+\_\+regression\+\_\+t$\ast$ single2d\+\_\+regression\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+\_\+order, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax}
+\end{DoxyParamCaption}
+)}\hypertarget{single2d__regression_8h_affc1880292a1bcbcc5e86db452c5c332}{}\label{single2d__regression_8h_affc1880292a1bcbcc5e86db452c5c332}
+\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}!single2d\+\_\+regression\+\_\+destroy@{single2d\+\_\+regression\+\_\+destroy}}
+\index{single2d\+\_\+regression\+\_\+destroy@{single2d\+\_\+regression\+\_\+destroy}!single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsubsection[{\texorpdfstring{single2d\+\_\+regression\+\_\+destroy(single2d\+\_\+regression\+\_\+t $\ast$s2d)}{single2d_regression_destroy(single2d_regression_t *s2d)}}]{\setlength{\rightskip}{0pt plus 5cm}void single2d\+\_\+regression\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{single2d\+\_\+regression\+\_\+t $\ast$}]{s2d}
+\end{DoxyParamCaption}
+)}\hypertarget{single2d__regression_8h_a6a02ab553c78191fdfb8e00aab3773dc}{}\label{single2d__regression_8h_a6a02ab553c78191fdfb8e00aab3773dc}
+\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}!single2d\+\_\+regression\+\_\+initialize@{single2d\+\_\+regression\+\_\+initialize}}
+\index{single2d\+\_\+regression\+\_\+initialize@{single2d\+\_\+regression\+\_\+initialize}!single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsubsection[{\texorpdfstring{single2d\+\_\+regression\+\_\+initialize(single2d\+\_\+regression\+\_\+t $\ast$s, const dataset2d\+\_\+t $\ast$datasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal)}{single2d_regression_initialize(single2d_regression_t *s, const dataset2d_t *datasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal)}}]{\setlength{\rightskip}{0pt plus 5cm}int single2d\+\_\+regression\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{single2d\+\_\+regression\+\_\+t $\ast$}]{s, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$}]{datasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal}
+\end{DoxyParamCaption}
+)}\hypertarget{single2d__regression_8h_a3e91b5b0741139e54f569890583184d7}{}\label{single2d__regression_8h_a3e91b5b0741139e54f569890583184d7}
+\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}!single2d\+\_\+regression\+\_\+misfit@{single2d\+\_\+regression\+\_\+misfit}}
+\index{single2d\+\_\+regression\+\_\+misfit@{single2d\+\_\+regression\+\_\+misfit}!single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsubsection[{\texorpdfstring{single2d\+\_\+regression\+\_\+misfit(single2d\+\_\+regression\+\_\+t $\ast$s, const dataset2d\+\_\+t $\ast$dataset)}{single2d_regression_misfit(single2d_regression_t *s, const dataset2d_t *dataset)}}]{\setlength{\rightskip}{0pt plus 5cm}double single2d\+\_\+regression\+\_\+misfit (
+\begin{DoxyParamCaption}
+\item[{single2d\+\_\+regression\+\_\+t $\ast$}]{s, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$}]{dataset}
+\end{DoxyParamCaption}
+)}\hypertarget{single2d__regression_8h_ac8c0b6eea5cd09993cb92340c42e094c}{}\label{single2d__regression_8h_ac8c0b6eea5cd09993cb92340c42e094c}
+\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}!single2d\+\_\+regression\+\_\+propose\+\_\+order@{single2d\+\_\+regression\+\_\+propose\+\_\+order}}
+\index{single2d\+\_\+regression\+\_\+propose\+\_\+order@{single2d\+\_\+regression\+\_\+propose\+\_\+order}!single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsubsection[{\texorpdfstring{single2d\+\_\+regression\+\_\+propose\+\_\+order(const single2d\+\_\+regression\+\_\+t $\ast$current, single2d\+\_\+regression\+\_\+t $\ast$proposed, const dataset2d\+\_\+t $\ast$dataset, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$order\+\_\+prob)}{single2d_regression_propose_order(const single2d_regression_t *current, single2d_regression_t *proposed, const dataset2d_t *dataset, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *order_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int single2d\+\_\+regression\+\_\+propose\+\_\+order (
+\begin{DoxyParamCaption}
+\item[{const single2d\+\_\+regression\+\_\+t $\ast$}]{current, }
+\item[{single2d\+\_\+regression\+\_\+t $\ast$}]{proposed, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$}]{dataset, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{order\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{single2d__regression_8h_a8b34c5c3bcfb24633ff74f33f36975bf}{}\label{single2d__regression_8h_a8b34c5c3bcfb24633ff74f33f36975bf}
+\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}!single2d\+\_\+regression\+\_\+propose\+\_\+sigma@{single2d\+\_\+regression\+\_\+propose\+\_\+sigma}}
+\index{single2d\+\_\+regression\+\_\+propose\+\_\+sigma@{single2d\+\_\+regression\+\_\+propose\+\_\+sigma}!single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsubsection[{\texorpdfstring{single2d\+\_\+regression\+\_\+propose\+\_\+sigma(const single2d\+\_\+regression\+\_\+t $\ast$current, single2d\+\_\+regression\+\_\+t $\ast$proposed, const dataset2d\+\_\+t $\ast$dataset, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$sigma\+\_\+prob)}{single2d_regression_propose_sigma(const single2d_regression_t *current, single2d_regression_t *proposed, const dataset2d_t *dataset, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *sigma_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int single2d\+\_\+regression\+\_\+propose\+\_\+sigma (
+\begin{DoxyParamCaption}
+\item[{const single2d\+\_\+regression\+\_\+t $\ast$}]{current, }
+\item[{single2d\+\_\+regression\+\_\+t $\ast$}]{proposed, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$}]{dataset, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{sigma\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{single2d__regression_8h_affc76aa547e00dc538aee94f63dcfa51}{}\label{single2d__regression_8h_affc76aa547e00dc538aee94f63dcfa51}
+\index{single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}!single2d\+\_\+regression\+\_\+propose\+\_\+value@{single2d\+\_\+regression\+\_\+propose\+\_\+value}}
+\index{single2d\+\_\+regression\+\_\+propose\+\_\+value@{single2d\+\_\+regression\+\_\+propose\+\_\+value}!single2d\+\_\+regression.\+h@{single2d\+\_\+regression.\+h}}
+\subsubsection[{\texorpdfstring{single2d\+\_\+regression\+\_\+propose\+\_\+value(const single2d\+\_\+regression\+\_\+t $\ast$current, single2d\+\_\+regression\+\_\+t $\ast$proposed, const dataset2d\+\_\+t $\ast$dataset, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$value\+\_\+prob)}{single2d_regression_propose_value(const single2d_regression_t *current, single2d_regression_t *proposed, const dataset2d_t *dataset, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *value_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int single2d\+\_\+regression\+\_\+propose\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{const single2d\+\_\+regression\+\_\+t $\ast$}]{current, }
+\item[{single2d\+\_\+regression\+\_\+t $\ast$}]{proposed, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$}]{dataset, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{value\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{single2d__regression_8h_aa8c952083ae436791eb8546bf7b630d3}{}\label{single2d__regression_8h_aa8c952083ae436791eb8546bf7b630d3}

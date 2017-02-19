@@ -1,0 +1,124 @@
+\hypertarget{dataset2d_8c}{}\section{dataset2d.\+c File Reference}
+\label{dataset2d_8c}\index{dataset2d.\+c@{dataset2d.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$float.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/dataset2d.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+util.\+h$>$}\\*
+Include dependency graph for dataset2d.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$ \hyperlink{dataset2d_8c_a9999a5e95e29939f4c9382cb77584bb9}{dataset2d\+\_\+allocate} (int npoints)
+\begin{DoxyCompactList}\small\item\em Create a new empty dataset. \end{DoxyCompactList}\item 
+void \hyperlink{dataset2d_8c_a24b470e01459e7413b80f8f38a5b9fd3}{dataset2d\+\_\+destroy} (\hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$d)
+\begin{DoxyCompactList}\small\item\em Destroy a dataset. \end{DoxyCompactList}\item 
+\hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$ \hyperlink{dataset2d_8c_a91faa110511acf5d304ccd5f18f1d1da}{dataset2d\+\_\+load\+\_\+fixed} (const char $\ast$filename, double sigma)
+\begin{DoxyCompactList}\small\item\em Load a dataset with a fixed noise parameter. \end{DoxyCompactList}\item 
+\hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$ \hyperlink{dataset2d_8c_ab156d7d436201cff1836ed674bf13c0c}{dataset2d\+\_\+load\+\_\+known} (const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Load a dataset with known noise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{dataset2d.\+c@{dataset2d.\+c}!dataset2d\+\_\+allocate@{dataset2d\+\_\+allocate}}
+\index{dataset2d\+\_\+allocate@{dataset2d\+\_\+allocate}!dataset2d.\+c@{dataset2d.\+c}}
+\subsubsection[{\texorpdfstring{dataset2d\+\_\+allocate(int npoints)}{dataset2d_allocate(int npoints)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset2d\+\_\+t}$\ast$ dataset2d\+\_\+allocate (
+\begin{DoxyParamCaption}
+\item[{int}]{npoints}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset2d_8c_a9999a5e95e29939f4c9382cb77584bb9}{}\label{dataset2d_8c_a9999a5e95e29939f4c9382cb77584bb9}
+
+
+Create a new empty dataset. 
+
+Allocate a new \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} object of a given size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & maximum number of points. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+dataset2d\+::lambdamax, \+\_\+dataset2d\+::lambdamin, \+\_\+dataset2d\+::lambdastd, \+\_\+point2d\+::n, \+\_\+dataset1d\+::npoints, \+\_\+dataset2d\+::npoints, \+\_\+dataset2d\+::points, \+\_\+point2d\+::x, \+\_\+dataset2d\+::xmax, \+\_\+dataset2d\+::xmin, \+\_\+point2d\+::y, \+\_\+dataset2d\+::ymax, \+\_\+dataset2d\+::ymin, \+\_\+point2d\+::z, \+\_\+dataset2d\+::zmax, and \+\_\+dataset2d\+::zmin.
+
+
+
+Referenced by dataset2d\+\_\+load\+\_\+fixed(), and dataset2d\+\_\+load\+\_\+known().
+
+\index{dataset2d.\+c@{dataset2d.\+c}!dataset2d\+\_\+destroy@{dataset2d\+\_\+destroy}}
+\index{dataset2d\+\_\+destroy@{dataset2d\+\_\+destroy}!dataset2d.\+c@{dataset2d.\+c}}
+\subsubsection[{\texorpdfstring{dataset2d\+\_\+destroy(dataset2d\+\_\+t $\ast$d)}{dataset2d_destroy(dataset2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}void dataset2d\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf dataset2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset2d_8c_a24b470e01459e7413b80f8f38a5b9fd3}{}\label{dataset2d_8c_a24b470e01459e7413b80f8f38a5b9fd3}
+
+
+Destroy a dataset. 
+
+Deallocate an existing \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The dataset to destroy. \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{2d_2partitioned_2fm_2regression_2regression_8c-example}{2d/partitioned/fm/regression/regression.\+c}, \hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}, \hyperlink{2d_2partitioned_2regression_2disc_2disc_8c-example}{2d/partitioned/regression/disc/disc.\+c}, and \hyperlink{2d_2partitioned_2regression_2square_2square_8c-example}{2d/partitioned/regression/square/square.\+c}.\end{Desc}
+
+
+References \+\_\+dataset2d\+::points.
+
+\index{dataset2d.\+c@{dataset2d.\+c}!dataset2d\+\_\+load\+\_\+fixed@{dataset2d\+\_\+load\+\_\+fixed}}
+\index{dataset2d\+\_\+load\+\_\+fixed@{dataset2d\+\_\+load\+\_\+fixed}!dataset2d.\+c@{dataset2d.\+c}}
+\subsubsection[{\texorpdfstring{dataset2d\+\_\+load\+\_\+fixed(const char $\ast$filename, double sigma)}{dataset2d_load_fixed(const char *filename, double sigma)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset2d\+\_\+t}$\ast$ dataset2d\+\_\+load\+\_\+fixed (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename, }
+\item[{double}]{sigma}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset2d_8c_a91faa110511acf5d304ccd5f18f1d1da}{}\label{dataset2d_8c_a91faa110511acf5d304ccd5f18f1d1da}
+
+
+Load a dataset with a fixed noise parameter. 
+
+Loads a file containing x, y, z coordinates and applies a fixed noise level to each data point. The expected format is a text file containing space separated x, y and z coordinates on each line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to load. \\
+\hline
+{\em sigma} & The fixed noise level. \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{2d_2partitioned_2fm_2regression_2regression_8c-example}{2d/partitioned/fm/regression/regression.\+c}, \hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}, \hyperlink{2d_2partitioned_2regression_2disc_2disc_8c-example}{2d/partitioned/regression/disc/disc.\+c}, and \hyperlink{2d_2partitioned_2regression_2square_2square_8c-example}{2d/partitioned/regression/square/square.\+c}.\end{Desc}
+
+
+References dataset2d\+\_\+allocate(), \+\_\+point2d\+::n, \+\_\+dataset2d\+::points, rjmcmc\+\_\+error(), \+\_\+point2d\+::x, x, \+\_\+dataset2d\+::xmax, \+\_\+dataset1d\+::xmin, \+\_\+dataset2d\+::xmin, \+\_\+point2d\+::y, y, \+\_\+dataset2d\+::ymax, \+\_\+dataset1d\+::ymin, \+\_\+dataset2d\+::ymin, \+\_\+point2d\+::z, z, \+\_\+dataset2d\+::zmax, and \+\_\+dataset2d\+::zmin.
+
+\index{dataset2d.\+c@{dataset2d.\+c}!dataset2d\+\_\+load\+\_\+known@{dataset2d\+\_\+load\+\_\+known}}
+\index{dataset2d\+\_\+load\+\_\+known@{dataset2d\+\_\+load\+\_\+known}!dataset2d.\+c@{dataset2d.\+c}}
+\subsubsection[{\texorpdfstring{dataset2d\+\_\+load\+\_\+known(const char $\ast$filename)}{dataset2d_load_known(const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dataset2d\+\_\+t}$\ast$ dataset2d\+\_\+load\+\_\+known (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{dataset2d_8c_ab156d7d436201cff1836ed674bf13c0c}{}\label{dataset2d_8c_ab156d7d436201cff1836ed674bf13c0c}
+
+
+Load a dataset with known noise. 
+
+Loads a file containing x, y, z coordinates and noise. The expected format is a text file containing space separated x, y and z coordinates and noise on each line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to load. \\
+\hline
+\end{DoxyParams}
+
+
+References dataset2d\+\_\+allocate(), \+\_\+point2d\+::n, \+\_\+dataset2d\+::points, rjmcmc\+\_\+error(), \+\_\+point2d\+::x, x, \+\_\+dataset2d\+::xmax, \+\_\+dataset1d\+::xmin, \+\_\+dataset2d\+::xmin, \+\_\+point2d\+::y, y, \+\_\+dataset2d\+::ymax, \+\_\+dataset1d\+::ymin, \+\_\+dataset2d\+::ymin, \+\_\+point2d\+::z, z, \+\_\+dataset2d\+::zmax, and \+\_\+dataset2d\+::zmin.
+

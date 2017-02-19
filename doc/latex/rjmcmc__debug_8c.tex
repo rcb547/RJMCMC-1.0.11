@@ -1,0 +1,105 @@
+\hypertarget{rjmcmc__debug_8c}{}\section{rjmcmc\+\_\+debug.\+c File Reference}
+\label{rjmcmc__debug_8c}\index{rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdarg.\+h$>$}\\*
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+debug.\+h$>$}\\*
+Include dependency graph for rjmcmc\+\_\+debug.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rjmcmc__debug_8h_ae501f0fa6c8b63a25a15222c48f6e0e7}{rjmcmc\+\_\+debug\+\_\+function\+\_\+t} \hyperlink{rjmcmc__debug_8c_ac6c23e482298b7e6cbfe3ed7e19adaa3}{rjmcmc\+\_\+debug\+\_\+set\+\_\+output} (\hyperlink{rjmcmc__debug_8h_ae501f0fa6c8b63a25a15222c48f6e0e7}{rjmcmc\+\_\+debug\+\_\+function\+\_\+t} fn)
+\item 
+void \hyperlink{rjmcmc__debug_8c_a4dc95a4701ef8b6c9eb332c22d527bc3}{rjmcmc\+\_\+debug\+\_\+set\+\_\+default\+\_\+output} (void)
+\item 
+\hyperlink{rjmcmc__debug_8h_a3f276d334836c8e94a1e825d00e6e1b0}{rjmcmc\+\_\+debug\+\_\+level\+\_\+t} \hyperlink{rjmcmc__debug_8c_ae70b3bccca1b30517806d65d6c4d852f}{rjmcmc\+\_\+debug\+\_\+set\+\_\+level} (\hyperlink{rjmcmc__debug_8h_a3f276d334836c8e94a1e825d00e6e1b0}{rjmcmc\+\_\+debug\+\_\+level\+\_\+t} new\+\_\+level)
+\item 
+void \hyperlink{rjmcmc__debug_8c_ace7410ce6e3fc7110d81449366e5f8d7}{rjmcmc\+\_\+fatal} (const char $\ast$fmt,...)
+\item 
+void \hyperlink{rjmcmc__debug_8c_a540536502992ae80e5e3377b18d08974}{rjmcmc\+\_\+error} (const char $\ast$fmt,...)
+\item 
+void \hyperlink{rjmcmc__debug_8c_a91808bc6d9297248c70911b2269de169}{rjmcmc\+\_\+warning} (const char $\ast$fmt,...)
+\item 
+void \hyperlink{rjmcmc__debug_8c_abad37ed25d34dec2e3d003256912b00c}{rjmcmc\+\_\+debug} (const char $\ast$fmt,...)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}!rjmcmc\+\_\+debug@{rjmcmc\+\_\+debug}}
+\index{rjmcmc\+\_\+debug@{rjmcmc\+\_\+debug}!rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+debug(const char $\ast$fmt,...)}{rjmcmc_debug(const char *fmt,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void rjmcmc\+\_\+debug (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fmt, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__debug_8c_abad37ed25d34dec2e3d003256912b00c}{}\label{rjmcmc__debug_8c_abad37ed25d34dec2e3d003256912b00c}
+
+
+References R\+J\+M\+C\+M\+C\+\_\+\+D\+E\+B\+UG, R\+J\+M\+C\+M\+C\+\_\+\+E\+R\+R\+OR, R\+J\+M\+C\+M\+C\+\_\+\+F\+A\+T\+AL, and R\+J\+M\+C\+M\+C\+\_\+\+W\+A\+R\+N\+I\+NG.
+
+\index{rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}!rjmcmc\+\_\+debug\+\_\+set\+\_\+default\+\_\+output@{rjmcmc\+\_\+debug\+\_\+set\+\_\+default\+\_\+output}}
+\index{rjmcmc\+\_\+debug\+\_\+set\+\_\+default\+\_\+output@{rjmcmc\+\_\+debug\+\_\+set\+\_\+default\+\_\+output}!rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+debug\+\_\+set\+\_\+default\+\_\+output(void)}{rjmcmc_debug_set_default_output(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void rjmcmc\+\_\+debug\+\_\+set\+\_\+default\+\_\+output (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__debug_8c_a4dc95a4701ef8b6c9eb332c22d527bc3}{}\label{rjmcmc__debug_8c_a4dc95a4701ef8b6c9eb332c22d527bc3}
+\index{rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}!rjmcmc\+\_\+debug\+\_\+set\+\_\+level@{rjmcmc\+\_\+debug\+\_\+set\+\_\+level}}
+\index{rjmcmc\+\_\+debug\+\_\+set\+\_\+level@{rjmcmc\+\_\+debug\+\_\+set\+\_\+level}!rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+debug\+\_\+set\+\_\+level(rjmcmc\+\_\+debug\+\_\+level\+\_\+t new\+\_\+level)}{rjmcmc_debug_set_level(rjmcmc_debug_level_t new_level)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rjmcmc\+\_\+debug\+\_\+level\+\_\+t} rjmcmc\+\_\+debug\+\_\+set\+\_\+level (
+\begin{DoxyParamCaption}
+\item[{{\bf rjmcmc\+\_\+debug\+\_\+level\+\_\+t}}]{new\+\_\+level}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__debug_8c_ae70b3bccca1b30517806d65d6c4d852f}{}\label{rjmcmc__debug_8c_ae70b3bccca1b30517806d65d6c4d852f}
+\index{rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}!rjmcmc\+\_\+debug\+\_\+set\+\_\+output@{rjmcmc\+\_\+debug\+\_\+set\+\_\+output}}
+\index{rjmcmc\+\_\+debug\+\_\+set\+\_\+output@{rjmcmc\+\_\+debug\+\_\+set\+\_\+output}!rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+debug\+\_\+set\+\_\+output(rjmcmc\+\_\+debug\+\_\+function\+\_\+t fn)}{rjmcmc_debug_set_output(rjmcmc_debug_function_t fn)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rjmcmc\+\_\+debug\+\_\+function\+\_\+t} rjmcmc\+\_\+debug\+\_\+set\+\_\+output (
+\begin{DoxyParamCaption}
+\item[{{\bf rjmcmc\+\_\+debug\+\_\+function\+\_\+t}}]{fn}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__debug_8c_ac6c23e482298b7e6cbfe3ed7e19adaa3}{}\label{rjmcmc__debug_8c_ac6c23e482298b7e6cbfe3ed7e19adaa3}
+\index{rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}!rjmcmc\+\_\+error@{rjmcmc\+\_\+error}}
+\index{rjmcmc\+\_\+error@{rjmcmc\+\_\+error}!rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+error(const char $\ast$fmt,...)}{rjmcmc_error(const char *fmt,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void rjmcmc\+\_\+error (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fmt, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__debug_8c_a540536502992ae80e5e3377b18d08974}{}\label{rjmcmc__debug_8c_a540536502992ae80e5e3377b18d08974}
+
+
+References R\+J\+M\+C\+M\+C\+\_\+\+E\+R\+R\+OR.
+
+
+
+Referenced by curvefit\+\_\+compute(), curvefit\+\_\+compute\+\_\+lambda(), curvefit\+\_\+sample(), dataset1d\+\_\+load\+\_\+fixed(), dataset1d\+\_\+load\+\_\+known(), dataset1d\+\_\+mean\+\_\+variance(), dataset1d\+\_\+sort(), dataset2d\+\_\+load\+\_\+fixed(), dataset2d\+\_\+load\+\_\+known(), delaunay2d\+\_\+ct\+\_\+value\+\_\+at(), forwardmodel\+\_\+misfit\+\_\+sigma\+\_\+power(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+checkpoint(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+checkpoint\+\_\+restart(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+restartable(), M\+P\+I\+\_\+resultset1d\+\_\+assemble\+\_\+results(), M\+P\+I\+\_\+resultset1dfm\+\_\+assemble\+\_\+results(), M\+P\+I\+\_\+resultset2dfm\+\_\+assemble\+\_\+results(), M\+P\+I\+\_\+resultsetfm\+\_\+assemble\+\_\+results(), M\+P\+I\+\_\+single1d\+\_\+regression(), M\+P\+I\+\_\+single\+\_\+forwardmodel(), M\+P\+I\+\_\+single\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), part1d\+\_\+forwardmodel\+\_\+value\+\_\+at(), part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(), part1d\+\_\+natural\+\_\+regression(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+birth(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+death(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+regression(), part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(), part1d\+\_\+zero\+\_\+propose\+\_\+birth(), part1d\+\_\+zero\+\_\+propose\+\_\+death(), part1d\+\_\+zero\+\_\+propose\+\_\+move(), part1d\+\_\+zero\+\_\+regression(), part1d\+\_\+zero\+\_\+value\+\_\+at(), part2d\+\_\+forwardmodel(), part2d\+\_\+forwardmodel\+\_\+addpoint(), part2d\+\_\+forwardmodel\+\_\+delpoint(), part2d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters(), part2d\+\_\+forwardmodel\+\_\+hierarchical(), part2d\+\_\+forwardmodel\+\_\+movepoint(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), part2d\+\_\+forwardmodel\+\_\+restartable(), part2d\+\_\+regression(), part2d\+\_\+regression\+\_\+rj\+\_\+initialize(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), position\+\_\+map1d\+\_\+create(), position\+\_\+map1d\+\_\+delete(), position\+\_\+map1d\+\_\+insert(), position\+\_\+map1d\+\_\+move(), position\+\_\+map1d\+\_\+next\+\_\+index(), position\+\_\+map1d\+\_\+next\+\_\+position(), position\+\_\+map1d\+\_\+position\+\_\+of\+\_\+index(), position\+\_\+map2d\+\_\+linear\+\_\+delete(), position\+\_\+map2d\+\_\+linear\+\_\+insert(), position\+\_\+map2d\+\_\+linear\+\_\+move(), resultset2dfm\+\_\+load(), resultset2dfm\+\_\+save(), resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+get\+\_\+hierarchical\+\_\+parameter\+\_\+history\+\_\+f(), resultsetfm\+\_\+get\+\_\+parameter\+\_\+history(), resultsetfm\+\_\+get\+\_\+parameter\+\_\+history\+\_\+f(), resultsetfm\+\_\+sample(), resultsetfm\+\_\+sample\+\_\+hierarchical(), resultsetfm\+\_\+sample\+\_\+misfit(), rjmcmc\+\_\+engine\+\_\+init(), rjmcmc\+\_\+engine\+\_\+restart(), rjmcmc\+\_\+engine\+\_\+step(), rjmcmc\+\_\+save\+\_\+coords(), rjmcmc\+\_\+save\+\_\+int\+\_\+coords(), rjmcmc\+\_\+save\+\_\+int\+\_\+matrix(), rjmcmc\+\_\+save\+\_\+int\+\_\+vector(), rjmcmc\+\_\+save\+\_\+matrix(), rjmcmc\+\_\+save\+\_\+vector(), single1d\+\_\+direct\+\_\+regression(), single1d\+\_\+regression\+\_\+clone(), single\+\_\+forwardmodel(), and single\+\_\+forwardmodel\+\_\+hierarchical().
+
+\index{rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}!rjmcmc\+\_\+fatal@{rjmcmc\+\_\+fatal}}
+\index{rjmcmc\+\_\+fatal@{rjmcmc\+\_\+fatal}!rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+fatal(const char $\ast$fmt,...)}{rjmcmc_fatal(const char *fmt,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void rjmcmc\+\_\+fatal (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fmt, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__debug_8c_ace7410ce6e3fc7110d81449366e5f8d7}{}\label{rjmcmc__debug_8c_ace7410ce6e3fc7110d81449366e5f8d7}
+
+
+References R\+J\+M\+C\+M\+C\+\_\+\+F\+A\+T\+AL.
+
+
+
+Referenced by dataset1d\+\_\+create(), and resultset2dfm\+\_\+create().
+
+\index{rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}!rjmcmc\+\_\+warning@{rjmcmc\+\_\+warning}}
+\index{rjmcmc\+\_\+warning@{rjmcmc\+\_\+warning}!rjmcmc\+\_\+debug.\+c@{rjmcmc\+\_\+debug.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+warning(const char $\ast$fmt,...)}{rjmcmc_warning(const char *fmt,...)}}]{\setlength{\rightskip}{0pt plus 5cm}void rjmcmc\+\_\+warning (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fmt, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__debug_8c_a91808bc6d9297248c70911b2269de169}{}\label{rjmcmc__debug_8c_a91808bc6d9297248c70911b2269de169}
+
+
+References R\+J\+M\+C\+M\+C\+\_\+\+W\+A\+R\+N\+I\+NG.
+

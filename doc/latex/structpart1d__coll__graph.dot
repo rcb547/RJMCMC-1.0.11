@@ -1,0 +1,28 @@
+digraph "part1d"
+{
+  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
+  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
+  Node1 [label="part1d",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" proposed\ncurrent" ];
+  Node2 [label="_part1d_zero",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__part1d__zero.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" models" ];
+  Node3 [label="_model",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__model.html"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" p" ];
+  Node4 [label="_position_map1d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__position__map1d.html"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" proposed\ncurrent" ];
+  Node5 [label="_part1d_natural_rj",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__part1d__natural__rj.html"];
+  Node3 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" models" ];
+  Node4 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" p" ];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" dataset" ];
+  Node6 [label="_dataset1d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__dataset1d.html"];
+  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" points" ];
+  Node7 [label="_point1d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__point1d.html"];
+  Node8 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" proposed\ncurrent" ];
+  Node8 [label="_part1d_regression_rj",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__part1d__regression__rj.html"];
+  Node3 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" models" ];
+  Node9 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cf" ];
+  Node9 [label="_curvefit_result",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__curvefit__result.html"];
+  Node4 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" p" ];
+  Node10 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" results" ];
+  Node10 [label="_resultset1d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__resultset1d.html"];
+}

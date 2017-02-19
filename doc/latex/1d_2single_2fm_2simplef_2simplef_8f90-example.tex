@@ -1,0 +1,197 @@
+\hypertarget{1d_2single_2fm_2simplef_2simplef_8f90-example}{}\section{1d/single/fm/simplef/simplef.\+f90}
+
+\begin{DoxyCodeInclude}
+1 \textcolor{keyword}{program} simplef
+2 
+3 \textcolor{comment}{!}
+4 \textcolor{comment}{! Include the rjmcmc head file}
+5 \textcolor{comment}{!}
+6 include \textcolor{stringliteral}{'rjmcmc/rjmcmcf.h'}
+7 
+8 \textcolor{keywordtype}{type}(c\_ptr) :: results
+9 
+10 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} ::burnin = 1000
+11 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} ::\hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total} = 10000
+12 
+13 \textcolor{keywordtype}{procedure}(rjmcmc\_uniform\_rand), \textcolor{keywordtype}{pointer} :: \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}
+14 \textcolor{keywordtype}{procedure}(rjmcmc\_normal\_rand), \textcolor{keywordtype}{pointer} :: \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}
+15 
+16 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} :: \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters} = 1
+17 \textcolor{keywordtype}{type}(\hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\_t}), \textcolor{keywordtype}{dimension (nparameters)} :: 
+      \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}
+18 \textcolor{keywordtype}{type}(c\_ptr) :: \hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg}
+19 
+20 \textcolor{keywordtype}{procedure}(single\_fm\_likelihood), \textcolor{keywordtype}{pointer} :: \hyperlink{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}{likelihood}
+21 
+22 \textcolor{keywordtype}{real(kind = c\_double)} :: \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\_interval}
+23 \textcolor{keywordtype}{integer(kind = c\_int)} :: \hyperlink{rjmcmcf__mpi_8h_a30e374d8d017c0854f714c208aea6512}{samples}
+24 \textcolor{keywordtype}{integer(kind = c\_int)} :: \hyperlink{rjmcmcf__mpi_8h_a141ddf12f08f2f9e95036a6cd06324ff}{requested\_results}
+25 
+26 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{dimension(nparameters)} :: propose, accept
+27 \textcolor{keywordtype}{integer(kind = c\_int)} :: t
+28 
+29 \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(total)} :: misfit
+30 \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(total)} :: history
+31 
+32 \textcolor{keywordtype}{integer} :: i
+33 \textcolor{keywordtype}{integer} :: ioerror
+34 
+35 \textcolor{comment}{!}
+36 \textcolor{comment}{! Initialise the random number generator with a seed}
+37 \textcolor{comment}{!}
+38 \textcolor{keyword}{call }\hyperlink{rjmcmc__random_8c_a0cbc991b84d0f6b749e9b45cbc018d2a}{rjmcmc\_seed}(101)
+39 
+40 \textcolor{comment}{!}
+41 \textcolor{comment}{! Set the simulation parameters}
+42 \textcolor{comment}{!}
+43 \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\_interval} = 0.95
+44 \hyperlink{rjmcmcf__mpi_8h_a30e374d8d017c0854f714c208aea6512}{samples} = 100
+45 
+46 \textcolor{comment}{!}
+47 \textcolor{comment}{! We want the mean and credible intervals calculated}
+48 \textcolor{comment}{! for us.}
+49 \textcolor{comment}{!}
+50 \hyperlink{rjmcmcf__mpi_8h_a141ddf12f08f2f9e95036a6cd06324ff}{requested\_results} = resultsetfm\_mean + resultsetfm\_credible
+51 
+52 \textcolor{comment}{!}
+53 \textcolor{comment}{! Set the parameters}
+54 \textcolor{comment}{!}
+55 \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}(1)%fmin = 0.0
+56 \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}(1)%fmax = 10.0
+57 \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}(1)%fstd\_value = 1.0
+58 \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}(1)%fstd\_bd = 0.0
+59 
+60 \textcolor{comment}{!}
+61 \textcolor{comment}{! Use the rjmcmc random routines}
+62 \textcolor{comment}{!}
+63 \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random} => \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform}
+64 \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal} => \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal}
+65 
+66 \textcolor{comment}{!}
+67 \textcolor{comment}{! Point to our forward model function}
+68 \textcolor{comment}{!}
+69 \hyperlink{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}{likelihood} => my\_forwardmodel
+70 
+71 \textcolor{comment}{!}
+72 \textcolor{comment}{! Run the regression}
+73 \textcolor{comment}{!}
+74 results = \hyperlink{forwardmodel__f_8c_a11799898f79291bad341135f00b7a243}{single\_forwardmodel\_f}(burnin, \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, 
+      \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters}, &
+75      \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}, \hyperlink{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}{likelihood}, \hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg}, \hyperlink{rjmcmcf__mpi_8h_a30e374d8d017c0854f714c208aea6512}{samples}, 
+      \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\_interval}, &
+76      \hyperlink{rjmcmcf__mpi_8h_a141ddf12f08f2f9e95036a6cd06324ff}{requested\_results})
+77 
+78 \textcolor{comment}{!}
+79 \textcolor{comment}{! Get the propose and acceptance counts}
+80 \textcolor{comment}{!}
+81 t = \hyperlink{resultsetfm_8c_a6ea14e45e4cc16b16d2f4197a5853967}{resultsetfm\_get\_propose\_f}(results, \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters}, propose)
+82 t = \hyperlink{resultsetfm_8c_a19a3055ea265d8e324f4a7f74ce0ab95}{resultsetfm\_get\_accept\_f}(results, \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters}, accept)
+83 
+84 \textcolor{comment}{!}
+85 \textcolor{comment}{! Print them out}
+86 \textcolor{comment}{!}
+87 \textcolor{keyword}{write} (*,*) \textcolor{stringliteral}{"Proposed"}, propose
+88 \textcolor{keyword}{write} (*,*) \textcolor{stringliteral}{"Accepted"}, accept
+89 
+90 \textcolor{comment}{!}
+91 \textcolor{comment}{! Retrieve the log(likelihood)/misfit history and save it to a text}
+92 \textcolor{comment}{! file.}
+93 \textcolor{comment}{!}
+94 t = \hyperlink{resultsetfm_8c_a9164d97e32cb27d0e43ccbfffe85293b}{resultsetfm\_get\_misfit\_f}(results, \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, misfit)
+95 
+96 \textcolor{keyword}{open}(unit=8, file=\textcolor{stringliteral}{'misfit.txt'}, status=\textcolor{stringliteral}{'replace'}, action=\textcolor{stringliteral}{'write'}, &
+97      iostat=ioerror)
+98 
+99 \textcolor{keywordflow}{if} (ioerror == 0) \textcolor{keywordflow}{then}
+100 
+101    \textcolor{keywordflow}{do} i = 1, \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}
+102       \textcolor{keyword}{write}(8, *) misfit(i)
+103 \textcolor{keywordflow}{   end do}
+104    
+105    \textcolor{keyword}{close}(8)
+106 
+107 \textcolor{keywordflow}{end if}
+108 
+109 \textcolor{comment}{!}
+110 \textcolor{comment}{! Print the mean of the samples}
+111 \textcolor{comment}{!}
+112 \textcolor{keyword}{write} (*,*) \textcolor{stringliteral}{"Mean"}, \hyperlink{resultsetfm_8c_a683253c9e026d36c2eb83108b0fc3ebd}{resultsetfm\_get\_parameter\_mean}(results, 0)
+113 
+114 \textcolor{comment}{!}
+115 \textcolor{comment}{! Print the credible intervals}
+116 \textcolor{comment}{!}
+117 \textcolor{keyword}{write} (*,*), \textcolor{stringliteral}{"Credible Min"}, \hyperlink{resultsetfm_8c_a04b3b91f4cdd59c4704416ed454ca6f6}{resultsetfm\_get\_parameter\_credible\_min}(
+      results, 0)
+118 \textcolor{keyword}{write} (*,*), \textcolor{stringliteral}{"Credible Max"}, \hyperlink{resultsetfm_8c_ac7e84096e87c4eae3980705e7e4f6926}{resultsetfm\_get\_parameter\_credible\_max}(
+      results, 0)
+119 
+120 \textcolor{comment}{!}
+121 \textcolor{comment}{! Parameter histogram}
+122 \textcolor{comment}{!}
+123 t = \hyperlink{resultsetfm_8c_aad0d90000049dd989a00f827728a99e3}{resultsetfm\_get\_parameter\_history\_f}(results, 0, 
+      \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, history)
+124 
+125 \textcolor{keyword}{open}(unit=8, file=\textcolor{stringliteral}{'history.txt'}, status=\textcolor{stringliteral}{'replace'}, action=\textcolor{stringliteral}{'write'}, &
+126      iostat=ioerror)
+127 
+128 \textcolor{keywordflow}{if} (ioerror == 0) \textcolor{keywordflow}{then}
+129 
+130    \textcolor{keywordflow}{do} i = 1, \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}
+131       \textcolor{keyword}{write} (8, *) history(i)
+132 \textcolor{keywordflow}{   end do}
+133    
+134    \textcolor{keyword}{close}(8)
+135    
+136 \textcolor{keywordflow}{end if}
+137 
+138 
+139 \textcolor{comment}{!}
+140 \textcolor{comment}{! Finally deallocate the results}
+141 \textcolor{comment}{!}
+142 \textcolor{keyword}{call }\hyperlink{resultsetfm_8c_a187f38ceca7446af14a1a2b6183db017}{resultsetfm\_destroy}(results)
+143 
+144 \textcolor{keyword}{contains}
+145 
+146 \textcolor{comment}{!}
+147 \textcolor{comment}{! The forward model function}
+148 \textcolor{comment}{!}
+149 \textcolor{keyword}{function }my\_forwardmodel(user\_arg, n, values) bind(C)
+150 
+151   \hyperlink{rjmcmcf_8h_a821b46c311d079e47b9c09782230af02}{use}, \textcolor{keywordtype}{intrinsic} :: iso\_c\_binding 
+152 
+153   \textcolor{comment}{!}
+154   \textcolor{comment}{! The return type is a real }
+155   \textcolor{comment}{!}
+156   \textcolor{keywordtype}{real (kind = c\_double)} :: my\_forwardmodel
+157 
+158   \textcolor{comment}{!}
+159   \textcolor{comment}{! The user argument is a pointer that you can use to point to useful}
+160   \textcolor{comment}{! data or state information to use within this function (rather than}
+161   \textcolor{comment}{! relying on global variables. We don't need it in this case since}
+162   \textcolor{comment}{! the forward model is so simple}
+163   \textcolor{comment}{!}
+164   \textcolor{keywordtype}{type}(c\_ptr), \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{value} :: \hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg}
+165 
+166   \textcolor{comment}{!}
+167   \textcolor{comment}{! The n parameter represents then dimension of the values array}
+168   \textcolor{comment}{!}
+169   \textcolor{keywordtype}{integer (kind = c\_int)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{value} :: n
+170 
+171   \textcolor{comment}{!}
+172   \textcolor{comment}{! The values array contains the current model that the log(likelihood)}
+173   \textcolor{comment}{! is required for.}
+174   \textcolor{comment}{!}
+175   \textcolor{keywordtype}{real (kind = c\_double)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{dimension(n)} :: values
+176 
+177   \textcolor{keywordtype}{real (kind = c\_double)}, \textcolor{keywordtype}{parameter} :: value\_target = 5.0
+178   \textcolor{keywordtype}{real (kind = c\_double)}, \textcolor{keywordtype}{parameter} :: value\_sigma = 1.0
+179 
+180   \textcolor{comment}{!}
+181   \textcolor{comment}{!}
+182   my\_forwardmodel = (values(1) - value\_target)**2 / (2.0 * value\_sigma**2)
+183   
+184 \textcolor{keyword}{end function }my\_forwardmodel
+185  
+186 \textcolor{keyword}{end program }simplef
+\end{DoxyCodeInclude}
+ 

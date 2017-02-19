@@ -1,0 +1,195 @@
+\hypertarget{position__map2d__quadtree_8h}{}\section{position\+\_\+map2d\+\_\+quadtree.\+h File Reference}
+\label{position__map2d__quadtree_8h}\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+{\ttfamily \#include $<$rjmcmc/bbox2d.\+h$>$}\\*
+Include dependency graph for position\+\_\+map2d\+\_\+quadtree.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__position__map2d__quadtree}{\+\_\+position\+\_\+map2d\+\_\+quadtree} \hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$ \hyperlink{position__map2d__quadtree_8h_a7922d65cbf6516ffca6cc243c409f9f4}{position\+\_\+map2d\+\_\+quadtree\+\_\+create} (int max\+\_\+partitions, double xmin, double xmax, double ymin, double ymax)
+\item 
+void \hyperlink{position__map2d__quadtree_8h_a1b64789586692b1ec92d2b7b42c67a5e}{position\+\_\+map2d\+\_\+quadtree\+\_\+destroy} (\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$p)
+\item 
+void \hyperlink{position__map2d__quadtree_8h_a7d4dbe9caad9afc021380f5187851dc4}{position\+\_\+map2d\+\_\+quadtree\+\_\+clone} (const \hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$src, \hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$dst)
+\item 
+int \hyperlink{position__map2d__quadtree_8h_a349c441d3872d652e1891553811898cf}{position\+\_\+map2d\+\_\+quadtree\+\_\+insert} (\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__quadtree_8h_a40b4411c31e5399dda6d4baa78fcd636}{position\+\_\+map2d\+\_\+quadtree\+\_\+delete} (\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$p, int iy, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__quadtree_8h_ac927c22f86ceb9ab680348bd1c3891d2}{position\+\_\+map2d\+\_\+quadtree\+\_\+move} (\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$p, int iy, double new\+\_\+x, double new\+\_\+y, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__quadtree_8h_a689a0af2012da384e942e3509b05e66b}{position\+\_\+map2d\+\_\+quadtree\+\_\+nearest} (\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, double $\ast$nx, double $\ast$ny, int include\+\_\+boundary\+\_\+points)
+\item 
+int \hyperlink{position__map2d__quadtree_8h_ad023aeff03d97c13e460331a57d37333}{position\+\_\+map2d\+\_\+quadtree\+\_\+enclosing\+\_\+triangle} (\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, int $\ast$ta, int $\ast$tb, int $\ast$tc, double $\ast$ba, double $\ast$bb, double $\ast$bc)
+\item 
+int \hyperlink{position__map2d__quadtree_8h_a85f843be7f247aeac11fab00152d10a3}{position\+\_\+map2d\+\_\+quadtree\+\_\+position\+\_\+of\+\_\+index} (\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$p, int iy, double $\ast$\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double $\ast$\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+int \hyperlink{position__map2d__quadtree_8h_a0a615e4806434e251932062cd7c7de44}{position\+\_\+map2d\+\_\+quadtree\+\_\+polygon\+\_\+bound} (\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$p, int iy, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__quadtree_8h_a9d89d69322d0c3c4ad299b9cbadce4b5}{position\+\_\+map2d\+\_\+quadtree\+\_\+validate} (\hyperlink{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+t@{position\+\_\+map2d\+\_\+quadtree\+\_\+t}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+t@{position\+\_\+map2d\+\_\+quadtree\+\_\+t}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+t}{position_map2d_quadtree_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+position\+\_\+map2d\+\_\+quadtree} {\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t}}\hypertarget{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}{}\label{position__map2d__quadtree_8h_a30ecd7e530da693f67495f27de295862}
+
+
+\subsection{Function Documentation}
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+clone@{position\+\_\+map2d\+\_\+quadtree\+\_\+clone}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+clone@{position\+\_\+map2d\+\_\+quadtree\+\_\+clone}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+clone(const position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$src, position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$dst)}{position_map2d_quadtree_clone(const position_map2d_quadtree_t *src, position_map2d_quadtree_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void position\+\_\+map2d\+\_\+quadtree\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{src, }
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_a7d4dbe9caad9afc021380f5187851dc4}{}\label{position__map2d__quadtree_8h_a7d4dbe9caad9afc021380f5187851dc4}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+quadtree\+::d, \+\_\+position\+\_\+map2d\+\_\+quadtree\+::max\+\_\+partitions, quadtree\+\_\+clone(), R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+V\+O\+ID, R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+V\+O\+ID, and \+\_\+position\+\_\+map2d\+\_\+quadtree\+::si.
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+create@{position\+\_\+map2d\+\_\+quadtree\+\_\+create}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+create@{position\+\_\+map2d\+\_\+quadtree\+\_\+create}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+create(int max\+\_\+partitions, double xmin, double xmax, double ymin, double ymax)}{position_map2d_quadtree_create(int max_partitions, double xmin, double xmax, double ymin, double ymax)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t}$\ast$ position\+\_\+map2d\+\_\+quadtree\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+\_\+partitions, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_a7922d65cbf6516ffca6cc243c409f9f4}{}\label{position__map2d__quadtree_8h_a7922d65cbf6516ffca6cc243c409f9f4}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+quadtree\+::d, \+\_\+position\+\_\+map2d\+\_\+quadtree\+::max\+\_\+partitions, quadtree\+\_\+create(), and \+\_\+position\+\_\+map2d\+\_\+quadtree\+::si.
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+delete@{position\+\_\+map2d\+\_\+quadtree\+\_\+delete}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+delete@{position\+\_\+map2d\+\_\+quadtree\+\_\+delete}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+delete(position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$p, int iy, bbox2d\+\_\+t $\ast$bound)}{position_map2d_quadtree_delete(position_map2d_quadtree_t *p, int iy, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+quadtree\+\_\+delete (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_a40b4411c31e5399dda6d4baa78fcd636}{}\label{position__map2d__quadtree_8h_a40b4411c31e5399dda6d4baa78fcd636}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+quadtree\+::d, quadtree\+\_\+delete(), R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT, and \+\_\+position\+\_\+map2d\+\_\+quadtree\+::si.
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+destroy@{position\+\_\+map2d\+\_\+quadtree\+\_\+destroy}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+destroy@{position\+\_\+map2d\+\_\+quadtree\+\_\+destroy}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+destroy(position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$p)}{position_map2d_quadtree_destroy(position_map2d_quadtree_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}void position\+\_\+map2d\+\_\+quadtree\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_a1b64789586692b1ec92d2b7b42c67a5e}{}\label{position__map2d__quadtree_8h_a1b64789586692b1ec92d2b7b42c67a5e}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+quadtree\+::d, and quadtree\+\_\+destroy().
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+enclosing\+\_\+triangle@{position\+\_\+map2d\+\_\+quadtree\+\_\+enclosing\+\_\+triangle}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+enclosing\+\_\+triangle@{position\+\_\+map2d\+\_\+quadtree\+\_\+enclosing\+\_\+triangle}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+enclosing\+\_\+triangle(position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$p, double x, double y, int $\ast$ta, int $\ast$tb, int $\ast$tc, double $\ast$ba, double $\ast$bb, double $\ast$bc)}{position_map2d_quadtree_enclosing_triangle(position_map2d_quadtree_t *p, double x, double y, int *ta, int *tb, int *tc, double *ba, double *bb, double *bc)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+quadtree\+\_\+enclosing\+\_\+triangle (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{int $\ast$}]{ta, }
+\item[{int $\ast$}]{tb, }
+\item[{int $\ast$}]{tc, }
+\item[{double $\ast$}]{ba, }
+\item[{double $\ast$}]{bb, }
+\item[{double $\ast$}]{bc}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_ad023aeff03d97c13e460331a57d37333}{}\label{position__map2d__quadtree_8h_ad023aeff03d97c13e460331a57d37333}
+
+
+References R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+insert@{position\+\_\+map2d\+\_\+quadtree\+\_\+insert}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+insert@{position\+\_\+map2d\+\_\+quadtree\+\_\+insert}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+insert(position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$p, double x, double y, bbox2d\+\_\+t $\ast$bound)}{position_map2d_quadtree_insert(position_map2d_quadtree_t *p, double x, double y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+quadtree\+\_\+insert (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_a349c441d3872d652e1891553811898cf}{}\label{position__map2d__quadtree_8h_a349c441d3872d652e1891553811898cf}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+quadtree\+::d, quadtree\+\_\+add(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+move@{position\+\_\+map2d\+\_\+quadtree\+\_\+move}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+move@{position\+\_\+map2d\+\_\+quadtree\+\_\+move}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+move(position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$p, int iy, double new\+\_\+x, double new\+\_\+y, bbox2d\+\_\+t $\ast$bound)}{position_map2d_quadtree_move(position_map2d_quadtree_t *p, int iy, double new_x, double new_y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+quadtree\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{double}]{new\+\_\+x, }
+\item[{double}]{new\+\_\+y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_ac927c22f86ceb9ab680348bd1c3891d2}{}\label{position__map2d__quadtree_8h_ac927c22f86ceb9ab680348bd1c3891d2}
+
+
+References bbox2d\+\_\+bound\+\_\+expand(), \+\_\+position\+\_\+map2d\+\_\+quadtree\+::d, quadtree\+\_\+add(), quadtree\+\_\+delete(), quadtree\+\_\+shift\+\_\+replace(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+nearest@{position\+\_\+map2d\+\_\+quadtree\+\_\+nearest}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+nearest@{position\+\_\+map2d\+\_\+quadtree\+\_\+nearest}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+nearest(position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$p, double x, double y, double $\ast$nx, double $\ast$ny, int include\+\_\+boundary\+\_\+points)}{position_map2d_quadtree_nearest(position_map2d_quadtree_t *p, double x, double y, double *nx, double *ny, int include_boundary_points)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+quadtree\+\_\+nearest (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double $\ast$}]{nx, }
+\item[{double $\ast$}]{ny, }
+\item[{int}]{include\+\_\+boundary\+\_\+points}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_a689a0af2012da384e942e3509b05e66b}{}\label{position__map2d__quadtree_8h_a689a0af2012da384e942e3509b05e66b}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+quadtree\+::d, quadtree\+\_\+nearest(), quadtree\+\_\+point\+\_\+of\+\_\+index(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+polygon\+\_\+bound@{position\+\_\+map2d\+\_\+quadtree\+\_\+polygon\+\_\+bound}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+polygon\+\_\+bound@{position\+\_\+map2d\+\_\+quadtree\+\_\+polygon\+\_\+bound}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+polygon\+\_\+bound(position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$p, int iy, bbox2d\+\_\+t $\ast$bound)}{position_map2d_quadtree_polygon_bound(position_map2d_quadtree_t *p, int iy, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+quadtree\+\_\+polygon\+\_\+bound (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_a0a615e4806434e251932062cd7c7de44}{}\label{position__map2d__quadtree_8h_a0a615e4806434e251932062cd7c7de44}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+quadtree\+::d, quadtree\+\_\+polygon\+\_\+bound(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+position\+\_\+of\+\_\+index@{position\+\_\+map2d\+\_\+quadtree\+\_\+position\+\_\+of\+\_\+index}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+position\+\_\+of\+\_\+index@{position\+\_\+map2d\+\_\+quadtree\+\_\+position\+\_\+of\+\_\+index}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+position\+\_\+of\+\_\+index(position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$p, int iy, double $\ast$x, double $\ast$y)}{position_map2d_quadtree_position_of_index(position_map2d_quadtree_t *p, int iy, double *x, double *y)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+quadtree\+\_\+position\+\_\+of\+\_\+index (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_a85f843be7f247aeac11fab00152d10a3}{}\label{position__map2d__quadtree_8h_a85f843be7f247aeac11fab00152d10a3}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+quadtree\+::d, quadtree\+\_\+point\+\_\+of\+\_\+index(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}!position\+\_\+map2d\+\_\+quadtree\+\_\+validate@{position\+\_\+map2d\+\_\+quadtree\+\_\+validate}}
+\index{position\+\_\+map2d\+\_\+quadtree\+\_\+validate@{position\+\_\+map2d\+\_\+quadtree\+\_\+validate}!position\+\_\+map2d\+\_\+quadtree.\+h@{position\+\_\+map2d\+\_\+quadtree.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+quadtree\+\_\+validate(position\+\_\+map2d\+\_\+quadtree\+\_\+t $\ast$p)}{position_map2d_quadtree_validate(position_map2d_quadtree_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+quadtree\+\_\+validate (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+quadtree\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__quadtree_8h_a9d89d69322d0c3c4ad299b9cbadce4b5}{}\label{position__map2d__quadtree_8h_a9d89d69322d0c3c4ad299b9cbadce4b5}

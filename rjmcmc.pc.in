@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: rjmcmc
+Description: Reversible Jump Monte Carlo Markov Chain Library
+Version: @VERSION@
+Libs: @LDFLAGS@ @LIBS@ @LIBMPI@ -L@libdir@ -lrjmcmc
+Cflags: @CFLAGS@ @CPPFLAGS@ -I@includedir@

@@ -1,0 +1,101 @@
+\hypertarget{engine_8c}{}\section{engine.\+c File Reference}
+\label{engine_8c}\index{engine.\+c@{engine.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/engine.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+debug.\+h$>$}\\*
+Include dependency graph for engine.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{engine_8c_a830d7f4cc1a90d2aa826cf5f1f189734}{rjmcmc\+\_\+engine\+\_\+run} (\hyperlink{engine_8h_a83b197be2c616cd7551a3cd6ed15cc3c}{rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$cb, int burn\+\_\+iterations, int total\+\_\+iterations, int sample\+\_\+rate)
+\item 
+int \hyperlink{engine_8c_a24e894e74681b6d7a1a8bd51101c991f}{rjmcmc\+\_\+engine\+\_\+init} (\hyperlink{engine_8h_a83b197be2c616cd7551a3cd6ed15cc3c}{rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$cb, int burn\+\_\+iterations, int total\+\_\+iterations, int sample\+\_\+rate)
+\item 
+int \hyperlink{engine_8c_ac2b168fe5643095ba37749d98d6f7538}{rjmcmc\+\_\+engine\+\_\+restart} (\hyperlink{engine_8h_a83b197be2c616cd7551a3cd6ed15cc3c}{rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$cb, int burn\+\_\+iterations, int total\+\_\+iterations, int sample\+\_\+rate, int iteration, double \hyperlink{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}{likelihood})
+\item 
+int \hyperlink{engine_8c_aee097319bf2edb220b198eaa6beb03e3}{rjmcmc\+\_\+engine\+\_\+step} (\hyperlink{engine_8h_a83b197be2c616cd7551a3cd6ed15cc3c}{rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$cb)
+\item 
+int \hyperlink{engine_8c_a0205bfc2ea734a353fb3fe900f62a41f}{rjmcmc\+\_\+engine\+\_\+finish} (\hyperlink{engine_8h_a83b197be2c616cd7551a3cd6ed15cc3c}{rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$cb)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{engine.\+c@{engine.\+c}!rjmcmc\+\_\+engine\+\_\+finish@{rjmcmc\+\_\+engine\+\_\+finish}}
+\index{rjmcmc\+\_\+engine\+\_\+finish@{rjmcmc\+\_\+engine\+\_\+finish}!engine.\+c@{engine.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+engine\+\_\+finish(rjmcmc\+\_\+engine\+\_\+cb\+\_\+t $\ast$cb)}{rjmcmc_engine_finish(rjmcmc_engine_cb_t *cb)}}]{\setlength{\rightskip}{0pt plus 5cm}int rjmcmc\+\_\+engine\+\_\+finish (
+\begin{DoxyParamCaption}
+\item[{{\bf rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$}]{cb}
+\end{DoxyParamCaption}
+)}\hypertarget{engine_8c_a0205bfc2ea734a353fb3fe900f62a41f}{}\label{engine_8c_a0205bfc2ea734a353fb3fe900f62a41f}
+\index{engine.\+c@{engine.\+c}!rjmcmc\+\_\+engine\+\_\+init@{rjmcmc\+\_\+engine\+\_\+init}}
+\index{rjmcmc\+\_\+engine\+\_\+init@{rjmcmc\+\_\+engine\+\_\+init}!engine.\+c@{engine.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+engine\+\_\+init(rjmcmc\+\_\+engine\+\_\+cb\+\_\+t $\ast$cb, int burn\+\_\+iterations, int total\+\_\+iterations, int sample\+\_\+rate)}{rjmcmc_engine_init(rjmcmc_engine_cb_t *cb, int burn_iterations, int total_iterations, int sample_rate)}}]{\setlength{\rightskip}{0pt plus 5cm}int rjmcmc\+\_\+engine\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$}]{cb, }
+\item[{int}]{burn\+\_\+iterations, }
+\item[{int}]{total\+\_\+iterations, }
+\item[{int}]{sample\+\_\+rate}
+\end{DoxyParamCaption}
+)}\hypertarget{engine_8c_a24e894e74681b6d7a1a8bd51101c991f}{}\label{engine_8c_a24e894e74681b6d7a1a8bd51101c991f}
+
+
+References \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::arg, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::burnin, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::current\+\_\+like, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::i, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::initialize\+\_\+state, rjmcmc\+\_\+error(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample\+\_\+rate, and \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::total.
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), and rjmcmc\+\_\+engine\+\_\+run().
+
+\index{engine.\+c@{engine.\+c}!rjmcmc\+\_\+engine\+\_\+restart@{rjmcmc\+\_\+engine\+\_\+restart}}
+\index{rjmcmc\+\_\+engine\+\_\+restart@{rjmcmc\+\_\+engine\+\_\+restart}!engine.\+c@{engine.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+engine\+\_\+restart(rjmcmc\+\_\+engine\+\_\+cb\+\_\+t $\ast$cb, int burn\+\_\+iterations, int total\+\_\+iterations, int sample\+\_\+rate, int iteration, double likelihood)}{rjmcmc_engine_restart(rjmcmc_engine_cb_t *cb, int burn_iterations, int total_iterations, int sample_rate, int iteration, double likelihood)}}]{\setlength{\rightskip}{0pt plus 5cm}int rjmcmc\+\_\+engine\+\_\+restart (
+\begin{DoxyParamCaption}
+\item[{{\bf rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$}]{cb, }
+\item[{int}]{burn\+\_\+iterations, }
+\item[{int}]{total\+\_\+iterations, }
+\item[{int}]{sample\+\_\+rate, }
+\item[{int}]{iteration, }
+\item[{double}]{likelihood}
+\end{DoxyParamCaption}
+)}\hypertarget{engine_8c_ac2b168fe5643095ba37749d98d6f7538}{}\label{engine_8c_ac2b168fe5643095ba37749d98d6f7538}
+
+
+References \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::burnin, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::current\+\_\+like, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::i, likelihood, \+\_\+delaunay2d\+::p, rjmcmc\+\_\+engine\+\_\+step(), rjmcmc\+\_\+error(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample\+\_\+rate, and \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::total.
+
+
+
+Referenced by M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+checkpoint\+\_\+restart().
+
+\index{engine.\+c@{engine.\+c}!rjmcmc\+\_\+engine\+\_\+run@{rjmcmc\+\_\+engine\+\_\+run}}
+\index{rjmcmc\+\_\+engine\+\_\+run@{rjmcmc\+\_\+engine\+\_\+run}!engine.\+c@{engine.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+engine\+\_\+run(rjmcmc\+\_\+engine\+\_\+cb\+\_\+t $\ast$cb, int burn\+\_\+iterations, int total\+\_\+iterations, int sample\+\_\+rate)}{rjmcmc_engine_run(rjmcmc_engine_cb_t *cb, int burn_iterations, int total_iterations, int sample_rate)}}]{\setlength{\rightskip}{0pt plus 5cm}int rjmcmc\+\_\+engine\+\_\+run (
+\begin{DoxyParamCaption}
+\item[{{\bf rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$}]{cb, }
+\item[{int}]{burn\+\_\+iterations, }
+\item[{int}]{total\+\_\+iterations, }
+\item[{int}]{sample\+\_\+rate}
+\end{DoxyParamCaption}
+)}\hypertarget{engine_8c_a830d7f4cc1a90d2aa826cf5f1f189734}{}\label{engine_8c_a830d7f4cc1a90d2aa826cf5f1f189734}
+
+
+References \+\_\+delaunay2d\+::p, rjmcmc\+\_\+engine\+\_\+init(), and rjmcmc\+\_\+engine\+\_\+step().
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+checkpoint(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+restartable(), M\+P\+I\+\_\+single\+\_\+forwardmodel(), M\+P\+I\+\_\+single\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(), part1d\+\_\+natural\+\_\+regression(), part1d\+\_\+regression(), part1d\+\_\+zero\+\_\+regression(), part2d\+\_\+forwardmodel(), part2d\+\_\+forwardmodel\+\_\+hierarchical(), part2d\+\_\+forwardmodel\+\_\+restartable(), part2d\+\_\+regression(), single\+\_\+forwardmodel(), and single\+\_\+forwardmodel\+\_\+hierarchical().
+
+\index{engine.\+c@{engine.\+c}!rjmcmc\+\_\+engine\+\_\+step@{rjmcmc\+\_\+engine\+\_\+step}}
+\index{rjmcmc\+\_\+engine\+\_\+step@{rjmcmc\+\_\+engine\+\_\+step}!engine.\+c@{engine.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+engine\+\_\+step(rjmcmc\+\_\+engine\+\_\+cb\+\_\+t $\ast$cb)}{rjmcmc_engine_step(rjmcmc_engine_cb_t *cb)}}]{\setlength{\rightskip}{0pt plus 5cm}int rjmcmc\+\_\+engine\+\_\+step (
+\begin{DoxyParamCaption}
+\item[{{\bf rjmcmc\+\_\+engine\+\_\+cb\+\_\+t} $\ast$}]{cb}
+\end{DoxyParamCaption}
+)}\hypertarget{engine_8c_aee097319bf2edb220b198eaa6beb03e3}{}\label{engine_8c_aee097319bf2edb220b198eaa6beb03e3}
+
+
+References \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::accept, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::arg, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::compute\+\_\+misfit, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::current\+\_\+like, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::i, \+\_\+delaunay2d\+::p, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::perturb\+\_\+process, rjmcmc\+\_\+error(), \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample, \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::select\+\_\+process, and \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::total.
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+step(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+step(), rjmcmc\+\_\+engine\+\_\+restart(), and rjmcmc\+\_\+engine\+\_\+run().
+

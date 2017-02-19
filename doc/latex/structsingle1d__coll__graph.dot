@@ -1,0 +1,16 @@
+digraph "single1d"
+{
+  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
+  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
+  Node1 [label="single1d",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" proposed\ncurrent" ];
+  Node2 [label="_single1d_regression",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__single1d__regression.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cf" ];
+  Node3 [label="_curvefit_result",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__curvefit__result.html"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" dataset" ];
+  Node4 [label="_dataset1d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__dataset1d.html"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" points" ];
+  Node5 [label="_point1d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__point1d.html"];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" results" ];
+  Node6 [label="_resultset1d",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct__resultset1d.html"];
+}

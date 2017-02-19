@@ -1,0 +1,199 @@
+\hypertarget{position__map2d__linear_8h}{}\section{position\+\_\+map2d\+\_\+linear.\+h File Reference}
+\label{position__map2d__linear_8h}\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+{\ttfamily \#include $<$rjmcmc/bbox2d.\+h$>$}\\*
+Include dependency graph for position\+\_\+map2d\+\_\+linear.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__position__map2d__linear}{\+\_\+position\+\_\+map2d\+\_\+linear} \hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$ \hyperlink{position__map2d__linear_8h_a8293c8639500bf02322b49a6b9c6d458}{position\+\_\+map2d\+\_\+linear\+\_\+create} (int max\+\_\+partitions, double xmin, double xmax, double ymin, double ymax)
+\item 
+void \hyperlink{position__map2d__linear_8h_a2038823dd8de47f8f91af96eddc31001}{position\+\_\+map2d\+\_\+linear\+\_\+destroy} (\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$p)
+\item 
+void \hyperlink{position__map2d__linear_8h_ae8d3834bb317d63fca06863ea8845471}{position\+\_\+map2d\+\_\+linear\+\_\+clone} (const \hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$src, \hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$dst)
+\item 
+int \hyperlink{position__map2d__linear_8h_a31a6e51e193ccf0d569f7bdb6ab8fd03}{position\+\_\+map2d\+\_\+linear\+\_\+insert} (\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__linear_8h_a8d62872988c25430fe87ba8f2d7f81f3}{position\+\_\+map2d\+\_\+linear\+\_\+delete} (\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$p, int iy, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__linear_8h_ab96f88fd9719ff00cca6fad84e2281b2}{position\+\_\+map2d\+\_\+linear\+\_\+move} (\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$p, int iy, double new\+\_\+x, double new\+\_\+y, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__linear_8h_a6373669cc0c39b7b9af19dd85782bdab}{position\+\_\+map2d\+\_\+linear\+\_\+nearest} (\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, double $\ast$nx, double $\ast$ny, int include\+\_\+boundary\+\_\+points)
+\item 
+int \hyperlink{position__map2d__linear_8h_abba0ba67db5b2f3f355c106d9584c0f5}{position\+\_\+map2d\+\_\+linear\+\_\+enclosing\+\_\+triangle} (\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, int $\ast$ta, int $\ast$tb, int $\ast$tc, double $\ast$ba, double $\ast$bb, double $\ast$bc)
+\item 
+int \hyperlink{position__map2d__linear_8h_a789a86c1aa31923be86b7dc9ec6c8b03}{position\+\_\+map2d\+\_\+linear\+\_\+position\+\_\+of\+\_\+index} (\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$p, int iy, double $\ast$\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double $\ast$\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+int \hyperlink{position__map2d__linear_8h_a0ad007f20ac9b9d3542364e3b93fa2e7}{position\+\_\+map2d\+\_\+linear\+\_\+polygon\+\_\+bound} (\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$p, int iy, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__linear_8h_a6dd6ac905f8c3e539bfc77f5987df586}{position\+\_\+map2d\+\_\+linear\+\_\+validate} (\hyperlink{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+t@{position\+\_\+map2d\+\_\+linear\+\_\+t}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+t@{position\+\_\+map2d\+\_\+linear\+\_\+t}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+t}{position_map2d_linear_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+position\+\_\+map2d\+\_\+linear} {\bf position\+\_\+map2d\+\_\+linear\+\_\+t}}\hypertarget{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}{}\label{position__map2d__linear_8h_a41aad916c9b18cbfc67f5c545af5d3bf}
+
+
+\subsection{Function Documentation}
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+clone@{position\+\_\+map2d\+\_\+linear\+\_\+clone}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+clone@{position\+\_\+map2d\+\_\+linear\+\_\+clone}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+clone(const position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$src, position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$dst)}{position_map2d_linear_clone(const position_map2d_linear_t *src, position_map2d_linear_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void position\+\_\+map2d\+\_\+linear\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{src, }
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_ae8d3834bb317d63fca06863ea8845471}{}\label{position__map2d__linear_8h_ae8d3834bb317d63fca06863ea8845471}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+linear\+::max\+\_\+partitions, \+\_\+position\+\_\+map2d\+\_\+linear\+::npartitions, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+V\+O\+ID, R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+V\+O\+ID, \+\_\+position\+\_\+map2d\+\_\+linear\+::x, and \+\_\+position\+\_\+map2d\+\_\+linear\+::y.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+create@{position\+\_\+map2d\+\_\+linear\+\_\+create}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+create@{position\+\_\+map2d\+\_\+linear\+\_\+create}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+create(int max\+\_\+partitions, double xmin, double xmax, double ymin, double ymax)}{position_map2d_linear_create(int max_partitions, double xmin, double xmax, double ymin, double ymax)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf position\+\_\+map2d\+\_\+linear\+\_\+t}$\ast$ position\+\_\+map2d\+\_\+linear\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+\_\+partitions, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_a8293c8639500bf02322b49a6b9c6d458}{}\label{position__map2d__linear_8h_a8293c8639500bf02322b49a6b9c6d458}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+linear\+::max\+\_\+partitions, \+\_\+position\+\_\+map2d\+\_\+linear\+::npartitions, rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), \+\_\+position\+\_\+map2d\+\_\+linear\+::x, and \+\_\+position\+\_\+map2d\+\_\+linear\+::y.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+delete@{position\+\_\+map2d\+\_\+linear\+\_\+delete}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+delete@{position\+\_\+map2d\+\_\+linear\+\_\+delete}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+delete(position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$p, int iy, bbox2d\+\_\+t $\ast$bound)}{position_map2d_linear_delete(position_map2d_linear_t *p, int iy, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+linear\+\_\+delete (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_a8d62872988c25430fe87ba8f2d7f81f3}{}\label{position__map2d__linear_8h_a8d62872988c25430fe87ba8f2d7f81f3}
+
+
+References bbox2d\+\_\+set(), \+\_\+position\+\_\+map2d\+\_\+linear\+::npartitions, rjmcmc\+\_\+error(), \+\_\+position\+\_\+map2d\+\_\+linear\+::x, and \+\_\+position\+\_\+map2d\+\_\+linear\+::y.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+destroy@{position\+\_\+map2d\+\_\+linear\+\_\+destroy}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+destroy@{position\+\_\+map2d\+\_\+linear\+\_\+destroy}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+destroy(position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$p)}{position_map2d_linear_destroy(position_map2d_linear_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}void position\+\_\+map2d\+\_\+linear\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_a2038823dd8de47f8f91af96eddc31001}{}\label{position__map2d__linear_8h_a2038823dd8de47f8f91af96eddc31001}
+
+
+References rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), \+\_\+position\+\_\+map2d\+\_\+linear\+::x, and \+\_\+position\+\_\+map2d\+\_\+linear\+::y.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+enclosing\+\_\+triangle@{position\+\_\+map2d\+\_\+linear\+\_\+enclosing\+\_\+triangle}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+enclosing\+\_\+triangle@{position\+\_\+map2d\+\_\+linear\+\_\+enclosing\+\_\+triangle}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+enclosing\+\_\+triangle(position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$p, double x, double y, int $\ast$ta, int $\ast$tb, int $\ast$tc, double $\ast$ba, double $\ast$bb, double $\ast$bc)}{position_map2d_linear_enclosing_triangle(position_map2d_linear_t *p, double x, double y, int *ta, int *tb, int *tc, double *ba, double *bb, double *bc)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+linear\+\_\+enclosing\+\_\+triangle (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{int $\ast$}]{ta, }
+\item[{int $\ast$}]{tb, }
+\item[{int $\ast$}]{tc, }
+\item[{double $\ast$}]{ba, }
+\item[{double $\ast$}]{bb, }
+\item[{double $\ast$}]{bc}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_abba0ba67db5b2f3f355c106d9584c0f5}{}\label{position__map2d__linear_8h_abba0ba67db5b2f3f355c106d9584c0f5}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+linear\+::npartitions, \+\_\+position\+\_\+map2d\+\_\+linear\+::v, and \+\_\+position\+\_\+map2d\+\_\+linear\+::vdist2.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+insert@{position\+\_\+map2d\+\_\+linear\+\_\+insert}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+insert@{position\+\_\+map2d\+\_\+linear\+\_\+insert}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+insert(position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$p, double x, double y, bbox2d\+\_\+t $\ast$bound)}{position_map2d_linear_insert(position_map2d_linear_t *p, double x, double y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+linear\+\_\+insert (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_a31a6e51e193ccf0d569f7bdb6ab8fd03}{}\label{position__map2d__linear_8h_a31a6e51e193ccf0d569f7bdb6ab8fd03}
+
+
+References bbox2d\+\_\+set(), \+\_\+position\+\_\+map2d\+\_\+linear\+::max\+\_\+partitions, \+\_\+position\+\_\+map2d\+\_\+linear\+::npartitions, rjmcmc\+\_\+error(), \+\_\+position\+\_\+map2d\+\_\+linear\+::x, and \+\_\+position\+\_\+map2d\+\_\+linear\+::y.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+move@{position\+\_\+map2d\+\_\+linear\+\_\+move}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+move@{position\+\_\+map2d\+\_\+linear\+\_\+move}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+move(position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$p, int iy, double new\+\_\+x, double new\+\_\+y, bbox2d\+\_\+t $\ast$bound)}{position_map2d_linear_move(position_map2d_linear_t *p, int iy, double new_x, double new_y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+linear\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{double}]{new\+\_\+x, }
+\item[{double}]{new\+\_\+y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_ab96f88fd9719ff00cca6fad84e2281b2}{}\label{position__map2d__linear_8h_ab96f88fd9719ff00cca6fad84e2281b2}
+
+
+References bbox2d\+\_\+set(), \+\_\+position\+\_\+map2d\+\_\+linear\+::npartitions, rjmcmc\+\_\+error(), \+\_\+position\+\_\+map2d\+\_\+linear\+::x, and \+\_\+position\+\_\+map2d\+\_\+linear\+::y.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+nearest@{position\+\_\+map2d\+\_\+linear\+\_\+nearest}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+nearest@{position\+\_\+map2d\+\_\+linear\+\_\+nearest}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+nearest(position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$p, double x, double y, double $\ast$nx, double $\ast$ny, int include\+\_\+boundary\+\_\+points)}{position_map2d_linear_nearest(position_map2d_linear_t *p, double x, double y, double *nx, double *ny, int include_boundary_points)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+linear\+\_\+nearest (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double $\ast$}]{nx, }
+\item[{double $\ast$}]{ny, }
+\item[{int}]{include\+\_\+boundary\+\_\+points}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_a6373669cc0c39b7b9af19dd85782bdab}{}\label{position__map2d__linear_8h_a6373669cc0c39b7b9af19dd85782bdab}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+linear\+::npartitions, \+\_\+position\+\_\+map2d\+\_\+linear\+::x, and \+\_\+position\+\_\+map2d\+\_\+linear\+::y.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+polygon\+\_\+bound@{position\+\_\+map2d\+\_\+linear\+\_\+polygon\+\_\+bound}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+polygon\+\_\+bound@{position\+\_\+map2d\+\_\+linear\+\_\+polygon\+\_\+bound}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+polygon\+\_\+bound(position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$p, int iy, bbox2d\+\_\+t $\ast$bound)}{position_map2d_linear_polygon_bound(position_map2d_linear_t *p, int iy, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+linear\+\_\+polygon\+\_\+bound (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_a0ad007f20ac9b9d3542364e3b93fa2e7}{}\label{position__map2d__linear_8h_a0ad007f20ac9b9d3542364e3b93fa2e7}
+
+
+References R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT, \+\_\+position\+\_\+map2d\+\_\+linear\+::x, bbox2d\+::xmax, bbox2d\+::xmin, \+\_\+position\+\_\+map2d\+\_\+linear\+::y, bbox2d\+::ymax, and bbox2d\+::ymin.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+position\+\_\+of\+\_\+index@{position\+\_\+map2d\+\_\+linear\+\_\+position\+\_\+of\+\_\+index}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+position\+\_\+of\+\_\+index@{position\+\_\+map2d\+\_\+linear\+\_\+position\+\_\+of\+\_\+index}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+position\+\_\+of\+\_\+index(position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$p, int iy, double $\ast$x, double $\ast$y)}{position_map2d_linear_position_of_index(position_map2d_linear_t *p, int iy, double *x, double *y)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+linear\+\_\+position\+\_\+of\+\_\+index (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_a789a86c1aa31923be86b7dc9ec6c8b03}{}\label{position__map2d__linear_8h_a789a86c1aa31923be86b7dc9ec6c8b03}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+linear\+::npartitions, R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT, \+\_\+position\+\_\+map2d\+\_\+linear\+::x, and \+\_\+position\+\_\+map2d\+\_\+linear\+::y.
+
+\index{position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}!position\+\_\+map2d\+\_\+linear\+\_\+validate@{position\+\_\+map2d\+\_\+linear\+\_\+validate}}
+\index{position\+\_\+map2d\+\_\+linear\+\_\+validate@{position\+\_\+map2d\+\_\+linear\+\_\+validate}!position\+\_\+map2d\+\_\+linear.\+h@{position\+\_\+map2d\+\_\+linear.\+h}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+linear\+\_\+validate(position\+\_\+map2d\+\_\+linear\+\_\+t $\ast$p)}{position_map2d_linear_validate(position_map2d_linear_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+linear\+\_\+validate (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+linear\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__linear_8h_a6dd6ac905f8c3e539bfc77f5987df586}{}\label{position__map2d__linear_8h_a6dd6ac905f8c3e539bfc77f5987df586}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+linear\+::v, \+\_\+position\+\_\+map2d\+\_\+linear\+::vdist2, \+\_\+position\+\_\+map2d\+\_\+linear\+::x, and \+\_\+position\+\_\+map2d\+\_\+linear\+::y.
+

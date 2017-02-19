@@ -1,0 +1,94 @@
+\hypertarget{wellrng_8h}{}\section{wellrng.\+h File Reference}
+\label{wellrng_8h}\index{wellrng.\+h@{wellrng.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structwellrng}{wellrng} \hyperlink{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{wellrng\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{wellrng\+\_\+t} $\ast$ \hyperlink{wellrng_8h_abd0fa66af9bd7a81829003980e832f2c}{wellrng\+\_\+init\+\_\+simple} (unsigned int seed)
+\item 
+unsigned int \hyperlink{wellrng_8h_a3ef66c4fe22e494c22c74cd2c189f0ca}{wellrng\+\_\+seed\+\_\+size} (void)
+\item 
+\hyperlink{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{wellrng\+\_\+t} $\ast$ \hyperlink{wellrng_8h_a53dab204fe465a1e8cde9812963e1c7a}{wellrng\+\_\+init\+\_\+direct} (unsigned int $\ast$seed)
+\item 
+double \hyperlink{wellrng_8h_a87ed6d78e6086693687eae370ded6ff2}{wellrng\+\_\+sample} (\hyperlink{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{wellrng\+\_\+t} $\ast$w)
+\item 
+void \hyperlink{wellrng_8h_afb8a2d69733ae1ef39a27e9ae8b22c80}{wellrng\+\_\+destroy} (\hyperlink{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{wellrng\+\_\+t} $\ast$w)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{wellrng.\+h@{wellrng.\+h}!wellrng\+\_\+t@{wellrng\+\_\+t}}
+\index{wellrng\+\_\+t@{wellrng\+\_\+t}!wellrng.\+h@{wellrng.\+h}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+t}{wellrng_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf wellrng} {\bf wellrng\+\_\+t}}\hypertarget{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{}\label{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}
+
+
+\subsection{Function Documentation}
+\index{wellrng.\+h@{wellrng.\+h}!wellrng\+\_\+destroy@{wellrng\+\_\+destroy}}
+\index{wellrng\+\_\+destroy@{wellrng\+\_\+destroy}!wellrng.\+h@{wellrng.\+h}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+destroy(wellrng\+\_\+t $\ast$w)}{wellrng_destroy(wellrng_t *w)}}]{\setlength{\rightskip}{0pt plus 5cm}void wellrng\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf wellrng\+\_\+t} $\ast$}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8h_afb8a2d69733ae1ef39a27e9ae8b22c80}{}\label{wellrng_8h_afb8a2d69733ae1ef39a27e9ae8b22c80}
+
+
+Referenced by rjmcmc\+\_\+seed().
+
+\index{wellrng.\+h@{wellrng.\+h}!wellrng\+\_\+init\+\_\+direct@{wellrng\+\_\+init\+\_\+direct}}
+\index{wellrng\+\_\+init\+\_\+direct@{wellrng\+\_\+init\+\_\+direct}!wellrng.\+h@{wellrng.\+h}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+init\+\_\+direct(unsigned int $\ast$seed)}{wellrng_init_direct(unsigned int *seed)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf wellrng\+\_\+t}$\ast$ wellrng\+\_\+init\+\_\+direct (
+\begin{DoxyParamCaption}
+\item[{unsigned int $\ast$}]{seed}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8h_a53dab204fe465a1e8cde9812963e1c7a}{}\label{wellrng_8h_a53dab204fe465a1e8cde9812963e1c7a}
+
+
+References wellrng\+::i, R, wellrng\+::s, and wellrng\+::state.
+
+\index{wellrng.\+h@{wellrng.\+h}!wellrng\+\_\+init\+\_\+simple@{wellrng\+\_\+init\+\_\+simple}}
+\index{wellrng\+\_\+init\+\_\+simple@{wellrng\+\_\+init\+\_\+simple}!wellrng.\+h@{wellrng.\+h}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+init\+\_\+simple(unsigned int seed)}{wellrng_init_simple(unsigned int seed)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf wellrng\+\_\+t}$\ast$ wellrng\+\_\+init\+\_\+simple (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{seed}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8h_abd0fa66af9bd7a81829003980e832f2c}{}\label{wellrng_8h_abd0fa66af9bd7a81829003980e832f2c}
+
+
+References wellrng\+::i, R, wellrng\+::s, and wellrng\+::state.
+
+
+
+Referenced by rjmcmc\+\_\+normal(), rjmcmc\+\_\+seed(), and rjmcmc\+\_\+uniform().
+
+\index{wellrng.\+h@{wellrng.\+h}!wellrng\+\_\+sample@{wellrng\+\_\+sample}}
+\index{wellrng\+\_\+sample@{wellrng\+\_\+sample}!wellrng.\+h@{wellrng.\+h}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+sample(wellrng\+\_\+t $\ast$w)}{wellrng_sample(wellrng_t *w)}}]{\setlength{\rightskip}{0pt plus 5cm}double wellrng\+\_\+sample (
+\begin{DoxyParamCaption}
+\item[{{\bf wellrng\+\_\+t} $\ast$}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8h_a87ed6d78e6086693687eae370ded6ff2}{}\label{wellrng_8h_a87ed6d78e6086693687eae370ded6ff2}
+
+
+References F\+A\+CT, wellrng\+::i, M1, M2, M3, M\+A\+S\+KL, M\+A\+S\+KU, M\+A\+T0\+N\+EG, M\+A\+T0\+P\+OS, M\+A\+T1, M\+A\+T3\+N\+EG, M\+A\+T5, new\+V0, new\+V0\+Under, new\+V1, R, wellrng\+::s, wellrng\+::state, T\+E\+M\+P\+E\+RB, T\+E\+M\+P\+E\+RC, V0, V\+M1, V\+M1\+Over, V\+M2, V\+M2\+Over, V\+M3, V\+M3\+Over, Vrm1, Vrm1\+Under, Vrm2, Vrm2\+Under, and y.
+
+
+
+Referenced by rjmcmc\+\_\+normal(), and rjmcmc\+\_\+uniform().
+
+\index{wellrng.\+h@{wellrng.\+h}!wellrng\+\_\+seed\+\_\+size@{wellrng\+\_\+seed\+\_\+size}}
+\index{wellrng\+\_\+seed\+\_\+size@{wellrng\+\_\+seed\+\_\+size}!wellrng.\+h@{wellrng.\+h}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+seed\+\_\+size(void)}{wellrng_seed_size(void)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int wellrng\+\_\+seed\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8h_a3ef66c4fe22e494c22c74cd2c189f0ca}{}\label{wellrng_8h_a3ef66c4fe22e494c22c74cd2c189f0ca}
+
+
+References R.
+

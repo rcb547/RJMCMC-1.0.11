@@ -1,0 +1,374 @@
+\hypertarget{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{}\section{2d/partitioned/regression/callbackex/callbackex.\+c}
+
+\begin{DoxyCodeInclude}
+
+\textcolor{preprocessor}{#include <stdio.h>}
+\textcolor{preprocessor}{#include <stdlib.h>}
+\textcolor{preprocessor}{#include <math.h>}
+\textcolor{preprocessor}{#include <getopt.h>}
+
+\textcolor{preprocessor}{#include <\hyperlink{regression_8h}{rjmcmc/regression.h}>}
+\textcolor{preprocessor}{#include <\hyperlink{rjmcmc__random_8h}{rjmcmc/rjmcmc\_random.h}>}
+\textcolor{preprocessor}{#include <\hyperlink{rjmcmc__util_8h}{rjmcmc/rjmcmc\_util.h}>}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{char} short\_options[] = \textcolor{stringliteral}{"h"};
+
+\textcolor{keyword}{static} \textcolor{keyword}{struct }option long\_options[] = \{
+  \{\textcolor{stringliteral}{"help"}, 0, 0, \textcolor{charliteral}{'h'}\},
+  \{0, 0, 0, 0\}
+\};
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} usage(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pname);
+
+\textcolor{preprocessor}{#define NXSAMPLES 25}
+\textcolor{preprocessor}{#define NYSAMPLES 25}
+
+\textcolor{keyword}{struct }user\_struct \{
+  \textcolor{keywordtype}{double} xc[NXSAMPLES];
+  \textcolor{keywordtype}{double} yc[NXSAMPLES];
+  \textcolor{keywordtype}{double} mean[NXSAMPLES][NYSAMPLES];
+  \textcolor{keywordtype}{int} n;
+\};
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} regression2d\_cb(\textcolor{keywordtype}{void} *state,
+                            \textcolor{keywordtype}{double} *\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x},
+                            \textcolor{keywordtype}{double} *\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y},
+                            \textcolor{keywordtype}{int} ncells,
+                            \hyperlink{regression_8h_a1669f9404bc2d78149c02d0cc39e0db8}{regression2d\_value\_at\_t} value\_at,
+                            \textcolor{keywordtype}{double} lambda,
+                            \textcolor{keywordtype}{void} *\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg});
+
+
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]) 
+\{
+  \textcolor{keywordtype}{int} \hyperlink{wellrng_8c_a6ce17b018c47d0f1d0e53a458f741ad3}{c};
+  \textcolor{keywordtype}{int} option\_index;
+  
+  \hyperlink{struct__dataset2d}{dataset2d\_t} *data;
+  \hyperlink{struct__resultset2d}{resultset2d\_t} *results;
+
+  \textcolor{keywordtype}{int} burnin = 10000;
+  \textcolor{keywordtype}{int} \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total} = 50000;
+  \textcolor{keywordtype}{int} min\_part = 2;
+  \textcolor{keywordtype}{int} max\_part = 100;
+  \textcolor{keywordtype}{int} xsamples = 100;
+  \textcolor{keywordtype}{int} ysamples = 100;
+  \textcolor{keywordtype}{int} zsamples = 200;
+  \textcolor{keywordtype}{double} credible = 0.95;
+  \textcolor{keywordtype}{double} pd = 1.0;
+  \textcolor{keywordtype}{double} pv = 1.0;
+
+  \textcolor{keywordtype}{int} nproc;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{double} *v;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{double} **m;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{int} *iv;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{int} **im;
+
+  \textcolor{keywordtype}{int} i;
+  \textcolor{keywordtype}{int} j;
+
+  \textcolor{keywordtype}{double} *xcoords;
+  \textcolor{keywordtype}{int} xcl;
+
+  \textcolor{keywordtype}{double} *ycoords;
+  \textcolor{keywordtype}{int} ycl;
+  
+  \textcolor{keywordtype}{double} sigma = 1.0;
+  \textcolor{keywordtype}{double} lambda = 1.0;
+
+  \textcolor{keyword}{struct }user\_struct us;
+
+  data = \hyperlink{dataset2d_8c_a91faa110511acf5d304ccd5f18f1d1da}{dataset2d\_load\_fixed}(\textcolor{stringliteral}{"data.txt"}, sigma);
+  \textcolor{keywordflow}{if} (data == NULL) \{
+    fprintf(stderr, 
+            \textcolor{stringliteral}{"error: unable to load data, "}
+            \textcolor{stringliteral}{"has it been created with the script?\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{keywordflow}{if} (lambda == 0.0) \{
+
+    data->lambdamin = 0.5;
+    data->lambdamax = 2.0;
+    data->lambdastd = 0.1;
+  \}
+  
+
+  option\_index = 0;
+  \textcolor{keywordflow}{while} (1) \{
+
+    c = getopt\_long(argc, argv, short\_options, long\_options, &option\_index);
+    \textcolor{keywordflow}{if} (c == -1) \{
+      \textcolor{keywordflow}{break};
+    \}
+
+    \textcolor{keywordflow}{switch} (c) \{
+    \textcolor{keywordflow}{default}:
+      fprintf(stderr, \textcolor{stringliteral}{"error: invalid option\(\backslash\)n"});
+      \textcolor{keywordflow}{return} -1;
+
+    \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:
+      usage(argv[0]);
+      \textcolor{keywordflow}{return} -1;
+    \}
+  \}
+
+  \textcolor{comment}{/*}
+\textcolor{comment}{   * Set the data bounds}
+\textcolor{comment}{   */}
+  printf(\textcolor{stringliteral}{"Auto zrange: %f %f\(\backslash\)n"}, data->zmin, data->zmax);
+  data->xmin = -50.0;
+  data->xmax = 50.0;
+  data->ymin = -50.0;
+  data->ymax = 50.0;
+  data->zmin = -50.0;
+  data->zmax = 50.0;
+
+  \textcolor{comment}{/*}
+\textcolor{comment}{   * Initialize our user struct to zero at set the grid we }
+\textcolor{comment}{   * want to sample.}
+\textcolor{comment}{   */}
+  us.n = 0;
+  \textcolor{keywordflow}{for} (j = 0; j < NYSAMPLES; j ++) \{
+    \textcolor{keywordflow}{for} (i = 0; i < NXSAMPLES; i ++) \{
+      us.mean[i][j] = 0.0;
+    \}
+  \}
+
+  \textcolor{keywordflow}{for} (i = 0; i < NYSAMPLES; i ++) \{
+    us.xc[i] = data->xmin + (data->xmax - data->xmin) * (\textcolor{keywordtype}{double})i/(double)(NXSAMPLES - 1);
+  \}
+  \textcolor{keywordflow}{for} (j = 0; j < NYSAMPLES; j ++) \{
+    us.yc[j] = data->ymin + (data->ymax - data->ymin) * (\textcolor{keywordtype}{double})j/(double)(NYSAMPLES - 1);
+  \}
+  
+  results = \hyperlink{regression__part2d_8c_aa4589a0fbb1ca56b2db6fafbda40161f}{part2d\_regression}(data,
+                              burnin,
+                              total,
+                              min\_part,
+                              max\_part,
+                              xsamples,
+                              ysamples,
+                              zsamples,
+                              credible,
+                              pv,
+                              pd,
+                              \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform},
+                              \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal},
+                              \hyperlink{resultset2d_8h_a744f9755a663daa6eafddd466910fe4fac62e28f61602d20f7331b37ea450a7aa}{RESULTSET2D\_MEAN} |
+                              \hyperlink{resultset2d_8h_a744f9755a663daa6eafddd466910fe4fa6c6f7fb4bc72946962cde76a0e7a794a}{RESULTSET2D\_MEDIAN} |
+                              \hyperlink{resultset2d_8h_a744f9755a663daa6eafddd466910fe4fa66b5838897fd909f2c141fc65a026fc2}{RESULTSET2D\_MODE} |
+                              \hyperlink{resultset2d_8h_a744f9755a663daa6eafddd466910fe4fa8ecabbba3d1125a42c25600f3ff60c3e}{RESULTSET2D\_CREDIBLE},
+                              regression2d\_cb,
+                              (\textcolor{keywordtype}{void}*)&us);
+  
+  \textcolor{keywordflow}{if} (results == NULL) \{
+    fprintf(stderr, 
+            \textcolor{stringliteral}{"error: failed to run regression\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  xcl = xsamples;
+  xcoords = \hyperlink{rjmcmc__util_8c_a26a1113b542fb7250c98e13b8465332b}{rjmcmc\_create\_array\_1d}(xcl);
+  \hyperlink{resultset2d_8c_ab8c9fe4a816e795daa55029a8a3f825a}{resultset2d\_fill\_xcoord\_vector}(results, xcoords, &xcl);
+  
+  ycl = ysamples;
+  ycoords = \hyperlink{rjmcmc__util_8c_a26a1113b542fb7250c98e13b8465332b}{rjmcmc\_create\_array\_1d}(ycl);
+  \hyperlink{resultset2d_8c_a953b03892f2d90973bbe188c5ba69a87}{resultset2d\_fill\_ycoord\_vector}(results, ycoords, &ycl);
+
+  v = \hyperlink{resultset2d_8c_aa5f486e28af5cc7d8557a03c6423542e}{resultset2d\_get\_misfit}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get misfit data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a3cdc9584ffb43795673f8013b1e6b8cc}{rjmcmc\_save\_vector}(\textcolor{stringliteral}{"callbackex.misfit"}, v, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save misfit data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  v = \hyperlink{resultset2d_8c_a7f017ed01774b5d5363ccc3a6731be79}{resultset2d\_get\_lambda}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get lambda data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a3cdc9584ffb43795673f8013b1e6b8cc}{rjmcmc\_save\_vector}(\textcolor{stringliteral}{"callbackex.lambda"}, v, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save lambda data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a92fed2455e249dd7336f119415d0de78}{rjmcmc\_save\_vector\_as\_histogram}(\textcolor{stringliteral}{"callbackex.lambda\_hist"}, 
+                                      data->lambdamin,
+                                      data->lambdamax,
+                                      xsamples,
+                                      v, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save lambda histogram\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  iv = \hyperlink{resultset2d_8c_a99d827f0771b6634189e2a95403080ec}{resultset2d\_get\_partitions}(results);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a287599dc8c2060a831324f4c49988d97}{rjmcmc\_save\_int\_vector}(\textcolor{stringliteral}{"callbackex.partitions"}, iv, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a6e92f3fbaa4acb4bec85c5c900614e92}{rjmcmc\_save\_int\_vector\_as\_histogram}(\textcolor{stringliteral}{"callbackex.partition\_hist"},
+                                          0,
+                                          max\_part,
+                                          iv,
+                                          total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  m = \hyperlink{resultset2d_8c_a759ae24532adcdc101ec125f29ea8422}{resultset2d\_get\_mean}(results);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get mean data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"callbackex.mean"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save mean data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  m = \hyperlink{resultset2d_8c_a7373204072c1cf49d2484fd7e7970e0a}{resultset2d\_get\_median}(results);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get median data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"callbackex.median"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save median data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  m = \hyperlink{resultset2d_8c_a210e2e463927be0b79315e73af58f38c}{resultset2d\_get\_mode}(results);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get mode data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"callbackex.mode"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save mode data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  m = \hyperlink{resultset2d_8c_a8030af47781ae748097d1c58e325ee22}{resultset2d\_get\_credible\_min}(results);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get credible\_min data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"callbackex.conf\_min"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save credible\_min data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  m = \hyperlink{resultset2d_8c_afa330adb06147d214e17d2cd1d2ecc90}{resultset2d\_get\_credible\_max}(results);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get credible\_max data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"callbackex.conf\_max"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save credible\_max data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  im = \hyperlink{resultset2d_8c_a6dc3c9709500e38658994830da349ec0}{resultset2d\_get\_centres}(results);
+  \textcolor{keywordflow}{if} (im == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get centres\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a27f7d8d21fc7bd71eabee1377c0e816f}{rjmcmc\_save\_int\_matrix}(\textcolor{stringliteral}{"callbackex.centres"}, im, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save centres\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  
+
+  iv = \hyperlink{resultset2d_8c_ab5f7f889be7a93f751c28c50d5822bee}{resultset2d\_get\_propose}(results, &nproc);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get propose counts\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{for} (i = 0; i < nproc; i ++) \{
+    printf(\textcolor{stringliteral}{"%6d "}, iv[i]);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+
+  iv = \hyperlink{resultset2d_8c_a1b8a755917ef75e408d4853802fc1e64}{resultset2d\_get\_accept}(results, &nproc);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get accept counts\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{for} (i = 0; i < nproc; i ++) \{
+    printf(\textcolor{stringliteral}{"%6d "}, iv[i]);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+
+  \hyperlink{dataset2d_8c_a24b470e01459e7413b80f8f38a5b9fd3}{dataset2d\_destroy}(data);
+  \hyperlink{resultset2d_8c_a0ddb34457457c0b27cd6683687960a36}{resultset2d\_destroy}(results);
+
+  \hyperlink{rjmcmc__util_8c_a66c84ced6c0367edf1e03c8c92f3e48d}{rjmcmc\_destroy\_array\_1d}(xcoords);
+  \hyperlink{rjmcmc__util_8c_a66c84ced6c0367edf1e03c8c92f3e48d}{rjmcmc\_destroy\_array\_1d}(ycoords);
+
+  \textcolor{keywordflow}{return} 0;
+\}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} usage(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pname)
+\{
+  fprintf(stderr, 
+          \textcolor{stringliteral}{"usage: %s [options]\(\backslash\)n"}
+          \textcolor{stringliteral}{"where options is on or more of:\(\backslash\)n"}
+          \textcolor{stringliteral}{"\(\backslash\)n"}
+          \textcolor{stringliteral}{" -h|--help               show usage information\(\backslash\)n"}
+          \textcolor{stringliteral}{"\(\backslash\)n"},
+          pname);
+\}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} regression2d\_cb(\textcolor{keywordtype}{void} *state,
+                            \textcolor{keywordtype}{double} *\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x},
+                            \textcolor{keywordtype}{double} *\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y},
+                            \textcolor{keywordtype}{int} ncells,
+                            \hyperlink{regression_8h_a1669f9404bc2d78149c02d0cc39e0db8}{regression2d\_value\_at\_t} value\_at,
+                            \textcolor{keywordtype}{double} lambda,
+                            \textcolor{keywordtype}{void} *\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg})
+\{
+  \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} SAMPLERATE = 5;
+  \textcolor{keyword}{struct }user\_struct *u = (\textcolor{keyword}{struct }user\_struct*)user\_arg;
+  \textcolor{keywordtype}{int} i;
+  \textcolor{keywordtype}{int} j;
+
+  \textcolor{keywordtype}{char} filename[256];
+  FILE *fp;
+
+  \textcolor{keywordflow}{for} (j = 0; j < NYSAMPLES; j ++) \{
+    \textcolor{keywordflow}{for} (i = 0; i < NXSAMPLES; i ++) \{
+
+      u->mean[i][j] = (u->mean[i][j] * u->n + 
+                       value\_at(state, u->xc[i], u->yc[j]))/
+        (\textcolor{keywordtype}{double})(u->n + 1);
+    \}
+  \}
+
+  \textcolor{keywordflow}{if} (u->n % SAMPLERATE == 0 && u->n/SAMPLERATE < 2000) \{
+    sprintf(filename, \textcolor{stringliteral}{"callbackex\_mean\_%08d.txt"}, u->n/SAMPLERATE + 1);
+    fp = fopen(filename, \textcolor{stringliteral}{"w"});
+    \textcolor{keywordflow}{if} (fp == NULL) \{
+      fprintf(stderr, \textcolor{stringliteral}{"error: failed to open file for writing\(\backslash\)n"});
+      exit(-1);
+    \}
+    
+    
+    \textcolor{keywordflow}{for} (j = 0; j < NYSAMPLES; j ++) \{
+      \textcolor{keywordflow}{for} (i = 0; i < NXSAMPLES; i ++) \{
+        fprintf(fp, \textcolor{stringliteral}{"%g "}, u->mean[i][j]);
+      \}
+      fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});
+    \}
+
+    fclose(fp);
+  \}
+
+
+  u->n ++;
+\}
+\end{DoxyCodeInclude}
+ 

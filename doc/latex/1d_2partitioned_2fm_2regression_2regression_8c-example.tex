@@ -1,0 +1,394 @@
+\hypertarget{1d_2partitioned_2fm_2regression_2regression_8c-example}{}\section{1d/partitioned/fm/regression/regression.\+c}
+
+\begin{DoxyCodeInclude}
+
+\textcolor{preprocessor}{#include <stdio.h>}
+\textcolor{preprocessor}{#include <stdlib.h>}
+\textcolor{preprocessor}{#include <math.h>}
+\textcolor{preprocessor}{#include <getopt.h>}
+\textcolor{preprocessor}{#include <assert.h>}
+
+\textcolor{preprocessor}{#include <\hyperlink{forwardmodel_8h}{rjmcmc/forwardmodel.h}>}
+\textcolor{preprocessor}{#include <\hyperlink{rjmcmc__random_8h}{rjmcmc/rjmcmc\_random.h}>}
+\textcolor{preprocessor}{#include <\hyperlink{resultset1dfm_8h}{rjmcmc/resultset1dfm.h}>}
+
+\textcolor{preprocessor}{#include <\hyperlink{rjmcmc__util_8h}{rjmcmc/rjmcmc\_util.h}>}
+
+\textcolor{keyword}{struct }regression\_data \{
+  \textcolor{keywordtype}{int} size;
+  \textcolor{keywordtype}{double} *\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x};
+  \textcolor{keywordtype}{double} *\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y};
+  \textcolor{keywordtype}{double} sigma;
+\};
+
+\textcolor{keyword}{static} \textcolor{keyword}{struct }regression\_data *
+create\_data(\textcolor{keywordtype}{int} xsamples,
+            \textcolor{keywordtype}{double} xmin,
+            \textcolor{keywordtype}{double} xmax,
+            \textcolor{keywordtype}{double} ymin,
+            \textcolor{keywordtype}{double} ymax,
+            \textcolor{keywordtype}{double} n,
+            \textcolor{keywordtype}{int} nsteps);
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{double} 
+regression\_likelihood\_hierarchical(\textcolor{keywordtype}{void} *\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg},
+                                   \textcolor{keywordtype}{int} npartitions,
+                                   \textcolor{keyword}{const} \textcolor{keywordtype}{double} *partitions,
+                                   \textcolor{keywordtype}{int} nglobalparameters,
+                                   \textcolor{keyword}{const} \textcolor{keywordtype}{double} *global\_parameters,
+                                   \textcolor{keywordtype}{int} hierarchical,
+                                   \textcolor{keywordtype}{int} nhierarchical,
+                                   \textcolor{keyword}{const} \textcolor{keywordtype}{double} *hierarchicalparameters,
+                                   \hyperlink{struct__part1d__fm__hierarchical__likelihood__state}{part1d\_fm\_hierarchical\_likelihood\_state\_t}
+       *state,
+                                   \hyperlink{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{part1d\_fm\_hierarchical\_value\_at\_t} 
+      value\_at,
+                                   \hyperlink{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{part1d\_fm\_hierarchical\_value\_at\_t} 
+      gradient\_at,
+                                   \textcolor{keywordtype}{double} *logdetce);
+                                                 
+\textcolor{keyword}{static} \textcolor{keywordtype}{double} 
+regression\_likelihood(\textcolor{keywordtype}{void} *\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg},
+                      \textcolor{keywordtype}{int} npartitions,
+                      \textcolor{keyword}{const} \textcolor{keywordtype}{double} *partitions,
+                      \textcolor{keywordtype}{int} nglobalparameters,
+                      \textcolor{keyword}{const} \textcolor{keywordtype}{double} *global\_parameters,
+                      \hyperlink{struct__part1d__fm__likelihood__state}{part1d\_fm\_likelihood\_state\_t} *state,
+                      \hyperlink{forwardmodel_8h_ae0748a5b083292dc628303c679b25b2f}{part1d\_fm\_value\_at\_t} value\_at,
+                      \hyperlink{forwardmodel_8h_ae0748a5b083292dc628303c679b25b2f}{part1d\_fm\_value\_at\_t} gradient\_at);
+
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]) 
+\{
+  \textcolor{keyword}{struct }regression\_data *data;
+  \hyperlink{struct__resultset1dfm}{resultset1dfm\_t} *results;
+
+  \textcolor{keywordtype}{int} burnin = 1000;
+  \textcolor{keywordtype}{int} \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total} = 20000;
+  \textcolor{keywordtype}{int} min\_part = 2;
+  \textcolor{keywordtype}{int} max\_part = 10;
+  \textcolor{keywordtype}{double} xmin = 0.0;
+  \textcolor{keywordtype}{double} xmax = 100.0;
+  \textcolor{keywordtype}{int} xsamples = 100;
+  \textcolor{keywordtype}{int} ysamples = 200;
+  \textcolor{keywordtype}{double} confidence = 0.95;
+  \textcolor{keywordtype}{double} pd = 1.0;
+  \textcolor{keywordtype}{int} hierarchical = 1;
+
+  \hyperlink{struct__forwardmodelparameter}{forwardmodelparameter\_t} local\_parameter;
+  \hyperlink{struct__forwardmodelparameter}{forwardmodelparameter\_t} hierarchical\_parameter;
+
+  \textcolor{keywordtype}{int} nproc;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{double} *v;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{int} *iv;
+  \textcolor{keywordtype}{int} i;
+
+  \textcolor{keywordtype}{double} *xcoords;
+  \textcolor{keywordtype}{int} xcl;
+
+  \textcolor{keywordtype}{double} sigma\_mean = 20.0;
+
+  local\_parameter.\hyperlink{struct__forwardmodelparameter_aced3d685a9701e3488ac78093a4e4733}{fmin} = -150.0;
+  local\_parameter.\hyperlink{struct__forwardmodelparameter_aa028b68fc0f738b4d578e90751ffaa24}{fmax} = 150.0;
+  local\_parameter.\hyperlink{struct__forwardmodelparameter_a08b65584a090a79dce5dc91aaced7bbe}{fstd\_value} = 15.0;
+  local\_parameter.\hyperlink{struct__forwardmodelparameter_a7afd8319a9bf822ab7999ea8a52be0ed}{fstd\_bd} = 15.0;
+
+  hierarchical\_parameter.\hyperlink{struct__forwardmodelparameter_aced3d685a9701e3488ac78093a4e4733}{fmin} = sigma\_mean - 10.0;
+  hierarchical\_parameter.\hyperlink{struct__forwardmodelparameter_aa028b68fc0f738b4d578e90751ffaa24}{fmax} = sigma\_mean + 10.0;
+  hierarchical\_parameter.\hyperlink{struct__forwardmodelparameter_a08b65584a090a79dce5dc91aaced7bbe}{fstd\_value} = 1.0;
+  hierarchical\_parameter.\hyperlink{struct__forwardmodelparameter_a7afd8319a9bf822ab7999ea8a52be0ed}{fstd\_bd} = 0.0;
+
+  data = create\_data(xsamples, xmin, xmax, -100.0, 100.0, sigma\_mean, 5);
+  \textcolor{keywordflow}{if} (data == NULL) \{
+    fprintf(stderr, 
+            \textcolor{stringliteral}{"error: failed to create data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a2420a7bb203e76de5ca03bc4dea299c0}{rjmcmc\_save\_coords}(\textcolor{stringliteral}{"data.txt"}, data->x, data->y, data->size) < 0) \{
+    fprintf(stderr,
+            \textcolor{stringliteral}{"error: failed to save data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{keywordflow}{if} (hierarchical) \{
+    results = \hyperlink{forwardmodel__part1d__hierarchical_8c_a3c4cf826215489f83f5f78eca178c049}{part1d\_forwardmodel\_hierarchical}(burnin,
+                                               total,
+                                               min\_part,
+                                               max\_part,
+                                               xmin,
+                                               xmax,
+                                               xsamples,
+                                               ysamples,
+                                               confidence,
+                                               pd,
+                                               \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform},
+                                               \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal},
+                                               0,
+                                               NULL,
+                                               1,
+                                               &local\_parameter,
+                                               1,
+                                               &hierarchical\_parameter,
+                                               regression\_likelihood\_hierarchical,
+                                               data,
+                                               \hyperlink{resultset1dfm_8h_afc3b11f934a94a4c1e202e3c6bf776dfa91c9b77df8544e09861a84c0c387f906}{RESULTSET1DFM\_MEAN});
+    
+  \} \textcolor{keywordflow}{else} \{
+    results = \hyperlink{forwardmodel__part1d_8c_a993aeca8b68ed08750297d7b0a160cb4}{part1d\_forwardmodel}(burnin,
+                                  total,
+                                  min\_part,
+                                  max\_part,
+                                  xmin,
+                                  xmax,
+                                  xsamples,
+                                  ysamples,
+                                  confidence,
+                                  pd,
+                                  \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform},
+                                  \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal},
+                                  0,
+                                  NULL,
+                                  1,
+                                  &local\_parameter,
+                                  regression\_likelihood,
+                                  data,
+                                  \hyperlink{resultset1dfm_8h_afc3b11f934a94a4c1e202e3c6bf776dfa91c9b77df8544e09861a84c0c387f906}{RESULTSET1DFM\_MEAN});
+  \}
+
+  \textcolor{keywordflow}{if} (results == NULL) \{
+    fprintf(stderr, 
+            \textcolor{stringliteral}{"error: failed to run regression\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a3cdc9584ffb43795673f8013b1e6b8cc}{rjmcmc\_save\_vector}(\textcolor{stringliteral}{"regression.data"}, data->y, xsamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  xcl = xsamples;
+  xcoords = \hyperlink{rjmcmc__util_8c_a26a1113b542fb7250c98e13b8465332b}{rjmcmc\_create\_array\_1d}(xcl);
+  \textcolor{keywordflow}{if} (xcoords == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to create array for xsamples\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \hyperlink{resultset1dfm_8c_ad8195d90d2d853e8019cc53cbf16a88e}{resultset1dfm\_fill\_xcoord\_vector}(results, xcoords, &xcl);
+
+  v = \hyperlink{resultset1dfm_8c_a72b48530862c5b63072c1c36a4a7c63c}{resultset1dfm\_get\_misfit}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get misfit data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a3cdc9584ffb43795673f8013b1e6b8cc}{rjmcmc\_save\_vector}(\textcolor{stringliteral}{"regression.misfit"}, v, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save misfit data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  iv = \hyperlink{resultset1dfm_8c_a569d4d5dfe67503dc2aabbed3d86141a}{resultset1dfm\_get\_partitions}(results);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a287599dc8c2060a831324f4c49988d97}{rjmcmc\_save\_int\_vector}(\textcolor{stringliteral}{"regression.partitions"}, iv, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a6e92f3fbaa4acb4bec85c5c900614e92}{rjmcmc\_save\_int\_vector\_as\_histogram}(\textcolor{stringliteral}{"regression.partition\_hist"},
+                                          2,
+                                          max\_part,
+                                          iv, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partition histogram data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  iv = \hyperlink{resultset1dfm_8c_acaa386c9cb9fb667302202ded21fc52b}{resultset1dfm\_get\_partition\_x\_histogram}(results);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get partition histogram\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_aad0eefc8da54924e51302b75300ec0c3}{rjmcmc\_save\_int\_coords}(\textcolor{stringliteral}{"regression.partition\_x\_hist"},
+                             xcoords,
+                             iv,
+                             xsamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partition x histogram\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  v = \hyperlink{resultset1dfm_8c_a5c45777799f29e5a745320bc4682532f}{resultset1dfm\_get\_local\_parameter\_mean}(results, 0);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get mean data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+    \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a2420a7bb203e76de5ca03bc4dea299c0}{rjmcmc\_save\_coords}(\textcolor{stringliteral}{"regression.mean"}, xcoords, v, xsamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save mean data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  iv = \hyperlink{resultset1dfm_8c_a686509f8e109404d1ad910c6db978147}{resultset1dfm\_get\_propose}(results, &nproc);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get propose counts\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{for} (i = 0; i < nproc; i ++) \{
+    printf(\textcolor{stringliteral}{"%6d "}, iv[i]);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+
+  iv = \hyperlink{resultset1dfm_8c_a32ef33d995fef2648d19dc3c380e1e99}{resultset1dfm\_get\_accept}(results, &nproc);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get accept counts\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{for} (i = 0; i < nproc; i ++) \{
+    printf(\textcolor{stringliteral}{"%6d "}, iv[i]);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+
+  \hyperlink{rjmcmc__util_8c_a66c84ced6c0367edf1e03c8c92f3e48d}{rjmcmc\_destroy\_array\_1d}(xcoords);
+  \hyperlink{resultset1dfm_8c_a4f089a088ba4fd4ef80d5a57b7a7f20f}{resultset1dfm\_destroy}(results);
+
+  \hyperlink{rjmcmc__util_8c_a66c84ced6c0367edf1e03c8c92f3e48d}{rjmcmc\_destroy\_array\_1d}(data->x);
+  \hyperlink{rjmcmc__util_8c_a66c84ced6c0367edf1e03c8c92f3e48d}{rjmcmc\_destroy\_array\_1d}(data->y);
+  free(data);
+
+  \textcolor{keywordflow}{return} 0;
+\}
+
+\textcolor{keyword}{static} \textcolor{keyword}{struct }regression\_data *
+create\_data(\textcolor{keywordtype}{int} xsamples,
+            \textcolor{keywordtype}{double} xmin,
+            \textcolor{keywordtype}{double} xmax,
+            \textcolor{keywordtype}{double} ymin,
+            \textcolor{keywordtype}{double} ymax,
+            \textcolor{keywordtype}{double} n,
+            \textcolor{keywordtype}{int} nsteps)
+\{
+  \textcolor{keywordtype}{int} i;
+  \textcolor{keywordtype}{int} j;
+  \textcolor{keywordtype}{int} jwrap;
+  \textcolor{keyword}{struct }regression\_data *d;
+  \textcolor{keywordtype}{double} l;
+
+  jwrap = xsamples/nsteps;
+  \textcolor{keywordflow}{if} (jwrap <= 1) \{
+    fprintf(stderr, \textcolor{stringliteral}{"create\_data: too many steps\(\backslash\)n"});
+    \textcolor{keywordflow}{return} NULL;
+  \}
+
+  d = (\textcolor{keyword}{struct }regression\_data*)malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} regression\_data));
+  \textcolor{keywordflow}{if} (d == NULL) \{
+    \textcolor{keywordflow}{return} NULL;
+  \}
+
+  d->x = \hyperlink{rjmcmc__util_8c_a26a1113b542fb7250c98e13b8465332b}{rjmcmc\_create\_array\_1d}(xsamples);
+  \textcolor{keywordflow}{if} (d->x == NULL) \{
+    \textcolor{keywordflow}{return} NULL;
+  \}
+
+  d->y = \hyperlink{rjmcmc__util_8c_a26a1113b542fb7250c98e13b8465332b}{rjmcmc\_create\_array\_1d}(xsamples);
+  \textcolor{keywordflow}{if} (d->y == NULL) \{
+    \textcolor{keywordflow}{return} NULL;
+  \}
+  
+  l = \hyperlink{rjmcmc__random_8c_ab99a758b14f2202bfd823164b4f67640}{rjmcmc\_random\_choose\_double}(ymin, ymax, 
+      \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform});
+
+  d->size = xsamples;
+  d->sigma = n + (n/2.0) * \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal}();
+
+  \textcolor{keywordflow}{for} (i = 0, j = 0; i < xsamples; i ++) \{
+
+    d->x[i] = ((double)i + 0.5)/(double)(xsamples) * (xmax - xmin) + xmin;
+    d->y[i] = l + n * \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal}();
+
+    j ++;
+    \textcolor{keywordflow}{if} (j > jwrap) \{
+      j = 0;
+      l = \hyperlink{rjmcmc__random_8c_ab99a758b14f2202bfd823164b4f67640}{rjmcmc\_random\_choose\_double}(ymin, ymax, 
+      \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform});
+    \}
+  \}
+
+  \textcolor{keywordflow}{return} d;
+\}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{double} 
+regression\_likelihood\_hierarchical(\textcolor{keywordtype}{void} *\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg},
+                                   \textcolor{keywordtype}{int} npartitions,
+                                   \textcolor{keyword}{const} \textcolor{keywordtype}{double} *partitions,
+                                   \textcolor{keywordtype}{int} nglobalparameters,
+                                   \textcolor{keyword}{const} \textcolor{keywordtype}{double} *global\_parameters,
+                                   \textcolor{keywordtype}{int} hierarchical,
+                                   \textcolor{keywordtype}{int} nhierarchical,
+                                   \textcolor{keyword}{const} \textcolor{keywordtype}{double} *hierarchicalparameters,
+                                   \hyperlink{struct__part1d__fm__hierarchical__likelihood__state}{part1d\_fm\_hierarchical\_likelihood\_state\_t}
+       *state,
+                                   \hyperlink{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{part1d\_fm\_hierarchical\_value\_at\_t} 
+      value\_at,
+                                   \hyperlink{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{part1d\_fm\_hierarchical\_value\_at\_t} 
+      gradient\_at,
+                                   \textcolor{keywordtype}{double} *logdetce)
+\{
+  \textcolor{keyword}{struct }regression\_data *data = (\textcolor{keyword}{struct }regression\_data*)\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg};
+  \textcolor{keywordtype}{int} i;
+  \textcolor{keywordtype}{double} sum;
+  \textcolor{keywordtype}{double} dy;
+  \textcolor{keywordtype}{double} sigma;
+  \textcolor{keywordtype}{double} denom;
+
+  \textcolor{keyword}{const} \textcolor{keywordtype}{double} *local\_parameters;
+
+  sum = 0;
+  
+  sigma = hierarchicalparameters[0];
+  denom = 2.0 * sigma * sigma;
+
+  \textcolor{keywordflow}{for} (i = 0; i < data->size; i ++) \{
+
+    local\_parameters = value\_at(state, data->x[i]);
+
+    dy = local\_parameters[0] - data->y[i];
+    sum += (dy * dy)/denom;
+
+  \}
+
+  \textcolor{keywordflow}{if} (hierarchical) \{
+    *logdetce = 2.0 * (double)(data->size) * log(sigma);
+  \}
+
+  \textcolor{keywordflow}{return} sum;
+\}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{double} 
+regression\_likelihood(\textcolor{keywordtype}{void} *\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg},
+                      \textcolor{keywordtype}{int} npartitions,
+                      \textcolor{keyword}{const} \textcolor{keywordtype}{double} *partitions,
+                      \textcolor{keywordtype}{int} nglobalparameters,
+                      \textcolor{keyword}{const} \textcolor{keywordtype}{double} *global\_parameters,
+                      \hyperlink{struct__part1d__fm__likelihood__state}{part1d\_fm\_likelihood\_state\_t} *state,
+                      \hyperlink{forwardmodel_8h_ae0748a5b083292dc628303c679b25b2f}{part1d\_fm\_value\_at\_t} value\_at,
+                      \hyperlink{forwardmodel_8h_ae0748a5b083292dc628303c679b25b2f}{part1d\_fm\_value\_at\_t} gradient\_at)
+\{
+  \textcolor{keyword}{struct }regression\_data *data = (\textcolor{keyword}{struct }regression\_data*)\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg};
+  \textcolor{keywordtype}{double} dummy;
+
+  \textcolor{keywordflow}{return} regression\_likelihood\_hierarchical(\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg},
+                                            npartitions,
+                                            partitions,
+                                            nglobalparameters,
+                                            global\_parameters,
+                                            0, \textcolor{comment}{/* Don't calculate logdetce */}
+                                            1, \textcolor{comment}{/* nhierarchical parameters */}
+                                            &(data->sigma), \textcolor{comment}{/* pass our sigma */}
+                                            (
+      \hyperlink{struct__part1d__fm__hierarchical__likelihood__state}{part1d\_fm\_hierarchical\_likelihood\_state\_t} *)state,
+                                            (\hyperlink{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{part1d\_fm\_hierarchical\_value\_at\_t}
+      )value\_at,
+                                            (\hyperlink{forwardmodel_8h_a2b43e47273fdb108e220e5418db7496e}{part1d\_fm\_hierarchical\_value\_at\_t}
+      )gradient\_at,
+                                            &dummy);
+\}
+
+\end{DoxyCodeInclude}
+ 

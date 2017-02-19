@@ -1,0 +1,215 @@
+\hypertarget{position__map2d__delaunay_8c}{}\section{position\+\_\+map2d\+\_\+delaunay.\+c File Reference}
+\label{position__map2d__delaunay_8c}\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$float.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/position\+\_\+map2d\+\_\+delaunay.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/delaunay2d.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+util.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+defines.\+h$>$}\\*
+Include dependency graph for position\+\_\+map2d\+\_\+delaunay.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__position__map2d__delaunay}{\+\_\+position\+\_\+map2d\+\_\+delaunay}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$ \hyperlink{position__map2d__delaunay_8c_aba893a3a4dda80c0b37b7c04f8814b45}{position\+\_\+map2d\+\_\+delaunay\+\_\+create} (int max\+\_\+partitions, double xmin, double xmax, double ymin, double ymax)
+\item 
+void \hyperlink{position__map2d__delaunay_8c_a6937bae2d5bfdd44c1c7a79820bfdb89}{position\+\_\+map2d\+\_\+delaunay\+\_\+destroy} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p)
+\item 
+void \hyperlink{position__map2d__delaunay_8c_a334b07ee38411b3418dd475aea5ceff9}{position\+\_\+map2d\+\_\+delaunay\+\_\+clone} (const \hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$src, \hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$dst)
+\item 
+int \hyperlink{position__map2d__delaunay_8c_ae7fc36019fbd8b8beb400e86ca4aacb3}{position\+\_\+map2d\+\_\+delaunay\+\_\+insert} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__delaunay_8c_a1bc29be69ae182ef7582f6d6ed317bc9}{position\+\_\+map2d\+\_\+delaunay\+\_\+delete} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p, int iy, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__delaunay_8c_a0217373611d33e81ff682d8ff6f9186f}{position\+\_\+map2d\+\_\+delaunay\+\_\+move} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p, int iy, double new\+\_\+x, double new\+\_\+y, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__delaunay_8c_a2614c64e8d13c24f5c58ee8e157649fb}{position\+\_\+map2d\+\_\+delaunay\+\_\+nearest} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, double $\ast$nx, double $\ast$ny, int include\+\_\+boundary\+\_\+points)
+\item 
+int \hyperlink{position__map2d__delaunay_8c_a52a8ec5284631e77d3f162d022444f02}{position\+\_\+map2d\+\_\+delaunay\+\_\+enclosing\+\_\+triangle} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, int $\ast$ta, int $\ast$tb, int $\ast$tc, double $\ast$ba, double $\ast$bb, double $\ast$bc)
+\item 
+int \hyperlink{position__map2d__delaunay_8c_af22aa3a54d5a5ff4601bfd646adaf42f}{position\+\_\+map2d\+\_\+delaunay\+\_\+position\+\_\+of\+\_\+index} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p, int iy, double $\ast$\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double $\ast$\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+int \hyperlink{position__map2d__delaunay_8c_a65da7792b2644e44a6b59ba257d230b4}{position\+\_\+map2d\+\_\+delaunay\+\_\+polygon\+\_\+bound} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p, int iy, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{position__map2d__delaunay_8c_a16abbc40a2ba515ebe059fe4596c452e}{position\+\_\+map2d\+\_\+delaunay\+\_\+validate} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p)
+\item 
+int \hyperlink{position__map2d__delaunay_8c_a6b44e51f93682a260478e2afd9098b22}{position\+\_\+map2d\+\_\+delaunay\+\_\+save} (\hyperlink{position__map2d__delaunay_8h_a183d96e63d833f9d121c779c9fc8134c}{position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$p, const char $\ast$filename)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+clone@{position\+\_\+map2d\+\_\+delaunay\+\_\+clone}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+clone@{position\+\_\+map2d\+\_\+delaunay\+\_\+clone}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+clone(const position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$src, position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$dst)}{position_map2d_delaunay_clone(const position_map2d_delaunay_t *src, position_map2d_delaunay_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void position\+\_\+map2d\+\_\+delaunay\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{src, }
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_a334b07ee38411b3418dd475aea5ceff9}{}\label{position__map2d__delaunay_8c_a334b07ee38411b3418dd475aea5ceff9}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+clone(), \+\_\+position\+\_\+map2d\+\_\+delaunay\+::max\+\_\+partitions, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+V\+O\+ID, R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+V\+O\+ID, and \+\_\+position\+\_\+map2d\+\_\+delaunay\+::si.
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+create@{position\+\_\+map2d\+\_\+delaunay\+\_\+create}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+create@{position\+\_\+map2d\+\_\+delaunay\+\_\+create}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+create(int max\+\_\+partitions, double xmin, double xmax, double ymin, double ymax)}{position_map2d_delaunay_create(int max_partitions, double xmin, double xmax, double ymin, double ymax)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t}$\ast$ position\+\_\+map2d\+\_\+delaunay\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+\_\+partitions, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_aba893a3a4dda80c0b37b7c04f8814b45}{}\label{position__map2d__delaunay_8c_aba893a3a4dda80c0b37b7c04f8814b45}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+create(), \+\_\+position\+\_\+map2d\+\_\+delaunay\+::max\+\_\+partitions, and \+\_\+position\+\_\+map2d\+\_\+delaunay\+::si.
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+delete@{position\+\_\+map2d\+\_\+delaunay\+\_\+delete}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+delete@{position\+\_\+map2d\+\_\+delaunay\+\_\+delete}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+delete(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p, int iy, bbox2d\+\_\+t $\ast$bound)}{position_map2d_delaunay_delete(position_map2d_delaunay_t *p, int iy, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delaunay\+\_\+delete (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_a1bc29be69ae182ef7582f6d6ed317bc9}{}\label{position__map2d__delaunay_8c_a1bc29be69ae182ef7582f6d6ed317bc9}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+delete(), R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT, and \+\_\+position\+\_\+map2d\+\_\+delaunay\+::si.
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+destroy@{position\+\_\+map2d\+\_\+delaunay\+\_\+destroy}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+destroy@{position\+\_\+map2d\+\_\+delaunay\+\_\+destroy}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+destroy(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p)}{position_map2d_delaunay_destroy(position_map2d_delaunay_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}void position\+\_\+map2d\+\_\+delaunay\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_a6937bae2d5bfdd44c1c7a79820bfdb89}{}\label{position__map2d__delaunay_8c_a6937bae2d5bfdd44c1c7a79820bfdb89}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, and delaunay2d\+\_\+destroy().
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+enclosing\+\_\+triangle@{position\+\_\+map2d\+\_\+delaunay\+\_\+enclosing\+\_\+triangle}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+enclosing\+\_\+triangle@{position\+\_\+map2d\+\_\+delaunay\+\_\+enclosing\+\_\+triangle}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+enclosing\+\_\+triangle(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p, double x, double y, int $\ast$ta, int $\ast$tb, int $\ast$tc, double $\ast$ba, double $\ast$bb, double $\ast$bc)}{position_map2d_delaunay_enclosing_triangle(position_map2d_delaunay_t *p, double x, double y, int *ta, int *tb, int *tc, double *ba, double *bb, double *bc)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delaunay\+\_\+enclosing\+\_\+triangle (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{int $\ast$}]{ta, }
+\item[{int $\ast$}]{tb, }
+\item[{int $\ast$}]{tc, }
+\item[{double $\ast$}]{ba, }
+\item[{double $\ast$}]{bb, }
+\item[{double $\ast$}]{bc}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_a52a8ec5284631e77d3f162d022444f02}{}\label{position__map2d__delaunay_8c_a52a8ec5284631e77d3f162d022444f02}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+insert@{position\+\_\+map2d\+\_\+delaunay\+\_\+insert}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+insert@{position\+\_\+map2d\+\_\+delaunay\+\_\+insert}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+insert(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p, double x, double y, bbox2d\+\_\+t $\ast$bound)}{position_map2d_delaunay_insert(position_map2d_delaunay_t *p, double x, double y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delaunay\+\_\+insert (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_ae7fc36019fbd8b8beb400e86ca4aacb3}{}\label{position__map2d__delaunay_8c_ae7fc36019fbd8b8beb400e86ca4aacb3}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+add(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+move@{position\+\_\+map2d\+\_\+delaunay\+\_\+move}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+move@{position\+\_\+map2d\+\_\+delaunay\+\_\+move}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+move(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p, int iy, double new\+\_\+x, double new\+\_\+y, bbox2d\+\_\+t $\ast$bound)}{position_map2d_delaunay_move(position_map2d_delaunay_t *p, int iy, double new_x, double new_y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delaunay\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{double}]{new\+\_\+x, }
+\item[{double}]{new\+\_\+y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_a0217373611d33e81ff682d8ff6f9186f}{}\label{position__map2d__delaunay_8c_a0217373611d33e81ff682d8ff6f9186f}
+
+
+References bbox2d\+\_\+bound\+\_\+expand(), \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+add(), delaunay2d\+\_\+delete(), delaunay2d\+\_\+print\+\_\+points(), delaunay2d\+\_\+print\+\_\+triangles(), delaunay2d\+\_\+shift\+\_\+replace(), position\+\_\+map2d\+\_\+delaunay\+\_\+validate(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+nearest@{position\+\_\+map2d\+\_\+delaunay\+\_\+nearest}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+nearest@{position\+\_\+map2d\+\_\+delaunay\+\_\+nearest}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+nearest(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p, double x, double y, double $\ast$nx, double $\ast$ny, int include\+\_\+boundary\+\_\+points)}{position_map2d_delaunay_nearest(position_map2d_delaunay_t *p, double x, double y, double *nx, double *ny, int include_boundary_points)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delaunay\+\_\+nearest (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double $\ast$}]{nx, }
+\item[{double $\ast$}]{ny, }
+\item[{int}]{include\+\_\+boundary\+\_\+points}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_a2614c64e8d13c24f5c58ee8e157649fb}{}\label{position__map2d__delaunay_8c_a2614c64e8d13c24f5c58ee8e157649fb}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+nearest\+\_\+from(), delaunay2d\+\_\+point\+\_\+of\+\_\+index(), R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT, and \+\_\+position\+\_\+map2d\+\_\+delaunay\+::si.
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+polygon\+\_\+bound@{position\+\_\+map2d\+\_\+delaunay\+\_\+polygon\+\_\+bound}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+polygon\+\_\+bound@{position\+\_\+map2d\+\_\+delaunay\+\_\+polygon\+\_\+bound}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+polygon\+\_\+bound(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p, int iy, bbox2d\+\_\+t $\ast$bound)}{position_map2d_delaunay_polygon_bound(position_map2d_delaunay_t *p, int iy, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delaunay\+\_\+polygon\+\_\+bound (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_a65da7792b2644e44a6b59ba257d230b4}{}\label{position__map2d__delaunay_8c_a65da7792b2644e44a6b59ba257d230b4}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+polygon\+\_\+bound(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+position\+\_\+of\+\_\+index@{position\+\_\+map2d\+\_\+delaunay\+\_\+position\+\_\+of\+\_\+index}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+position\+\_\+of\+\_\+index@{position\+\_\+map2d\+\_\+delaunay\+\_\+position\+\_\+of\+\_\+index}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+position\+\_\+of\+\_\+index(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p, int iy, double $\ast$x, double $\ast$y)}{position_map2d_delaunay_position_of_index(position_map2d_delaunay_t *p, int iy, double *x, double *y)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delaunay\+\_\+position\+\_\+of\+\_\+index (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p, }
+\item[{int}]{iy, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_af22aa3a54d5a5ff4601bfd646adaf42f}{}\label{position__map2d__delaunay_8c_af22aa3a54d5a5ff4601bfd646adaf42f}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+point\+\_\+of\+\_\+index(), and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+save@{position\+\_\+map2d\+\_\+delaunay\+\_\+save}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+save@{position\+\_\+map2d\+\_\+delaunay\+\_\+save}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+save(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p, const char $\ast$filename)}{position_map2d_delaunay_save(position_map2d_delaunay_t *p, const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delaunay\+\_\+save (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p, }
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_a6b44e51f93682a260478e2afd9098b22}{}\label{position__map2d__delaunay_8c_a6b44e51f93682a260478e2afd9098b22}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, and delaunay2d\+\_\+save().
+
+\index{position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}!position\+\_\+map2d\+\_\+delaunay\+\_\+validate@{position\+\_\+map2d\+\_\+delaunay\+\_\+validate}}
+\index{position\+\_\+map2d\+\_\+delaunay\+\_\+validate@{position\+\_\+map2d\+\_\+delaunay\+\_\+validate}!position\+\_\+map2d\+\_\+delaunay.\+c@{position\+\_\+map2d\+\_\+delaunay.\+c}}
+\subsubsection[{\texorpdfstring{position\+\_\+map2d\+\_\+delaunay\+\_\+validate(position\+\_\+map2d\+\_\+delaunay\+\_\+t $\ast$p)}{position_map2d_delaunay_validate(position_map2d_delaunay_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}int position\+\_\+map2d\+\_\+delaunay\+\_\+validate (
+\begin{DoxyParamCaption}
+\item[{{\bf position\+\_\+map2d\+\_\+delaunay\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{position__map2d__delaunay_8c_a16abbc40a2ba515ebe059fe4596c452e}{}\label{position__map2d__delaunay_8c_a16abbc40a2ba515ebe059fe4596c452e}
+
+
+References \+\_\+position\+\_\+map2d\+\_\+delaunay\+::d, delaunay2d\+\_\+validate\+\_\+circumcircles(), delaunay2d\+\_\+validate\+\_\+delaunay(), delaunay2d\+\_\+validate\+\_\+edges(), and delaunay2d\+\_\+validate\+\_\+neighbours().
+
+
+
+Referenced by position\+\_\+map2d\+\_\+delaunay\+\_\+move().
+

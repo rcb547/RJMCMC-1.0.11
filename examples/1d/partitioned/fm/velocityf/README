@@ -1,0 +1,14 @@
+
+This example is a simple forward model attempting to reconstruct a 
+velocity profile from a series of noisy displacement measurements.
+This example uses the Fortran interface.
+
+Instructions:
+
+> make
+> ./velocityf
+> python plot_misfit.py
+> python plot_mean.py
+> python plot_credible.py
+> python plot_partition_count_histogram.py
+> python plot_partition_x_hist.py

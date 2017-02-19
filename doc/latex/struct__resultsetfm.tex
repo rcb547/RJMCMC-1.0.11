@@ -1,0 +1,185 @@
+\hypertarget{struct__resultsetfm}{}\section{\+\_\+resultsetfm Struct Reference}
+\label{struct__resultsetfm}\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+
+
+Collaboration diagram for \+\_\+resultsetfm\+:
+% FIG 0
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{struct__resultsetfm_af2baadf20847f573ddab38052d43354a}{burnin}
+\item 
+int \hyperlink{struct__resultsetfm_a7cdd1aeb9f8871bb982f13ca61625aac}{total}
+\item 
+int \hyperlink{struct__resultsetfm_acc38666e6a41cc97a06e3165a215f71d}{samples}
+\item 
+int \hyperlink{struct__resultsetfm_a8a9ca679792870abea5db1dea416967e}{nparameters}
+\item 
+const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$ \hyperlink{struct__resultsetfm_a12f7f8c09acf372bcf4ebd9a7c01ed34}{parameters}
+\item 
+int \hyperlink{struct__resultsetfm_af0d9022e17ad4c2461ddc8f6c0cb3dea}{nhierarchical\+\_\+parameters}
+\item 
+const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$ \hyperlink{struct__resultsetfm_aad84bea0e2766ac2bf4dc6be83abe897}{hierarchical\+\_\+parameters}
+\item 
+int $\ast$ \hyperlink{struct__resultsetfm_ac45cd3defd12dbbb212f3b6da70d1b52}{propose}
+\item 
+int $\ast$ \hyperlink{struct__resultsetfm_a5c18111a85d5580ca7a6f7d4fcbcb7d7}{accept}
+\item 
+double $\ast$ \hyperlink{struct__resultsetfm_a3032beb7c94f1f86484799c3e916fb0a}{misfit}
+\item 
+double $\ast$$\ast$ \hyperlink{struct__resultsetfm_aedcaea6a6892921cfc97a91674cbda2d}{parameter\+\_\+hist}
+\item 
+double $\ast$$\ast$ \hyperlink{struct__resultsetfm_ad2aede9c02fae9e251496c4be6296e88}{hierarchical\+\_\+parameter\+\_\+hist}
+\item 
+double $\ast$ \hyperlink{struct__resultsetfm_a72335d980019201659b3751f2da0e902}{mean}
+\item 
+double $\ast$ \hyperlink{struct__resultsetfm_a9e05b752653c91742d5e9891df70fbec}{mode}
+\item 
+double $\ast$ \hyperlink{struct__resultsetfm_a708c5f40ab8ed4084a94fc60daef5c44}{median}
+\item 
+double \hyperlink{struct__resultsetfm_a13f6eaaac5b3a4b6d60d71e43392c7f8}{credible\+\_\+interval}
+\item 
+double $\ast$ \hyperlink{struct__resultsetfm_a9aac08a6a424785ff64965e2e5d41a61}{credible\+\_\+min}
+\item 
+double $\ast$ \hyperlink{struct__resultsetfm_a046d3a408cc9e597d4846731fa1fc717}{credible\+\_\+max}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, and \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}.\end{Desc}
+
+
+\subsection{Field Documentation}
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!accept@{accept}}
+\index{accept@{accept}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{accept}{accept}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ \+\_\+resultsetfm\+::accept}\hypertarget{struct__resultsetfm_a5c18111a85d5580ca7a6f7d4fcbcb7d7}{}\label{struct__resultsetfm_a5c18111a85d5580ca7a6f7d4fcbcb7d7}
+
+
+Referenced by M\+P\+I\+\_\+resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+accept(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), resultsetfm\+\_\+get\+\_\+accept(), resultsetfm\+\_\+get\+\_\+accept\+\_\+f(), and resultsetfm\+\_\+get\+\_\+accept\+\_\+n().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!burnin@{burnin}}
+\index{burnin@{burnin}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{burnin}{burnin}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultsetfm\+::burnin}\hypertarget{struct__resultsetfm_af2baadf20847f573ddab38052d43354a}{}\label{struct__resultsetfm_af2baadf20847f573ddab38052d43354a}
+
+
+Referenced by M\+P\+I\+\_\+resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+assemble\+\_\+results(), and resultsetfm\+\_\+create().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!credible\+\_\+interval@{credible\+\_\+interval}}
+\index{credible\+\_\+interval@{credible\+\_\+interval}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{credible\+\_\+interval}{credible_interval}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+resultsetfm\+::credible\+\_\+interval}\hypertarget{struct__resultsetfm_a13f6eaaac5b3a4b6d60d71e43392c7f8}{}\label{struct__resultsetfm_a13f6eaaac5b3a4b6d60d71e43392c7f8}
+
+
+Referenced by resultsetfm\+\_\+assemble\+\_\+results(), and resultsetfm\+\_\+create().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!credible\+\_\+max@{credible\+\_\+max}}
+\index{credible\+\_\+max@{credible\+\_\+max}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{credible\+\_\+max}{credible_max}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+resultsetfm\+::credible\+\_\+max}\hypertarget{struct__resultsetfm_a046d3a408cc9e597d4846731fa1fc717}{}\label{struct__resultsetfm_a046d3a408cc9e597d4846731fa1fc717}
+
+
+Referenced by resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), and resultsetfm\+\_\+get\+\_\+parameter\+\_\+credible\+\_\+max().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!credible\+\_\+min@{credible\+\_\+min}}
+\index{credible\+\_\+min@{credible\+\_\+min}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{credible\+\_\+min}{credible_min}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+resultsetfm\+::credible\+\_\+min}\hypertarget{struct__resultsetfm_a9aac08a6a424785ff64965e2e5d41a61}{}\label{struct__resultsetfm_a9aac08a6a424785ff64965e2e5d41a61}
+
+
+Referenced by resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), and resultsetfm\+\_\+get\+\_\+parameter\+\_\+credible\+\_\+min().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!hierarchical\+\_\+parameter\+\_\+hist@{hierarchical\+\_\+parameter\+\_\+hist}}
+\index{hierarchical\+\_\+parameter\+\_\+hist@{hierarchical\+\_\+parameter\+\_\+hist}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{hierarchical\+\_\+parameter\+\_\+hist}{hierarchical_parameter_hist}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ \+\_\+resultsetfm\+::hierarchical\+\_\+parameter\+\_\+hist}\hypertarget{struct__resultsetfm_ad2aede9c02fae9e251496c4be6296e88}{}\label{struct__resultsetfm_ad2aede9c02fae9e251496c4be6296e88}
+
+
+Referenced by resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), resultsetfm\+\_\+get\+\_\+hierarchical\+\_\+parameter\+\_\+history(), resultsetfm\+\_\+get\+\_\+hierarchical\+\_\+parameter\+\_\+history\+\_\+f(), and resultsetfm\+\_\+sample\+\_\+hierarchical().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!hierarchical\+\_\+parameters@{hierarchical\+\_\+parameters}}
+\index{hierarchical\+\_\+parameters@{hierarchical\+\_\+parameters}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{hierarchical\+\_\+parameters}{hierarchical_parameters}}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf forwardmodelparameter\+\_\+t}$\ast$ \+\_\+resultsetfm\+::hierarchical\+\_\+parameters}\hypertarget{struct__resultsetfm_aad84bea0e2766ac2bf4dc6be83abe897}{}\label{struct__resultsetfm_aad84bea0e2766ac2bf4dc6be83abe897}
+
+
+Referenced by resultsetfm\+\_\+create().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!mean@{mean}}
+\index{mean@{mean}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{mean}{mean}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+resultsetfm\+::mean}\hypertarget{struct__resultsetfm_a72335d980019201659b3751f2da0e902}{}\label{struct__resultsetfm_a72335d980019201659b3751f2da0e902}
+
+
+Referenced by M\+P\+I\+\_\+resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), resultsetfm\+\_\+get\+\_\+parameter\+\_\+mean(), and rjmcmc\+\_\+mean\+\_\+variance().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!median@{median}}
+\index{median@{median}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{median}{median}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+resultsetfm\+::median}\hypertarget{struct__resultsetfm_a708c5f40ab8ed4084a94fc60daef5c44}{}\label{struct__resultsetfm_a708c5f40ab8ed4084a94fc60daef5c44}
+
+
+Referenced by resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), and resultsetfm\+\_\+get\+\_\+parameter\+\_\+median().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!misfit@{misfit}}
+\index{misfit@{misfit}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{misfit}{misfit}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+resultsetfm\+::misfit}\hypertarget{struct__resultsetfm_a3032beb7c94f1f86484799c3e916fb0a}{}\label{struct__resultsetfm_a3032beb7c94f1f86484799c3e916fb0a}
+
+
+Referenced by resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), resultsetfm\+\_\+get\+\_\+misfit(), resultsetfm\+\_\+get\+\_\+misfit\+\_\+f(), and resultsetfm\+\_\+sample\+\_\+misfit().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!mode@{mode}}
+\index{mode@{mode}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{mode}{mode}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+resultsetfm\+::mode}\hypertarget{struct__resultsetfm_a9e05b752653c91742d5e9891df70fbec}{}\label{struct__resultsetfm_a9e05b752653c91742d5e9891df70fbec}
+
+
+Referenced by resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), and resultsetfm\+\_\+get\+\_\+parameter\+\_\+mode().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!nhierarchical\+\_\+parameters@{nhierarchical\+\_\+parameters}}
+\index{nhierarchical\+\_\+parameters@{nhierarchical\+\_\+parameters}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{nhierarchical\+\_\+parameters}{nhierarchical_parameters}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultsetfm\+::nhierarchical\+\_\+parameters}\hypertarget{struct__resultsetfm_af0d9022e17ad4c2461ddc8f6c0cb3dea}{}\label{struct__resultsetfm_af0d9022e17ad4c2461ddc8f6c0cb3dea}
+
+
+Referenced by M\+P\+I\+\_\+resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+accept(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), resultsetfm\+\_\+get\+\_\+hierarchical\+\_\+parameter\+\_\+history\+\_\+f(), resultsetfm\+\_\+get\+\_\+nparameters(), resultsetfm\+\_\+propose(), and resultsetfm\+\_\+sample\+\_\+hierarchical().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!nparameters@{nparameters}}
+\index{nparameters@{nparameters}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{nparameters}{nparameters}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultsetfm\+::nparameters}\hypertarget{struct__resultsetfm_a8a9ca679792870abea5db1dea416967e}{}\label{struct__resultsetfm_a8a9ca679792870abea5db1dea416967e}
+
+
+Referenced by M\+P\+I\+\_\+resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+accept(), resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), resultsetfm\+\_\+get\+\_\+nparameters(), resultsetfm\+\_\+get\+\_\+parameter\+\_\+history(), resultsetfm\+\_\+get\+\_\+parameter\+\_\+history\+\_\+f(), resultsetfm\+\_\+propose(), and resultsetfm\+\_\+sample().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!parameter\+\_\+hist@{parameter\+\_\+hist}}
+\index{parameter\+\_\+hist@{parameter\+\_\+hist}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{parameter\+\_\+hist}{parameter_hist}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ \+\_\+resultsetfm\+::parameter\+\_\+hist}\hypertarget{struct__resultsetfm_aedcaea6a6892921cfc97a91674cbda2d}{}\label{struct__resultsetfm_aedcaea6a6892921cfc97a91674cbda2d}
+
+
+Referenced by M\+P\+I\+\_\+resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), resultsetfm\+\_\+get\+\_\+parameter\+\_\+history(), resultsetfm\+\_\+get\+\_\+parameter\+\_\+history\+\_\+f(), and resultsetfm\+\_\+sample().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!parameters@{parameters}}
+\index{parameters@{parameters}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{parameters}{parameters}}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf forwardmodelparameter\+\_\+t}$\ast$ \+\_\+resultsetfm\+::parameters}\hypertarget{struct__resultsetfm_a12f7f8c09acf372bcf4ebd9a7c01ed34}{}\label{struct__resultsetfm_a12f7f8c09acf372bcf4ebd9a7c01ed34}
+
+
+Referenced by resultsetfm\+\_\+assemble\+\_\+results(), and resultsetfm\+\_\+create().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!propose@{propose}}
+\index{propose@{propose}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{propose}{propose}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ \+\_\+resultsetfm\+::propose}\hypertarget{struct__resultsetfm_ac45cd3defd12dbbb212f3b6da70d1b52}{}\label{struct__resultsetfm_ac45cd3defd12dbbb212f3b6da70d1b52}
+
+
+Referenced by M\+P\+I\+\_\+resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+destroy(), resultsetfm\+\_\+get\+\_\+propose(), resultsetfm\+\_\+get\+\_\+propose\+\_\+f(), resultsetfm\+\_\+get\+\_\+propose\+\_\+n(), and resultsetfm\+\_\+propose().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!samples@{samples}}
+\index{samples@{samples}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{samples}{samples}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultsetfm\+::samples}\hypertarget{struct__resultsetfm_acc38666e6a41cc97a06e3165a215f71d}{}\label{struct__resultsetfm_acc38666e6a41cc97a06e3165a215f71d}
+
+
+Referenced by resultsetfm\+\_\+assemble\+\_\+results(), and resultsetfm\+\_\+create().
+
+\index{\+\_\+resultsetfm@{\+\_\+resultsetfm}!total@{total}}
+\index{total@{total}!\+\_\+resultsetfm@{\+\_\+resultsetfm}}
+\subsubsection[{\texorpdfstring{total}{total}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+resultsetfm\+::total}\hypertarget{struct__resultsetfm_a7cdd1aeb9f8871bb982f13ca61625aac}{}\label{struct__resultsetfm_a7cdd1aeb9f8871bb982f13ca61625aac}
+
+
+Referenced by M\+P\+I\+\_\+resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+assemble\+\_\+results(), resultsetfm\+\_\+create(), resultsetfm\+\_\+get\+\_\+hierarchical\+\_\+parameter\+\_\+history\+\_\+f(), resultsetfm\+\_\+get\+\_\+misfit\+\_\+f(), resultsetfm\+\_\+get\+\_\+parameter\+\_\+history\+\_\+f(), resultsetfm\+\_\+sample(), resultsetfm\+\_\+sample\+\_\+hierarchical(), and resultsetfm\+\_\+sample\+\_\+misfit().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{resultsetfm_8c}{resultsetfm.\+c}\end{DoxyCompactItemize}

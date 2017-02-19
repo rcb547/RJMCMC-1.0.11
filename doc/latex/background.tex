@@ -1,0 +1,20 @@
+\hypertarget{background_backgroundoverview}{}\section{Overview}\label{background_backgroundoverview}
+This library provides routines for regression and forward model problems using trans-\/dimensional Markov chain Monte Carlo methods. Rather than producing a single fit for a dataset, these methods produce an ensemble of results that give a sampled distribution of the potential true fit. The original paper describing this approach is by Green {\bfseries [green1995]}, and this software is primarily based on the work of Bodin and Sambridge {\bfseries [sambridge2006A]} {\bfseries [bodin\+Thesis]} {\bfseries [bodin2012A]} .\hypertarget{background_backgroundprior}{}\section{Prior}\label{background_backgroundprior}
+The general approach taken in all the routines within this library is to use uniform priors on all values.
+
+For partition locations, we use a symmetric Dirichlet prior which is described in Steininger {\bfseries [steininger2013]} and references therein.\hypertarget{background_backgroundmodel}{}\section{Model}\label{background_backgroundmodel}
+For 1D applications we use zeroth order, natural, and polynomial models within each partition.
+
+Zeroth order 1D models are described in {\bfseries [bodin\+Thesis]} {\bfseries [bodin2012A]}.
+
+Natural uses jointed line segments between partition boundaries to create a C0 continuous curve over the domain of the entire model. It is described in Hopcroft {\bfseries [hopcroft2007A]} .
+
+For 1D regression problems only, we also use the data within each partition to inform the selection of a suitable polynomial order (up to a limit imposed by the user), ie trans-\/dimensional within each partition. The mechanism for choosing this order is described in Sambridge {\bfseries [sambridge2006A]} and the order prior is set to uniform over a region determined from the data mean and standard deviation within the partition.
+
+For 2D applications at present only zeroth order partitions are used as described in {\bfseries [bodin2012B]} and {\bfseries [bodin2012C]}.\hypertarget{background_backgroundproposal}{}\section{Proposal}\label{background_backgroundproposal}
+All proposals used in this library use pertubations sampled from a Gaussian random variable. The Standard deviation is generally set as a user parameter, the only exception to this is in the case of 1D Regression routines where the standard deviation is obtained directly from the data.\hypertarget{background_backgroundhierarchical}{}\section{Hierarchical Parameter Estimation}\label{background_backgroundhierarchical}
+Hierarchical parameters are parameters used to quantify the noise in the data. In the simple regression case, we allow the use of a single hierarchical scaling factor called lambda that represents a multiplier of the estimated data error.
+
+In the general forward model case, we allow a general mechanism for hierarchical parameter estimation requiring the forward model to calculate the log of the determinant of the data covariance matrix.
+
+For an example of more complex hierarchical parameter estimation, see Bodin {\bfseries [bodin2012A]} . 

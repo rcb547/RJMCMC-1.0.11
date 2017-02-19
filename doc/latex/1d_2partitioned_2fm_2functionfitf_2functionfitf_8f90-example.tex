@@ -1,0 +1,421 @@
+\hypertarget{1d_2partitioned_2fm_2functionfitf_2functionfitf_8f90-example}{}\section{1d/partitioned/fm/functionfitf/functionfitf.\+f90}
+
+\begin{DoxyCodeInclude}
+1 \textcolor{keyword}{program} functionfitf
+2 \textcolor{comment}{!}
+3 \textcolor{comment}{! Include the rjmcmc head file}
+4 \textcolor{comment}{!}
+5 include \textcolor{stringliteral}{'rjmcmc/rjmcmcf.h'}
+6 
+7 \textcolor{keywordtype}{type}(c\_ptr) :: results
+8 
+9 \textcolor{comment}{!}
+10 \textcolor{comment}{! This data structure contains the synthetic data that is analysed.}
+11 \textcolor{comment}{! It consists of displacement (s) measurements versus time (t) and }
+12 \textcolor{comment}{! the forward model attempts to reconstruct the true velocity (v).}
+13 \textcolor{comment}{! The true velocity as a function of time is defined in the }
+14 \textcolor{comment}{! my\_realfunction below.}
+15 \textcolor{comment}{!}
+16 \textcolor{keywordtype}{integer}, \textcolor{keywordtype}{parameter} :: datasize = 100
+17 \textcolor{keyword}{type} :: mydata\_t
+18    \textcolor{keywordtype}{real(kind = c\_double)} :: minx
+19    \textcolor{keywordtype}{real(kind = c\_double)} :: maxx
+20    \textcolor{keywordtype}{real(kind = c\_double)} :: sigma
+21    \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(datasize)} :: \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}
+22    \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(datasize)} :: ry
+23    \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(datasize)} :: sy
+24 \textcolor{keyword}{end type}
+25 
+26 \textcolor{keywordtype}{type}(mydata\_t), \textcolor{keywordtype}{target} :: data
+27 
+28 \textcolor{comment}{!}
+29 \textcolor{comment}{! There are always 4 processes for 1d forward models (birth, death,}
+30 \textcolor{comment}{! move, change local value, change global value).}
+31 \textcolor{comment}{!}
+32 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} :: nprocesses = 5
+33 
+34 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} :: burnin = 1000
+35 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} :: \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total} = 50000
+36 
+37 \textcolor{keywordtype}{procedure}(rjmcmc\_uniform\_rand), \textcolor{keywordtype}{pointer} :: \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}
+38 \textcolor{keywordtype}{procedure}(rjmcmc\_normal\_rand), \textcolor{keywordtype}{pointer} :: \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}
+39 
+40 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} :: \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters} = 1
+41 \textcolor{keywordtype}{type}(\hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\_t}), \textcolor{keywordtype}{dimension (nparameters)} :: 
+      \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}
+42 \textcolor{keywordtype}{type}(c\_ptr) :: \hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg}
+43 
+44 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} :: nglobalparameters = 0
+45 \textcolor{keywordtype}{type}(\hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\_t}), \textcolor{keywordtype}{dimension (nglobalparameters)} :: globalparameters
+46 
+47 \textcolor{keywordtype}{procedure}(part1d\_fm\_likelihood), \textcolor{keywordtype}{pointer} :: \hyperlink{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}{likelihood}
+48 
+49 \textcolor{keywordtype}{integer(kind = c\_int)} :: minpartitions
+50 \textcolor{keywordtype}{integer(kind = c\_int)} :: maxpartitions
+51 \textcolor{keywordtype}{real(kind = c\_double)} :: minx
+52 \textcolor{keywordtype}{real(kind = c\_double)} :: maxx
+53 \textcolor{keywordtype}{real(kind = c\_double)} :: \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\_interval}
+54 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} :: xsamples = 100
+55 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{parameter} :: ysamples = 100
+56 \textcolor{keywordtype}{real(kind = c\_double)} :: pd
+57 \textcolor{keywordtype}{integer(kind = c\_int)} :: \hyperlink{rjmcmcf__mpi_8h_a141ddf12f08f2f9e95036a6cd06324ff}{requested\_results}
+58 
+59 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{dimension(nprocesses)} :: propose, accept
+60 \textcolor{keywordtype}{integer(kind = c\_int)} :: j
+61 
+62 \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(total)} :: misfit
+63 
+64 \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(xsamples)} :: sampled\_x;
+65 \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(xsamples)} :: mean;
+66 \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(xsamples)} :: cred\_min;
+67 \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(xsamples)} :: cred\_max;
+68 
+69 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{dimension(total)} :: partitions
+70 \textcolor{keywordtype}{integer(kind = c\_int)}, \textcolor{keywordtype}{dimension(xsamples)} :: partition\_x\_hist
+71 
+72 \textcolor{keywordtype}{integer} :: ioerror
+73 \textcolor{keywordtype}{integer} :: i
+74 
+75 \textcolor{keywordtype}{real(kind = c\_double)} :: \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}
+76 \textcolor{keywordtype}{real(kind = c\_double)} :: dx
+77 \textcolor{keywordtype}{integer(kind = c\_int)} :: t
+78 
+79 \textcolor{comment}{!}
+80 \textcolor{comment}{! Initialise the random number generator with a seed}
+81 \textcolor{comment}{!}
+82 \textcolor{keyword}{call }\hyperlink{rjmcmc__random_8c_a0cbc991b84d0f6b749e9b45cbc018d2a}{rjmcmc\_seed}(101)
+83 
+84 \textcolor{comment}{!}
+85 \textcolor{comment}{! Create some data from the real forward model and add some noise}
+86 \textcolor{comment}{! to the displacement measurements}
+87 \textcolor{comment}{!}
+88 data%minx = 0.0
+89 data%maxx = 10.0
+90 data%sigma = 5.0
+91 \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x} = data%minx
+92 dx = (data%maxx - data%minx)/(datasize - 1)
+93 \textcolor{keywordflow}{do} i = 1, datasize
+94    data%x(i) = \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}
+95    data%ry(i) = my\_realfunction(\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x})
+96    data%sy(i) = data%ry(i) + \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal}() * data%sigma 
+97    \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x} = \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x} + dx
+98 \textcolor{keywordflow}{enddo}
+99 
+100 \textcolor{comment}{!}
+101 \textcolor{comment}{! Set the simulation parameters}
+102 \textcolor{comment}{!}
+103 minpartitions = 2
+104 maxpartitions = 10
+105 \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\_interval} = 0.95
+106 pd = 0.2
+107 
+108 \textcolor{comment}{!}
+109 \textcolor{comment}{! We want the mean and credible intervals calculated}
+110 \textcolor{comment}{! for us.}
+111 \textcolor{comment}{!}
+112 \hyperlink{rjmcmcf__mpi_8h_a141ddf12f08f2f9e95036a6cd06324ff}{requested\_results} = resultset1dfm\_mean + resultset1dfm\_credible
+113 
+114 \textcolor{comment}{!}
+115 \textcolor{comment}{! Set the parameters}
+116 \textcolor{comment}{!}
+117 \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}(1)%fmin = -50.0
+118 \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}(1)%fmax = 50.0
+119 \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}(1)%fstd\_value = 1.0
+120 \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}(1)%fstd\_bd = 1.0
+121 
+122 \textcolor{comment}{!}
+123 \textcolor{comment}{! Use the rjmcmc random routines}
+124 \textcolor{comment}{!}
+125 \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random} => \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform}
+126 \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal} => \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal}
+127 
+128 \textcolor{comment}{!}
+129 \textcolor{comment}{! Assign the user argument to point to our data}
+130 \textcolor{comment}{!}
+131 \hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg} = c\_loc(data)
+132 
+133 \textcolor{comment}{!}
+134 \textcolor{comment}{! Point to our forward model function}
+135 \textcolor{comment}{!}
+136 \hyperlink{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}{likelihood} => my\_forwardmodel
+137 
+138 \textcolor{comment}{!}
+139 \textcolor{comment}{! Run the regression}
+140 \textcolor{comment}{!}
+141 results = \hyperlink{forwardmodel__f_8c_aa7d79eacccaac4d0770cd207b166dced}{part1d\_forwardmodel\_f}(burnin, \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, &
+142      minpartitions, maxpartitions, &
+143      data%minx, data%maxx, xsamples, ysamples, \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\_interval}, pd, &
+144      \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, &
+145      nglobalparameters, globalparameters, &
+146      \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters}, \hyperlink{rjmcmcf__mpi_8h_af69ab156c03e104279d5e0cb70a0d4c4}{parameters}, &
+147      \hyperlink{rjmcmcf__mpi_8h_a1f8ef761c1c5dea3f15f637135c162db}{likelihood}, \hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg}, &
+148      \hyperlink{rjmcmcf__mpi_8h_a141ddf12f08f2f9e95036a6cd06324ff}{requested\_results})
+149 
+150 \textcolor{comment}{!}
+151 \textcolor{comment}{! Get the propose and acceptance counts}
+152 \textcolor{comment}{!}
+153 t = \hyperlink{resultset1dfm_8c_a36002ea8dcf1cddf0b2c6f0f8dd6805c}{resultset1dfm\_get\_propose\_f}(results, nprocesses, propose)
+154 t = \hyperlink{resultset1dfm_8c_a5e1d653288c42b4e42dc4aa3b5760fd0}{resultset1dfm\_get\_accept\_f}(results, nprocesses, accept)
+155 
+156 \textcolor{comment}{!}
+157 \textcolor{comment}{! Print them out}
+158 \textcolor{comment}{!}
+159 \textcolor{keyword}{write} (*,*) \textcolor{stringliteral}{"Proposed"}, propose
+160 \textcolor{keyword}{write} (*,*) \textcolor{stringliteral}{"Accepted"}, accept
+161 
+162 \textcolor{comment}{!}
+163 \textcolor{comment}{! Retrieve the log(likelihood)/misfit history and save it to a text}
+164 \textcolor{comment}{! file.}
+165 \textcolor{comment}{!}
+166 t = \hyperlink{resultset1dfm_8c_aefdeb8e7e1fce2390b1c954f87351487}{resultset1dfm\_get\_misfit\_f}(results, \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, misfit)
+167 
+168 \textcolor{keyword}{open}(unit=8, file=\textcolor{stringliteral}{'misfit.txt'}, status=\textcolor{stringliteral}{'replace'}, action=\textcolor{stringliteral}{'write'}, &
+169      iostat=ioerror)
+170 
+171 \textcolor{keywordflow}{if} (ioerror == 0) \textcolor{keywordflow}{then}
+172 
+173 \textcolor{keywordflow}{do} i = 1, \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}
+174    \textcolor{keyword}{write}(8, *) misfit(i)
+175 \textcolor{keywordflow}{end do}
+176 
+177 \textcolor{keyword}{close}(8)
+178 
+179 \textcolor{keywordflow}{end if}
+180 
+181 \textcolor{comment}{!}
+182 \textcolor{comment}{! Retrieve the mean fit and the sampled x coordinates}
+183 \textcolor{comment}{!}
+184 t = \hyperlink{resultset1dfm_8c_a45917b3be743e2d8371de4ff6e133d1b}{resultset1dfm\_get\_xcoord\_vector\_f}(results, xsamples, sampled\_x)
+185 t = \hyperlink{resultset1dfm_8c_a91912167e17237245756603748780118}{resultset1dfm\_get\_local\_parameter\_mean\_f}(results, 0, xsamples, 
+      mean)
+186 
+187 \textcolor{keyword}{open}(unit=8, file=\textcolor{stringliteral}{'mean.txt'}, status=\textcolor{stringliteral}{'replace'}, action=\textcolor{stringliteral}{'write'}, &
+188      iostat=ioerror)
+189 
+190 \textcolor{keywordflow}{if} (ioerror == 0) \textcolor{keywordflow}{then}
+191 
+192 \textcolor{keywordflow}{do} i = 1, xsamples
+193    \textcolor{keyword}{write}(8, *) sampled\_x(i), mean(i)
+194 \textcolor{keywordflow}{end do}
+195 
+196 \textcolor{keyword}{close}(8)
+197 
+198 \textcolor{keywordflow}{end if}
+199 
+200 \textcolor{comment}{!}
+201 \textcolor{comment}{! Retrieve the credible intervals}
+202 \textcolor{comment}{!}
+203 t = \hyperlink{resultset1dfm_8c_a000b6cf3af1c74904153e35dbf40d008}{resultset1dfm\_get\_local\_parameter\_credible\_min\_f}(
+      results, 0, xsamples, cred\_min)
+204 t = \hyperlink{resultset1dfm_8c_a904242247821dcb00982fa4c9fa3db00}{resultset1dfm\_get\_local\_parameter\_credible\_max\_f}(
+      results, 0, xsamples, cred\_max)
+205 
+206 \textcolor{keyword}{open}(unit=8, file=\textcolor{stringliteral}{'credible.txt'}, status=\textcolor{stringliteral}{'replace'}, action=\textcolor{stringliteral}{'write'}, &
+207      iostat=ioerror)
+208 
+209 \textcolor{keywordflow}{if} (ioerror == 0) \textcolor{keywordflow}{then}
+210 
+211 \textcolor{keywordflow}{do} i = 1, xsamples
+212    \textcolor{keyword}{write}(8, *) sampled\_x(i), cred\_min(i), cred\_max(i)
+213 \textcolor{keywordflow}{end do}
+214 
+215 \textcolor{keyword}{close}(8)
+216 
+217 \textcolor{keywordflow}{end if}
+218 
+219 \textcolor{comment}{!}
+220 \textcolor{comment}{! Write the partition count history}
+221 \textcolor{comment}{!}
+222 t = \hyperlink{resultset1dfm_8c_a6e099c826ef5e37b367eb70dfe632a5e}{resultset1dfm\_get\_partitions\_f}(results, \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, partitions)
+223 
+224 \textcolor{keyword}{open}(unit=8, file=\textcolor{stringliteral}{'partitions.txt'}, status=\textcolor{stringliteral}{'replace'}, action=\textcolor{stringliteral}{'write'}, &
+225      iostat=ioerror)
+226 
+227 \textcolor{keywordflow}{if} (ioerror == 0) \textcolor{keywordflow}{then}
+228 
+229 \textcolor{keywordflow}{do} i = 1, \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}
+230    \textcolor{keyword}{write}(8, *) partitions(i)
+231 \textcolor{keywordflow}{end do}
+232 
+233 \textcolor{keyword}{close}(8)
+234 
+235 \textcolor{keywordflow}{end if}
+236 
+237 \textcolor{comment}{!}
+238 \textcolor{comment}{! Write the partition location histogram}
+239 \textcolor{comment}{!}
+240 t = \hyperlink{resultset1dfm_8c_a557bf7922150e8adbf18ff40ee10ad53}{resultset1dfm\_get\_partition\_x\_histogram\_f}(results, xsamples, 
+      partition\_x\_hist)
+241 
+242 \textcolor{keyword}{open}(unit=8, file=\textcolor{stringliteral}{'partition\_x\_hist.txt'}, status=\textcolor{stringliteral}{'replace'}, action=\textcolor{stringliteral}{'write'}, &
+243      iostat=ioerror)
+244 
+245 \textcolor{keywordflow}{if} (ioerror == 0) \textcolor{keywordflow}{then}
+246 
+247 \textcolor{keywordflow}{do} i = 1, xsamples
+248    \textcolor{keyword}{write}(8, *) sampled\_x(i), partition\_x\_hist(i)
+249 \textcolor{keywordflow}{end do}
+250 
+251 \textcolor{keyword}{close}(8)
+252 
+253 \textcolor{keywordflow}{end if}
+254 
+255 
+256 \textcolor{comment}{!}
+257 \textcolor{comment}{! Write the actual curve out}
+258 \textcolor{comment}{!}
+259 \textcolor{keyword}{open}(unit=8, file=\textcolor{stringliteral}{'actual.txt'}, status=\textcolor{stringliteral}{'replace'}, action=\textcolor{stringliteral}{'write'}, &
+260      iostat=ioerror)
+261 
+262 \textcolor{keywordflow}{if} (ioerror == 0) \textcolor{keywordflow}{then}
+263 
+264 \textcolor{keywordflow}{do} i = 1, datasize
+265    \textcolor{keyword}{write}(8, *) data%x(i), data%ry(i), data%sy(i)
+266 \textcolor{keywordflow}{end do}
+267 
+268 \textcolor{keyword}{close}(8)
+269 
+270 \textcolor{keywordflow}{end if}
+271 
+272 \textcolor{comment}{!}
+273 \textcolor{comment}{! Finally deallocate the results}
+274 \textcolor{comment}{!}
+275 \textcolor{keyword}{call }\hyperlink{resultset1dfm_8c_a4f089a088ba4fd4ef80d5a57b7a7f20f}{resultset1dfm\_destroy}(results)
+276 
+277 \textcolor{keyword}{contains}
+278 
+279 \textcolor{comment}{!}
+280 \textcolor{comment}{! The forward model function}
+281 \textcolor{comment}{!}
+282 \textcolor{keyword}{real (kind = c\_double) }\textcolor{keyword}{function }my\_forwardmodel(user\_arg, npartitions, &
+283      partitions, nglobalvalues, globalvalues, state, value\_at\_pointer, &
+284      gradient\_at\_pointer) \hyperlink{rjmcmcf__mpi_8h_a616de1bf0c59845613650026f844fada}{bind}(\hyperlink{wellrng_8c_a6ce17b018c47d0f1d0e53a458f741ad3}{c})
+285 
+286   \hyperlink{rjmcmcf_8h_a821b46c311d079e47b9c09782230af02}{use}, \textcolor{keywordtype}{intrinsic} :: iso\_c\_binding 
+287 
+288   \textcolor{comment}{!}
+289   \textcolor{comment}{! The user argument is a pointer that you can use to point to useful}
+290   \textcolor{comment}{! data or state information to use within this function (rather than}
+291   \textcolor{comment}{! relying on global variables. This points to our data structure }
+292   \textcolor{comment}{! we created in the main program but before we can use it, we need to}
+293   \textcolor{comment}{! convert it to the write Fortran pointer (see below the call to }
+294   \textcolor{comment}{! c\_f\_pointer).}
+295   \textcolor{comment}{!}
+296   \textcolor{keywordtype}{type}(c\_ptr), \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{value} :: \hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg}
+297 
+298   \textcolor{comment}{!}
+299   \textcolor{comment}{! We are given an ordered list of the partition boundaries}
+300   \textcolor{comment}{!}
+301   \textcolor{keywordtype}{integer (kind = c\_int)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{value} :: npartitions
+302   \textcolor{keywordtype}{real (kind = c\_double)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{dimension(npartitions)} :: partitions
+303 
+304   \textcolor{comment}{!}
+305   \textcolor{comment}{! The list of current global values}
+306   \textcolor{comment}{!}
+307   \textcolor{keywordtype}{integer (kind = c\_int)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{value} :: nglobalvalues
+308   \textcolor{keywordtype}{real (kind = c\_double)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{dimension(nglobalvalues)} :: globalvalues
+309   
+310   \textcolor{comment}{!}
+311   \textcolor{comment}{! The opaque state information needed to pass to the callback functions}
+312   \textcolor{comment}{!}
+313   \textcolor{keywordtype}{type}(c\_ptr), \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{value} :: state
+314   
+315   \textcolor{comment}{!}
+316   \textcolor{comment}{! The two callback functions, we are passed C pointers to these functions}
+317   \textcolor{comment}{! however we need to convert them to Fortran procedure pointers to use}
+318   \textcolor{comment}{! them (see the calls to c\_f\_procpointer below).}
+319   \textcolor{comment}{!}
+320   \textcolor{keywordtype}{type}(c\_funptr), \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{value} :: value\_at\_pointer
+321   \textcolor{keywordtype}{type}(c\_funptr), \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{value} :: gradient\_at\_pointer
+322 
+323   \textcolor{keywordtype}{procedure}(part1d\_fm\_value\_at), \textcolor{keywordtype}{pointer} :: value\_at
+324   \textcolor{keywordtype}{procedure}(part1d\_fm\_value\_at), \textcolor{keywordtype}{pointer} :: gradient\_at
+325 
+326   \textcolor{comment}{!}
+327   \textcolor{comment}{! Our local variables we use for computing the forward model}
+328   \textcolor{comment}{!}
+329   \textcolor{keywordtype}{real(kind = c\_double)}, \textcolor{keywordtype}{dimension(nparameters)} :: values
+330 
+331   \textcolor{keywordtype}{type}(mydata\_t), \textcolor{keywordtype}{pointer} :: data\_pointer
+332 
+333   \textcolor{keywordtype}{integer} :: i
+334   \textcolor{keywordtype}{integer} :: j
+335   \textcolor{keywordtype}{real(kind = c\_double)} :: py
+336   \textcolor{keywordtype}{real(kind = c\_double)} :: sum
+337 
+338   \textcolor{comment}{!}
+339   \textcolor{comment}{! We need to convert the pointer values we receive from the C}
+340   \textcolor{comment}{! library to equivalent Fortran procedure pointers in order}
+341   \textcolor{comment}{! to use them. We can do this with the intrinsic c\_f\_procpointer}
+342   \textcolor{comment}{! subroutine.}
+343   \textcolor{comment}{!}
+344   \textcolor{keyword}{call }c\_f\_procpointer(value\_at\_pointer, value\_at)
+345   \textcolor{keyword}{call }c\_f\_procpointer(gradient\_at\_pointer, gradient\_at)
+346 
+347   \textcolor{comment}{!}
+348   \textcolor{comment}{! Similarly, when we passed in the user\_arg pointer we used}
+349   \textcolor{comment}{! the c\_loc function. To convert this value back into a}
+350   \textcolor{comment}{! Fortran pointer to our data, we undo this with the }
+351   \textcolor{comment}{! intrinsic c\_f\_pointer subroutine.}
+352   \textcolor{comment}{!}
+353   \textcolor{keyword}{call }c\_f\_pointer(\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\_arg}, data\_pointer)
+354 
+355   \textcolor{comment}{!}
+356   \textcolor{comment}{! The actual forward model code}
+357   \textcolor{comment}{!}
+358   sum = 0.0
+359   \textcolor{keywordflow}{do} i = 1, datasize
+360 
+361      \textcolor{comment}{!}
+362      \textcolor{comment}{! We can use the value\_at procedure pointer to query the proposed}
+363      \textcolor{comment}{! velocity profile versus time at different times. This method}
+364      \textcolor{comment}{! returns the number of local parameters (1 in this example) and}
+365      \textcolor{comment}{! fills the values array with the local parameter values at the}
+366      \textcolor{comment}{! point data\_pointer%t(i). After this call is successfull, the}
+367      \textcolor{comment}{! proposed velocity at the given time will be the first element}
+368      \textcolor{comment}{! of the array values.}
+369      \textcolor{comment}{!}
+370      j = value\_at(state, data\_pointer%x(i), \hyperlink{rjmcmcf__mpi_8h_ad1c48db951dfa8787a94c0c56ae60e13}{nparameters}, values)
+371      
+372      py = values(1)
+373 
+374      \textcolor{comment}{! }
+375      \textcolor{comment}{! Accumulate the sum of the square errors between the displacement}
+376      \textcolor{comment}{! profile derived from the proposed velocity profile and the }
+377      \textcolor{comment}{! measured displacement.}
+378      \textcolor{comment}{!}
+379      sum = sum + (py - data\_pointer%sy(i))**2
+380 
+381 \textcolor{keywordflow}{  end do}
+382 
+383   \textcolor{comment}{!}
+384   \textcolor{comment}{! Return the sum of the square errors.}
+385   \textcolor{comment}{!}
+386 
+387   \textcolor{comment}{!write (*,*) sum}
+388   my\_forwardmodel = sum/(2.0 * data\_pointer%sigma**2)
+389   
+390 \textcolor{keyword}{end function }my\_forwardmodel
+391 
+392 \textcolor{keyword}{real(kind = c\_double) }\textcolor{keyword}{function }my\_realfunction(t)
+393   
+394   \textcolor{keywordtype}{real(kind = c\_double)} :: t
+395 
+396   \textcolor{comment}{!}
+397   \textcolor{comment}{! This is the true function we are trying to discern, three}
+398   \textcolor{comment}{! evenly spaced partitions of constant positive velocities}
+399   \textcolor{comment}{! with discontinuities.}
+400   \textcolor{comment}{!}
+401   \textcolor{keywordflow}{if} (t < 3.3) \textcolor{keywordflow}{then}
+402      my\_realfunction = 20.0
+403   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (t < 6.6) \textcolor{keywordflow}{then}
+404      my\_realfunction = 30.0
+405   \textcolor{keywordflow}{else}
+406      my\_realfunction = 10.0
+407 \textcolor{keywordflow}{  end if}
+408 
+409 \textcolor{keyword}{end function }my\_realfunction
+410   
+411 \textcolor{keyword}{end program }functionfitf
+\end{DoxyCodeInclude}
+ 

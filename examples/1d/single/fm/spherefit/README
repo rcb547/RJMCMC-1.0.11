@@ -1,0 +1,18 @@
+
+This example constructs a synthetic dataset consisting of a series of
+3D points on the surface on a sphere with a known centre and
+radius. Some noise is added to the location of these points and the
+simulation attempts to determine the actual centre and radius of the
+known sphere. The program outputs the real and guessed x, y, z
+coordinates and radius on completion.
+
+Instructions:
+
+> make
+> ./spherefit
+> python plot_misfit.py
+> python plot_x.py
+> python plot_y.py
+> python plot_z.py
+> python plot_r.py
+

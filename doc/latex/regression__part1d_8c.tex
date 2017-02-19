@@ -1,0 +1,94 @@
+\hypertarget{regression__part1d_8c}{}\section{regression\+\_\+part1d.\+c File Reference}
+\label{regression__part1d_8c}\index{regression\+\_\+part1d.\+c@{regression\+\_\+part1d.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$float.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/regression.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/engine.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/resultset1d.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/part1d\+\_\+regression\+\_\+rj.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/dataset1d.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+util.\+h$>$}\\*
+Include dependency graph for regression\+\_\+part1d.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpart1d}{part1d}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{resultset1d_8h_ae2ef1c63a8e796e51d39d8b7c2cdfa72}{resultset1d\+\_\+t} $\ast$ \hyperlink{regression__part1d_8c_a17bc74fa9fb9c6287ab4e19751c6bb17}{part1d\+\_\+regression} (const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$dataset, int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int min\+\_\+part, int max\+\_\+part, int max\+\_\+order, int xsamples, int ysamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pd, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int results, \hyperlink{regression_8h_ae892a560d7749e7aa48352b053c54a26}{regression1d\+\_\+cb\+\_\+t} callback, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg})
+\begin{DoxyCompactList}\small\item\em Multiple partition arbitrary order regression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{regression\+\_\+part1d.\+c@{regression\+\_\+part1d.\+c}!part1d\+\_\+regression@{part1d\+\_\+regression}}
+\index{part1d\+\_\+regression@{part1d\+\_\+regression}!regression\+\_\+part1d.\+c@{regression\+\_\+part1d.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+regression(const dataset1d\+\_\+t $\ast$dataset, int burnin, int total, int min\+\_\+part, int max\+\_\+part, int max\+\_\+order, int xsamples, int ysamples, double credible\+\_\+interval, double pd, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int results, regression1d\+\_\+cb\+\_\+t callback, void $\ast$user\+\_\+arg)}{part1d_regression(const dataset1d_t *dataset, int burnin, int total, int min_part, int max_part, int max_order, int xsamples, int ysamples, double credible_interval, double pd, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int results, regression1d_cb_t callback, void *user_arg)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset1d\+\_\+t}$\ast$ part1d\+\_\+regression (
+\begin{DoxyParamCaption}
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{dataset, }
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{min\+\_\+part, }
+\item[{int}]{max\+\_\+part, }
+\item[{int}]{max\+\_\+order, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pd, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{results, }
+\item[{{\bf regression1d\+\_\+cb\+\_\+t}}]{callback, }
+\item[{void $\ast$}]{user\+\_\+arg}
+\end{DoxyParamCaption}
+)}\hypertarget{regression__part1d_8c_a17bc74fa9fb9c6287ab4e19751c6bb17}{}\label{regression__part1d_8c_a17bc74fa9fb9c6287ab4e19751c6bb17}
+
+
+Multiple partition arbitrary order regression. 
+
+This method fits up to max\+\_\+order polynomials into a partitioned dataset. The number of partitions and order of polynomials within each partition is determined by the data. If higher order polynomials are permitted (ie $>$ 5) then there can be \char`\"{}ringing\char`\"{} near any discontinuities in the data as a higher order polynomial may fit a discontinuity as well as a 2 discontinuous polynomials. For this reason care should be taken with setting the max\+\_\+order parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dataset} & The dataset to run the regression on. See the \hyperlink{dataset1d_8h_a12b327d93f135ffa89af1d4d2359f771}{dataset1d\+\_\+load\+\_\+known}, \+::dataset1d\+\_\+load\+\_\+estimated, and \hyperlink{dataset1d_8h_a8a3dee8031d5f30f9698874806bb33be}{dataset1d\+\_\+load\+\_\+fixed} functions. \\
+\hline
+{\em burnin} & The number of burn in iterations. \\
+\hline
+{\em total} & The total number of iterations. \\
+\hline
+{\em min\+\_\+part} & The minimum number of partitions to allow. \\
+\hline
+{\em max\+\_\+part} & The maximum number of partitions to allow. \\
+\hline
+{\em max\+\_\+order} & The maximum order of the fitting polynomial. to the data. \\
+\hline
+{\em xsamples} & The number of samples to use for discretization of the horizontal axis. \\
+\hline
+{\em ysamples} & The number of samples to use for discretization of the vertical axis when computing mode, median, and credible intervals. \\
+\hline
+{\em credible\+\_\+interval} & The credible interval to use for results expressed as a ratio, i.\+e. 0.\+95 for the 95\% credible interval. \\
+\hline
+{\em pd} & The standard deviation to use when peturbing the x-\/position of a partition. The new position is moved by N(0, pd). \\
+\hline
+{\em random} & A function pointer to uniform random number generator to use. See the \hyperlink{rjmcmc__random_8h_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\+\_\+uniform} function. \\
+\hline
+{\em normal} & A function pointer to the normal random number generator for generating normally distributed random numbers with 0 mean and a standard deviation of 1. See the \hyperlink{rjmcmc__random_8h_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\+\_\+normal} function. \\
+\hline
+{\em results} & A bit mask of results to store. See \hyperlink{resultset1d_8h_a1fffe49407333be24faf49976523f7a0}{resultset1d\+\_\+result\+\_\+t}. \\
+\hline
+{\em callback} & A user function to call for every sample for collecting extra statistics. Set to N\+U\+LL if this is not needed. \\
+\hline
+{\em user\+\_\+arg} & The user argument to pass to the callback function. \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2regression_2multiquad_2multiquad_8c-example}{1d/partitioned/regression/multiquad/multiquad.\+c}, \hyperlink{1d_2partitioned_2regression_2multistep_2multistep_8c-example}{1d/partitioned/regression/multistep/multistep.\+c}, and \hyperlink{1d_2partitioned_2regression_2sawtooth_2sawtooth_8c-example}{1d/partitioned/regression/sawtooth/sawtooth.\+c}.\end{Desc}
+
+
+References part1d\+::accepted, part1d\+::birth\+\_\+prob, part1d\+::current, part1d\+::current\+\_\+like, part1d\+::dataset, part1d\+::death\+\_\+prob, part1d\+::dk, part1d\+::dy, part1d\+::lambda\+\_\+prob, \+\_\+dataset1d\+::lambdastd, part1d\+::move\+\_\+prob, part1d\+::normal, part1d\+::nprocesses, part1d\+::out, part1d\+\_\+regression\+\_\+rj\+\_\+clone(), part1d\+\_\+regression\+\_\+rj\+\_\+create(), part1d\+\_\+regression\+\_\+rj\+\_\+destroy(), part1d\+\_\+regression\+\_\+rj\+\_\+evaluate(), part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+regression\+\_\+rj\+\_\+lambda(), part1d\+\_\+regression\+\_\+rj\+\_\+misfit(), part1d\+\_\+regression\+\_\+rj\+\_\+order(), part1d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+position(), part1d\+\_\+regression\+\_\+rj\+\_\+partitions(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+lambda(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(), part1d\+::partitions, part1d\+::process, part1d\+::proposed, part1d\+::proposed\+\_\+like, part1d\+::random, part1d\+::results, resultset1d\+\_\+accept(), resultset1d\+\_\+assemble\+\_\+results(), resultset1d\+\_\+create(), resultset1d\+\_\+propose(), resultset1d\+\_\+sample(), resultset1d\+\_\+sample\+\_\+lambda(), resultset1d\+\_\+sample\+\_\+misfit(), resultset1d\+\_\+sample\+\_\+npartitions(), resultset1d\+\_\+sample\+\_\+order(), resultset1d\+\_\+sample\+\_\+partition\+\_\+x(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), part1d\+::user\+\_\+arg, part1d\+::user\+\_\+callback, part1d\+::v, part1d\+::value\+\_\+prob, \+\_\+dataset1d\+::xmax, \+\_\+dataset1d\+::xmin, part1d\+::xsamples, \+\_\+dataset1d\+::ymax, and \+\_\+dataset1d\+::ymin.
+

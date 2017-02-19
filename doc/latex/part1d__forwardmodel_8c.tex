@@ -1,0 +1,446 @@
+\hypertarget{part1d__forwardmodel_8c}{}\section{part1d\+\_\+forwardmodel.\+c File Reference}
+\label{part1d__forwardmodel_8c}\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/part1d\+\_\+forwardmodel.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/position\+\_\+map1d.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/rjmcmc\+\_\+util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/forwardmodel\+\_\+util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/rjmcmc\+\_\+defines.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/rjmcmc\+\_\+debug.\+h\char`\"{}}\\*
+Include dependency graph for part1d\+\_\+forwardmodel.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__model}{\+\_\+model}
+\item 
+struct \hyperlink{struct__part1d__forwardmodel}{\+\_\+part1d\+\_\+forwardmodel}
+\item 
+struct \hyperlink{structinterval__data}{interval\+\_\+data}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__model}{\+\_\+model} \hyperlink{part1d__forwardmodel_8c_a0a038e31b1f765296a40c2da07b46a84}{model\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$ \hyperlink{part1d__forwardmodel_8c_afc6a92ec1df5959662ef07cd5f577fa1}{part1d\+\_\+forwardmodel\+\_\+create} (\hyperlink{part1d__forwardmodel_8h_a07f3922b42067c9cb736d872eea155c6}{part1d\+\_\+fm\+\_\+type\+\_\+t} type, int min\+\_\+partitions, int max\+\_\+partitions, double xmin, double xmax, double pd, int nglobalparameters, int nlocalparameters, int nhierarchicalparameters)
+\item 
+void \hyperlink{part1d__forwardmodel_8c_aaa6874e2f558de5044eae3cc461d6695}{part1d\+\_\+forwardmodel\+\_\+destroy} (\hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$p)
+\item 
+void \hyperlink{part1d__forwardmodel_8c_aea336a0a7aca29169a994041541a96ee}{part1d\+\_\+forwardmodel\+\_\+clone} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$src, \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$dst)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_a319d70b6f97d708ff9afbcda60906775}{part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed} (\hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$p, const double $\ast$global\+\_\+parameters, const double $\ast$hierarchical\+\_\+parameters, int npartitions, const double $\ast$partition\+\_\+x, const double $\ast$$\ast$local\+\_\+parameters)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_ac5fbdbd034a47e2d11e318c2e7874699}{part1d\+\_\+forwardmodel\+\_\+initialize} (\hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$p, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$hierarchical\+\_\+parameters, int nhierarchicalparameters, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal})
+\item 
+int \hyperlink{part1d__forwardmodel_8c_a8e4deb51d508668ae84a448b85c02ee0}{part1d\+\_\+forwardmodel\+\_\+value\+\_\+at} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, int nlocalparameters, double $\ast$localparameters)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_ac6d00748f64e8add304ef30d03271991}{part1d\+\_\+forwardmodel\+\_\+gradient\+\_\+at} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, int nlocalparameters, double $\ast$localparameters)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_a200deea3cd703f6b9f7717bba8f1e5e4}{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$proposed, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$birth\+\_\+prob)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_a3f3fcad753e3b88c7aa9bfd5e42c6369}{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$proposed, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$death\+\_\+prob)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_ae60aea0b4900a4c03f8630511f5cef5f}{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$proposed, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$value\+\_\+prob, int $\ast$li)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_aa1b609a5a6239147e353d3f1b6fca256}{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$proposed, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$value\+\_\+prob)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_a59259f65297856a2f57d000f0f9736b0}{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$proposed, int nglobalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$global\+\_\+parameters, int nlocalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$local\+\_\+parameters, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$move\+\_\+prob)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_ac365932bb87ca17924728fe9da5d109c}{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$proposed, int nhierarchicalparameters, const \hyperlink{forwardmodelparameter_8h_a18a7d2fd51fab097145725d83ac328e3}{forwardmodelparameter\+\_\+t} $\ast$hierarchical\+\_\+parameters, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$hierarchical\+\_\+prob)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_a4eba709a544f8f2631b1c6dbf4d3e05b}{part1d\+\_\+forwardmodel\+\_\+partitions} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current)
+\item 
+double \hyperlink{part1d__forwardmodel_8c_a6a4e3b1edc213c4d5878626b636f2d11}{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+position} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, int pi)
+\item 
+const double $\ast$ \hyperlink{part1d__forwardmodel_8c_a31bd4206af8ed75bd0bb5357c425dd2c}{part1d\+\_\+forwardmodel\+\_\+global\+\_\+parameters} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current)
+\item 
+const double $\ast$ \hyperlink{part1d__forwardmodel_8c_adc99debb9ab278427edab83e1f62f464}{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+parameters} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_a955d33bf45883810e030ff54b386e242}{part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$\hyperlink{wellrng_8c_a6ce17b018c47d0f1d0e53a458f741ad3}{c}, int xsamples, const double $\ast$\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double $\ast$$\ast$local\+\_\+parameters)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_a4d4ad7701bc62d26ebc91a085521c3b1}{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+fill\+\_\+list} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, double $\ast$positions, int $\ast$npartitions)
+\item 
+int \hyperlink{part1d__forwardmodel_8c_ac16143ee854172adedd7d37913cb8efb}{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+fill\+\_\+list} (const \hyperlink{part1d__forwardmodel_8h_adaad64fbca97fa82ba80fe8371e4f1d9}{part1d\+\_\+forwardmodel\+\_\+t} $\ast$current, double $\ast$hierarchical, int $\ast$nhierarchical)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!model\+\_\+t@{model\+\_\+t}}
+\index{model\+\_\+t@{model\+\_\+t}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{model\+\_\+t}{model_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+model} {\bf model\+\_\+t}}\hypertarget{part1d__forwardmodel_8c_a0a038e31b1f765296a40c2da07b46a84}{}\label{part1d__forwardmodel_8c_a0a038e31b1f765296a40c2da07b46a84}
+
+
+\subsection{Function Documentation}
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+clone@{part1d\+\_\+forwardmodel\+\_\+clone}}
+\index{part1d\+\_\+forwardmodel\+\_\+clone@{part1d\+\_\+forwardmodel\+\_\+clone}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+clone(const part1d\+\_\+forwardmodel\+\_\+t $\ast$src, part1d\+\_\+forwardmodel\+\_\+t $\ast$dst)}{part1d_forwardmodel_clone(const part1d_forwardmodel_t *src, part1d_forwardmodel_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void part1d\+\_\+forwardmodel\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{src, }
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_aea336a0a7aca29169a994041541a96ee}{}\label{part1d__forwardmodel_8c_aea336a0a7aca29169a994041541a96ee}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::global\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::hierarchical\+\_\+parameters, \+\_\+part1d\+\_\+forwardmodel\+::max\+\_\+partitions, \+\_\+part1d\+\_\+forwardmodel\+::models, \+\_\+part1d\+\_\+forwardmodel\+::nglobalparameters, \+\_\+part1d\+\_\+forwardmodel\+::nhierarchicalparameters, \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters, \+\_\+part1d\+\_\+forwardmodel\+::npartitions, \+\_\+part1d\+\_\+forwardmodel\+::p, position\+\_\+map1d\+\_\+clone(), R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+V\+O\+ID, R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+V\+O\+ID, and \+\_\+part1d\+\_\+forwardmodel\+::type.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+create@{part1d\+\_\+forwardmodel\+\_\+create}}
+\index{part1d\+\_\+forwardmodel\+\_\+create@{part1d\+\_\+forwardmodel\+\_\+create}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+create(part1d\+\_\+fm\+\_\+type\+\_\+t type, int min\+\_\+partitions, int max\+\_\+partitions, double xmin, double xmax, double pd, int nglobalparameters, int nlocalparameters, int nhierarchicalparameters)}{part1d_forwardmodel_create(part1d_fm_type_t type, int min_partitions, int max_partitions, double xmin, double xmax, double pd, int nglobalparameters, int nlocalparameters, int nhierarchicalparameters)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf part1d\+\_\+forwardmodel\+\_\+t}$\ast$ part1d\+\_\+forwardmodel\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{{\bf part1d\+\_\+fm\+\_\+type\+\_\+t}}]{type, }
+\item[{int}]{min\+\_\+partitions, }
+\item[{int}]{max\+\_\+partitions, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{pd, }
+\item[{int}]{nglobalparameters, }
+\item[{int}]{nlocalparameters, }
+\item[{int}]{nhierarchicalparameters}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_afc6a92ec1df5959662ef07cd5f577fa1}{}\label{part1d__forwardmodel_8c_afc6a92ec1df5959662ef07cd5f577fa1}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::global\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::hierarchical\+\_\+parameters, \+\_\+part1d\+\_\+forwardmodel\+::local\+\_\+scratch, \+\_\+part1d\+\_\+forwardmodel\+::max\+\_\+partitions, \+\_\+part1d\+\_\+forwardmodel\+::min\+\_\+partitions, \+\_\+part1d\+\_\+forwardmodel\+::model\+\_\+gradients, \+\_\+part1d\+\_\+forwardmodel\+::models, \+\_\+part1d\+\_\+forwardmodel\+::nglobalparameters, \+\_\+part1d\+\_\+forwardmodel\+::nhierarchicalparameters, \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters, \+\_\+part1d\+\_\+forwardmodel\+::npartitions, \+\_\+part1d\+\_\+forwardmodel\+::p, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+R\+O\+\_\+\+C\+U\+B\+IC, \+\_\+part1d\+\_\+forwardmodel\+::pd, position\+\_\+map1d\+\_\+create(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+error(), \+\_\+part1d\+\_\+forwardmodel\+::type, \+\_\+part1d\+\_\+forwardmodel\+::xmax, and \+\_\+part1d\+\_\+forwardmodel\+::xmin.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), and part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+destroy@{part1d\+\_\+forwardmodel\+\_\+destroy}}
+\index{part1d\+\_\+forwardmodel\+\_\+destroy@{part1d\+\_\+forwardmodel\+\_\+destroy}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+destroy(part1d\+\_\+forwardmodel\+\_\+t $\ast$p)}{part1d_forwardmodel_destroy(part1d_forwardmodel_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}void part1d\+\_\+forwardmodel\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_aaa6874e2f558de5044eae3cc461d6695}{}\label{part1d__forwardmodel_8c_aaa6874e2f558de5044eae3cc461d6695}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::global\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::hierarchical\+\_\+parameters, \+\_\+part1d\+\_\+forwardmodel\+::local\+\_\+scratch, \+\_\+part1d\+\_\+forwardmodel\+::max\+\_\+partitions, \+\_\+part1d\+\_\+forwardmodel\+::model\+\_\+gradients, \+\_\+part1d\+\_\+forwardmodel\+::models, \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters, \+\_\+part1d\+\_\+forwardmodel\+::p, position\+\_\+map1d\+\_\+destroy(), and rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d().
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+finish(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+finish(), and part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters@{part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters}}
+\index{part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters@{part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters(const part1d\+\_\+forwardmodel\+\_\+t $\ast$c, int xsamples, const double $\ast$x, double $\ast$$\ast$local\+\_\+parameters)}{part1d_forwardmodel_evaluate_local_parameters(const part1d_forwardmodel_t *c, int xsamples, const double *x, double **local_parameters)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{c, }
+\item[{int}]{xsamples, }
+\item[{const double $\ast$}]{x, }
+\item[{double $\ast$$\ast$}]{local\+\_\+parameters}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a955d33bf45883810e030ff54b386e242}{}\label{part1d__forwardmodel_8c_a955d33bf45883810e030ff54b386e242}
+
+
+References c, interval\+\_\+data\+::current, interval\+\_\+data\+::local\+\_\+parameters, \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters, interval\+\_\+data\+::nlocalparameters, \+\_\+part1d\+\_\+forwardmodel\+::p, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+N\+A\+T\+U\+R\+AL, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+RO, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+R\+O\+\_\+\+C\+U\+B\+IC, position\+\_\+map1d\+\_\+traverse\+\_\+intervals(), rjmcmc\+\_\+error(), \+\_\+part1d\+\_\+forwardmodel\+::type, x, interval\+\_\+data\+::x, interval\+\_\+data\+::xi, and interval\+\_\+data\+::xsamples.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+global\+\_\+parameters@{part1d\+\_\+forwardmodel\+\_\+global\+\_\+parameters}}
+\index{part1d\+\_\+forwardmodel\+\_\+global\+\_\+parameters@{part1d\+\_\+forwardmodel\+\_\+global\+\_\+parameters}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+global\+\_\+parameters(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current)}{part1d_forwardmodel_global_parameters(const part1d_forwardmodel_t *current)}}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ part1d\+\_\+forwardmodel\+\_\+global\+\_\+parameters (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a31bd4206af8ed75bd0bb5357c425dd2c}{}\label{part1d__forwardmodel_8c_a31bd4206af8ed75bd0bb5357c425dd2c}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::global\+\_\+parameter.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+gradient\+\_\+at@{part1d\+\_\+forwardmodel\+\_\+gradient\+\_\+at}}
+\index{part1d\+\_\+forwardmodel\+\_\+gradient\+\_\+at@{part1d\+\_\+forwardmodel\+\_\+gradient\+\_\+at}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+gradient\+\_\+at(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, double x, int nlocalparameters, double $\ast$localparameters)}{part1d_forwardmodel_gradient_at(const part1d_forwardmodel_t *current, double x, int nlocalparameters, double *localparameters)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+gradient\+\_\+at (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{double}]{x, }
+\item[{int}]{nlocalparameters, }
+\item[{double $\ast$}]{localparameters}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_ac6d00748f64e8add304ef30d03271991}{}\label{part1d__forwardmodel_8c_ac6d00748f64e8add304ef30d03271991}
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+fill\+\_\+list@{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+fill\+\_\+list}}
+\index{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+fill\+\_\+list@{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+fill\+\_\+list}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+fill\+\_\+list(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, double $\ast$hierarchical, int $\ast$nhierarchical)}{part1d_forwardmodel_hierarchical_fill_list(const part1d_forwardmodel_t *current, double *hierarchical, int *nhierarchical)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+fill\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{double $\ast$}]{hierarchical, }
+\item[{int $\ast$}]{nhierarchical}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_ac16143ee854172adedd7d37913cb8efb}{}\label{part1d__forwardmodel_8c_ac16143ee854172adedd7d37913cb8efb}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::hierarchical\+\_\+parameters, and \+\_\+part1d\+\_\+forwardmodel\+::nhierarchicalparameters.
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+parameters@{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+parameters}}
+\index{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+parameters@{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+parameters}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+parameters(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current)}{part1d_forwardmodel_hierarchical_parameters(const part1d_forwardmodel_t *current)}}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+parameters (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_adc99debb9ab278427edab83e1f62f464}{}\label{part1d__forwardmodel_8c_adc99debb9ab278427edab83e1f62f464}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::hierarchical\+\_\+parameters.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+initialize@{part1d\+\_\+forwardmodel\+\_\+initialize}}
+\index{part1d\+\_\+forwardmodel\+\_\+initialize@{part1d\+\_\+forwardmodel\+\_\+initialize}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+initialize(part1d\+\_\+forwardmodel\+\_\+t $\ast$p, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$hierarchical\+\_\+parameters, int nhierarchicalparameters, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal)}{part1d_forwardmodel_initialize(part1d_forwardmodel_t *p, const forwardmodelparameter_t *global_parameters, int nglobalparameters, const forwardmodelparameter_t *local_parameters, int nlocalparameters, const forwardmodelparameter_t *hierarchical_parameters, int nhierarchicalparameters, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{p, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{hierarchical\+\_\+parameters, }
+\item[{int}]{nhierarchicalparameters, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_ac5fbdbd034a47e2d11e318c2e7874699}{}\label{part1d__forwardmodel_8c_ac5fbdbd034a47e2d11e318c2e7874699}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::global\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::hierarchical\+\_\+parameters, \+\_\+model\+::local\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::min\+\_\+partitions, \+\_\+part1d\+\_\+forwardmodel\+::models, \+\_\+part1d\+\_\+forwardmodel\+::nglobalparameters, \+\_\+part1d\+\_\+forwardmodel\+::nhierarchicalparameters, \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters, \+\_\+part1d\+\_\+forwardmodel\+::npartitions, \+\_\+part1d\+\_\+forwardmodel\+::p, position\+\_\+map1d\+\_\+insert(), R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), x, \+\_\+part1d\+\_\+forwardmodel\+::xmax, and \+\_\+part1d\+\_\+forwardmodel\+::xmin.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed@{part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed}}
+\index{part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed@{part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed(part1d\+\_\+forwardmodel\+\_\+t $\ast$p, const double $\ast$global\+\_\+parameters, const double $\ast$hierarchical\+\_\+parameters, int npartitions, const double $\ast$partition\+\_\+x, const double $\ast$$\ast$local\+\_\+parameters)}{part1d_forwardmodel_initialize_fixed(part1d_forwardmodel_t *p, const double *global_parameters, const double *hierarchical_parameters, int npartitions, const double *partition_x, const double **local_parameters)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed (
+\begin{DoxyParamCaption}
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{p, }
+\item[{const double $\ast$}]{global\+\_\+parameters, }
+\item[{const double $\ast$}]{hierarchical\+\_\+parameters, }
+\item[{int}]{npartitions, }
+\item[{const double $\ast$}]{partition\+\_\+x, }
+\item[{const double $\ast$$\ast$}]{local\+\_\+parameters}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a319d70b6f97d708ff9afbcda60906775}{}\label{part1d__forwardmodel_8c_a319d70b6f97d708ff9afbcda60906775}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::global\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::hierarchical\+\_\+parameters, \+\_\+model\+::local\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::models, \+\_\+part1d\+\_\+forwardmodel\+::nglobalparameters, \+\_\+part1d\+\_\+forwardmodel\+::nhierarchicalparameters, \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters, \+\_\+part1d\+\_\+forwardmodel\+::npartitions, \+\_\+part1d\+\_\+forwardmodel\+::p, and position\+\_\+map1d\+\_\+insert().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+partition\+\_\+fill\+\_\+list@{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+fill\+\_\+list}}
+\index{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+fill\+\_\+list@{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+fill\+\_\+list}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+fill\+\_\+list(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, double $\ast$positions, int $\ast$npartitions)}{part1d_forwardmodel_partition_fill_list(const part1d_forwardmodel_t *current, double *positions, int *npartitions)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+partition\+\_\+fill\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{double $\ast$}]{positions, }
+\item[{int $\ast$}]{npartitions}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a4d4ad7701bc62d26ebc91a085521c3b1}{}\label{part1d__forwardmodel_8c_a4d4ad7701bc62d26ebc91a085521c3b1}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::p, and position\+\_\+map1d\+\_\+fill\+\_\+list().
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+partition\+\_\+position@{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+position}}
+\index{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+position@{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+position}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+partition\+\_\+position(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, int pi)}{part1d_forwardmodel_partition_position(const part1d_forwardmodel_t *current, int pi)}}]{\setlength{\rightskip}{0pt plus 5cm}double part1d\+\_\+forwardmodel\+\_\+partition\+\_\+position (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{int}]{pi}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a6a4e3b1edc213c4d5878626b636f2d11}{}\label{part1d__forwardmodel_8c_a6a4e3b1edc213c4d5878626b636f2d11}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::p, and position\+\_\+map1d\+\_\+position\+\_\+of\+\_\+index().
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+partitions@{part1d\+\_\+forwardmodel\+\_\+partitions}}
+\index{part1d\+\_\+forwardmodel\+\_\+partitions@{part1d\+\_\+forwardmodel\+\_\+partitions}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+partitions(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current)}{part1d_forwardmodel_partitions(const part1d_forwardmodel_t *current)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+partitions (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a4eba709a544f8f2631b1c6dbf4d3e05b}{}\label{part1d__forwardmodel_8c_a4eba709a544f8f2631b1c6dbf4d3e05b}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::npartitions.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth}}
+\index{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, part1d\+\_\+forwardmodel\+\_\+t $\ast$proposed, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$birth\+\_\+prob)}{part1d_forwardmodel_propose_birth(const part1d_forwardmodel_t *current, part1d_forwardmodel_t *proposed, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *birth_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{proposed, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{birth\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a200deea3cd703f6b9f7717bba8f1e5e4}{}\label{part1d__forwardmodel_8c_a200deea3cd703f6b9f7717bba8f1e5e4}
+
+
+References \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, \+\_\+forwardmodelparameter\+::fstd\+\_\+bd, \+\_\+model\+::local\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::local\+\_\+scratch, \+\_\+part1d\+\_\+forwardmodel\+::max\+\_\+partitions, \+\_\+part1d\+\_\+forwardmodel\+::models, \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters, normal, \+\_\+part1d\+\_\+forwardmodel\+::npartitions, \+\_\+part1d\+\_\+forwardmodel\+::p, part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+value\+\_\+at(), position\+\_\+map1d\+\_\+insert(), rjmcmc\+\_\+error(), rjmcmc\+\_\+gaussian\+\_\+probability(), rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), \+\_\+part1d\+\_\+forwardmodel\+::xmax, and \+\_\+part1d\+\_\+forwardmodel\+::xmin.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death}}
+\index{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, part1d\+\_\+forwardmodel\+\_\+t $\ast$proposed, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$death\+\_\+prob)}{part1d_forwardmodel_propose_death(const part1d_forwardmodel_t *current, part1d_forwardmodel_t *proposed, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *death_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{proposed, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{death\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a3f3fcad753e3b88c7aa9bfd5e42c6369}{}\label{part1d__forwardmodel_8c_a3f3fcad753e3b88c7aa9bfd5e42c6369}
+
+
+References \+\_\+part1d\+\_\+forwardmodel\+::local\+\_\+scratch, \+\_\+part1d\+\_\+forwardmodel\+::max\+\_\+partitions, \+\_\+part1d\+\_\+forwardmodel\+::min\+\_\+partitions, \+\_\+part1d\+\_\+forwardmodel\+::models, \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters, \+\_\+part1d\+\_\+forwardmodel\+::npartitions, \+\_\+part1d\+\_\+forwardmodel\+::p, part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+value\+\_\+at(), position\+\_\+map1d\+\_\+delete(), position\+\_\+map1d\+\_\+position\+\_\+of\+\_\+index(), rjmcmc\+\_\+error(), rjmcmc\+\_\+gaussian\+\_\+probability(), and rjmcmc\+\_\+random\+\_\+choose\+\_\+int().
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value}}
+\index{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, part1d\+\_\+forwardmodel\+\_\+t $\ast$proposed, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$value\+\_\+prob)}{part1d_forwardmodel_propose_global_value(const part1d_forwardmodel_t *current, part1d_forwardmodel_t *proposed, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *value_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{proposed, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{value\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_aa1b609a5a6239147e353d3f1b6fca256}{}\label{part1d__forwardmodel_8c_aa1b609a5a6239147e353d3f1b6fca256}
+
+
+References \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, \+\_\+forwardmodelparameter\+::fstd\+\_\+value, \+\_\+part1d\+\_\+forwardmodel\+::global\+\_\+parameter, normal, part1d\+\_\+forwardmodel\+\_\+clone(), rjmcmc\+\_\+error(), and rjmcmc\+\_\+random\+\_\+choose\+\_\+int().
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical}}
+\index{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, part1d\+\_\+forwardmodel\+\_\+t $\ast$proposed, int nhierarchicalparameters, const forwardmodelparameter\+\_\+t $\ast$hierarchical\+\_\+parameters, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$hierarchical\+\_\+prob)}{part1d_forwardmodel_propose_hierarchical(const part1d_forwardmodel_t *current, part1d_forwardmodel_t *proposed, int nhierarchicalparameters, const forwardmodelparameter_t *hierarchical_parameters, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *hierarchical_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{proposed, }
+\item[{int}]{nhierarchicalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{hierarchical\+\_\+parameters, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{hierarchical\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_ac365932bb87ca17924728fe9da5d109c}{}\label{part1d__forwardmodel_8c_ac365932bb87ca17924728fe9da5d109c}
+
+
+References \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, \+\_\+forwardmodelparameter\+::fstd\+\_\+value, \+\_\+part1d\+\_\+forwardmodel\+::hierarchical\+\_\+parameters, \+\_\+model\+::local\+\_\+parameter, normal, part1d\+\_\+forwardmodel\+\_\+clone(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+V\+O\+ID, and rjmcmc\+\_\+random\+\_\+choose\+\_\+int().
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value}}
+\index{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, part1d\+\_\+forwardmodel\+\_\+t $\ast$proposed, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$value\+\_\+prob, int $\ast$li)}{part1d_forwardmodel_propose_local_value(const part1d_forwardmodel_t *current, part1d_forwardmodel_t *proposed, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *value_prob, int *li)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{proposed, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{value\+\_\+prob, }
+\item[{int $\ast$}]{li}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_ae60aea0b4900a4c03f8630511f5cef5f}{}\label{part1d__forwardmodel_8c_ae60aea0b4900a4c03f8630511f5cef5f}
+
+
+References \+\_\+forwardmodelparameter\+::fmax, \+\_\+forwardmodelparameter\+::fmin, \+\_\+forwardmodelparameter\+::fstd\+\_\+value, \+\_\+model\+::local\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::models, normal, \+\_\+part1d\+\_\+forwardmodel\+::npartitions, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+RO, part1d\+\_\+forwardmodel\+\_\+clone(), rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), and \+\_\+part1d\+\_\+forwardmodel\+::type.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move}}
+\index{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move@{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, part1d\+\_\+forwardmodel\+\_\+t $\ast$proposed, int nglobalparameters, const forwardmodelparameter\+\_\+t $\ast$global\+\_\+parameters, int nlocalparameters, const forwardmodelparameter\+\_\+t $\ast$local\+\_\+parameters, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$move\+\_\+prob)}{part1d_forwardmodel_propose_move(const part1d_forwardmodel_t *current, part1d_forwardmodel_t *proposed, int nglobalparameters, const forwardmodelparameter_t *global_parameters, int nlocalparameters, const forwardmodelparameter_t *local_parameters, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *move_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{proposed, }
+\item[{int}]{nglobalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{global\+\_\+parameters, }
+\item[{int}]{nlocalparameters, }
+\item[{const {\bf forwardmodelparameter\+\_\+t} $\ast$}]{local\+\_\+parameters, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{move\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a59259f65297856a2f57d000f0f9736b0}{}\label{part1d__forwardmodel_8c_a59259f65297856a2f57d000f0f9736b0}
+
+
+References normal, \+\_\+part1d\+\_\+forwardmodel\+::npartitions, \+\_\+part1d\+\_\+forwardmodel\+::p, part1d\+\_\+forwardmodel\+\_\+clone(), \+\_\+part1d\+\_\+forwardmodel\+::pd, position\+\_\+map1d\+\_\+move(), position\+\_\+map1d\+\_\+position\+\_\+of\+\_\+index(), rjmcmc\+\_\+error(), rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), and \+\_\+part1d\+\_\+forwardmodel\+::xmax.
+
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), and M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical().
+
+\index{part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}!part1d\+\_\+forwardmodel\+\_\+value\+\_\+at@{part1d\+\_\+forwardmodel\+\_\+value\+\_\+at}}
+\index{part1d\+\_\+forwardmodel\+\_\+value\+\_\+at@{part1d\+\_\+forwardmodel\+\_\+value\+\_\+at}!part1d\+\_\+forwardmodel.\+c@{part1d\+\_\+forwardmodel.\+c}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+forwardmodel\+\_\+value\+\_\+at(const part1d\+\_\+forwardmodel\+\_\+t $\ast$current, double x, int nlocalparameters, double $\ast$localparameters)}{part1d_forwardmodel_value_at(const part1d_forwardmodel_t *current, double x, int nlocalparameters, double *localparameters)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+forwardmodel\+\_\+value\+\_\+at (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+forwardmodel\+\_\+t} $\ast$}]{current, }
+\item[{double}]{x, }
+\item[{int}]{nlocalparameters, }
+\item[{double $\ast$}]{localparameters}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__forwardmodel_8c_a8e4deb51d508668ae84a448b85c02ee0}{}\label{part1d__forwardmodel_8c_a8e4deb51d508668ae84a448b85c02ee0}
+
+
+References \+\_\+model\+::a, \+\_\+model\+::local\+\_\+parameter, \+\_\+part1d\+\_\+forwardmodel\+::models, \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters, \+\_\+part1d\+\_\+forwardmodel\+::p, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+N\+A\+T\+U\+R\+AL, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+RO, P\+A\+R\+T1\+D\+\_\+\+F\+M\+\_\+\+Z\+E\+R\+O\+\_\+\+C\+U\+B\+IC, position\+\_\+map1d\+\_\+position\+\_\+of\+\_\+index(), position\+\_\+map1d\+\_\+predecessor\+\_\+of\+\_\+index(), position\+\_\+map1d\+\_\+predecessor\+\_\+of\+\_\+point(), position\+\_\+map1d\+\_\+successor\+\_\+of\+\_\+point(), R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, rjmcmc\+\_\+error(), R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT, \+\_\+part1d\+\_\+forwardmodel\+::type, and \+\_\+part1d\+\_\+forwardmodel\+::xmax.
+
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death().
+

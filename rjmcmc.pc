@@ -1,0 +1,10 @@
+prefix=/short/public/rcb547/apps/iearth/LIBRJMCMC-1.0.11-installed-gcc-5.2.0
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: rjmcmc
+Description: Reversible Jump Monte Carlo Markov Chain Library
+Version: 1.0.11
+Libs:  -L/usr/lib/openmpi -lm  -lmpi -L${exec_prefix}/lib -lrjmcmc
+Cflags: -g -O2  -I/usr/include/openmpi -I${prefix}/include

@@ -1,0 +1,427 @@
+\hypertarget{curvefit_8h}{}\section{curvefit.\+h File Reference}
+\label{curvefit_8h}\index{curvefit.\+h@{curvefit.\+h}}
+
+
+1D Curve Fitting routines  
+
+
+{\ttfamily \#include \char`\"{}rjmcmc/dataset1d.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/rjmcmc\+\_\+random.\+h\char`\"{}}\\*
+Include dependency graph for curvefit.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__curvefit__result}{\+\_\+curvefit\+\_\+result} \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$ \hyperlink{curvefit_8h_adc0db86885a3f6dd9788281ab4707abd}{curvefit\+\_\+create} (int maxorder)
+\begin{DoxyCompactList}\small\item\em Create a new \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t}. \end{DoxyCompactList}\item 
+void \hyperlink{curvefit_8h_ad405849bc4bdf3ae93fb2095abf1a8fe}{curvefit\+\_\+destroy} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf)
+\begin{DoxyCompactList}\small\item\em Free memory allocated for \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} obecjt. \end{DoxyCompactList}\item 
+int \hyperlink{curvefit_8h_a5589d366b345f0d67e16131a269e4137}{curvefit\+\_\+compute} (const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$d, int di, int dj, int order, \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf)
+\begin{DoxyCompactList}\small\item\em Computing polynomial fitting parameters. \end{DoxyCompactList}\item 
+int \hyperlink{curvefit_8h_a4274774c16494173f37c5188dec762bd}{curvefit\+\_\+compute\+\_\+lambda} (const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$d, double lambda, int di, int dj, int order, \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf)
+\begin{DoxyCompactList}\small\item\em Compute polynomial fitting parameters with an error scale. \end{DoxyCompactList}\item 
+int \hyperlink{curvefit_8h_a93af7bdd44f165f03ad4c3430e0cee21}{curvefit\+\_\+sample} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$coeff, int coeff\+\_\+len, double $\ast$prob)
+\begin{DoxyCompactList}\small\item\em Generate a random polynomial. \end{DoxyCompactList}\item 
+int \hyperlink{curvefit_8h_a8adc66ef5f617ef3ac210210cf607290}{curvefit\+\_\+sample\+\_\+mean} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf, double $\ast$coeff, int coeff\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Retrieve the mean (best fit) polynomial. \end{DoxyCompactList}\item 
+int \hyperlink{curvefit_8h_ab296e9b4bfaba761cd709bc1993ca27c}{curvefit\+\_\+sample\+\_\+sigma} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf, double $\ast$sigma, int sigma\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Retrieve the sigma diagonals. \end{DoxyCompactList}\item 
+int \hyperlink{curvefit_8h_afbd217d359e68ad4424051b38e594b55}{curvefit\+\_\+sample\+\_\+det\+Cm} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf, double $\ast$det\+Cm, int order)
+\begin{DoxyCompactList}\small\item\em Compute the determinant of the Covariance matrix. \end{DoxyCompactList}\item 
+int \hyperlink{curvefit_8h_aab7579732766e2f4beab5ac5e61600f3}{curvefit\+\_\+evaluate\+\_\+pk} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$data, int di, int dj, int max\+\_\+order, const double $\ast$fixed\+\_\+prior, double auto\+\_\+z, double $\ast$mean\+\_\+misfit, double $\ast$det\+Cm, double $\ast$prior, double $\ast$$\ast$S, double $\ast$pk, double $\ast$kcdf, double $\ast$$\ast$mean, double $\ast$$\ast$sigma)
+\begin{DoxyCompactList}\small\item\em Compute the complete fit over all orders. \end{DoxyCompactList}\item 
+double $\ast$$\ast$ \hyperlink{curvefit_8h_a4c3c48661ec382363b9eb7560ed9ea82}{cf\+\_\+L} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf)
+\item 
+double $\ast$$\ast$ \hyperlink{curvefit_8h_a70e1396dc1a7b7ed79e3391361b87ae6}{cf\+\_\+Z} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf)
+\item 
+double $\ast$$\ast$ \hyperlink{curvefit_8h_ad9237d6f5b661bb603bbb658c06c1f2e}{cf\+\_\+S} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf)
+\item 
+double $\ast$ \hyperlink{curvefit_8h_ab47526e8e983d24a0ccf1e702610cc5b}{cf\+\_\+mu} (\hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} $\ast$cf)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+1D Curve Fitting routines 
+
+The \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} type is used for computing best fit and randomly perturbed polynomials for a given \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} . 
+
+\subsection{Typedef Documentation}
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+result\+\_\+t@{curvefit\+\_\+result\+\_\+t}}
+\index{curvefit\+\_\+result\+\_\+t@{curvefit\+\_\+result\+\_\+t}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+result\+\_\+t}{curvefit_result_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+curvefit\+\_\+result} {\bf curvefit\+\_\+result\+\_\+t}}\hypertarget{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{}\label{curvefit_8h_a8d64fc669633daad1b381d40274f9911}
+
+
+\subsection{Function Documentation}
+\index{curvefit.\+h@{curvefit.\+h}!cf\+\_\+L@{cf\+\_\+L}}
+\index{cf\+\_\+L@{cf\+\_\+L}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{cf\+\_\+\+L(curvefit\+\_\+result\+\_\+t $\ast$cf)}{cf_L(curvefit_result_t *cf)}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ cf\+\_\+L (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_a4c3c48661ec382363b9eb7560ed9ea82}{}\label{curvefit_8h_a4c3c48661ec382363b9eb7560ed9ea82}
+
+
+References \+\_\+curvefit\+\_\+result\+::L.
+
+\index{curvefit.\+h@{curvefit.\+h}!cf\+\_\+mu@{cf\+\_\+mu}}
+\index{cf\+\_\+mu@{cf\+\_\+mu}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{cf\+\_\+mu(curvefit\+\_\+result\+\_\+t $\ast$cf)}{cf_mu(curvefit_result_t *cf)}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ cf\+\_\+mu (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_ab47526e8e983d24a0ccf1e702610cc5b}{}\label{curvefit_8h_ab47526e8e983d24a0ccf1e702610cc5b}
+
+
+References \+\_\+curvefit\+\_\+result\+::mu.
+
+\index{curvefit.\+h@{curvefit.\+h}!cf\+\_\+S@{cf\+\_\+S}}
+\index{cf\+\_\+S@{cf\+\_\+S}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{cf\+\_\+\+S(curvefit\+\_\+result\+\_\+t $\ast$cf)}{cf_S(curvefit_result_t *cf)}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ cf\+\_\+S (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_ad9237d6f5b661bb603bbb658c06c1f2e}{}\label{curvefit_8h_ad9237d6f5b661bb603bbb658c06c1f2e}
+
+
+References \+\_\+curvefit\+\_\+result\+::S.
+
+\index{curvefit.\+h@{curvefit.\+h}!cf\+\_\+Z@{cf\+\_\+Z}}
+\index{cf\+\_\+Z@{cf\+\_\+Z}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{cf\+\_\+\+Z(curvefit\+\_\+result\+\_\+t $\ast$cf)}{cf_Z(curvefit_result_t *cf)}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ cf\+\_\+Z (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_a70e1396dc1a7b7ed79e3391361b87ae6}{}\label{curvefit_8h_a70e1396dc1a7b7ed79e3391361b87ae6}
+
+
+References \+\_\+curvefit\+\_\+result\+::Z.
+
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+compute@{curvefit\+\_\+compute}}
+\index{curvefit\+\_\+compute@{curvefit\+\_\+compute}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+compute(const dataset1d\+\_\+t $\ast$d, int di, int dj, int order, curvefit\+\_\+result\+\_\+t $\ast$cf)}{curvefit_compute(const dataset1d_t *d, int di, int dj, int order, curvefit_result_t *cf)}}]{\setlength{\rightskip}{0pt plus 5cm}int curvefit\+\_\+compute (
+\begin{DoxyParamCaption}
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{di, }
+\item[{int}]{dj, }
+\item[{int}]{order, }
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_a5589d366b345f0d67e16131a269e4137}{}\label{curvefit_8h_a5589d366b345f0d67e16131a269e4137}
+
+
+Computing polynomial fitting parameters. 
+
+Computes the various fitting parameters for a given dataset or subset thereof.
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The dataset \\
+\hline
+{\em di} & First index into dataset \\
+\hline
+{\em dj} & Last index into dataset \\
+\hline
+{\em order} & The order of the polynomial to fit \\
+\hline
+{\em cf} & The \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} to store the data (must have been allocated previously using \hyperlink{curvefit_8h_adc0db86885a3f6dd9788281ab4707abd}{curvefit\+\_\+create} \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+curvefit\+\_\+result\+::alpha, \+\_\+curvefit\+\_\+result\+::b, \+\_\+curvefit\+\_\+result\+::beta, \+\_\+curvefit\+\_\+result\+::L, \+\_\+curvefit\+\_\+result\+::maxorder, \+\_\+curvefit\+\_\+result\+::mu, \+\_\+dataset1d\+::points, rjmcmc\+\_\+error(), \+\_\+curvefit\+\_\+result\+::S, \+\_\+curvefit\+\_\+result\+::\+Si, \+\_\+curvefit\+\_\+result\+::x, and \+\_\+curvefit\+\_\+result\+::Z.
+
+
+
+Referenced by part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), and single1d\+\_\+regression\+\_\+propose\+\_\+lambda().
+
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+compute\+\_\+lambda@{curvefit\+\_\+compute\+\_\+lambda}}
+\index{curvefit\+\_\+compute\+\_\+lambda@{curvefit\+\_\+compute\+\_\+lambda}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+compute\+\_\+lambda(const dataset1d\+\_\+t $\ast$d, double lambda, int di, int dj, int order, curvefit\+\_\+result\+\_\+t $\ast$cf)}{curvefit_compute_lambda(const dataset1d_t *d, double lambda, int di, int dj, int order, curvefit_result_t *cf)}}]{\setlength{\rightskip}{0pt plus 5cm}int curvefit\+\_\+compute\+\_\+lambda (
+\begin{DoxyParamCaption}
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{d, }
+\item[{double}]{lambda, }
+\item[{int}]{di, }
+\item[{int}]{dj, }
+\item[{int}]{order, }
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_a4274774c16494173f37c5188dec762bd}{}\label{curvefit_8h_a4274774c16494173f37c5188dec762bd}
+
+
+Compute polynomial fitting parameters with an error scale. 
+
+This function is equivalent to \hyperlink{curvefit_8h_a5589d366b345f0d67e16131a269e4137}{curvefit\+\_\+compute} with the addition of an error scaling term lambda.
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The dataset \\
+\hline
+{\em lambda} & The error scaling term, must be greater than 0. \\
+\hline
+{\em di} & First index into dataset \\
+\hline
+{\em dj} & Last index into dataset \\
+\hline
+{\em order} & The order of the polynomial to fit \\
+\hline
+{\em cf} & The \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} to store the data (must have been allocated previously using \hyperlink{curvefit_8h_adc0db86885a3f6dd9788281ab4707abd}{curvefit\+\_\+create} \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+curvefit\+\_\+result\+::alpha, \+\_\+curvefit\+\_\+result\+::b, \+\_\+curvefit\+\_\+result\+::beta, \+\_\+curvefit\+\_\+result\+::L, \+\_\+curvefit\+\_\+result\+::maxorder, \+\_\+curvefit\+\_\+result\+::mu, \+\_\+dataset1d\+::points, rjmcmc\+\_\+error(), \+\_\+curvefit\+\_\+result\+::S, \+\_\+curvefit\+\_\+result\+::x, and \+\_\+curvefit\+\_\+result\+::Z.
+
+
+
+Referenced by curvefit\+\_\+compute\+\_\+mean\+\_\+misfit().
+
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+create@{curvefit\+\_\+create}}
+\index{curvefit\+\_\+create@{curvefit\+\_\+create}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+create(int maxorder)}{curvefit_create(int maxorder)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf curvefit\+\_\+result\+\_\+t}$\ast$ curvefit\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{maxorder}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_adc0db86885a3f6dd9788281ab4707abd}{}\label{curvefit_8h_adc0db86885a3f6dd9788281ab4707abd}
+
+
+Create a new \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em maxorder} & Allow 0 .. maxorder to fit a dataset. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+curvefit\+\_\+result\+::alpha, \+\_\+curvefit\+\_\+result\+::b, \+\_\+curvefit\+\_\+result\+::beta, \+\_\+curvefit\+\_\+result\+::L, \+\_\+curvefit\+\_\+result\+::maxorder, \+\_\+curvefit\+\_\+result\+::mu, rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+2d(), \+\_\+curvefit\+\_\+result\+::S, \+\_\+curvefit\+\_\+result\+::\+Si, \+\_\+curvefit\+\_\+result\+::x, and \+\_\+curvefit\+\_\+result\+::Z.
+
+
+
+Referenced by part1d\+\_\+regression\+\_\+rj\+\_\+create(), single1d\+\_\+direct\+\_\+regression(), and single1d\+\_\+regression\+\_\+create().
+
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+destroy@{curvefit\+\_\+destroy}}
+\index{curvefit\+\_\+destroy@{curvefit\+\_\+destroy}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+destroy(curvefit\+\_\+result\+\_\+t $\ast$cf)}{curvefit_destroy(curvefit_result_t *cf)}}]{\setlength{\rightskip}{0pt plus 5cm}void curvefit\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_ad405849bc4bdf3ae93fb2095abf1a8fe}{}\label{curvefit_8h_ad405849bc4bdf3ae93fb2095abf1a8fe}
+
+
+Free memory allocated for \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} obecjt. 
+
+
+
+References \+\_\+curvefit\+\_\+result\+::alpha, \+\_\+curvefit\+\_\+result\+::b, \+\_\+curvefit\+\_\+result\+::beta, \+\_\+curvefit\+\_\+result\+::L, \+\_\+curvefit\+\_\+result\+::maxorder, \+\_\+curvefit\+\_\+result\+::mu, rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+2d(), \+\_\+curvefit\+\_\+result\+::S, \+\_\+curvefit\+\_\+result\+::\+Si, \+\_\+curvefit\+\_\+result\+::x, and \+\_\+curvefit\+\_\+result\+::Z.
+
+
+
+Referenced by part1d\+\_\+regression\+\_\+rj\+\_\+destroy(), and single1d\+\_\+regression\+\_\+destroy().
+
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+evaluate\+\_\+pk@{curvefit\+\_\+evaluate\+\_\+pk}}
+\index{curvefit\+\_\+evaluate\+\_\+pk@{curvefit\+\_\+evaluate\+\_\+pk}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+evaluate\+\_\+pk(curvefit\+\_\+result\+\_\+t $\ast$cf, const dataset1d\+\_\+t $\ast$data, int di, int dj, int max\+\_\+order, const double $\ast$fixed\+\_\+prior, double auto\+\_\+z, double $\ast$mean\+\_\+misfit, double $\ast$det\+Cm, double $\ast$prior, double $\ast$$\ast$\+S, double $\ast$pk, double $\ast$kcdf, double $\ast$$\ast$mean, double $\ast$$\ast$sigma)}{curvefit_evaluate_pk(curvefit_result_t *cf, const dataset1d_t *data, int di, int dj, int max_order, const double *fixed_prior, double auto_z, double *mean_misfit, double *detCm, double *prior, double **S, double *pk, double *kcdf, double **mean, double **sigma)}}]{\setlength{\rightskip}{0pt plus 5cm}int curvefit\+\_\+evaluate\+\_\+pk (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$}]{data, }
+\item[{int}]{di, }
+\item[{int}]{dj, }
+\item[{int}]{max\+\_\+order, }
+\item[{const double $\ast$}]{fixed\+\_\+prior, }
+\item[{double}]{auto\+\_\+z, }
+\item[{double $\ast$}]{mean\+\_\+misfit, }
+\item[{double $\ast$}]{det\+Cm, }
+\item[{double $\ast$}]{prior, }
+\item[{double $\ast$$\ast$}]{S, }
+\item[{double $\ast$}]{pk, }
+\item[{double $\ast$}]{kcdf, }
+\item[{double $\ast$$\ast$}]{mean, }
+\item[{double $\ast$$\ast$}]{sigma}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_aab7579732766e2f4beab5ac5e61600f3}{}\label{curvefit_8h_aab7579732766e2f4beab5ac5e61600f3}
+
+
+Compute the complete fit over all orders. 
+
+Computes the fit of polynomials of varying order to a given dataset. Used to determine the relative likelihood of support for polynomials of different order to a given dataset.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cf} & The \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} object \\
+\hline
+{\em data} & The dataset \\
+\hline
+{\em di} & First index into dataset \\
+\hline
+{\em dj} & Last index into dataset \\
+\hline
+{\em max\+\_\+order} & The maximum order polynomial to fit (cannot be greater than that of th the curvefit object). \\
+\hline
+{\em fixed\+\_\+prior} & Use a fixed prior for the different orders (set to N\+U\+LL to use the automatic prior). \\
+\hline
+{\em auto\+\_\+z} & Z score for automatic prior, ie 3 = 3 standard deviations prior. \\
+\hline
+{\em mean\+\_\+misfit} & Output array of the misfit of the mean curve to the data for each order. \\
+\hline
+{\em det\+Cm} & Output array of determinant of the Covariance matrix for each order. \\
+\hline
+{\em S} & Covariance Matrix output \\
+\hline
+{\em pk} & Output array of probability of each order. \\
+\hline
+{\em kcdf} & Cummulative probability of each order. \\
+\hline
+{\em mean} & Output Mean curves for each order. \\
+\hline
+{\em sigma} & Output Standard deviation for each order. \\
+\hline
+\end{DoxyParams}
+
+
+References curvefit\+\_\+compute\+\_\+mean\+\_\+misfit(), and M\+\_\+\+PI.
+
+
+
+Referenced by part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), single1d\+\_\+direct\+\_\+regression(), and single1d\+\_\+evaluate\+\_\+pk().
+
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+sample@{curvefit\+\_\+sample}}
+\index{curvefit\+\_\+sample@{curvefit\+\_\+sample}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+sample(curvefit\+\_\+result\+\_\+t $\ast$cf, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$coeff, int coeff\+\_\+len, double $\ast$prob)}{curvefit_sample(curvefit_result_t *cf, rjmcmc_normal_rand_t normal, double *coeff, int coeff_len, double *prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int curvefit\+\_\+sample (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{coeff, }
+\item[{int}]{coeff\+\_\+len, }
+\item[{double $\ast$}]{prob}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_a93af7bdd44f165f03ad4c3430e0cee21}{}\label{curvefit_8h_a93af7bdd44f165f03ad4c3430e0cee21}
+
+
+Generate a random polynomial. 
+
+From a previous computed \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} object, generate a random polynomial.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cf} & The \+:curvefit\+\_\+result\+\_\+t object. \\
+\hline
+{\em normal} & A function pointer to the Gaussian random number generator. \\
+\hline
+{\em coeff} & Output array for polynomial coefficients. \\
+\hline
+{\em coeff\+\_\+len} & Size of the coeff array \\
+\hline
+{\em prob} & A single double output value representing the probability of this curve. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+curvefit\+\_\+result\+::b, M\+\_\+\+PI, \+\_\+curvefit\+\_\+result\+::mu, normal, rjmcmc\+\_\+error(), \+\_\+curvefit\+\_\+result\+::\+Si, \+\_\+curvefit\+\_\+result\+::x, and \+\_\+curvefit\+\_\+result\+::Z.
+
+
+
+Referenced by part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), and single1d\+\_\+regression\+\_\+propose\+\_\+lambda().
+
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+sample\+\_\+det\+Cm@{curvefit\+\_\+sample\+\_\+det\+Cm}}
+\index{curvefit\+\_\+sample\+\_\+det\+Cm@{curvefit\+\_\+sample\+\_\+det\+Cm}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+sample\+\_\+det\+Cm(curvefit\+\_\+result\+\_\+t $\ast$cf, double $\ast$det\+Cm, int order)}{curvefit_sample_detCm(curvefit_result_t *cf, double *detCm, int order)}}]{\setlength{\rightskip}{0pt plus 5cm}int curvefit\+\_\+sample\+\_\+det\+Cm (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf, }
+\item[{double $\ast$}]{det\+Cm, }
+\item[{int}]{order}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_afbd217d359e68ad4424051b38e594b55}{}\label{curvefit_8h_afbd217d359e68ad4424051b38e594b55}
+
+
+Compute the determinant of the Covariance matrix. 
+
+Computes the determinant of the covariance matrix using the Cholesky decomposition.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cf} & The \+:curvefit\+\_\+result\+\_\+t object. \\
+\hline
+{\em det\+Cm} & Output double for determinant \\
+\hline
+{\em order} & Order of the previous computation. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+curvefit\+\_\+result\+::alpha, \+\_\+curvefit\+\_\+result\+::b, \+\_\+curvefit\+\_\+result\+::beta, \+\_\+curvefit\+\_\+result\+::L, \+\_\+point1d\+::n, \+\_\+point1d\+::x, \+\_\+curvefit\+\_\+result\+::x, \+\_\+point1d\+::y, y, and \+\_\+curvefit\+\_\+result\+::Z.
+
+
+
+Referenced by curvefit\+\_\+compute\+\_\+mean\+\_\+misfit().
+
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+sample\+\_\+mean@{curvefit\+\_\+sample\+\_\+mean}}
+\index{curvefit\+\_\+sample\+\_\+mean@{curvefit\+\_\+sample\+\_\+mean}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+sample\+\_\+mean(curvefit\+\_\+result\+\_\+t $\ast$cf, double $\ast$coeff, int coeff\+\_\+len)}{curvefit_sample_mean(curvefit_result_t *cf, double *coeff, int coeff_len)}}]{\setlength{\rightskip}{0pt plus 5cm}int curvefit\+\_\+sample\+\_\+mean (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf, }
+\item[{double $\ast$}]{coeff, }
+\item[{int}]{coeff\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_a8adc66ef5f617ef3ac210210cf607290}{}\label{curvefit_8h_a8adc66ef5f617ef3ac210210cf607290}
+
+
+Retrieve the mean (best fit) polynomial. 
+
+From a previous computed \hyperlink{curvefit_8h_a8d64fc669633daad1b381d40274f9911}{curvefit\+\_\+result\+\_\+t} object, retrieve the mean or best fit polynomial to the data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cf} & The \+:curvefit\+\_\+result\+\_\+t object. \\
+\hline
+{\em coeff} & Output array for polynomial coefficients. \\
+\hline
+{\em coeff\+\_\+len} & Size of the coeff array \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+curvefit\+\_\+result\+::mu.
+
+
+
+Referenced by curvefit\+\_\+compute\+\_\+mean\+\_\+misfit().
+
+\index{curvefit.\+h@{curvefit.\+h}!curvefit\+\_\+sample\+\_\+sigma@{curvefit\+\_\+sample\+\_\+sigma}}
+\index{curvefit\+\_\+sample\+\_\+sigma@{curvefit\+\_\+sample\+\_\+sigma}!curvefit.\+h@{curvefit.\+h}}
+\subsubsection[{\texorpdfstring{curvefit\+\_\+sample\+\_\+sigma(curvefit\+\_\+result\+\_\+t $\ast$cf, double $\ast$sigma, int sigma\+\_\+len)}{curvefit_sample_sigma(curvefit_result_t *cf, double *sigma, int sigma_len)}}]{\setlength{\rightskip}{0pt plus 5cm}int curvefit\+\_\+sample\+\_\+sigma (
+\begin{DoxyParamCaption}
+\item[{{\bf curvefit\+\_\+result\+\_\+t} $\ast$}]{cf, }
+\item[{double $\ast$}]{sigma, }
+\item[{int}]{sigma\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{curvefit_8h_ab296e9b4bfaba761cd709bc1993ca27c}{}\label{curvefit_8h_ab296e9b4bfaba761cd709bc1993ca27c}
+
+
+Retrieve the sigma diagonals. 
+
+Retrieves the square root of the diagonals of the covariance matrix, ie standard deviation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cf} & The \+:curvefit\+\_\+result\+\_\+t object. \\
+\hline
+{\em sigma} & Output array for diagonal elements. \\
+\hline
+{\em sigma\+\_\+len} & sigma array length. \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+curvefit\+\_\+result\+::S.
+
+
+
+Referenced by curvefit\+\_\+compute\+\_\+mean\+\_\+misfit().
+

@@ -1,0 +1,125 @@
+\hypertarget{struct__rjmcmc__engine__cb}{}\section{\+\_\+rjmcmc\+\_\+engine\+\_\+cb Struct Reference}
+\label{struct__rjmcmc__engine__cb}\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+
+
+{\ttfamily \#include $<$engine.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{struct__rjmcmc__engine__cb_acb9dcf3f03f16c4a1f6386ec0f1831d8}{burnin}
+\item 
+int \hyperlink{struct__rjmcmc__engine__cb_afda7df3424642cf0066ff9682784f9ea}{total}
+\item 
+int \hyperlink{struct__rjmcmc__engine__cb_a777c71c86acd53370442841472c24ef1}{sample\+\_\+rate}
+\item 
+int \hyperlink{struct__rjmcmc__engine__cb_af0051d723354a538f33b9c245b2426c3}{i}
+\item 
+double \hyperlink{struct__rjmcmc__engine__cb_a78debea197d5739a1e1851764dc360d8}{current\+\_\+like}
+\item 
+double($\ast$ \hyperlink{struct__rjmcmc__engine__cb_a57db290226797053fee2f8af0577aaa6}{initialize\+\_\+state} )(void $\ast$\hyperlink{struct__rjmcmc__engine__cb_aea2c810aeae4815b886e2252c9bca337}{arg})
+\item 
+int($\ast$ \hyperlink{struct__rjmcmc__engine__cb_a7017792797b8ce47ed670044f1bc8a0d}{select\+\_\+process} )(void $\ast$\hyperlink{struct__rjmcmc__engine__cb_aea2c810aeae4815b886e2252c9bca337}{arg})
+\item 
+void $\ast$($\ast$ \hyperlink{struct__rjmcmc__engine__cb_a69d829afbd1ad49c4bcc17727d5d8a67}{perturb\+\_\+process} )(void $\ast$\hyperlink{struct__rjmcmc__engine__cb_aea2c810aeae4815b886e2252c9bca337}{arg}, int proc)
+\item 
+double($\ast$ \hyperlink{struct__rjmcmc__engine__cb_ad3f49710b8fbbe3214fb9bc834ab2d6a}{compute\+\_\+misfit} )(void $\ast$\hyperlink{struct__rjmcmc__engine__cb_aea2c810aeae4815b886e2252c9bca337}{arg}, void $\ast$state)
+\item 
+int($\ast$ \hyperlink{struct__rjmcmc__engine__cb_ab76b8decf72beb07f5cbd5354873c075}{accept} )(void $\ast$\hyperlink{struct__rjmcmc__engine__cb_aea2c810aeae4815b886e2252c9bca337}{arg}, double current, double proposed)
+\item 
+int($\ast$ \hyperlink{struct__rjmcmc__engine__cb_a6a85b9af744cef99827ea3cc7aebfa3b}{sample} )(void $\ast$\hyperlink{struct__rjmcmc__engine__cb_aea2c810aeae4815b886e2252c9bca337}{arg}, int \hyperlink{struct__rjmcmc__engine__cb_af0051d723354a538f33b9c245b2426c3}{i})
+\item 
+void $\ast$ \hyperlink{struct__rjmcmc__engine__cb_aea2c810aeae4815b886e2252c9bca337}{arg}
+\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!accept@{accept}}
+\index{accept@{accept}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{accept}{accept}}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::accept) (void $\ast${\bf arg}, double current, double proposed)}\hypertarget{struct__rjmcmc__engine__cb_ab76b8decf72beb07f5cbd5354873c075}{}\label{struct__rjmcmc__engine__cb_ab76b8decf72beb07f5cbd5354873c075}
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(), and rjmcmc\+\_\+engine\+\_\+step().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!arg@{arg}}
+\index{arg@{arg}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{arg}{arg}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::arg}\hypertarget{struct__rjmcmc__engine__cb_aea2c810aeae4815b886e2252c9bca337}{}\label{struct__rjmcmc__engine__cb_aea2c810aeae4815b886e2252c9bca337}
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(), rjmcmc\+\_\+engine\+\_\+init(), and rjmcmc\+\_\+engine\+\_\+step().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!burnin@{burnin}}
+\index{burnin@{burnin}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{burnin}{burnin}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::burnin}\hypertarget{struct__rjmcmc__engine__cb_acb9dcf3f03f16c4a1f6386ec0f1831d8}{}\label{struct__rjmcmc__engine__cb_acb9dcf3f03f16c4a1f6386ec0f1831d8}
+
+
+Referenced by rjmcmc\+\_\+engine\+\_\+init(), and rjmcmc\+\_\+engine\+\_\+restart().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!compute\+\_\+misfit@{compute\+\_\+misfit}}
+\index{compute\+\_\+misfit@{compute\+\_\+misfit}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{compute\+\_\+misfit}{compute_misfit}}]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::compute\+\_\+misfit) (void $\ast${\bf arg}, void $\ast$state)}\hypertarget{struct__rjmcmc__engine__cb_ad3f49710b8fbbe3214fb9bc834ab2d6a}{}\label{struct__rjmcmc__engine__cb_ad3f49710b8fbbe3214fb9bc834ab2d6a}
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(), and rjmcmc\+\_\+engine\+\_\+step().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!current\+\_\+like@{current\+\_\+like}}
+\index{current\+\_\+like@{current\+\_\+like}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{current\+\_\+like}{current_like}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::current\+\_\+like}\hypertarget{struct__rjmcmc__engine__cb_a78debea197d5739a1e1851764dc360d8}{}\label{struct__rjmcmc__engine__cb_a78debea197d5739a1e1851764dc360d8}
+
+
+Referenced by rjmcmc\+\_\+engine\+\_\+init(), rjmcmc\+\_\+engine\+\_\+restart(), and rjmcmc\+\_\+engine\+\_\+step().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!i@{i}}
+\index{i@{i}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{i}{i}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::i}\hypertarget{struct__rjmcmc__engine__cb_af0051d723354a538f33b9c245b2426c3}{}\label{struct__rjmcmc__engine__cb_af0051d723354a538f33b9c245b2426c3}
+
+
+Referenced by rjmcmc\+\_\+engine\+\_\+init(), rjmcmc\+\_\+engine\+\_\+restart(), and rjmcmc\+\_\+engine\+\_\+step().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!initialize\+\_\+state@{initialize\+\_\+state}}
+\index{initialize\+\_\+state@{initialize\+\_\+state}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+state}{initialize_state}}]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::initialize\+\_\+state) (void $\ast${\bf arg})}\hypertarget{struct__rjmcmc__engine__cb_a57db290226797053fee2f8af0577aaa6}{}\label{struct__rjmcmc__engine__cb_a57db290226797053fee2f8af0577aaa6}
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(), and rjmcmc\+\_\+engine\+\_\+init().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!perturb\+\_\+process@{perturb\+\_\+process}}
+\index{perturb\+\_\+process@{perturb\+\_\+process}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{perturb\+\_\+process}{perturb_process}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$($\ast$ \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::perturb\+\_\+process) (void $\ast${\bf arg}, int proc)}\hypertarget{struct__rjmcmc__engine__cb_a69d829afbd1ad49c4bcc17727d5d8a67}{}\label{struct__rjmcmc__engine__cb_a69d829afbd1ad49c4bcc17727d5d8a67}
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(), and rjmcmc\+\_\+engine\+\_\+step().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!sample@{sample}}
+\index{sample@{sample}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{sample}{sample}}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample) (void $\ast${\bf arg}, int {\bf i})}\hypertarget{struct__rjmcmc__engine__cb_a6a85b9af744cef99827ea3cc7aebfa3b}{}\label{struct__rjmcmc__engine__cb_a6a85b9af744cef99827ea3cc7aebfa3b}
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(), and rjmcmc\+\_\+engine\+\_\+step().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!sample\+\_\+rate@{sample\+\_\+rate}}
+\index{sample\+\_\+rate@{sample\+\_\+rate}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{sample\+\_\+rate}{sample_rate}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::sample\+\_\+rate}\hypertarget{struct__rjmcmc__engine__cb_a777c71c86acd53370442841472c24ef1}{}\label{struct__rjmcmc__engine__cb_a777c71c86acd53370442841472c24ef1}
+
+
+Referenced by rjmcmc\+\_\+engine\+\_\+init(), and rjmcmc\+\_\+engine\+\_\+restart().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!select\+\_\+process@{select\+\_\+process}}
+\index{select\+\_\+process@{select\+\_\+process}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{select\+\_\+process}{select_process}}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::select\+\_\+process) (void $\ast${\bf arg})}\hypertarget{struct__rjmcmc__engine__cb_a7017792797b8ce47ed670044f1bc8a0d}{}\label{struct__rjmcmc__engine__cb_a7017792797b8ce47ed670044f1bc8a0d}
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+hierarchical(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel(), part1d\+\_\+forwardmodel\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+natural\+\_\+init(), part1d\+\_\+forwardmodel\+\_\+zero\+\_\+cubic(), and rjmcmc\+\_\+engine\+\_\+step().
+
+\index{\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}!total@{total}}
+\index{total@{total}!\+\_\+rjmcmc\+\_\+engine\+\_\+cb@{\+\_\+rjmcmc\+\_\+engine\+\_\+cb}}
+\subsubsection[{\texorpdfstring{total}{total}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+rjmcmc\+\_\+engine\+\_\+cb\+::total}\hypertarget{struct__rjmcmc__engine__cb_afda7df3424642cf0066ff9682784f9ea}{}\label{struct__rjmcmc__engine__cb_afda7df3424642cf0066ff9682784f9ea}
+
+
+Referenced by rjmcmc\+\_\+engine\+\_\+init(), rjmcmc\+\_\+engine\+\_\+restart(), and rjmcmc\+\_\+engine\+\_\+step().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{engine_8h}{engine.\+h}\end{DoxyCompactItemize}

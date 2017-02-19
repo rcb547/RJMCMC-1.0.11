@@ -1,0 +1,56 @@
+\hypertarget{regression__part2d_8c}{}\section{regression\+\_\+part2d.\+c File Reference}
+\label{regression__part2d_8c}\index{regression\+\_\+part2d.\+c@{regression\+\_\+part2d.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$float.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/regression.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/engine.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/resultset2d.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/part2d\+\_\+regression\+\_\+rj.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/dataset2d.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/rjmcmc\+\_\+util.\+h$>$}\\*
+Include dependency graph for regression\+\_\+part2d.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpart2d}{part2d}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{resultset2d_8h_a7d7cd3bde6bca10a8480a58c69d3787e}{resultset2d\+\_\+t} $\ast$ \hyperlink{regression__part2d_8c_aa4589a0fbb1ca56b2db6fafbda40161f}{part2d\+\_\+regression} (const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$dataset, int burnin, int \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total}, int min\+\_\+part, int max\+\_\+part, int xsamples, int ysamples, int zsamples, double \hyperlink{rjmcmcf__mpi_8h_a5a7722a5cc210713ec1b3956fde06e70}{credible\+\_\+interval}, double pv, double pd, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, int results, \hyperlink{regression_8h_a7cb8595f1ee80ae521e3d10d6123dbf3}{regression2d\+\_\+cb\+\_\+t} user\+\_\+callback, void $\ast$\hyperlink{rjmcmcf__mpi_8h_ab68b3a27bfe943a73cf680c2e439e070}{user\+\_\+arg})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{regression\+\_\+part2d.\+c@{regression\+\_\+part2d.\+c}!part2d\+\_\+regression@{part2d\+\_\+regression}}
+\index{part2d\+\_\+regression@{part2d\+\_\+regression}!regression\+\_\+part2d.\+c@{regression\+\_\+part2d.\+c}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression(const dataset2d\+\_\+t $\ast$dataset, int burnin, int total, int min\+\_\+part, int max\+\_\+part, int xsamples, int ysamples, int zsamples, double credible\+\_\+interval, double pv, double pd, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, int results, regression2d\+\_\+cb\+\_\+t user\+\_\+callback, void $\ast$user\+\_\+arg)}{part2d_regression(const dataset2d_t *dataset, int burnin, int total, int min_part, int max_part, int xsamples, int ysamples, int zsamples, double credible_interval, double pv, double pd, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, int results, regression2d_cb_t user_callback, void *user_arg)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resultset2d\+\_\+t}$\ast$ part2d\+\_\+regression (
+\begin{DoxyParamCaption}
+\item[{const {\bf dataset2d\+\_\+t} $\ast$}]{dataset, }
+\item[{int}]{burnin, }
+\item[{int}]{total, }
+\item[{int}]{min\+\_\+part, }
+\item[{int}]{max\+\_\+part, }
+\item[{int}]{xsamples, }
+\item[{int}]{ysamples, }
+\item[{int}]{zsamples, }
+\item[{double}]{credible\+\_\+interval, }
+\item[{double}]{pv, }
+\item[{double}]{pd, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{int}]{results, }
+\item[{{\bf regression2d\+\_\+cb\+\_\+t}}]{user\+\_\+callback, }
+\item[{void $\ast$}]{user\+\_\+arg}
+\end{DoxyParamCaption}
+)}\hypertarget{regression__part2d_8c_aa4589a0fbb1ca56b2db6fafbda40161f}{}\label{regression__part2d_8c_aa4589a0fbb1ca56b2db6fafbda40161f}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}, \hyperlink{2d_2partitioned_2regression_2disc_2disc_8c-example}{2d/partitioned/regression/disc/disc.\+c}, and \hyperlink{2d_2partitioned_2regression_2square_2square_8c-example}{2d/partitioned/regression/square/square.\+c}.\end{Desc}
+
+
+References part2d\+::accepted, part2d\+::birth\+\_\+prob, part2d\+::current, part2d\+::current\+\_\+like, part2d\+::dataset, part2d\+::death\+\_\+prob, part2d\+::dpart, part2d\+::dz, part2d\+::lambda\+\_\+prob, \+\_\+dataset2d\+::lambdastd, part2d\+::move\+\_\+prob, part2d\+::normal, part2d\+::nprocesses, part2d\+::out, part2d\+\_\+regression\+\_\+rj\+\_\+clone(), part2d\+\_\+regression\+\_\+rj\+\_\+create(), part2d\+\_\+regression\+\_\+rj\+\_\+destroy(), part2d\+\_\+regression\+\_\+rj\+\_\+evaluate(), part2d\+\_\+regression\+\_\+rj\+\_\+initialize(), part2d\+\_\+regression\+\_\+rj\+\_\+lambda(), part2d\+\_\+regression\+\_\+rj\+\_\+misfit(), part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre(), part2d\+\_\+regression\+\_\+rj\+\_\+partitions(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+lambda(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(), part2d\+\_\+regression\+\_\+rj\+\_\+value\+\_\+at(), part2d\+::process, part2d\+::proposed, part2d\+::proposed\+\_\+like, part2d\+::random, part2d\+::results, resultset2d\+\_\+accept(), resultset2d\+\_\+assemble\+\_\+results(), resultset2d\+\_\+create(), resultset2d\+\_\+propose(), resultset2d\+\_\+sample(), resultset2d\+\_\+sample\+\_\+centre(), resultset2d\+\_\+sample\+\_\+lambda(), resultset2d\+\_\+sample\+\_\+misfit(), resultset2d\+\_\+sample\+\_\+npartitions(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+create\+\_\+array\+\_\+2d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+2d(), rjmcmc\+\_\+engine\+\_\+run(), rjmcmc\+\_\+error(), rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), part2d\+::user\+\_\+arg, part2d\+::user\+\_\+callback, part2d\+::user\+\_\+x\+\_\+centre, part2d\+::user\+\_\+y\+\_\+centre, part2d\+::v, part2d\+::value\+\_\+prob, x, \+\_\+dataset2d\+::xmax, \+\_\+dataset2d\+::xmin, part2d\+::xsamples, y, \+\_\+dataset2d\+::ymax, \+\_\+dataset2d\+::ymin, part2d\+::ysamples, \+\_\+dataset2d\+::zmax, and \+\_\+dataset2d\+::zmin.
+

@@ -1,0 +1,367 @@
+\hypertarget{2d_2partitioned_2fm_2regression_2regression_8c-example}{}\section{2d/partitioned/fm/regression/regression.\+c}
+
+\begin{DoxyCodeInclude}
+
+\textcolor{preprocessor}{#include <stdio.h>}
+\textcolor{preprocessor}{#include <stdlib.h>}
+\textcolor{preprocessor}{#include <math.h>}
+\textcolor{preprocessor}{#include <getopt.h>}
+
+\textcolor{preprocessor}{#include <\hyperlink{dataset2d_8h}{rjmcmc/dataset2d.h}>}
+
+\textcolor{preprocessor}{#include <\hyperlink{forwardmodel_8h}{rjmcmc/forwardmodel.h}>}
+
+\textcolor{preprocessor}{#include <\hyperlink{rjmcmc__random_8h}{rjmcmc/rjmcmc\_random.h}>}
+\textcolor{preprocessor}{#include <\hyperlink{rjmcmc__util_8h}{rjmcmc/rjmcmc\_util.h}>}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{char} short\_options[] = \textcolor{stringliteral}{"hm:p:"};
+
+\textcolor{keyword}{static} \textcolor{keyword}{struct }option long\_options[] = \{
+  \{\textcolor{stringliteral}{"help"}, 0, 0, \textcolor{charliteral}{'h'}\},
+  \{\textcolor{stringliteral}{"method"}, 1, 0, \textcolor{charliteral}{'m'}\},
+  \{\textcolor{stringliteral}{"partitions"}, 1, 0, \textcolor{charliteral}{'p'}\},
+  \{0, 0, 0, 0\}
+\};
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} usage(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pname);
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{double} misfit(\textcolor{keywordtype}{void} *user,
+                     \textcolor{keywordtype}{int} nglobalparameters,
+                     \textcolor{keyword}{const} \textcolor{keywordtype}{double} *global\_paramters,
+                     \hyperlink{struct__part2d__fm__likelihood__state}{part2d\_fm\_likelihood\_state\_t} *state,
+                     \hyperlink{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{part2d\_fm\_value\_at\_t} value\_at,
+                     \hyperlink{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{part2d\_fm\_value\_at\_t} gradient\_at,
+                     \textcolor{keyword}{const} \hyperlink{structbbox2d}{bbox2d\_t} *bound);
+
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]) 
+\{
+  \textcolor{keywordtype}{int} \hyperlink{wellrng_8c_a6ce17b018c47d0f1d0e53a458f741ad3}{c};
+  \textcolor{keywordtype}{int} option\_index;
+  
+  \hyperlink{struct__dataset2d}{dataset2d\_t} *data;
+  \hyperlink{struct__resultset2dfm}{resultset2dfm\_t} *results;
+
+  \textcolor{keywordtype}{int} burnin = 10000;
+  \textcolor{keywordtype}{int} \hyperlink{rjmcmcf__mpi_8h_a1829e955eab35ef63200105c2de1ad94}{total} = 50000;
+  \textcolor{keywordtype}{int} min\_part = 2;
+  \textcolor{keywordtype}{int} max\_part = 100;
+  \textcolor{keywordtype}{int} xsamples = 100;
+  \textcolor{keywordtype}{int} ysamples = 100;
+  \textcolor{keywordtype}{int} zsamples = 200;
+  \textcolor{keywordtype}{double} confidence = 0.95;
+  \textcolor{keywordtype}{double} pd = 5.0;
+  \textcolor{keywordtype}{int} method = 0;
+
+  \textcolor{keywordtype}{int} nproc;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{double} *v;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{double} **m;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{int} *iv;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{int} **im;
+
+  \textcolor{keywordtype}{int} i;
+  
+  \textcolor{keywordtype}{double} *xcoords;
+  \textcolor{keywordtype}{int} xcl;
+
+  \textcolor{keywordtype}{double} *ycoords;
+  \textcolor{keywordtype}{int} ycl;
+
+  \textcolor{keywordtype}{double} pv = 5.0;
+  \textcolor{keywordtype}{double} sigma = 10.0;
+
+  \hyperlink{struct__forwardmodelparameter}{forwardmodelparameter\_t} local\_parameter;
+
+  \hyperlink{rjmcmc__random_8c_a0cbc991b84d0f6b749e9b45cbc018d2a}{rjmcmc\_seed}(0);
+
+  data = \hyperlink{dataset2d_8c_a91faa110511acf5d304ccd5f18f1d1da}{dataset2d\_load\_fixed}(\textcolor{stringliteral}{"data.txt"}, sigma);
+  \textcolor{keywordflow}{if} (data == NULL) \{
+    fprintf(stderr, 
+            \textcolor{stringliteral}{"error: unable to load data, "}
+            \textcolor{stringliteral}{"has it been created with the script?\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  printf(\textcolor{stringliteral}{"Data range: %f %f\(\backslash\)n"}, data->\hyperlink{struct__dataset2d_ab0a7953680cd29d50a435f14749f0d81}{zmin}, data->\hyperlink{struct__dataset2d_a7fe5f9291be9830530ddd01fcf8884dd}{zmax});
+
+  option\_index = 0;
+  \textcolor{keywordflow}{while} (1) \{
+
+    c = getopt\_long(argc, argv, short\_options, long\_options, &option\_index);
+    \textcolor{keywordflow}{if} (c == -1) \{
+      \textcolor{keywordflow}{break};
+    \}
+
+    \textcolor{keywordflow}{switch} (c) \{
+
+    \textcolor{keywordflow}{case} \textcolor{charliteral}{'m'}:
+      method = atoi(optarg);
+      \textcolor{keywordflow}{break};
+
+    \textcolor{keywordflow}{case} \textcolor{charliteral}{'p'}:
+      max\_part = atoi(optarg);
+      \textcolor{keywordflow}{if} (max\_part < 50) \{
+        fprintf(stderr, \textcolor{stringliteral}{"error: no. partitions must be greater than 50\(\backslash\)n"});
+        \textcolor{keywordflow}{return} -1;
+      \}
+      \textcolor{keywordflow}{break};
+
+    \textcolor{keywordflow}{default}:
+      fprintf(stderr, \textcolor{stringliteral}{"error: invalid option\(\backslash\)n"});
+      \textcolor{keywordflow}{return} -1;
+
+    \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:
+      usage(argv[0]);
+      \textcolor{keywordflow}{return} -1;
+    \}
+  \}
+
+  \textcolor{keywordflow}{if} (method < 0 || method > 2) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: invalid method\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  
+  \hyperlink{position__map2d_8c_a561402ac1f9fec62530177b10b7b3e2b}{position\_map2d\_set\_type}(method);
+
+  \textcolor{comment}{/*}
+\textcolor{comment}{   * Set the data bounds}
+\textcolor{comment}{   */}
+  printf(\textcolor{stringliteral}{"Auto zrange: %f %f\(\backslash\)n"}, data->\hyperlink{struct__dataset2d_ab0a7953680cd29d50a435f14749f0d81}{zmin}, data->\hyperlink{struct__dataset2d_a7fe5f9291be9830530ddd01fcf8884dd}{zmax});
+  data->\hyperlink{struct__dataset2d_afcbe18cdc63b6634a0b6d9c15ab6beb7}{xmin} = -50.0;
+  data->\hyperlink{struct__dataset2d_aab6f2e4c4061819ec9fa8ef6cf670308}{xmax} = 50.0;
+  data->\hyperlink{struct__dataset2d_acf2b4bf1e679fdeadf29f1a2257cbf27}{ymin} = -50.0;
+  data->\hyperlink{struct__dataset2d_a8ed0816f68228f5c1320629022cd28d2}{ymax} = 50.0;
+  data->\hyperlink{struct__dataset2d_ab0a7953680cd29d50a435f14749f0d81}{zmin} = -50.0;
+  data->\hyperlink{struct__dataset2d_a7fe5f9291be9830530ddd01fcf8884dd}{zmax} = 50.0;
+
+  local\_parameter.\hyperlink{struct__forwardmodelparameter_aced3d685a9701e3488ac78093a4e4733}{fmin} = data->\hyperlink{struct__dataset2d_ab0a7953680cd29d50a435f14749f0d81}{zmin};
+  local\_parameter.\hyperlink{struct__forwardmodelparameter_aa028b68fc0f738b4d578e90751ffaa24}{fmax} = data->\hyperlink{struct__dataset2d_a7fe5f9291be9830530ddd01fcf8884dd}{zmax};
+  local\_parameter.\hyperlink{struct__forwardmodelparameter_a08b65584a090a79dce5dc91aaced7bbe}{fstd\_value} = pv;
+  local\_parameter.\hyperlink{struct__forwardmodelparameter_a7afd8319a9bf822ab7999ea8a52be0ed}{fstd\_bd} = pv;
+
+  results = \hyperlink{forwardmodel__part2d_8c_ae8e8bb7fe16eb86eb9c6bc85faee38d3}{part2d\_forwardmodel}(burnin,
+                                total,
+                                0, \textcolor{comment}{/* Thin */}
+                                min\_part,
+                                max\_part,
+                                data->\hyperlink{struct__dataset2d_afcbe18cdc63b6634a0b6d9c15ab6beb7}{xmin},
+                                data->\hyperlink{struct__dataset2d_aab6f2e4c4061819ec9fa8ef6cf670308}{xmax},
+                                data->\hyperlink{struct__dataset2d_acf2b4bf1e679fdeadf29f1a2257cbf27}{ymin},
+                                data->\hyperlink{struct__dataset2d_a8ed0816f68228f5c1320629022cd28d2}{ymax},
+                                xsamples,
+                                ysamples,
+                                zsamples,
+                                confidence,
+                                pd,
+                                pd,
+                                \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\_uniform},
+                                \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\_normal},
+                                0,
+                                NULL,
+                                1,
+                                &local\_parameter,
+                                misfit,
+                                (\textcolor{keywordtype}{void}*)data,
+                                \hyperlink{resultset2dfm_8h_a7193421c7dbea687edd619f7b2753ae6a0823372a83fa59daf046aa627018e25b}{RESULTSET2DFM\_MEAN} |
+                                \hyperlink{resultset2dfm_8h_a7193421c7dbea687edd619f7b2753ae6a79f04126c8709eb39fef1a23d2fd6087}{RESULTSET2DFM\_MEDIAN} |
+                                \hyperlink{resultset2dfm_8h_a7193421c7dbea687edd619f7b2753ae6ab7078b6de509400d88dc553de8ef6d76}{RESULTSET2DFM\_MODE} |
+                                \hyperlink{resultset2dfm_8h_a7193421c7dbea687edd619f7b2753ae6a5920230f1d0f9c866513fd16b5adaf71}{RESULTSET2DFM\_CREDIBLE});
+  
+  \textcolor{keywordflow}{if} (results == NULL) \{
+    fprintf(stderr, 
+            \textcolor{stringliteral}{"error: failed to run regression\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  xcl = xsamples;
+  xcoords = \hyperlink{rjmcmc__util_8c_a26a1113b542fb7250c98e13b8465332b}{rjmcmc\_create\_array\_1d}(xcl);
+  \hyperlink{resultset2dfm_8c_a811a2ce18d80b60dc602da4ce5d586c5}{resultset2dfm\_fill\_xcoord\_vector}(results, xcoords, &xcl);
+  
+  ycl = ysamples;
+  ycoords = \hyperlink{rjmcmc__util_8c_a26a1113b542fb7250c98e13b8465332b}{rjmcmc\_create\_array\_1d}(ycl);
+  \hyperlink{resultset2dfm_8c_ae98a6b9d97dba88d386dba86a9fa1baf}{resultset2dfm\_fill\_ycoord\_vector}(results, ycoords, &ycl);
+
+  v = \hyperlink{resultset2dfm_8c_a0cc2e6c10e6f662e8ab605032df41df5}{resultset2dfm\_get\_misfit}(results);
+  \textcolor{keywordflow}{if} (v == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get misfit data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a3cdc9584ffb43795673f8013b1e6b8cc}{rjmcmc\_save\_vector}(\textcolor{stringliteral}{"regression.misfit"}, v, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save misfit data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  iv = \hyperlink{resultset2dfm_8c_addcd4375af9293461d6d7f8f9fee5cb4}{resultset2dfm\_get\_partitions}(results);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a287599dc8c2060a831324f4c49988d97}{rjmcmc\_save\_int\_vector}(\textcolor{stringliteral}{"regression.partitions"}, iv, total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a6e92f3fbaa4acb4bec85c5c900614e92}{rjmcmc\_save\_int\_vector\_as\_histogram}(\textcolor{stringliteral}{"regression.partition\_hist"},
+                                          0,
+                                          max\_part,
+                                          iv,
+                                          total) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save partitions data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{comment}{/*}
+\textcolor{comment}{   * Mean}
+\textcolor{comment}{   */}
+  m = \hyperlink{resultset2dfm_8c_a0199dd086bb04157412b691466e4e123}{resultset2dfm\_get\_local\_parameter\_mean}(results, 0);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get mean data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"regression.mean"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save mean data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{comment}{/*}
+\textcolor{comment}{   * Mode }
+\textcolor{comment}{   */}
+  m = \hyperlink{resultset2dfm_8c_a48a9f044b38016191e1ede617f491d7a}{resultset2dfm\_get\_local\_parameter\_mode}(results, 0);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get mode data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"regression.mode"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save mode data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{comment}{/*}
+\textcolor{comment}{   * Median}
+\textcolor{comment}{   */}
+  m = \hyperlink{resultset2dfm_8c_a6f49b43f9e079403c1748e6315febacd}{resultset2dfm\_get\_local\_parameter\_median}(results, 0);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get median data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"regression.median"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save median data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  \textcolor{comment}{/*}
+\textcolor{comment}{   * Credible intervals}
+\textcolor{comment}{   */}
+  m = \hyperlink{resultset2dfm_8c_aae3b126928a3ca5638767bedd2a1a04f}{resultset2dfm\_get\_local\_parameter\_credible\_min}(results,
+       0);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get credible\_min data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"regression.credible\_min"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save credible\_min data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  m = \hyperlink{resultset2dfm_8c_a58335a2673d63e82e43c6a02f400a493}{resultset2dfm\_get\_local\_parameter\_credible\_max}(results,
+       0);
+  \textcolor{keywordflow}{if} (m == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get credible\_max data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a85d163e5edc4c801eed1ebb74341f8bf}{rjmcmc\_save\_matrix}(\textcolor{stringliteral}{"regression.credible\_max"}, m, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save credible\_max data\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+
+  im = \hyperlink{resultset2dfm_8c_a6f3a2d173f631502618434630fcdaea2}{resultset2dfm\_get\_centres}(results);
+  \textcolor{keywordflow}{if} (im == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get centres\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{if} (\hyperlink{rjmcmc__util_8c_a27f7d8d21fc7bd71eabee1377c0e816f}{rjmcmc\_save\_int\_matrix}(\textcolor{stringliteral}{"regression.centres"}, im, xsamples, ysamples) < 0) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to save centres\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+
+  iv = \hyperlink{resultset2dfm_8c_a37293d99a8a2dcb213f84500b22faf27}{resultset2dfm\_get\_propose}(results, &nproc);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get propose counts\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{for} (i = 0; i < nproc; i ++) \{
+    printf(\textcolor{stringliteral}{"%6d "}, iv[i]);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+
+  iv = \hyperlink{resultset2dfm_8c_a5839900ca280e32175838edeceebfdbc}{resultset2dfm\_get\_accept}(results, &nproc);
+  \textcolor{keywordflow}{if} (iv == NULL) \{
+    fprintf(stderr, \textcolor{stringliteral}{"error: failed to get accept counts\(\backslash\)n"});
+    \textcolor{keywordflow}{return} -1;
+  \}
+  \textcolor{keywordflow}{for} (i = 0; i < nproc; i ++) \{
+    printf(\textcolor{stringliteral}{"%6d "}, iv[i]);
+  \}
+  printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+
+  \hyperlink{dataset2d_8c_a24b470e01459e7413b80f8f38a5b9fd3}{dataset2d\_destroy}(data);
+  \hyperlink{resultset2dfm_8c_a91aed964247239ada38748024890d927}{resultset2dfm\_destroy}(results);
+
+  \hyperlink{rjmcmc__util_8c_a66c84ced6c0367edf1e03c8c92f3e48d}{rjmcmc\_destroy\_array\_1d}(xcoords);
+  \hyperlink{rjmcmc__util_8c_a66c84ced6c0367edf1e03c8c92f3e48d}{rjmcmc\_destroy\_array\_1d}(ycoords);
+
+  \textcolor{keywordflow}{return} 0;
+\}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} usage(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *pname)
+\{
+  fprintf(stderr, 
+          \textcolor{stringliteral}{"usage: %s [options]\(\backslash\)n"}
+          \textcolor{stringliteral}{"where options is on or more of:\(\backslash\)n"}
+          \textcolor{stringliteral}{"\(\backslash\)n"}
+          \textcolor{stringliteral}{" -p|--partitions <int>   Max paritions\(\backslash\)n"}
+          \textcolor{stringliteral}{" -m|--method <int>       2D Nearest neighbour search method:\(\backslash\)n"}
+          \textcolor{stringliteral}{"                          0 - Linear (default)\(\backslash\)n"}
+          \textcolor{stringliteral}{"                          1 - Delaunay Triangulation\(\backslash\)n"}
+          \textcolor{stringliteral}{"                          2 - Quadtree\(\backslash\)n"}
+          \textcolor{stringliteral}{"\(\backslash\)n"}
+          \textcolor{stringliteral}{" -h|--help               show usage information\(\backslash\)n"}
+          \textcolor{stringliteral}{"\(\backslash\)n"},
+          pname);
+\}
+
+\textcolor{keyword}{static} \textcolor{keywordtype}{double} misfit(\textcolor{keywordtype}{void} *user,
+                     \textcolor{keywordtype}{int} nglobalparameters,
+                     \textcolor{keyword}{const} \textcolor{keywordtype}{double} *global\_paramters,
+                     \hyperlink{struct__part2d__fm__likelihood__state}{part2d\_fm\_likelihood\_state\_t} *state,
+                     \hyperlink{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{part2d\_fm\_value\_at\_t} value\_at,
+                     \hyperlink{forwardmodel_8h_a75f540640c95db909125ed5c5eb7a1f3}{part2d\_fm\_value\_at\_t} gradient\_at,
+                     \textcolor{keyword}{const} \hyperlink{structbbox2d}{bbox2d\_t} *bound)
+\{
+  \hyperlink{struct__dataset2d}{dataset2d\_t} *data = (\hyperlink{struct__dataset2d}{dataset2d\_t} *)user;
+  \textcolor{keywordtype}{int} i;
+
+  \textcolor{keywordtype}{double} sum;
+  \textcolor{keywordtype}{double} sigma2;
+  \textcolor{keywordtype}{double} dz;
+  \textcolor{keywordtype}{double} n;
+  \textcolor{keyword}{const} \textcolor{keywordtype}{double} *lp;
+
+  sum = 0.0;
+
+  \textcolor{keywordflow}{for} (i = 0; i < data->\hyperlink{struct__dataset2d_a56b62d44c3ab4ddb0fb65029192f2a5e}{npoints}; i ++) \{
+    
+    lp = value\_at(state, data->\hyperlink{struct__dataset2d_ad1246d82ce3af334ee62bcda7d96d010}{points}[i].\hyperlink{struct__point2d_ac951197e13faafac3b84bb641c4917b6}{x}, data->\hyperlink{struct__dataset2d_ad1246d82ce3af334ee62bcda7d96d010}{points}[i].\hyperlink{struct__point2d_a55d546cf232f5875cc0d27ba80b148e3}{y});
+    \textcolor{keywordflow}{if} (lp == NULL) \{
+      fprintf(stderr, \textcolor{stringliteral}{"misfit: failed to determine local value\(\backslash\)n"});
+      exit(-1);
+    \}
+
+    dz = data->\hyperlink{struct__dataset2d_ad1246d82ce3af334ee62bcda7d96d010}{points}[i].\hyperlink{struct__point2d_aaa3dfda21bc9f5d84955e5e38dd72135}{z} - lp[0];
+    n = data->\hyperlink{struct__dataset2d_ad1246d82ce3af334ee62bcda7d96d010}{points}[i].\hyperlink{struct__point2d_aaf3858945ba5752a1895a1e7ab5ae059}{n};
+    sum += (dz*dz)/(2.0 * (n*n));
+  \}
+
+  \textcolor{keywordflow}{return} sum;
+\}
+\end{DoxyCodeInclude}
+ 

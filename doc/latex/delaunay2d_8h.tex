@@ -1,0 +1,568 @@
+\hypertarget{delaunay2d_8h}{}\section{delaunay2d.\+h File Reference}
+\label{delaunay2d_8h}\index{delaunay2d.\+h@{delaunay2d.\+h}}
+
+
+Delaunay 2D Triangulation point tracking.  
+
+
+{\ttfamily \#include $<$rjmcmc/bbox2d.\+h$>$}\\*
+Include dependency graph for delaunay2d.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__delaunay2d}{\+\_\+delaunay2d} \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$ \hyperlink{delaunay2d_8h_a7503ef960ff0e8186c2563b6784cb680}{delaunay2d\+\_\+create} (int maxpoints, double xmin, double xmax, double ymin, double ymax)
+\begin{DoxyCompactList}\small\item\em Create an initial Delaunay tesselation. \end{DoxyCompactList}\item 
+void \hyperlink{delaunay2d_8h_a749a8627ee9027da64d09072c298ed95}{delaunay2d\+\_\+destroy} (\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$ \hyperlink{delaunay2d_8h_a1bd1657dabeb756439d3289d683fb803}{delaunay2d\+\_\+load} (const char $\ast$filename)
+\item 
+int \hyperlink{delaunay2d_8h_a43e7c29acaca2ee961280f0b41725aee}{delaunay2d\+\_\+save} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, const char $\ast$filename)
+\item 
+int \hyperlink{delaunay2d_8h_aeab892d50281b641c1da7ee9bd1fbd8f}{delaunay2d\+\_\+clone} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$src, \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$dst)
+\item 
+int \hyperlink{delaunay2d_8h_a5117fb2ff787876c3c79875fd80ad333}{delaunay2d\+\_\+add} (\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{delaunay2d_8h_a9387716da1b4d5c402d384789884b016}{delaunay2d\+\_\+delete} (\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, int pi, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{delaunay2d_8h_abb6aa564309f3cedd8dc55fbb79937a8}{delaunay2d\+\_\+shift\+\_\+replace} (\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, int pi)
+\item 
+int \hyperlink{delaunay2d_8h_a7bfb9e9b627b077b4ebd4bbe70f69a1d}{delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, int t0, double px, double py, int $\ast$pa, int $\ast$pb, int $\ast$pc, double $\ast$ba, double $\ast$bb, double $\ast$bc)
+\item 
+int \hyperlink{delaunay2d_8h_ae2bdda26547899097a4f3536a106d156}{delaunay2d\+\_\+ct\+\_\+update} (\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, const double $\ast$point\+\_\+z, int n)
+\item 
+int \hyperlink{delaunay2d_8h_ac3529d397f259c22528d24ec4e0025e2}{delaunay2d\+\_\+ct\+\_\+value\+\_\+at} (\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, int t0, double px, double py, double $\ast$\hyperlink{wellrng_8c_a3d99b005d0fb73033dce14d4a135d01f}{z})
+\item 
+int \hyperlink{delaunay2d_8h_acbb62e714e5f71b211bd9e216bc57245}{delaunay2d\+\_\+nearest} (\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, int include\+\_\+corners, double px, double py)
+\item 
+int \hyperlink{delaunay2d_8h_a9dbe3a289ec1388b3ac4e4f92cb844b3}{delaunay2d\+\_\+nearest\+\_\+from} (\hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, int i, int include\+\_\+corners, double px, double py)
+\item 
+int \hyperlink{delaunay2d_8h_a3070241faec3cf81235b762cbb8674bb}{delaunay2d\+\_\+point\+\_\+of\+\_\+index} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, int i, double $\ast$px, double $\ast$py)
+\item 
+int \hyperlink{delaunay2d_8h_a046adb574ccc39b5f33ace0933c6a81d}{delaunay2d\+\_\+index\+\_\+of\+\_\+point} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+int \hyperlink{delaunay2d_8h_a6fa47f00ea5c2efea1d95229effacc6d}{delaunay2d\+\_\+npoints} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+int \hyperlink{delaunay2d_8h_aebc69d97ed775b40289d2d954793d5f7}{delaunay2d\+\_\+polygon\+\_\+bound} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, int i, \hyperlink{bbox2d_8h_a1c61505f6f1c486a673ba4547602b9df}{bbox2d\+\_\+t} $\ast$bound)
+\item 
+int \hyperlink{delaunay2d_8h_ae2e15d9c2df695691df074ac70f74bc0}{delaunay2d\+\_\+validate\+\_\+circumcircles} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+int \hyperlink{delaunay2d_8h_a859b0b971013ec5018cb287603db5e87}{delaunay2d\+\_\+validate\+\_\+delaunay} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+int \hyperlink{delaunay2d_8h_a4eca636216a62cc22d556196c74c84e1}{delaunay2d\+\_\+validate\+\_\+neighbours} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+int \hyperlink{delaunay2d_8h_aa99017ce98462a2a26ddfd970cc77f35}{delaunay2d\+\_\+validate\+\_\+nonintersecting} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+int \hyperlink{delaunay2d_8h_a60b6a394ce66d3088c0b7fab2128f861}{delaunay2d\+\_\+validate\+\_\+edges} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+void \hyperlink{delaunay2d_8h_a3ad4c851fb03abc552aa1033b32b99d6}{delaunay2d\+\_\+print\+\_\+triangles} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+void \hyperlink{delaunay2d_8h_ad4d415407e67c5bd67d7b2916424983d}{delaunay2d\+\_\+print\+\_\+points} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+void \hyperlink{delaunay2d_8h_aca0ecbc7c57d401e900949412d431d90}{delaunay2d\+\_\+print\+\_\+edges} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d)
+\item 
+int \hyperlink{delaunay2d_8h_ac15e250cfc8a30cccfb2150c0e9af996}{delaunay2d\+\_\+save\+\_\+geo} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, const char $\ast$filename)
+\item 
+int \hyperlink{delaunay2d_8h_a48f94030d6fdc97a147459ff7976b32d}{delaunay2d\+\_\+save\+\_\+cc\+\_\+geo} (const \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} $\ast$d, const char $\ast$filename)
+\item 
+int \hyperlink{delaunay2d_8h_acf78981cb55b933afb0b59ea9310a9fb}{triangle\+\_\+circumcircle} (double x1, double y1, double x2, double y2, double x3, double y3, double $\ast$cx, double $\ast$cy, double $\ast$cr2)
+\item 
+int \hyperlink{delaunay2d_8h_a245e5cc4dfacb54e9654743a55401b59}{point\+\_\+in\+\_\+triangle} (double px, double py, double x1, double y1, double x2, double y2, double x3, double y3)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Delaunay 2D Triangulation point tracking. 
+
+The Delaunay 2D routines are used for fast neighbour tracking in 2D. It is accessed through the \hyperlink{position__map2d_8h_a6d86d9b9f02238a497ecf2ebff2e1e39}{position\+\_\+map2d\+\_\+t} interface when dynamically selected. 
+
+\subsection{Typedef Documentation}
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+t@{delaunay2d\+\_\+t}}
+\index{delaunay2d\+\_\+t@{delaunay2d\+\_\+t}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+t}{delaunay2d_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+delaunay2d} {\bf delaunay2d\+\_\+t}}\hypertarget{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{}\label{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}
+
+
+\subsection{Function Documentation}
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+add@{delaunay2d\+\_\+add}}
+\index{delaunay2d\+\_\+add@{delaunay2d\+\_\+add}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+add(delaunay2d\+\_\+t $\ast$d, double x, double y, bbox2d\+\_\+t $\ast$bound)}{delaunay2d_add(delaunay2d_t *d, double x, double y, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{{\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a5117fb2ff787876c3c79875fd80ad333}{}\label{delaunay2d_8h_a5117fb2ff787876c3c79875fd80ad333}
+
+
+References bbox2d\+\_\+expand(), bbox2d\+\_\+initialize(), c, delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle(), \+\_\+triangle\+::n, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+delaunay\+\_\+insert(), and position\+\_\+map2d\+\_\+delaunay\+\_\+move().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+clone@{delaunay2d\+\_\+clone}}
+\index{delaunay2d\+\_\+clone@{delaunay2d\+\_\+clone}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+clone(const delaunay2d\+\_\+t $\ast$src, delaunay2d\+\_\+t $\ast$dst)}{delaunay2d_clone(const delaunay2d_t *src, delaunay2d_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{src, }
+\item[{{\bf delaunay2d\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_aeab892d50281b641c1da7ee9bd1fbd8f}{}\label{delaunay2d_8h_aeab892d50281b641c1da7ee9bd1fbd8f}
+
+
+References \+\_\+triangle\+::cr2, \+\_\+triangle\+::cx, \+\_\+triangle\+::cy, \+\_\+triangle\+::detT, \+\_\+delaunay2d\+::e, \+\_\+edgelist\+::edge, \+\_\+delaunay2d\+::maxpoints, \+\_\+triangle\+::n, \+\_\+edgelist\+::n, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, \+\_\+delaunay2d\+::st, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+delaunay\+\_\+clone().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+create@{delaunay2d\+\_\+create}}
+\index{delaunay2d\+\_\+create@{delaunay2d\+\_\+create}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+create(int maxpoints, double xmin, double xmax, double ymin, double ymax)}{delaunay2d_create(int maxpoints, double xmin, double xmax, double ymin, double ymax)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf delaunay2d\+\_\+t}$\ast$ delaunay2d\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{maxpoints, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a7503ef960ff0e8186c2563b6784cb680}{}\label{delaunay2d_8h_a7503ef960ff0e8186c2563b6784cb680}
+
+
+Create an initial Delaunay tesselation. 
+
+Creates an initial \hyperlink{delaunay2d_8h_a46484f185b22e7d33791056748306f9e}{delaunay2d\+\_\+t} object with four points representing the bounding box and 2 triangles tesselating the region.
+
+
+\begin{DoxyParams}{Parameters}
+{\em maxpoints} & The maximum number of points allowed to managed. \\
+\hline
+{\em xmin} & Min x-\/coordinate \\
+\hline
+{\em xmax} & Max x-\/coordinate \\
+\hline
+{\em ymin} & Min y-\/coordinate \\
+\hline
+{\em ymax} & Max y-\/coordinate \\
+\hline
+\end{DoxyParams}
+
+
+References \+\_\+delaunay2d\+::ci, \+\_\+delaunay2d\+::d2max, D\+L\+I\+S\+T\+\_\+\+I\+N\+CR, \+\_\+delaunay2d\+::e, \+\_\+delaunay2d\+::felist, \+\_\+delaunay2d\+::ftlist, \+\_\+delaunay2d\+::listsize, \+\_\+delaunay2d\+::maxpoints, \+\_\+delaunay2d\+::nf, \+\_\+delaunay2d\+::nlist, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+P\+TR, R\+J\+M\+C\+M\+C\+\_\+\+I\+N\+T\+C\+H\+E\+C\+K\+P\+TR, R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+P\+TR, \+\_\+delaunay2d\+::sf, \+\_\+delaunay2d\+::st, \+\_\+delaunay2d\+::t, \+\_\+delaunay2d\+::tlist, T\+R\+I\+A\+N\+G\+L\+E\+\_\+\+I\+N\+CR, \+\_\+delaunay2d\+::vlist, \+\_\+delaunay2d\+::xmax, \+\_\+delaunay2d\+::xmin, \+\_\+delaunay2d\+::ymax, and \+\_\+delaunay2d\+::ymin.
+
+
+
+Referenced by delaunay2d\+\_\+load(), and position\+\_\+map2d\+\_\+delaunay\+\_\+create().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+ct\+\_\+update@{delaunay2d\+\_\+ct\+\_\+update}}
+\index{delaunay2d\+\_\+ct\+\_\+update@{delaunay2d\+\_\+ct\+\_\+update}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+ct\+\_\+update(delaunay2d\+\_\+t $\ast$d, const double $\ast$point\+\_\+z, int n)}{delaunay2d_ct_update(delaunay2d_t *d, const double *point_z, int n)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+ct\+\_\+update (
+\begin{DoxyParamCaption}
+\item[{{\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{const double $\ast$}]{point\+\_\+z, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_ae2bdda26547899097a4f3536a106d156}{}\label{delaunay2d_8h_ae2bdda26547899097a4f3536a106d156}
+
+
+References \+\_\+triangle\+::ct, \+\_\+point\+::dx, \+\_\+point\+::dy, \+\_\+delaunay2d\+::e, \+\_\+edgelist\+::n, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, \+\_\+point\+::y, and \+\_\+point\+::z.
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+ct\+\_\+value\+\_\+at@{delaunay2d\+\_\+ct\+\_\+value\+\_\+at}}
+\index{delaunay2d\+\_\+ct\+\_\+value\+\_\+at@{delaunay2d\+\_\+ct\+\_\+value\+\_\+at}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+ct\+\_\+value\+\_\+at(delaunay2d\+\_\+t $\ast$d, int t0, double px, double py, double $\ast$z)}{delaunay2d_ct_value_at(delaunay2d_t *d, int t0, double px, double py, double *z)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+ct\+\_\+value\+\_\+at (
+\begin{DoxyParamCaption}
+\item[{{\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{t0, }
+\item[{double}]{px, }
+\item[{double}]{py, }
+\item[{double $\ast$}]{z}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_ac3529d397f259c22528d24ec4e0025e2}{}\label{delaunay2d_8h_ac3529d397f259c22528d24ec4e0025e2}
+
+
+References c, \+\_\+triangle\+::cr2, \+\_\+triangle\+::ct, \+\_\+triangle\+::cx, \+\_\+triangle\+::cy, delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle(), \+\_\+triangle\+::detT, \+\_\+point\+::dx, \+\_\+point\+::dy, \+\_\+delaunay2d\+::e, \+\_\+edgelist\+::edge, \+\_\+delaunay2d\+::maxpoints, \+\_\+triangle\+::n, \+\_\+edgelist\+::n, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, rjmcmc\+\_\+error(), R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT, \+\_\+delaunay2d\+::st, \+\_\+delaunay2d\+::t, T\+R\+I\+A\+N\+G\+L\+E\+\_\+\+I\+N\+CR, \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+delete@{delaunay2d\+\_\+delete}}
+\index{delaunay2d\+\_\+delete@{delaunay2d\+\_\+delete}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+delete(delaunay2d\+\_\+t $\ast$d, int pi, bbox2d\+\_\+t $\ast$bound)}{delaunay2d_delete(delaunay2d_t *d, int pi, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+delete (
+\begin{DoxyParamCaption}
+\item[{{\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{pi, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a9387716da1b4d5c402d384789884b016}{}\label{delaunay2d_8h_a9387716da1b4d5c402d384789884b016}
+
+
+References \+\_\+delaunay2d\+::felist, \+\_\+delaunay2d\+::ftlist, \+\_\+delaunay2d\+::nf, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, \+\_\+delaunay2d\+::t, \+\_\+delaunay2d\+::tlist, \+\_\+triangle\+::v, and \+\_\+delaunay2d\+::vlist.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+delaunay\+\_\+delete(), and position\+\_\+map2d\+\_\+delaunay\+\_\+move().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+destroy@{delaunay2d\+\_\+destroy}}
+\index{delaunay2d\+\_\+destroy@{delaunay2d\+\_\+destroy}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+destroy(delaunay2d\+\_\+t $\ast$d)}{delaunay2d_destroy(delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}void delaunay2d\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a749a8627ee9027da64d09072c298ed95}{}\label{delaunay2d_8h_a749a8627ee9027da64d09072c298ed95}
+
+
+References \+\_\+delaunay2d\+::e, \+\_\+delaunay2d\+::felist, \+\_\+delaunay2d\+::ftlist, \+\_\+delaunay2d\+::nlist, \+\_\+delaunay2d\+::p, \+\_\+delaunay2d\+::t, \+\_\+delaunay2d\+::tlist, and \+\_\+delaunay2d\+::vlist.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+delaunay\+\_\+destroy().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle@{delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle}}
+\index{delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle@{delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle(const delaunay2d\+\_\+t $\ast$d, int t0, double px, double py, int $\ast$pa, int $\ast$pb, int $\ast$pc, double $\ast$ba, double $\ast$bb, double $\ast$bc)}{delaunay2d_find_enclosing_triangle(const delaunay2d_t *d, int t0, double px, double py, int *pa, int *pb, int *pc, double *ba, double *bb, double *bc)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{t0, }
+\item[{double}]{px, }
+\item[{double}]{py, }
+\item[{int $\ast$}]{pa, }
+\item[{int $\ast$}]{pb, }
+\item[{int $\ast$}]{pc, }
+\item[{double $\ast$}]{ba, }
+\item[{double $\ast$}]{bb, }
+\item[{double $\ast$}]{bc}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a7bfb9e9b627b077b4ebd4bbe70f69a1d}{}\label{delaunay2d_8h_a7bfb9e9b627b077b4ebd4bbe70f69a1d}
+
+
+References delaunay2d\+\_\+print\+\_\+points(), delaunay2d\+\_\+print\+\_\+triangles(), delaunay2d\+\_\+validate\+\_\+circumcircles(), delaunay2d\+\_\+validate\+\_\+neighbours(), delaunay2d\+\_\+validate\+\_\+nonintersecting(), \+\_\+triangle\+::n, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+delaunay2d\+::xmax, \+\_\+delaunay2d\+::xmin, \+\_\+delaunay2d\+::ymax, and \+\_\+delaunay2d\+::ymin.
+
+
+
+Referenced by delaunay2d\+\_\+add(), delaunay2d\+\_\+ct\+\_\+value\+\_\+at(), and position\+\_\+map2d\+\_\+delaunay\+\_\+enclosing\+\_\+triangle().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+index\+\_\+of\+\_\+point@{delaunay2d\+\_\+index\+\_\+of\+\_\+point}}
+\index{delaunay2d\+\_\+index\+\_\+of\+\_\+point@{delaunay2d\+\_\+index\+\_\+of\+\_\+point}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+index\+\_\+of\+\_\+point(const delaunay2d\+\_\+t $\ast$d, double x, double y)}{delaunay2d_index_of_point(const delaunay2d_t *d, double x, double y)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+index\+\_\+of\+\_\+point (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{double}]{x, }
+\item[{double}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a046adb574ccc39b5f33ace0933c6a81d}{}\label{delaunay2d_8h_a046adb574ccc39b5f33ace0933c6a81d}
+
+
+References \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+load@{delaunay2d\+\_\+load}}
+\index{delaunay2d\+\_\+load@{delaunay2d\+\_\+load}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+load(const char $\ast$filename)}{delaunay2d_load(const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf delaunay2d\+\_\+t}$\ast$ delaunay2d\+\_\+load (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a1bd1657dabeb756439d3289d683fb803}{}\label{delaunay2d_8h_a1bd1657dabeb756439d3289d683fb803}
+
+
+References c, delaunay2d\+\_\+create(), \+\_\+triangle\+::n, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+nearest@{delaunay2d\+\_\+nearest}}
+\index{delaunay2d\+\_\+nearest@{delaunay2d\+\_\+nearest}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+nearest(delaunay2d\+\_\+t $\ast$d, int include\+\_\+corners, double px, double py)}{delaunay2d_nearest(delaunay2d_t *d, int include_corners, double px, double py)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+nearest (
+\begin{DoxyParamCaption}
+\item[{{\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{include\+\_\+corners, }
+\item[{double}]{px, }
+\item[{double}]{py}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_acbb62e714e5f71b211bd9e216bc57245}{}\label{delaunay2d_8h_acbb62e714e5f71b211bd9e216bc57245}
+
+
+References delaunay2d\+\_\+nearest\+\_\+from().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+nearest\+\_\+from@{delaunay2d\+\_\+nearest\+\_\+from}}
+\index{delaunay2d\+\_\+nearest\+\_\+from@{delaunay2d\+\_\+nearest\+\_\+from}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+nearest\+\_\+from(delaunay2d\+\_\+t $\ast$d, int i, int include\+\_\+corners, double px, double py)}{delaunay2d_nearest_from(delaunay2d_t *d, int i, int include_corners, double px, double py)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+nearest\+\_\+from (
+\begin{DoxyParamCaption}
+\item[{{\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{i, }
+\item[{int}]{include\+\_\+corners, }
+\item[{double}]{px, }
+\item[{double}]{py}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a9dbe3a289ec1388b3ac4e4f92cb844b3}{}\label{delaunay2d_8h_a9dbe3a289ec1388b3ac4e4f92cb844b3}
+
+
+References \+\_\+delaunay2d\+::ci, \+\_\+delaunay2d\+::d2max, delaunay2d\+\_\+validate\+\_\+delaunay(), delaunay2d\+\_\+validate\+\_\+edges(), \+\_\+delaunay2d\+::e, \+\_\+edgelist\+::edge, and \+\_\+edgelist\+::n.
+
+
+
+Referenced by delaunay2d\+\_\+nearest(), and position\+\_\+map2d\+\_\+delaunay\+\_\+nearest().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+npoints@{delaunay2d\+\_\+npoints}}
+\index{delaunay2d\+\_\+npoints@{delaunay2d\+\_\+npoints}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+npoints(const delaunay2d\+\_\+t $\ast$d)}{delaunay2d_npoints(const delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+npoints (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a6fa47f00ea5c2efea1d95229effacc6d}{}\label{delaunay2d_8h_a6fa47f00ea5c2efea1d95229effacc6d}
+
+
+References \+\_\+delaunay2d\+::np, and R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT.
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+point\+\_\+of\+\_\+index@{delaunay2d\+\_\+point\+\_\+of\+\_\+index}}
+\index{delaunay2d\+\_\+point\+\_\+of\+\_\+index@{delaunay2d\+\_\+point\+\_\+of\+\_\+index}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+point\+\_\+of\+\_\+index(const delaunay2d\+\_\+t $\ast$d, int i, double $\ast$px, double $\ast$py)}{delaunay2d_point_of_index(const delaunay2d_t *d, int i, double *px, double *py)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+point\+\_\+of\+\_\+index (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{i, }
+\item[{double $\ast$}]{px, }
+\item[{double $\ast$}]{py}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a3070241faec3cf81235b762cbb8674bb}{}\label{delaunay2d_8h_a3070241faec3cf81235b762cbb8674bb}
+
+
+References \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+delaunay\+\_\+nearest(), and position\+\_\+map2d\+\_\+delaunay\+\_\+position\+\_\+of\+\_\+index().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+polygon\+\_\+bound@{delaunay2d\+\_\+polygon\+\_\+bound}}
+\index{delaunay2d\+\_\+polygon\+\_\+bound@{delaunay2d\+\_\+polygon\+\_\+bound}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+polygon\+\_\+bound(const delaunay2d\+\_\+t $\ast$d, int i, bbox2d\+\_\+t $\ast$bound)}{delaunay2d_polygon_bound(const delaunay2d_t *d, int i, bbox2d_t *bound)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+polygon\+\_\+bound (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{i, }
+\item[{{\bf bbox2d\+\_\+t} $\ast$}]{bound}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_aebc69d97ed775b40289d2d954793d5f7}{}\label{delaunay2d_8h_aebc69d97ed775b40289d2d954793d5f7}
+
+
+References \+\_\+delaunay2d\+::nt, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, \+\_\+delaunay2d\+::t, and \+\_\+triangle\+::v.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+delaunay\+\_\+polygon\+\_\+bound().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+print\+\_\+edges@{delaunay2d\+\_\+print\+\_\+edges}}
+\index{delaunay2d\+\_\+print\+\_\+edges@{delaunay2d\+\_\+print\+\_\+edges}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+print\+\_\+edges(const delaunay2d\+\_\+t $\ast$d)}{delaunay2d_print_edges(const delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}void delaunay2d\+\_\+print\+\_\+edges (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_aca0ecbc7c57d401e900949412d431d90}{}\label{delaunay2d_8h_aca0ecbc7c57d401e900949412d431d90}
+
+
+References \+\_\+delaunay2d\+::e, \+\_\+edgelist\+::edge, \+\_\+edgelist\+::n, and \+\_\+delaunay2d\+::np.
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+print\+\_\+points@{delaunay2d\+\_\+print\+\_\+points}}
+\index{delaunay2d\+\_\+print\+\_\+points@{delaunay2d\+\_\+print\+\_\+points}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+print\+\_\+points(const delaunay2d\+\_\+t $\ast$d)}{delaunay2d_print_points(const delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}void delaunay2d\+\_\+print\+\_\+points (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_ad4d415407e67c5bd67d7b2916424983d}{}\label{delaunay2d_8h_ad4d415407e67c5bd67d7b2916424983d}
+
+
+References \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::p, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle(), delaunay2d\+\_\+validate\+\_\+circumcircles(), delaunay2d\+\_\+validate\+\_\+neighbours(), and position\+\_\+map2d\+\_\+delaunay\+\_\+move().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+print\+\_\+triangles@{delaunay2d\+\_\+print\+\_\+triangles}}
+\index{delaunay2d\+\_\+print\+\_\+triangles@{delaunay2d\+\_\+print\+\_\+triangles}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+print\+\_\+triangles(const delaunay2d\+\_\+t $\ast$d)}{delaunay2d_print_triangles(const delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}void delaunay2d\+\_\+print\+\_\+triangles (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a3ad4c851fb03abc552aa1033b32b99d6}{}\label{delaunay2d_8h_a3ad4c851fb03abc552aa1033b32b99d6}
+
+
+References \+\_\+triangle\+::cr2, \+\_\+triangle\+::cx, \+\_\+triangle\+::cy, \+\_\+triangle\+::detT, \+\_\+point\+::dx, \+\_\+point\+::dy, \+\_\+delaunay2d\+::e, \+\_\+edgelist\+::edge, \+\_\+triangle\+::n, \+\_\+edgelist\+::n, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+P\+TR, \+\_\+delaunay2d\+::t, triangle\+\_\+circumcircle(), \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle(), delaunay2d\+\_\+validate\+\_\+circumcircles(), delaunay2d\+\_\+validate\+\_\+neighbours(), and position\+\_\+map2d\+\_\+delaunay\+\_\+move().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+save@{delaunay2d\+\_\+save}}
+\index{delaunay2d\+\_\+save@{delaunay2d\+\_\+save}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+save(const delaunay2d\+\_\+t $\ast$d, const char $\ast$filename)}{delaunay2d_save(const delaunay2d_t *d, const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+save (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a43e7c29acaca2ee961280f0b41725aee}{}\label{delaunay2d_8h_a43e7c29acaca2ee961280f0b41725aee}
+
+
+References \+\_\+delaunay2d\+::maxpoints, \+\_\+triangle\+::n, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, \+\_\+delaunay2d\+::st, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, \+\_\+delaunay2d\+::xmax, \+\_\+delaunay2d\+::xmin, \+\_\+point\+::y, \+\_\+delaunay2d\+::ymax, and \+\_\+delaunay2d\+::ymin.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+delaunay\+\_\+save().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+save\+\_\+cc\+\_\+geo@{delaunay2d\+\_\+save\+\_\+cc\+\_\+geo}}
+\index{delaunay2d\+\_\+save\+\_\+cc\+\_\+geo@{delaunay2d\+\_\+save\+\_\+cc\+\_\+geo}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+save\+\_\+cc\+\_\+geo(const delaunay2d\+\_\+t $\ast$d, const char $\ast$filename)}{delaunay2d_save_cc_geo(const delaunay2d_t *d, const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+save\+\_\+cc\+\_\+geo (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a48f94030d6fdc97a147459ff7976b32d}{}\label{delaunay2d_8h_a48f94030d6fdc97a147459ff7976b32d}
+
+
+References bbox2d\+\_\+expand(), bbox2d\+\_\+initialize(), \+\_\+point\+::ci, \+\_\+delaunay2d\+::ci, \+\_\+triangle\+::cr2, \+\_\+triangle\+::cx, \+\_\+triangle\+::cy, D\+L\+I\+S\+T\+\_\+\+I\+N\+CR, \+\_\+point\+::dx, \+\_\+point\+::dy, \+\_\+delaunay2d\+::felist, \+\_\+delaunay2d\+::ftlist, \+\_\+delaunay2d\+::listsize, \+\_\+triangle\+::n, \+\_\+delaunay2d\+::nf, \+\_\+delaunay2d\+::nlist, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, \+\_\+point\+::pd2, point\+\_\+in\+\_\+triangle(), R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+I\+NT, \+\_\+delaunay2d\+::sf, \+\_\+delaunay2d\+::t, \+\_\+delaunay2d\+::tlist, \+\_\+triangle\+::v, \+\_\+delaunay2d\+::vlist, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+save\+\_\+geo@{delaunay2d\+\_\+save\+\_\+geo}}
+\index{delaunay2d\+\_\+save\+\_\+geo@{delaunay2d\+\_\+save\+\_\+geo}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+save\+\_\+geo(const delaunay2d\+\_\+t $\ast$d, const char $\ast$filename)}{delaunay2d_save_geo(const delaunay2d_t *d, const char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+save\+\_\+geo (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_ac15e250cfc8a30cccfb2150c0e9af996}{}\label{delaunay2d_8h_ac15e250cfc8a30cccfb2150c0e9af996}
+
+
+References \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+shift\+\_\+replace@{delaunay2d\+\_\+shift\+\_\+replace}}
+\index{delaunay2d\+\_\+shift\+\_\+replace@{delaunay2d\+\_\+shift\+\_\+replace}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+shift\+\_\+replace(delaunay2d\+\_\+t $\ast$d, int pi)}{delaunay2d_shift_replace(delaunay2d_t *d, int pi)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+shift\+\_\+replace (
+\begin{DoxyParamCaption}
+\item[{{\bf delaunay2d\+\_\+t} $\ast$}]{d, }
+\item[{int}]{pi}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_abb6aa564309f3cedd8dc55fbb79937a8}{}\label{delaunay2d_8h_abb6aa564309f3cedd8dc55fbb79937a8}
+
+
+References \+\_\+delaunay2d\+::e, \+\_\+edgelist\+::edge, M\+A\+X\+E\+D\+G\+ES, \+\_\+edgelist\+::n, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by position\+\_\+map2d\+\_\+delaunay\+\_\+move().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+validate\+\_\+circumcircles@{delaunay2d\+\_\+validate\+\_\+circumcircles}}
+\index{delaunay2d\+\_\+validate\+\_\+circumcircles@{delaunay2d\+\_\+validate\+\_\+circumcircles}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+validate\+\_\+circumcircles(const delaunay2d\+\_\+t $\ast$d)}{delaunay2d_validate_circumcircles(const delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+validate\+\_\+circumcircles (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_ae2e15d9c2df695691df074ac70f74bc0}{}\label{delaunay2d_8h_ae2e15d9c2df695691df074ac70f74bc0}
+
+
+References \+\_\+triangle\+::cr2, \+\_\+triangle\+::cx, \+\_\+triangle\+::cy, delaunay2d\+\_\+print\+\_\+points(), delaunay2d\+\_\+print\+\_\+triangles(), \+\_\+point\+::dx, \+\_\+point\+::dy, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle(), and position\+\_\+map2d\+\_\+delaunay\+\_\+validate().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+validate\+\_\+delaunay@{delaunay2d\+\_\+validate\+\_\+delaunay}}
+\index{delaunay2d\+\_\+validate\+\_\+delaunay@{delaunay2d\+\_\+validate\+\_\+delaunay}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+validate\+\_\+delaunay(const delaunay2d\+\_\+t $\ast$d)}{delaunay2d_validate_delaunay(const delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+validate\+\_\+delaunay (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a859b0b971013ec5018cb287603db5e87}{}\label{delaunay2d_8h_a859b0b971013ec5018cb287603db5e87}
+
+
+References \+\_\+triangle\+::cr2, \+\_\+triangle\+::cx, \+\_\+triangle\+::cy, \+\_\+point\+::dx, \+\_\+point\+::dy, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by delaunay2d\+\_\+nearest\+\_\+from(), and position\+\_\+map2d\+\_\+delaunay\+\_\+validate().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+validate\+\_\+edges@{delaunay2d\+\_\+validate\+\_\+edges}}
+\index{delaunay2d\+\_\+validate\+\_\+edges@{delaunay2d\+\_\+validate\+\_\+edges}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+validate\+\_\+edges(const delaunay2d\+\_\+t $\ast$d)}{delaunay2d_validate_edges(const delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+validate\+\_\+edges (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a60b6a394ce66d3088c0b7fab2128f861}{}\label{delaunay2d_8h_a60b6a394ce66d3088c0b7fab2128f861}
+
+
+References \+\_\+delaunay2d\+::e, \+\_\+edgelist\+::edge, \+\_\+edgelist\+::n, \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::t, and \+\_\+triangle\+::v.
+
+
+
+Referenced by delaunay2d\+\_\+nearest\+\_\+from(), and position\+\_\+map2d\+\_\+delaunay\+\_\+validate().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+validate\+\_\+neighbours@{delaunay2d\+\_\+validate\+\_\+neighbours}}
+\index{delaunay2d\+\_\+validate\+\_\+neighbours@{delaunay2d\+\_\+validate\+\_\+neighbours}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+validate\+\_\+neighbours(const delaunay2d\+\_\+t $\ast$d)}{delaunay2d_validate_neighbours(const delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+validate\+\_\+neighbours (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a4eca636216a62cc22d556196c74c84e1}{}\label{delaunay2d_8h_a4eca636216a62cc22d556196c74c84e1}
+
+
+References delaunay2d\+\_\+print\+\_\+points(), delaunay2d\+\_\+print\+\_\+triangles(), \+\_\+triangle\+::n, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::t, and \+\_\+triangle\+::v.
+
+
+
+Referenced by delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle(), and position\+\_\+map2d\+\_\+delaunay\+\_\+validate().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!delaunay2d\+\_\+validate\+\_\+nonintersecting@{delaunay2d\+\_\+validate\+\_\+nonintersecting}}
+\index{delaunay2d\+\_\+validate\+\_\+nonintersecting@{delaunay2d\+\_\+validate\+\_\+nonintersecting}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{delaunay2d\+\_\+validate\+\_\+nonintersecting(const delaunay2d\+\_\+t $\ast$d)}{delaunay2d_validate_nonintersecting(const delaunay2d_t *d)}}]{\setlength{\rightskip}{0pt plus 5cm}int delaunay2d\+\_\+validate\+\_\+nonintersecting (
+\begin{DoxyParamCaption}
+\item[{const {\bf delaunay2d\+\_\+t} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_aa99017ce98462a2a26ddfd970cc77f35}{}\label{delaunay2d_8h_aa99017ce98462a2a26ddfd970cc77f35}
+
+
+References \+\_\+delaunay2d\+::np, \+\_\+delaunay2d\+::nt, \+\_\+delaunay2d\+::p, \+\_\+delaunay2d\+::t, \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by delaunay2d\+\_\+find\+\_\+enclosing\+\_\+triangle().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!point\+\_\+in\+\_\+triangle@{point\+\_\+in\+\_\+triangle}}
+\index{point\+\_\+in\+\_\+triangle@{point\+\_\+in\+\_\+triangle}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{point\+\_\+in\+\_\+triangle(double px, double py, double x1, double y1, double x2, double y2, double x3, double y3)}{point_in_triangle(double px, double py, double x1, double y1, double x2, double y2, double x3, double y3)}}]{\setlength{\rightskip}{0pt plus 5cm}int point\+\_\+in\+\_\+triangle (
+\begin{DoxyParamCaption}
+\item[{double}]{px, }
+\item[{double}]{py, }
+\item[{double}]{x1, }
+\item[{double}]{y1, }
+\item[{double}]{x2, }
+\item[{double}]{y2, }
+\item[{double}]{x3, }
+\item[{double}]{y3}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_a245e5cc4dfacb54e9654743a55401b59}{}\label{delaunay2d_8h_a245e5cc4dfacb54e9654743a55401b59}
+
+
+References barycentre(), \+\_\+triangle\+::n, \+\_\+delaunay2d\+::p, R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+I\+NT, \+\_\+delaunay2d\+::t, triangle\+\_\+circumcircle(), \+\_\+triangle\+::v, \+\_\+point\+::x, and \+\_\+point\+::y.
+
+
+
+Referenced by delaunay2d\+\_\+save\+\_\+cc\+\_\+geo().
+
+\index{delaunay2d.\+h@{delaunay2d.\+h}!triangle\+\_\+circumcircle@{triangle\+\_\+circumcircle}}
+\index{triangle\+\_\+circumcircle@{triangle\+\_\+circumcircle}!delaunay2d.\+h@{delaunay2d.\+h}}
+\subsubsection[{\texorpdfstring{triangle\+\_\+circumcircle(double x1, double y1, double x2, double y2, double x3, double y3, double $\ast$cx, double $\ast$cy, double $\ast$cr2)}{triangle_circumcircle(double x1, double y1, double x2, double y2, double x3, double y3, double *cx, double *cy, double *cr2)}}]{\setlength{\rightskip}{0pt plus 5cm}int triangle\+\_\+circumcircle (
+\begin{DoxyParamCaption}
+\item[{double}]{x1, }
+\item[{double}]{y1, }
+\item[{double}]{x2, }
+\item[{double}]{y2, }
+\item[{double}]{x3, }
+\item[{double}]{y3, }
+\item[{double $\ast$}]{cx, }
+\item[{double $\ast$}]{cy, }
+\item[{double $\ast$}]{cr2}
+\end{DoxyParamCaption}
+)}\hypertarget{delaunay2d_8h_acf78981cb55b933afb0b59ea9310a9fb}{}\label{delaunay2d_8h_acf78981cb55b933afb0b59ea9310a9fb}
+
+
+References \+\_\+point\+::dx, and \+\_\+point\+::dy.
+
+
+
+Referenced by delaunay2d\+\_\+print\+\_\+triangles(), and point\+\_\+in\+\_\+triangle().
+

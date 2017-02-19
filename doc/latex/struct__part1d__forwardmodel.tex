@@ -1,0 +1,161 @@
+\hypertarget{struct__part1d__forwardmodel}{}\section{\+\_\+part1d\+\_\+forwardmodel Struct Reference}
+\label{struct__part1d__forwardmodel}\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+
+
+Collaboration diagram for \+\_\+part1d\+\_\+forwardmodel\+:
+% FIG 0
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{part1d__forwardmodel_8h_a07f3922b42067c9cb736d872eea155c6}{part1d\+\_\+fm\+\_\+type\+\_\+t} \hyperlink{struct__part1d__forwardmodel_a1131d1d6210a71cae3bad507cf87dfd7}{type}
+\item 
+int \hyperlink{struct__part1d__forwardmodel_ada490ee1ccf061f81a21051d2e6b4fd0}{min\+\_\+partitions}
+\item 
+int \hyperlink{struct__part1d__forwardmodel_ab12d44e555fdbd5540d84d3c12e4806c}{max\+\_\+partitions}
+\item 
+double \hyperlink{struct__part1d__forwardmodel_afc68234aafe3f452ba66be391841a467}{xmin}
+\item 
+double \hyperlink{struct__part1d__forwardmodel_a559c425f5d734f5fcdfc27bcd51c7a87}{xmax}
+\item 
+double \hyperlink{struct__part1d__forwardmodel_a0071470483f0ca89c0e7c33f8d1f7ca7}{pd}
+\item 
+int \hyperlink{struct__part1d__forwardmodel_ab70ef8ed00fc885f9985e1e978a3e02a}{nglobalparameters}
+\item 
+double $\ast$ \hyperlink{struct__part1d__forwardmodel_af5129b3777d22503d75f5c3442e536c5}{global\+\_\+parameter}
+\item 
+int \hyperlink{struct__part1d__forwardmodel_ae447d08e8086f98014ecd8f361f0b2e8}{npartitions}
+\item 
+\hyperlink{position__map1d_8h_aced1bad6e33e2b5679d6d06747735cf6}{position\+\_\+map1d\+\_\+t} $\ast$ \hyperlink{struct__part1d__forwardmodel_a64820eb69c2a4089f3bb45d47b1bcd2e}{p}
+\item 
+int \hyperlink{struct__part1d__forwardmodel_abe35cde3de29b2efc16d64a2f1ea74d9}{nlocalparameters}
+\item 
+\hyperlink{part1d__forwardmodel_8c_a0a038e31b1f765296a40c2da07b46a84}{model\+\_\+t} $\ast$ \hyperlink{struct__part1d__forwardmodel_a135ea522c684e646fa2398aaeed0f264}{models}
+\item 
+int \hyperlink{struct__part1d__forwardmodel_a9a5f62d025d12d04c1d78a28293b34fa}{nhierarchicalparameters}
+\item 
+double $\ast$ \hyperlink{struct__part1d__forwardmodel_ae3c8c3213ca1f7476c9c3f674f5791ca}{hierarchical\+\_\+parameters}
+\item 
+\hyperlink{part1d__forwardmodel_8c_a0a038e31b1f765296a40c2da07b46a84}{model\+\_\+t} $\ast$ \hyperlink{struct__part1d__forwardmodel_a5ba03ec9048f0f0951a34f84cb5f2390}{model\+\_\+gradients}
+\item 
+double $\ast$ \hyperlink{struct__part1d__forwardmodel_ae6d9de256a99543ea1c339564c4bd6b4}{local\+\_\+scratch}
+\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!global\+\_\+parameter@{global\+\_\+parameter}}
+\index{global\+\_\+parameter@{global\+\_\+parameter}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{global\+\_\+parameter}{global_parameter}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+part1d\+\_\+forwardmodel\+::global\+\_\+parameter}\hypertarget{struct__part1d__forwardmodel_af5129b3777d22503d75f5c3442e536c5}{}\label{struct__part1d__forwardmodel_af5129b3777d22503d75f5c3442e536c5}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), part1d\+\_\+forwardmodel\+\_\+global\+\_\+parameters(), part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!hierarchical\+\_\+parameters@{hierarchical\+\_\+parameters}}
+\index{hierarchical\+\_\+parameters@{hierarchical\+\_\+parameters}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{hierarchical\+\_\+parameters}{hierarchical_parameters}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+part1d\+\_\+forwardmodel\+::hierarchical\+\_\+parameters}\hypertarget{struct__part1d__forwardmodel_ae3c8c3213ca1f7476c9c3f674f5791ca}{}\label{struct__part1d__forwardmodel_ae3c8c3213ca1f7476c9c3f674f5791ca}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+fill\+\_\+list(), part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+parameters(), part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!local\+\_\+scratch@{local\+\_\+scratch}}
+\index{local\+\_\+scratch@{local\+\_\+scratch}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{local\+\_\+scratch}{local_scratch}}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ \+\_\+part1d\+\_\+forwardmodel\+::local\+\_\+scratch}\hypertarget{struct__part1d__forwardmodel_ae6d9de256a99543ea1c339564c4bd6b4}{}\label{struct__part1d__forwardmodel_ae6d9de256a99543ea1c339564c4bd6b4}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!max\+\_\+partitions@{max\+\_\+partitions}}
+\index{max\+\_\+partitions@{max\+\_\+partitions}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{max\+\_\+partitions}{max_partitions}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+part1d\+\_\+forwardmodel\+::max\+\_\+partitions}\hypertarget{struct__part1d__forwardmodel_ab12d44e555fdbd5540d84d3c12e4806c}{}\label{struct__part1d__forwardmodel_ab12d44e555fdbd5540d84d3c12e4806c}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!min\+\_\+partitions@{min\+\_\+partitions}}
+\index{min\+\_\+partitions@{min\+\_\+partitions}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{min\+\_\+partitions}{min_partitions}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+part1d\+\_\+forwardmodel\+::min\+\_\+partitions}\hypertarget{struct__part1d__forwardmodel_ada490ee1ccf061f81a21051d2e6b4fd0}{}\label{struct__part1d__forwardmodel_ada490ee1ccf061f81a21051d2e6b4fd0}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+initialize(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!model\+\_\+gradients@{model\+\_\+gradients}}
+\index{model\+\_\+gradients@{model\+\_\+gradients}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{model\+\_\+gradients}{model_gradients}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf model\+\_\+t}$\ast$ \+\_\+part1d\+\_\+forwardmodel\+::model\+\_\+gradients}\hypertarget{struct__part1d__forwardmodel_a5ba03ec9048f0f0951a34f84cb5f2390}{}\label{struct__part1d__forwardmodel_a5ba03ec9048f0f0951a34f84cb5f2390}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+create(), and part1d\+\_\+forwardmodel\+\_\+destroy().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!models@{models}}
+\index{models@{models}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{models}{models}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf model\+\_\+t}$\ast$ \+\_\+part1d\+\_\+forwardmodel\+::models}\hypertarget{struct__part1d__forwardmodel_a135ea522c684e646fa2398aaeed0f264}{}\label{struct__part1d__forwardmodel_a135ea522c684e646fa2398aaeed0f264}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), and part1d\+\_\+forwardmodel\+\_\+value\+\_\+at().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!nglobalparameters@{nglobalparameters}}
+\index{nglobalparameters@{nglobalparameters}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{nglobalparameters}{nglobalparameters}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+part1d\+\_\+forwardmodel\+::nglobalparameters}\hypertarget{struct__part1d__forwardmodel_ab70ef8ed00fc885f9985e1e978a3e02a}{}\label{struct__part1d__forwardmodel_ab70ef8ed00fc885f9985e1e978a3e02a}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+initialize(), and part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!nhierarchicalparameters@{nhierarchicalparameters}}
+\index{nhierarchicalparameters@{nhierarchicalparameters}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{nhierarchicalparameters}{nhierarchicalparameters}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+part1d\+\_\+forwardmodel\+::nhierarchicalparameters}\hypertarget{struct__part1d__forwardmodel_a9a5f62d025d12d04c1d78a28293b34fa}{}\label{struct__part1d__forwardmodel_a9a5f62d025d12d04c1d78a28293b34fa}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+fill\+\_\+list(), part1d\+\_\+forwardmodel\+\_\+initialize(), and part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!nlocalparameters@{nlocalparameters}}
+\index{nlocalparameters@{nlocalparameters}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{nlocalparameters}{nlocalparameters}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+part1d\+\_\+forwardmodel\+::nlocalparameters}\hypertarget{struct__part1d__forwardmodel_abe35cde3de29b2efc16d64a2f1ea74d9}{}\label{struct__part1d__forwardmodel_abe35cde3de29b2efc16d64a2f1ea74d9}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters(), part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), and part1d\+\_\+forwardmodel\+\_\+value\+\_\+at().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!npartitions@{npartitions}}
+\index{npartitions@{npartitions}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{npartitions}{npartitions}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+part1d\+\_\+forwardmodel\+::npartitions}\hypertarget{struct__part1d__forwardmodel_ae447d08e8086f98014ecd8f361f0b2e8}{}\label{struct__part1d__forwardmodel_ae447d08e8086f98014ecd8f361f0b2e8}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed(), part1d\+\_\+forwardmodel\+\_\+partitions(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!p@{p}}
+\index{p@{p}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{p}{p}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf position\+\_\+map1d\+\_\+t}$\ast$ \+\_\+part1d\+\_\+forwardmodel\+::p}\hypertarget{struct__part1d__forwardmodel_a64820eb69c2a4089f3bb45d47b1bcd2e}{}\label{struct__part1d__forwardmodel_a64820eb69c2a4089f3bb45d47b1bcd2e}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+destroy(), part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters(), part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+forwardmodel\+\_\+initialize\+\_\+fixed(), part1d\+\_\+forwardmodel\+\_\+partition\+\_\+fill\+\_\+list(), part1d\+\_\+forwardmodel\+\_\+partition\+\_\+position(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), and part1d\+\_\+forwardmodel\+\_\+value\+\_\+at().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!pd@{pd}}
+\index{pd@{pd}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{pd}{pd}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+part1d\+\_\+forwardmodel\+::pd}\hypertarget{struct__part1d__forwardmodel_a0071470483f0ca89c0e7c33f8d1f7ca7}{}\label{struct__part1d__forwardmodel_a0071470483f0ca89c0e7c33f8d1f7ca7}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+create(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!type@{type}}
+\index{type@{type}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{type}{type}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf part1d\+\_\+fm\+\_\+type\+\_\+t} \+\_\+part1d\+\_\+forwardmodel\+::type}\hypertarget{struct__part1d__forwardmodel_a1131d1d6210a71cae3bad507cf87dfd7}{}\label{struct__part1d__forwardmodel_a1131d1d6210a71cae3bad507cf87dfd7}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+clone(), part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), and part1d\+\_\+forwardmodel\+\_\+value\+\_\+at().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!xmax@{xmax}}
+\index{xmax@{xmax}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{xmax}{xmax}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+part1d\+\_\+forwardmodel\+::xmax}\hypertarget{struct__part1d__forwardmodel_a559c425f5d734f5fcdfc27bcd51c7a87}{}\label{struct__part1d__forwardmodel_a559c425f5d734f5fcdfc27bcd51c7a87}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), and part1d\+\_\+forwardmodel\+\_\+value\+\_\+at().
+
+\index{\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}!xmin@{xmin}}
+\index{xmin@{xmin}!\+\_\+part1d\+\_\+forwardmodel@{\+\_\+part1d\+\_\+forwardmodel}}
+\subsubsection[{\texorpdfstring{xmin}{xmin}}]{\setlength{\rightskip}{0pt plus 5cm}double \+\_\+part1d\+\_\+forwardmodel\+::xmin}\hypertarget{struct__part1d__forwardmodel_afc68234aafe3f452ba66be391841a467}{}\label{struct__part1d__forwardmodel_afc68234aafe3f452ba66be391841a467}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+create(), part1d\+\_\+forwardmodel\+\_\+initialize(), and part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{part1d__forwardmodel_8c}{part1d\+\_\+forwardmodel.\+c}\end{DoxyCompactItemize}

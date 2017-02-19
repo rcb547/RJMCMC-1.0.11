@@ -1,0 +1,490 @@
+\hypertarget{wellrng_8c}{}\section{wellrng.\+c File Reference}
+\label{wellrng_8c}\index{wellrng.\+c@{wellrng.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$rjmcmc/wellrng.\+h$>$}\\*
+Include dependency graph for wellrng.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structwellrng}{wellrng}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{wellrng_8c_a649b8f01fd6c0f47ff3cbddaeba63bfb}{W}~32
+\item 
+\#define \hyperlink{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}{R}~1391
+\item 
+\#define \hyperlink{wellrng_8c_a2748566f4c443ee77aa831e63dbb5ebe}{P}~15
+\item 
+\#define \hyperlink{wellrng_8c_a81b49383f35e2c1c95066b9e44307ac8}{M\+A\+S\+KU}~(0xffffffff\+E $>$$>$ (\+W -\/ P))
+\item 
+\#define \hyperlink{wellrng_8c_a44d657bec5ee0657d1a368c1972e69e0}{M\+A\+S\+KL}~($\sim$\hyperlink{wellrng_8c_a81b49383f35e2c1c95066b9e44307ac8}{M\+A\+S\+KU})
+\item 
+\#define \hyperlink{wellrng_8c_ac597abe7cf610f262f7aaec53ed1d413}{M1}~23
+\item 
+\#define \hyperlink{wellrng_8c_a2a187ef3afced0eb4c4cb99515e5429c}{M2}~481
+\item 
+\#define \hyperlink{wellrng_8c_ad801d72bd01ef1ac9b86dbf4de0d355d}{M3}~229
+\item 
+\#define \hyperlink{wellrng_8c_ae14192727d534666b094d22859db9b34}{T\+E\+M\+P\+E\+RB}~0x93dd1400U
+\item 
+\#define \hyperlink{wellrng_8c_a2841c818073ba18318c3813a6615ee1d}{T\+E\+M\+P\+E\+RC}~0xfa118000U
+\item 
+\#define \hyperlink{wellrng_8c_acda05ddfcdfc2c52dd944c629eeac77b}{M\+A\+T0\+P\+OS}(t,  v)~(v$^\wedge$(v$>$$>$t))
+\item 
+\#define \hyperlink{wellrng_8c_a93dad2a29ecd3046d5589c2acd25c9e5}{M\+A\+T0\+N\+EG}(t,  v)~(v$^\wedge$(v$<$$<$(-\/(t))))
+\item 
+\#define \hyperlink{wellrng_8c_a5248093cfd19b8caa57ffecdbaab157c}{M\+A\+T1}(v)~v
+\item 
+\#define \hyperlink{wellrng_8c_a33b0efda8aefff92027ccb74ef5f2c2f}{M\+A\+T2}(a,  v)~((v \& 1\+U)?((v$>$$>$1)$^\wedge$a)\+:(v$>$$>$1))
+\item 
+\#define \hyperlink{wellrng_8c_af35e96c2edf30e3be23f3823d17621ff}{M\+A\+T3\+P\+OS}(t,  v)~(v$>$$>$t)
+\item 
+\#define \hyperlink{wellrng_8c_ace9d48a37cbc3739dde080c038b1f57f}{M\+A\+T3\+N\+EG}(t,  v)~(v$<$$<$(-\/(t)))
+\item 
+\#define \hyperlink{wellrng_8c_a29877b915e762fc77a70313ccd739124}{M\+A\+T4\+P\+OS}(t,  b,  v)~(v $^\wedge$ ((v$>$$>$  t ) \& b))
+\item 
+\#define \hyperlink{wellrng_8c_aafc52c7a1b4c4e77a8a1f66433964599}{M\+A\+T4\+N\+EG}(t,  b,  v)~(v $^\wedge$ ((v$<$$<$(-\/(t))) \& b))
+\item 
+\#define \hyperlink{wellrng_8c_a1a82143ccfb1dffa5b0cefb254abcee0}{M\+A\+T5}(r,  a,  ds,  dt,  v)~((v \& dt)?((((v$<$$<$r)$^\wedge$(v$>$$>$(\hyperlink{wellrng_8c_a649b8f01fd6c0f47ff3cbddaeba63bfb}{W}-\/r)))\&ds)$^\wedge$a)\+:(((v$<$$<$r)$^\wedge$(v$>$$>$(\hyperlink{wellrng_8c_a649b8f01fd6c0f47ff3cbddaeba63bfb}{W}-\/r)))\&ds))
+\item 
+\#define \hyperlink{wellrng_8c_ae81c08d46b9ca3d2607043430f8bd6e8}{M\+A\+T7}(v)~0
+\item 
+\#define \hyperlink{wellrng_8c_acdb6ac44a66a1b7b2cc43aaa44c12daa}{F\+A\+CT}~2.\+32830643653869628906e-\/10
+\item 
+\#define \hyperlink{wellrng_8c_a2074b9a2c1c6a3190319241fd96ebdd5}{V0}~w-\/$>$s\mbox{[}w-\/$>$i\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a65450f0927b17a8f0ee754d1e0c3d590}{V\+M1\+Over}~w-\/$>$s\mbox{[}w-\/$>$i+\hyperlink{wellrng_8c_ac597abe7cf610f262f7aaec53ed1d413}{M1}-\/\hyperlink{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}{R}\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a37b5516cb2ef7cfc5c81d5524c7d8099}{V\+M1}~w-\/$>$s\mbox{[}w-\/$>$i+\hyperlink{wellrng_8c_ac597abe7cf610f262f7aaec53ed1d413}{M1}\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a7c2a5543c67407de37860a39e6cf60ae}{V\+M2\+Over}~w-\/$>$s\mbox{[}w-\/$>$i+\hyperlink{wellrng_8c_a2a187ef3afced0eb4c4cb99515e5429c}{M2}-\/\hyperlink{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}{R}\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a0e5d243898332d428375f24c83f3fc1d}{V\+M2}~w-\/$>$s\mbox{[}w-\/$>$i+\hyperlink{wellrng_8c_a2a187ef3afced0eb4c4cb99515e5429c}{M2}\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_ade191ca305784b0018950986971de953}{V\+M3\+Over}~w-\/$>$s\mbox{[}w-\/$>$i+\hyperlink{wellrng_8c_ad801d72bd01ef1ac9b86dbf4de0d355d}{M3}-\/\hyperlink{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}{R}\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_af7d23fd2763648fdfb6fd26a4b580d4a}{V\+M3}~w-\/$>$s\mbox{[}w-\/$>$i+\hyperlink{wellrng_8c_ad801d72bd01ef1ac9b86dbf4de0d355d}{M3}\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a073300901ba419fd087ef3f7866d56a8}{Vrm1}~w-\/$>$s\mbox{[}w-\/$>$i-\/1\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_ac524a1fe67f330c690fd6965bc7e7c6f}{Vrm1\+Under}~w-\/$>$s\mbox{[}w-\/$>$i+\hyperlink{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}{R}-\/1\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a91fd2c7e65968b36d08068b879cc27d6}{Vrm2}~w-\/$>$s\mbox{[}w-\/$>$i-\/2\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a1f2306e2f1044621030cf787e900e077}{Vrm2\+Under}~w-\/$>$s\mbox{[}w-\/$>$i+\hyperlink{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}{R}-\/2\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a338eda095f49a209292e8956bd42e33f}{new\+V0}~w-\/$>$s\mbox{[}w-\/$>$i-\/1\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a7656a43df477926856a1ec66fa3796b1}{new\+V0\+Under}~w-\/$>$s\mbox{[}w-\/$>$i-\/1+\hyperlink{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}{R}\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_acaa8b758affc7aa12edbce7688c22fcd}{new\+V1}~w-\/$>$s\mbox{[}w-\/$>$i\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a66f8c36d3dd76bf0e573d5027753e4dd}{new\+V\+Rm1}~w-\/$>$s\mbox{[}w-\/$>$i-\/2\mbox{]}
+\item 
+\#define \hyperlink{wellrng_8c_a66c27cb3f155b84012addfeff8616945}{new\+V\+Rm1\+Under}~w-\/$>$s\mbox{[}w-\/$>$i-\/2+\hyperlink{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}{R}\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{wellrng\+\_\+t} $\ast$ \hyperlink{wellrng_8c_abd0fa66af9bd7a81829003980e832f2c}{wellrng\+\_\+init\+\_\+simple} (unsigned int seed)
+\item 
+unsigned int \hyperlink{wellrng_8c_a3ef66c4fe22e494c22c74cd2c189f0ca}{wellrng\+\_\+seed\+\_\+size} (void)
+\item 
+\hyperlink{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{wellrng\+\_\+t} $\ast$ \hyperlink{wellrng_8c_a53dab204fe465a1e8cde9812963e1c7a}{wellrng\+\_\+init\+\_\+direct} (unsigned int $\ast$seed)
+\item 
+double \hyperlink{wellrng_8c_a87ed6d78e6086693687eae370ded6ff2}{wellrng\+\_\+sample} (\hyperlink{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{wellrng\+\_\+t} $\ast$w)
+\item 
+void \hyperlink{wellrng_8c_afb8a2d69733ae1ef39a27e9ae8b22c80}{wellrng\+\_\+destroy} (\hyperlink{wellrng_8h_a3dde67c75242ace6a9e44b6cf84442cc}{wellrng\+\_\+t} $\ast$w)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{wellrng.\+c@{wellrng.\+c}!F\+A\+CT@{F\+A\+CT}}
+\index{F\+A\+CT@{F\+A\+CT}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{F\+A\+CT}{FACT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+A\+CT~2.\+32830643653869628906e-\/10}\hypertarget{wellrng_8c_acdb6ac44a66a1b7b2cc43aaa44c12daa}{}\label{wellrng_8c_acdb6ac44a66a1b7b2cc43aaa44c12daa}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M1@{M1}}
+\index{M1@{M1}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M1}{M1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M1~23}\hypertarget{wellrng_8c_ac597abe7cf610f262f7aaec53ed1d413}{}\label{wellrng_8c_ac597abe7cf610f262f7aaec53ed1d413}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M2@{M2}}
+\index{M2@{M2}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M2}{M2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M2~481}\hypertarget{wellrng_8c_a2a187ef3afced0eb4c4cb99515e5429c}{}\label{wellrng_8c_a2a187ef3afced0eb4c4cb99515e5429c}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M3@{M3}}
+\index{M3@{M3}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M3}{M3}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M3~229}\hypertarget{wellrng_8c_ad801d72bd01ef1ac9b86dbf4de0d355d}{}\label{wellrng_8c_ad801d72bd01ef1ac9b86dbf4de0d355d}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+S\+KL@{M\+A\+S\+KL}}
+\index{M\+A\+S\+KL@{M\+A\+S\+KL}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+S\+KL}{MASKL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+S\+KL~($\sim${\bf M\+A\+S\+KU})}\hypertarget{wellrng_8c_a44d657bec5ee0657d1a368c1972e69e0}{}\label{wellrng_8c_a44d657bec5ee0657d1a368c1972e69e0}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+S\+KU@{M\+A\+S\+KU}}
+\index{M\+A\+S\+KU@{M\+A\+S\+KU}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+S\+KU}{MASKU}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+S\+KU~(0xffffffff\+E $>$$>$ (\+W -\/ P))}\hypertarget{wellrng_8c_a81b49383f35e2c1c95066b9e44307ac8}{}\label{wellrng_8c_a81b49383f35e2c1c95066b9e44307ac8}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T0\+N\+EG@{M\+A\+T0\+N\+EG}}
+\index{M\+A\+T0\+N\+EG@{M\+A\+T0\+N\+EG}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T0\+N\+EG}{MAT0NEG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T0\+N\+EG(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~(v$^\wedge$(v$<$$<$(-\/(t))))}\hypertarget{wellrng_8c_a93dad2a29ecd3046d5589c2acd25c9e5}{}\label{wellrng_8c_a93dad2a29ecd3046d5589c2acd25c9e5}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T0\+P\+OS@{M\+A\+T0\+P\+OS}}
+\index{M\+A\+T0\+P\+OS@{M\+A\+T0\+P\+OS}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T0\+P\+OS}{MAT0POS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T0\+P\+OS(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~(v$^\wedge$(v$>$$>$t))}\hypertarget{wellrng_8c_acda05ddfcdfc2c52dd944c629eeac77b}{}\label{wellrng_8c_acda05ddfcdfc2c52dd944c629eeac77b}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T1@{M\+A\+T1}}
+\index{M\+A\+T1@{M\+A\+T1}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T1}{MAT1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T1(
+\begin{DoxyParamCaption}
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~v}\hypertarget{wellrng_8c_a5248093cfd19b8caa57ffecdbaab157c}{}\label{wellrng_8c_a5248093cfd19b8caa57ffecdbaab157c}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T2@{M\+A\+T2}}
+\index{M\+A\+T2@{M\+A\+T2}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T2}{MAT2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T2(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~((v \& 1\+U)?((v$>$$>$1)$^\wedge$a)\+:(v$>$$>$1))}\hypertarget{wellrng_8c_a33b0efda8aefff92027ccb74ef5f2c2f}{}\label{wellrng_8c_a33b0efda8aefff92027ccb74ef5f2c2f}
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T3\+N\+EG@{M\+A\+T3\+N\+EG}}
+\index{M\+A\+T3\+N\+EG@{M\+A\+T3\+N\+EG}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T3\+N\+EG}{MAT3NEG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T3\+N\+EG(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~(v$<$$<$(-\/(t)))}\hypertarget{wellrng_8c_ace9d48a37cbc3739dde080c038b1f57f}{}\label{wellrng_8c_ace9d48a37cbc3739dde080c038b1f57f}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T3\+P\+OS@{M\+A\+T3\+P\+OS}}
+\index{M\+A\+T3\+P\+OS@{M\+A\+T3\+P\+OS}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T3\+P\+OS}{MAT3POS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T3\+P\+OS(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~(v$>$$>$t)}\hypertarget{wellrng_8c_af35e96c2edf30e3be23f3823d17621ff}{}\label{wellrng_8c_af35e96c2edf30e3be23f3823d17621ff}
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T4\+N\+EG@{M\+A\+T4\+N\+EG}}
+\index{M\+A\+T4\+N\+EG@{M\+A\+T4\+N\+EG}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T4\+N\+EG}{MAT4NEG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T4\+N\+EG(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{b, }
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~(v $^\wedge$ ((v$<$$<$(-\/(t))) \& b))}\hypertarget{wellrng_8c_aafc52c7a1b4c4e77a8a1f66433964599}{}\label{wellrng_8c_aafc52c7a1b4c4e77a8a1f66433964599}
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T4\+P\+OS@{M\+A\+T4\+P\+OS}}
+\index{M\+A\+T4\+P\+OS@{M\+A\+T4\+P\+OS}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T4\+P\+OS}{MAT4POS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T4\+P\+OS(
+\begin{DoxyParamCaption}
+\item[{}]{t, }
+\item[{}]{b, }
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~(v $^\wedge$ ((v$>$$>$  t ) \& b))}\hypertarget{wellrng_8c_a29877b915e762fc77a70313ccd739124}{}\label{wellrng_8c_a29877b915e762fc77a70313ccd739124}
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T5@{M\+A\+T5}}
+\index{M\+A\+T5@{M\+A\+T5}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T5}{MAT5}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T5(
+\begin{DoxyParamCaption}
+\item[{}]{r, }
+\item[{}]{a, }
+\item[{}]{ds, }
+\item[{}]{dt, }
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~((v \& dt)?((((v$<$$<$r)$^\wedge$(v$>$$>$({\bf W}-\/r)))\&ds)$^\wedge$a)\+:(((v$<$$<$r)$^\wedge$(v$>$$>$({\bf W}-\/r)))\&ds))}\hypertarget{wellrng_8c_a1a82143ccfb1dffa5b0cefb254abcee0}{}\label{wellrng_8c_a1a82143ccfb1dffa5b0cefb254abcee0}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!M\+A\+T7@{M\+A\+T7}}
+\index{M\+A\+T7@{M\+A\+T7}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+T7}{MAT7}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+T7(
+\begin{DoxyParamCaption}
+\item[{}]{v}
+\end{DoxyParamCaption}
+)~0}\hypertarget{wellrng_8c_ae81c08d46b9ca3d2607043430f8bd6e8}{}\label{wellrng_8c_ae81c08d46b9ca3d2607043430f8bd6e8}
+\index{wellrng.\+c@{wellrng.\+c}!new\+V0@{new\+V0}}
+\index{new\+V0@{new\+V0}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{new\+V0}{newV0}}]{\setlength{\rightskip}{0pt plus 5cm}\#define new\+V0~w-\/$>$s\mbox{[}w-\/$>$i-\/1\mbox{]}}\hypertarget{wellrng_8c_a338eda095f49a209292e8956bd42e33f}{}\label{wellrng_8c_a338eda095f49a209292e8956bd42e33f}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!new\+V0\+Under@{new\+V0\+Under}}
+\index{new\+V0\+Under@{new\+V0\+Under}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{new\+V0\+Under}{newV0Under}}]{\setlength{\rightskip}{0pt plus 5cm}\#define new\+V0\+Under~w-\/$>$s\mbox{[}w-\/$>$i-\/1+{\bf R}\mbox{]}}\hypertarget{wellrng_8c_a7656a43df477926856a1ec66fa3796b1}{}\label{wellrng_8c_a7656a43df477926856a1ec66fa3796b1}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!new\+V1@{new\+V1}}
+\index{new\+V1@{new\+V1}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{new\+V1}{newV1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define new\+V1~w-\/$>$s\mbox{[}w-\/$>$i\mbox{]}}\hypertarget{wellrng_8c_acaa8b758affc7aa12edbce7688c22fcd}{}\label{wellrng_8c_acaa8b758affc7aa12edbce7688c22fcd}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!new\+V\+Rm1@{new\+V\+Rm1}}
+\index{new\+V\+Rm1@{new\+V\+Rm1}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{new\+V\+Rm1}{newVRm1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define new\+V\+Rm1~w-\/$>$s\mbox{[}w-\/$>$i-\/2\mbox{]}}\hypertarget{wellrng_8c_a66f8c36d3dd76bf0e573d5027753e4dd}{}\label{wellrng_8c_a66f8c36d3dd76bf0e573d5027753e4dd}
+\index{wellrng.\+c@{wellrng.\+c}!new\+V\+Rm1\+Under@{new\+V\+Rm1\+Under}}
+\index{new\+V\+Rm1\+Under@{new\+V\+Rm1\+Under}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{new\+V\+Rm1\+Under}{newVRm1Under}}]{\setlength{\rightskip}{0pt plus 5cm}\#define new\+V\+Rm1\+Under~w-\/$>$s\mbox{[}w-\/$>$i-\/2+{\bf R}\mbox{]}}\hypertarget{wellrng_8c_a66c27cb3f155b84012addfeff8616945}{}\label{wellrng_8c_a66c27cb3f155b84012addfeff8616945}
+\index{wellrng.\+c@{wellrng.\+c}!P@{P}}
+\index{P@{P}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{P}{P}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P~15}\hypertarget{wellrng_8c_a2748566f4c443ee77aa831e63dbb5ebe}{}\label{wellrng_8c_a2748566f4c443ee77aa831e63dbb5ebe}
+\index{wellrng.\+c@{wellrng.\+c}!R@{R}}
+\index{R@{R}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{R}{R}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R~1391}\hypertarget{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}{}\label{wellrng_8c_a5c71a5e59a53413cd6c270266d63b031}
+
+
+Referenced by wellrng\+\_\+init\+\_\+direct(), wellrng\+\_\+init\+\_\+simple(), wellrng\+\_\+sample(), and wellrng\+\_\+seed\+\_\+size().
+
+\index{wellrng.\+c@{wellrng.\+c}!T\+E\+M\+P\+E\+RB@{T\+E\+M\+P\+E\+RB}}
+\index{T\+E\+M\+P\+E\+RB@{T\+E\+M\+P\+E\+RB}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{T\+E\+M\+P\+E\+RB}{TEMPERB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+M\+P\+E\+RB~0x93dd1400U}\hypertarget{wellrng_8c_ae14192727d534666b094d22859db9b34}{}\label{wellrng_8c_ae14192727d534666b094d22859db9b34}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!T\+E\+M\+P\+E\+RC@{T\+E\+M\+P\+E\+RC}}
+\index{T\+E\+M\+P\+E\+RC@{T\+E\+M\+P\+E\+RC}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{T\+E\+M\+P\+E\+RC}{TEMPERC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+M\+P\+E\+RC~0xfa118000U}\hypertarget{wellrng_8c_a2841c818073ba18318c3813a6615ee1d}{}\label{wellrng_8c_a2841c818073ba18318c3813a6615ee1d}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!V0@{V0}}
+\index{V0@{V0}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{V0}{V0}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V0~w-\/$>$s\mbox{[}w-\/$>$i\mbox{]}}\hypertarget{wellrng_8c_a2074b9a2c1c6a3190319241fd96ebdd5}{}\label{wellrng_8c_a2074b9a2c1c6a3190319241fd96ebdd5}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!V\+M1@{V\+M1}}
+\index{V\+M1@{V\+M1}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{V\+M1}{VM1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M1~w-\/$>$s\mbox{[}w-\/$>$i+{\bf M1}\mbox{]}}\hypertarget{wellrng_8c_a37b5516cb2ef7cfc5c81d5524c7d8099}{}\label{wellrng_8c_a37b5516cb2ef7cfc5c81d5524c7d8099}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!V\+M1\+Over@{V\+M1\+Over}}
+\index{V\+M1\+Over@{V\+M1\+Over}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{V\+M1\+Over}{VM1Over}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M1\+Over~w-\/$>$s\mbox{[}w-\/$>$i+{\bf M1}-\/{\bf R}\mbox{]}}\hypertarget{wellrng_8c_a65450f0927b17a8f0ee754d1e0c3d590}{}\label{wellrng_8c_a65450f0927b17a8f0ee754d1e0c3d590}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!V\+M2@{V\+M2}}
+\index{V\+M2@{V\+M2}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{V\+M2}{VM2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M2~w-\/$>$s\mbox{[}w-\/$>$i+{\bf M2}\mbox{]}}\hypertarget{wellrng_8c_a0e5d243898332d428375f24c83f3fc1d}{}\label{wellrng_8c_a0e5d243898332d428375f24c83f3fc1d}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!V\+M2\+Over@{V\+M2\+Over}}
+\index{V\+M2\+Over@{V\+M2\+Over}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{V\+M2\+Over}{VM2Over}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M2\+Over~w-\/$>$s\mbox{[}w-\/$>$i+{\bf M2}-\/{\bf R}\mbox{]}}\hypertarget{wellrng_8c_a7c2a5543c67407de37860a39e6cf60ae}{}\label{wellrng_8c_a7c2a5543c67407de37860a39e6cf60ae}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!V\+M3@{V\+M3}}
+\index{V\+M3@{V\+M3}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{V\+M3}{VM3}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M3~w-\/$>$s\mbox{[}w-\/$>$i+{\bf M3}\mbox{]}}\hypertarget{wellrng_8c_af7d23fd2763648fdfb6fd26a4b580d4a}{}\label{wellrng_8c_af7d23fd2763648fdfb6fd26a4b580d4a}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!V\+M3\+Over@{V\+M3\+Over}}
+\index{V\+M3\+Over@{V\+M3\+Over}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{V\+M3\+Over}{VM3Over}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M3\+Over~w-\/$>$s\mbox{[}w-\/$>$i+{\bf M3}-\/{\bf R}\mbox{]}}\hypertarget{wellrng_8c_ade191ca305784b0018950986971de953}{}\label{wellrng_8c_ade191ca305784b0018950986971de953}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!Vrm1@{Vrm1}}
+\index{Vrm1@{Vrm1}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{Vrm1}{Vrm1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Vrm1~w-\/$>$s\mbox{[}w-\/$>$i-\/1\mbox{]}}\hypertarget{wellrng_8c_a073300901ba419fd087ef3f7866d56a8}{}\label{wellrng_8c_a073300901ba419fd087ef3f7866d56a8}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!Vrm1\+Under@{Vrm1\+Under}}
+\index{Vrm1\+Under@{Vrm1\+Under}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{Vrm1\+Under}{Vrm1Under}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Vrm1\+Under~w-\/$>$s\mbox{[}w-\/$>$i+{\bf R}-\/1\mbox{]}}\hypertarget{wellrng_8c_ac524a1fe67f330c690fd6965bc7e7c6f}{}\label{wellrng_8c_ac524a1fe67f330c690fd6965bc7e7c6f}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!Vrm2@{Vrm2}}
+\index{Vrm2@{Vrm2}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{Vrm2}{Vrm2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Vrm2~w-\/$>$s\mbox{[}w-\/$>$i-\/2\mbox{]}}\hypertarget{wellrng_8c_a91fd2c7e65968b36d08068b879cc27d6}{}\label{wellrng_8c_a91fd2c7e65968b36d08068b879cc27d6}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!Vrm2\+Under@{Vrm2\+Under}}
+\index{Vrm2\+Under@{Vrm2\+Under}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{Vrm2\+Under}{Vrm2Under}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Vrm2\+Under~w-\/$>$s\mbox{[}w-\/$>$i+{\bf R}-\/2\mbox{]}}\hypertarget{wellrng_8c_a1f2306e2f1044621030cf787e900e077}{}\label{wellrng_8c_a1f2306e2f1044621030cf787e900e077}
+
+
+Referenced by wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!W@{W}}
+\index{W@{W}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{W}{W}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W~32}\hypertarget{wellrng_8c_a649b8f01fd6c0f47ff3cbddaeba63bfb}{}\label{wellrng_8c_a649b8f01fd6c0f47ff3cbddaeba63bfb}
+
+
+\subsection{Function Documentation}
+\index{wellrng.\+c@{wellrng.\+c}!wellrng\+\_\+destroy@{wellrng\+\_\+destroy}}
+\index{wellrng\+\_\+destroy@{wellrng\+\_\+destroy}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+destroy(wellrng\+\_\+t $\ast$w)}{wellrng_destroy(wellrng_t *w)}}]{\setlength{\rightskip}{0pt plus 5cm}void wellrng\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf wellrng\+\_\+t} $\ast$}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8c_afb8a2d69733ae1ef39a27e9ae8b22c80}{}\label{wellrng_8c_afb8a2d69733ae1ef39a27e9ae8b22c80}
+
+
+Referenced by rjmcmc\+\_\+seed().
+
+\index{wellrng.\+c@{wellrng.\+c}!wellrng\+\_\+init\+\_\+direct@{wellrng\+\_\+init\+\_\+direct}}
+\index{wellrng\+\_\+init\+\_\+direct@{wellrng\+\_\+init\+\_\+direct}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+init\+\_\+direct(unsigned int $\ast$seed)}{wellrng_init_direct(unsigned int *seed)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf wellrng\+\_\+t}$\ast$ wellrng\+\_\+init\+\_\+direct (
+\begin{DoxyParamCaption}
+\item[{unsigned int $\ast$}]{seed}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8c_a53dab204fe465a1e8cde9812963e1c7a}{}\label{wellrng_8c_a53dab204fe465a1e8cde9812963e1c7a}
+
+
+References wellrng\+::i, R, wellrng\+::s, and wellrng\+::state.
+
+\index{wellrng.\+c@{wellrng.\+c}!wellrng\+\_\+init\+\_\+simple@{wellrng\+\_\+init\+\_\+simple}}
+\index{wellrng\+\_\+init\+\_\+simple@{wellrng\+\_\+init\+\_\+simple}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+init\+\_\+simple(unsigned int seed)}{wellrng_init_simple(unsigned int seed)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf wellrng\+\_\+t}$\ast$ wellrng\+\_\+init\+\_\+simple (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{seed}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8c_abd0fa66af9bd7a81829003980e832f2c}{}\label{wellrng_8c_abd0fa66af9bd7a81829003980e832f2c}
+
+
+References wellrng\+::i, R, wellrng\+::s, and wellrng\+::state.
+
+
+
+Referenced by rjmcmc\+\_\+normal(), rjmcmc\+\_\+seed(), and rjmcmc\+\_\+uniform().
+
+\index{wellrng.\+c@{wellrng.\+c}!wellrng\+\_\+sample@{wellrng\+\_\+sample}}
+\index{wellrng\+\_\+sample@{wellrng\+\_\+sample}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+sample(wellrng\+\_\+t $\ast$w)}{wellrng_sample(wellrng_t *w)}}]{\setlength{\rightskip}{0pt plus 5cm}double wellrng\+\_\+sample (
+\begin{DoxyParamCaption}
+\item[{{\bf wellrng\+\_\+t} $\ast$}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8c_a87ed6d78e6086693687eae370ded6ff2}{}\label{wellrng_8c_a87ed6d78e6086693687eae370ded6ff2}
+
+
+References F\+A\+CT, wellrng\+::i, M1, M2, M3, M\+A\+S\+KL, M\+A\+S\+KU, M\+A\+T0\+N\+EG, M\+A\+T0\+P\+OS, M\+A\+T1, M\+A\+T3\+N\+EG, M\+A\+T5, new\+V0, new\+V0\+Under, new\+V1, R, wellrng\+::s, wellrng\+::state, T\+E\+M\+P\+E\+RB, T\+E\+M\+P\+E\+RC, V0, V\+M1, V\+M1\+Over, V\+M2, V\+M2\+Over, V\+M3, V\+M3\+Over, Vrm1, Vrm1\+Under, Vrm2, Vrm2\+Under, and y.
+
+
+
+Referenced by rjmcmc\+\_\+normal(), and rjmcmc\+\_\+uniform().
+
+\index{wellrng.\+c@{wellrng.\+c}!wellrng\+\_\+seed\+\_\+size@{wellrng\+\_\+seed\+\_\+size}}
+\index{wellrng\+\_\+seed\+\_\+size@{wellrng\+\_\+seed\+\_\+size}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{wellrng\+\_\+seed\+\_\+size(void)}{wellrng_seed_size(void)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int wellrng\+\_\+seed\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{wellrng_8c_a3ef66c4fe22e494c22c74cd2c189f0ca}{}\label{wellrng_8c_a3ef66c4fe22e494c22c74cd2c189f0ca}
+
+
+References R.
+
+
+
+\subsection{Variable Documentation}
+\index{wellrng.\+c@{wellrng.\+c}!c@{c}}
+\index{c@{c}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{c}{c}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int c}\hypertarget{wellrng_8c_a6ce17b018c47d0f1d0e53a458f741ad3}{}\label{wellrng_8c_a6ce17b018c47d0f1d0e53a458f741ad3}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2regression_2multiquad_2multiquad_8c-example}{1d/partitioned/regression/multiquad/multiquad.\+c}, \hyperlink{1d_2partitioned_2regression_2multistep_2multistep_8c-example}{1d/partitioned/regression/multistep/multistep.\+c}, \hyperlink{1d_2partitioned_2regression_2zeromultistep_2zeromultistep_8c-example}{1d/partitioned/regression/zeromultistep/zeromultistep.\+c}, \hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, \hyperlink{1d_2single_2regression_2cubic_2cubic_8c-example}{1d/single/regression/cubic/cubic.\+c}, \hyperlink{2d_2partitioned_2fm_2regression_2regression_8c-example}{2d/partitioned/fm/regression/regression.\+c}, \hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}, \hyperlink{2d_2partitioned_2regression_2disc_2disc_8c-example}{2d/partitioned/regression/disc/disc.\+c}, and \hyperlink{2d_2partitioned_2regression_2square_2square_8c-example}{2d/partitioned/regression/square/square.\+c}.\end{Desc}
+
+
+Referenced by delaunay2d\+\_\+add(), delaunay2d\+\_\+ct\+\_\+value\+\_\+at(), delaunay2d\+\_\+load(), part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters(), rjmcmc\+\_\+save\+\_\+int\+\_\+matrix(), and rjmcmc\+\_\+save\+\_\+matrix().
+
+\index{wellrng.\+c@{wellrng.\+c}!x@{x}}
+\index{x@{x}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{x}{x}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int x}\hypertarget{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{}\label{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2functionfit_2functionfit_8c-example}{1d/partitioned/fm/functionfit/functionfit.\+c}, \hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}, \hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}, and \hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}.\end{Desc}
+
+
+Referenced by bbox2d\+\_\+expand(), bbox2d\+\_\+initialize(), dataset1d\+\_\+load\+\_\+fixed(), dataset1d\+\_\+load\+\_\+known(), dataset2d\+\_\+load\+\_\+fixed(), dataset2d\+\_\+load\+\_\+known(), part1d\+\_\+forwardmodel\+\_\+evaluate\+\_\+local\+\_\+parameters(), part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+natural\+\_\+rj\+\_\+initialize(), part1d\+\_\+natural\+\_\+rj\+\_\+value\+\_\+at(), part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+zero\+\_\+initialize(), part1d\+\_\+zero\+\_\+value\+\_\+at(), part2d\+\_\+forwardmodel\+\_\+initialize(), part2d\+\_\+forwardmodel\+\_\+load(), part2d\+\_\+forwardmodel\+\_\+save(), part2d\+\_\+regression(), part2d\+\_\+regression\+\_\+rj\+\_\+evaluate(), part2d\+\_\+regression\+\_\+rj\+\_\+initialize(), part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), position\+\_\+map1d\+\_\+insert(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+histogram\+\_\+f(), resultset2dfm\+\_\+get\+\_\+centres\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+max\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+min\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mean\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+median\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mode\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+variance\+\_\+f(), rjmcmc\+\_\+polynomial\+\_\+value(), rjmcmc\+\_\+save\+\_\+vector\+\_\+as\+\_\+histogram(), single1d\+\_\+direct\+\_\+regression(), and single1d\+\_\+regression\+\_\+value\+\_\+at().
+
+\index{wellrng.\+c@{wellrng.\+c}!y@{y}}
+\index{y@{y}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{y}{y}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int y}\hypertarget{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{}\label{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2functionfit_2functionfit_8c-example}{1d/partitioned/fm/functionfit/functionfit.\+c}, \hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}, \hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}, and \hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}.\end{Desc}
+
+
+Referenced by bbox2d\+\_\+expand(), bbox2d\+\_\+initialize(), curvefit\+\_\+sample\+\_\+det\+Cm(), dataset1d\+\_\+load\+\_\+fixed(), dataset1d\+\_\+load\+\_\+known(), dataset2d\+\_\+load\+\_\+fixed(), dataset2d\+\_\+load\+\_\+known(), part1d\+\_\+natural\+\_\+rj\+\_\+misfit(), part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+regression\+\_\+rj\+\_\+misfit(), part1d\+\_\+zero\+\_\+misfit(), part2d\+\_\+forwardmodel\+\_\+initialize(), part2d\+\_\+forwardmodel\+\_\+load(), part2d\+\_\+forwardmodel\+\_\+save(), part2d\+\_\+regression(), part2d\+\_\+regression\+\_\+rj\+\_\+evaluate(), part2d\+\_\+regression\+\_\+rj\+\_\+initialize(), part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), resultset1dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+histogram\+\_\+f(), resultset2dfm\+\_\+get\+\_\+centres\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+max\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+credible\+\_\+min\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mean\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+median\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+mode\+\_\+f(), resultset2dfm\+\_\+get\+\_\+local\+\_\+parameter\+\_\+variance\+\_\+f(), single1d\+\_\+regression\+\_\+misfit(), and wellrng\+\_\+sample().
+
+\index{wellrng.\+c@{wellrng.\+c}!z@{z}}
+\index{z@{z}!wellrng.\+c@{wellrng.\+c}}
+\subsubsection[{\texorpdfstring{z}{z}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int z}\hypertarget{wellrng_8c_a3d99b005d0fb73033dce14d4a135d01f}{}\label{wellrng_8c_a3d99b005d0fb73033dce14d4a135d01f}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}.\end{Desc}
+
+
+Referenced by dataset2d\+\_\+load\+\_\+fixed(), dataset2d\+\_\+load\+\_\+known(), and part2d\+\_\+regression\+\_\+rj\+\_\+misfit().
+

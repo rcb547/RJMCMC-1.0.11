@@ -1,0 +1,60 @@
+\hypertarget{voronoi2d_8h}{}\section{voronoi2d.\+h File Reference}
+\label{voronoi2d_8h}\index{voronoi2d.\+h@{voronoi2d.\+h}}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \+\_\+voronoi2d \hyperlink{voronoi2d_8h_a50eeee1bee8f3899d2e27bb48d3991a5}{voronoi2d\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{voronoi2d_8h_a50eeee1bee8f3899d2e27bb48d3991a5}{voronoi2d\+\_\+t} $\ast$ \hyperlink{voronoi2d_8h_afd2c5c82d9027d5a859cfd9f1420666f}{voronoi2d\+\_\+create} (int maxpoints)
+\item 
+void \hyperlink{voronoi2d_8h_af127b3e0392a6843e1e81d5ca7c4f403}{voronoi2d\+\_\+destroy} (\hyperlink{voronoi2d_8h_a50eeee1bee8f3899d2e27bb48d3991a5}{voronoi2d\+\_\+t} $\ast$v)
+\item 
+int \hyperlink{voronoi2d_8h_a177083462deca485169a864a97fd2a57}{voronoi2d\+\_\+initialize} (\hyperlink{voronoi2d_8h_a50eeee1bee8f3899d2e27bb48d3991a5}{voronoi2d\+\_\+t} $\ast$v, double $\ast$\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double $\ast$\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y}, int npoints)
+\item 
+int \hyperlink{voronoi2d_8h_a8b868b13f32749dfb30c35c051da995d}{voronoi2d\+\_\+index\+\_\+of\+\_\+point} (\hyperlink{voronoi2d_8h_a50eeee1bee8f3899d2e27bb48d3991a5}{voronoi2d\+\_\+t} $\ast$v, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{voronoi2d.\+h@{voronoi2d.\+h}!voronoi2d\+\_\+t@{voronoi2d\+\_\+t}}
+\index{voronoi2d\+\_\+t@{voronoi2d\+\_\+t}!voronoi2d.\+h@{voronoi2d.\+h}}
+\subsubsection[{\texorpdfstring{voronoi2d\+\_\+t}{voronoi2d_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct \+\_\+voronoi2d {\bf voronoi2d\+\_\+t}}\hypertarget{voronoi2d_8h_a50eeee1bee8f3899d2e27bb48d3991a5}{}\label{voronoi2d_8h_a50eeee1bee8f3899d2e27bb48d3991a5}
+
+
+\subsection{Function Documentation}
+\index{voronoi2d.\+h@{voronoi2d.\+h}!voronoi2d\+\_\+create@{voronoi2d\+\_\+create}}
+\index{voronoi2d\+\_\+create@{voronoi2d\+\_\+create}!voronoi2d.\+h@{voronoi2d.\+h}}
+\subsubsection[{\texorpdfstring{voronoi2d\+\_\+create(int maxpoints)}{voronoi2d_create(int maxpoints)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf voronoi2d\+\_\+t}$\ast$ voronoi2d\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{maxpoints}
+\end{DoxyParamCaption}
+)}\hypertarget{voronoi2d_8h_afd2c5c82d9027d5a859cfd9f1420666f}{}\label{voronoi2d_8h_afd2c5c82d9027d5a859cfd9f1420666f}
+\index{voronoi2d.\+h@{voronoi2d.\+h}!voronoi2d\+\_\+destroy@{voronoi2d\+\_\+destroy}}
+\index{voronoi2d\+\_\+destroy@{voronoi2d\+\_\+destroy}!voronoi2d.\+h@{voronoi2d.\+h}}
+\subsubsection[{\texorpdfstring{voronoi2d\+\_\+destroy(voronoi2d\+\_\+t $\ast$v)}{voronoi2d_destroy(voronoi2d_t *v)}}]{\setlength{\rightskip}{0pt plus 5cm}void voronoi2d\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf voronoi2d\+\_\+t} $\ast$}]{v}
+\end{DoxyParamCaption}
+)}\hypertarget{voronoi2d_8h_af127b3e0392a6843e1e81d5ca7c4f403}{}\label{voronoi2d_8h_af127b3e0392a6843e1e81d5ca7c4f403}
+\index{voronoi2d.\+h@{voronoi2d.\+h}!voronoi2d\+\_\+index\+\_\+of\+\_\+point@{voronoi2d\+\_\+index\+\_\+of\+\_\+point}}
+\index{voronoi2d\+\_\+index\+\_\+of\+\_\+point@{voronoi2d\+\_\+index\+\_\+of\+\_\+point}!voronoi2d.\+h@{voronoi2d.\+h}}
+\subsubsection[{\texorpdfstring{voronoi2d\+\_\+index\+\_\+of\+\_\+point(voronoi2d\+\_\+t $\ast$v, double x, double y)}{voronoi2d_index_of_point(voronoi2d_t *v, double x, double y)}}]{\setlength{\rightskip}{0pt plus 5cm}int voronoi2d\+\_\+index\+\_\+of\+\_\+point (
+\begin{DoxyParamCaption}
+\item[{{\bf voronoi2d\+\_\+t} $\ast$}]{v, }
+\item[{double}]{x, }
+\item[{double}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{voronoi2d_8h_a8b868b13f32749dfb30c35c051da995d}{}\label{voronoi2d_8h_a8b868b13f32749dfb30c35c051da995d}
+\index{voronoi2d.\+h@{voronoi2d.\+h}!voronoi2d\+\_\+initialize@{voronoi2d\+\_\+initialize}}
+\index{voronoi2d\+\_\+initialize@{voronoi2d\+\_\+initialize}!voronoi2d.\+h@{voronoi2d.\+h}}
+\subsubsection[{\texorpdfstring{voronoi2d\+\_\+initialize(voronoi2d\+\_\+t $\ast$v, double $\ast$x, double $\ast$y, int npoints)}{voronoi2d_initialize(voronoi2d_t *v, double *x, double *y, int npoints)}}]{\setlength{\rightskip}{0pt plus 5cm}int voronoi2d\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{{\bf voronoi2d\+\_\+t} $\ast$}]{v, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y, }
+\item[{int}]{npoints}
+\end{DoxyParamCaption}
+)}\hypertarget{voronoi2d_8h_a177083462deca485169a864a97fd2a57}{}\label{voronoi2d_8h_a177083462deca485169a864a97fd2a57}

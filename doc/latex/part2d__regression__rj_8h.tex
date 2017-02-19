@@ -1,0 +1,328 @@
+\hypertarget{part2d__regression__rj_8h}{}\section{part2d\+\_\+regression\+\_\+rj.\+h File Reference}
+\label{part2d__regression__rj_8h}\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+{\ttfamily \#include \char`\"{}rjmcmc/dataset2d.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/rjmcmc\+\_\+random.\+h\char`\"{}}\\*
+Include dependency graph for part2d\+\_\+regression\+\_\+rj.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__part2d__regression__rj}{\+\_\+part2d\+\_\+regression\+\_\+rj} \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$ \hyperlink{part2d__regression__rj_8h_a3a26a143b4150b26c5e1bbc51b826123}{part2d\+\_\+regression\+\_\+rj\+\_\+create} (int min\+\_\+part, int max\+\_\+part, int ndatasets, double xmin, double xmax, double ymin, double ymax, double pv, double pdx, double pdy, double pdxy)
+\item 
+void \hyperlink{part2d__regression__rj_8h_a9afd075ba9e3d29c54b9dff1ceb56630}{part2d\+\_\+regression\+\_\+rj\+\_\+destroy} (\hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$p)
+\item 
+void \hyperlink{part2d__regression__rj_8h_a39ddec34b95e93ea9b108047c0e07a57}{part2d\+\_\+regression\+\_\+rj\+\_\+clone} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$src, \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$dst)
+\item 
+double \hyperlink{part2d__regression__rj_8h_a8584e2f10ba30096b6f981652fd586ef}{part2d\+\_\+regression\+\_\+rj\+\_\+misfit} (\hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$p, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$$\ast$datasets, int ndatasets)
+\item 
+int \hyperlink{part2d__regression__rj_8h_ab45d5059b31cf6780f787074462c0872}{part2d\+\_\+regression\+\_\+rj\+\_\+evaluate} (\hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current, int di, double xmin, double xmax, int xsamples, double ymin, double ymax, int ysamples, double $\ast$$\ast$\hyperlink{wellrng_8c_a3d99b005d0fb73033dce14d4a135d01f}{z})
+\item 
+int \hyperlink{part2d__regression__rj_8h_af619c31c59ae8cd4aff74499835f2429}{part2d\+\_\+regression\+\_\+rj\+\_\+initialize} (\hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$p, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal})
+\item 
+int \hyperlink{part2d__regression__rj_8h_a47eddd3c16200e45ae18b6ed88637abf}{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current, \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$proposed, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$birth\+\_\+prob)
+\item 
+int \hyperlink{part2d__regression__rj_8h_a0733737e297d11162b85086e0d7bc8a0}{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current, \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$proposed, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$death\+\_\+prob)
+\item 
+int \hyperlink{part2d__regression__rj_8h_a03cec4e16ef6dec5709d0145ab979d7c}{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current, \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$proposed, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$value\+\_\+prob)
+\item 
+int \hyperlink{part2d__regression__rj_8h_acae6ab3ff7ecae4595fd04add3747ff2}{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+sigma} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current, \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$proposed, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$sigma\+\_\+prob)
+\item 
+int \hyperlink{part2d__regression__rj_8h_a5367556b3738f6ca705f2981ee25b2a8}{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current, \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$proposed, const \hyperlink{dataset2d_8h_a942e85acecf08479c1a4e58600cfe40a}{dataset2d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$move\+\_\+prob)
+\item 
+int \hyperlink{part2d__regression__rj_8h_a747a062f00367ac030394d64c6101244}{part2d\+\_\+regression\+\_\+rj\+\_\+partitions} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current)
+\item 
+double \hyperlink{part2d__regression__rj_8h_a15b52a532608b682c412e1d0ee202895}{part2d\+\_\+regression\+\_\+rj\+\_\+lambda} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current)
+\item 
+double \hyperlink{part2d__regression__rj_8h_ada40af1a5ba10e8d289dd5221d9cbdf6}{part2d\+\_\+regression\+\_\+rj\+\_\+value\+\_\+at} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double \hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\item 
+int \hyperlink{part2d__regression__rj_8h_a0feeab76dc3e33a503ba45184f755717}{part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre} (const \hyperlink{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$current, int pi, double $\ast$\hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x}, double $\ast$\hyperlink{wellrng_8c_ac30de26db5f6d1c18c63913729adca7d}{y})
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+t@{part2d\+\_\+regression\+\_\+rj\+\_\+t}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+t@{part2d\+\_\+regression\+\_\+rj\+\_\+t}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+t}{part2d_regression_rj_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+part2d\+\_\+regression\+\_\+rj} {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t}}\hypertarget{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}{}\label{part2d__regression__rj_8h_ad1fad89a34833691d87c82b765880cbc}
+
+
+\subsection{Function Documentation}
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+clone@{part2d\+\_\+regression\+\_\+rj\+\_\+clone}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+clone@{part2d\+\_\+regression\+\_\+rj\+\_\+clone}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+clone(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$src, part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$dst)}{part2d_regression_rj_clone(const part2d_regression_rj_t *src, part2d_regression_rj_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void part2d\+\_\+regression\+\_\+rj\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{src, }
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a39ddec34b95e93ea9b108047c0e07a57}{}\label{part2d__regression__rj_8h_a39ddec34b95e93ea9b108047c0e07a57}
+
+
+References \+\_\+part2d\+\_\+regression\+\_\+rj\+::max\+\_\+partitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::models, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ndatasets, \+\_\+part2d\+\_\+regression\+\_\+rj\+::npartitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::p, position\+\_\+map2d\+\_\+clone(), R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+V\+O\+ID, and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+V\+O\+ID.
+
+
+
+Referenced by part2d\+\_\+regression(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+lambda(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), and part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+create@{part2d\+\_\+regression\+\_\+rj\+\_\+create}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+create@{part2d\+\_\+regression\+\_\+rj\+\_\+create}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+create(int min\+\_\+part, int max\+\_\+part, int ndatasets, double xmin, double xmax, double ymin, double ymax, double pv, double pdx, double pdy, double pdxy)}{part2d_regression_rj_create(int min_part, int max_part, int ndatasets, double xmin, double xmax, double ymin, double ymax, double pv, double pdx, double pdy, double pdxy)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t}$\ast$ part2d\+\_\+regression\+\_\+rj\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{min\+\_\+part, }
+\item[{int}]{max\+\_\+part, }
+\item[{int}]{ndatasets, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax, }
+\item[{double}]{pv, }
+\item[{double}]{pdx, }
+\item[{double}]{pdy, }
+\item[{double}]{pdxy}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a3a26a143b4150b26c5e1bbc51b826123}{}\label{part2d__regression__rj_8h_a3a26a143b4150b26c5e1bbc51b826123}
+
+
+References \+\_\+part2d\+\_\+regression\+\_\+rj\+::max\+\_\+partitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::min\+\_\+partitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::models, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ndatasets, \+\_\+part2d\+\_\+regression\+\_\+rj\+::npartitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::p, \+\_\+part2d\+\_\+regression\+\_\+rj\+::pdx, \+\_\+part2d\+\_\+regression\+\_\+rj\+::pdxy, \+\_\+part2d\+\_\+regression\+\_\+rj\+::pdy, position\+\_\+map2d\+\_\+create(), \+\_\+part2d\+\_\+regression\+\_\+rj\+::pv, \+\_\+part2d\+\_\+regression\+\_\+rj\+::xmax, \+\_\+part2d\+\_\+regression\+\_\+rj\+::xmin, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ymax, and \+\_\+part2d\+\_\+regression\+\_\+rj\+::ymin.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+destroy@{part2d\+\_\+regression\+\_\+rj\+\_\+destroy}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+destroy@{part2d\+\_\+regression\+\_\+rj\+\_\+destroy}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+destroy(part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$p)}{part2d_regression_rj_destroy(part2d_regression_rj_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}void part2d\+\_\+regression\+\_\+rj\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a9afd075ba9e3d29c54b9dff1ceb56630}{}\label{part2d__regression__rj_8h_a9afd075ba9e3d29c54b9dff1ceb56630}
+
+
+References \+\_\+part2d\+\_\+regression\+\_\+rj\+::max\+\_\+partitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::models, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ndatasets, \+\_\+part2d\+\_\+regression\+\_\+rj\+::p, and position\+\_\+map2d\+\_\+destroy().
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+evaluate@{part2d\+\_\+regression\+\_\+rj\+\_\+evaluate}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+evaluate@{part2d\+\_\+regression\+\_\+rj\+\_\+evaluate}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+evaluate(part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current, int di, double xmin, double xmax, int xsamples, double ymin, double ymax, int ysamples, double $\ast$$\ast$z)}{part2d_regression_rj_evaluate(part2d_regression_rj_t *current, int di, double xmin, double xmax, int xsamples, double ymin, double ymax, int ysamples, double **z)}}]{\setlength{\rightskip}{0pt plus 5cm}int part2d\+\_\+regression\+\_\+rj\+\_\+evaluate (
+\begin{DoxyParamCaption}
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current, }
+\item[{int}]{di, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{int}]{xsamples, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax, }
+\item[{int}]{ysamples, }
+\item[{double $\ast$$\ast$}]{z}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_ab45d5059b31cf6780f787074462c0872}{}\label{part2d__regression__rj_8h_ab45d5059b31cf6780f787074462c0872}
+
+
+References x, and y.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+initialize@{part2d\+\_\+regression\+\_\+rj\+\_\+initialize}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+initialize@{part2d\+\_\+regression\+\_\+rj\+\_\+initialize}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+initialize(part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$p, const dataset2d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal)}{part2d_regression_rj_initialize(part2d_regression_rj_t *p, const dataset2d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal)}}]{\setlength{\rightskip}{0pt plus 5cm}int part2d\+\_\+regression\+\_\+rj\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{p, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_af619c31c59ae8cd4aff74499835f2429}{}\label{part2d__regression__rj_8h_af619c31c59ae8cd4aff74499835f2429}
+
+
+References \+\_\+model\+::a, \+\_\+model\+::lambda, \+\_\+dataset2d\+::lambdamax, \+\_\+dataset2d\+::lambdamin, \+\_\+dataset2d\+::lambdastd, \+\_\+part2d\+\_\+regression\+\_\+rj\+::models, \+\_\+part2d\+\_\+regression\+\_\+rj\+::npartitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::p, position\+\_\+map2d\+\_\+insert(), rjmcmc\+\_\+error(), rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), x, \+\_\+part2d\+\_\+regression\+\_\+rj\+::xmax, \+\_\+part2d\+\_\+regression\+\_\+rj\+::xmin, y, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ymax, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ymin, \+\_\+dataset2d\+::zmax, and \+\_\+dataset2d\+::zmin.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+lambda@{part2d\+\_\+regression\+\_\+rj\+\_\+lambda}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+lambda@{part2d\+\_\+regression\+\_\+rj\+\_\+lambda}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+lambda(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current)}{part2d_regression_rj_lambda(const part2d_regression_rj_t *current)}}]{\setlength{\rightskip}{0pt plus 5cm}double part2d\+\_\+regression\+\_\+rj\+\_\+lambda (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a15b52a532608b682c412e1d0ee202895}{}\label{part2d__regression__rj_8h_a15b52a532608b682c412e1d0ee202895}
+
+
+References \+\_\+model\+::lambda, and \+\_\+part2d\+\_\+regression\+\_\+rj\+::models.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+misfit@{part2d\+\_\+regression\+\_\+rj\+\_\+misfit}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+misfit@{part2d\+\_\+regression\+\_\+rj\+\_\+misfit}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+misfit(part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$p, const dataset2d\+\_\+t $\ast$$\ast$datasets, int ndatasets)}{part2d_regression_rj_misfit(part2d_regression_rj_t *p, const dataset2d_t **datasets, int ndatasets)}}]{\setlength{\rightskip}{0pt plus 5cm}double part2d\+\_\+regression\+\_\+rj\+\_\+misfit (
+\begin{DoxyParamCaption}
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{p, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a8584e2f10ba30096b6f981652fd586ef}{}\label{part2d__regression__rj_8h_a8584e2f10ba30096b6f981652fd586ef}
+
+
+References \+\_\+model\+::lambda, \+\_\+dataset2d\+::lambdastd, \+\_\+part2d\+\_\+regression\+\_\+rj\+::models, \+\_\+point2d\+::n, \+\_\+dataset2d\+::npoints, \+\_\+dataset2d\+::points, \+\_\+point2d\+::x, \+\_\+point2d\+::y, \+\_\+point2d\+::z, and z.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre@{part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre@{part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current, int pi, double $\ast$x, double $\ast$y)}{part2d_regression_rj_partition_centre(const part2d_regression_rj_t *current, int pi, double *x, double *y)}}]{\setlength{\rightskip}{0pt plus 5cm}int part2d\+\_\+regression\+\_\+rj\+\_\+partition\+\_\+centre (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current, }
+\item[{int}]{pi, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a0feeab76dc3e33a503ba45184f755717}{}\label{part2d__regression__rj_8h_a0feeab76dc3e33a503ba45184f755717}
+
+
+References \+\_\+model\+::a, \+\_\+model\+::lambda, \+\_\+part2d\+\_\+regression\+\_\+rj\+::models, \+\_\+part2d\+\_\+regression\+\_\+rj\+::p, position\+\_\+map2d\+\_\+nearest(), position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+V\+O\+ID, x, \+\_\+part2d\+\_\+regression\+\_\+rj\+::xmax, \+\_\+part2d\+\_\+regression\+\_\+rj\+::xmin, y, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ymax, and \+\_\+part2d\+\_\+regression\+\_\+rj\+::ymin.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+partitions@{part2d\+\_\+regression\+\_\+rj\+\_\+partitions}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+partitions@{part2d\+\_\+regression\+\_\+rj\+\_\+partitions}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+partitions(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current)}{part2d_regression_rj_partitions(const part2d_regression_rj_t *current)}}]{\setlength{\rightskip}{0pt plus 5cm}int part2d\+\_\+regression\+\_\+rj\+\_\+partitions (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a747a062f00367ac030394d64c6101244}{}\label{part2d__regression__rj_8h_a747a062f00367ac030394d64c6101244}
+
+
+References \+\_\+part2d\+\_\+regression\+\_\+rj\+::npartitions.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current, part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$proposed, const dataset2d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$birth\+\_\+prob)}{part2d_regression_rj_propose_birth(const part2d_regression_rj_t *current, part2d_regression_rj_t *proposed, const dataset2d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *birth_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{birth\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a47eddd3c16200e45ae18b6ed88637abf}{}\label{part2d__regression__rj_8h_a47eddd3c16200e45ae18b6ed88637abf}
+
+
+References \+\_\+model\+::a, \+\_\+part2d\+\_\+regression\+\_\+rj\+::max\+\_\+partitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::models, normal, \+\_\+part2d\+\_\+regression\+\_\+rj\+::npartitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::p, part2d\+\_\+regression\+\_\+rj\+\_\+clone(), position\+\_\+map2d\+\_\+insert(), \+\_\+part2d\+\_\+regression\+\_\+rj\+::pv, rjmcmc\+\_\+error(), rjmcmc\+\_\+gaussian\+\_\+probability(), rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), x, \+\_\+part2d\+\_\+regression\+\_\+rj\+::xmax, \+\_\+part2d\+\_\+regression\+\_\+rj\+::xmin, y, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ymax, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ymin, \+\_\+dataset2d\+::zmax, and \+\_\+dataset2d\+::zmin.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current, part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$proposed, const dataset2d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$death\+\_\+prob)}{part2d_regression_rj_propose_death(const part2d_regression_rj_t *current, part2d_regression_rj_t *proposed, const dataset2d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *death_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{death\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a0733737e297d11162b85086e0d7bc8a0}{}\label{part2d__regression__rj_8h_a0733737e297d11162b85086e0d7bc8a0}
+
+
+References \+\_\+part2d\+\_\+regression\+\_\+rj\+::max\+\_\+partitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::min\+\_\+partitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::models, \+\_\+part2d\+\_\+regression\+\_\+rj\+::ndatasets, \+\_\+part2d\+\_\+regression\+\_\+rj\+::npartitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::p, part2d\+\_\+regression\+\_\+rj\+\_\+clone(), position\+\_\+map2d\+\_\+delete(), position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index(), \+\_\+part2d\+\_\+regression\+\_\+rj\+::pv, rjmcmc\+\_\+error(), rjmcmc\+\_\+gaussian\+\_\+probability(), and rjmcmc\+\_\+random\+\_\+choose\+\_\+int().
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current, part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$proposed, const dataset2d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$move\+\_\+prob)}{part2d_regression_rj_propose_move(const part2d_regression_rj_t *current, part2d_regression_rj_t *proposed, const dataset2d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *move_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{move\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a5367556b3738f6ca705f2981ee25b2a8}{}\label{part2d__regression__rj_8h_a5367556b3738f6ca705f2981ee25b2a8}
+
+
+References normal, \+\_\+part2d\+\_\+regression\+\_\+rj\+::npartitions, \+\_\+part2d\+\_\+regression\+\_\+rj\+::p, part2d\+\_\+regression\+\_\+rj\+\_\+clone(), \+\_\+part2d\+\_\+regression\+\_\+rj\+::pdx, \+\_\+part2d\+\_\+regression\+\_\+rj\+::pdy, position\+\_\+map2d\+\_\+move(), position\+\_\+map2d\+\_\+position\+\_\+of\+\_\+index(), rjmcmc\+\_\+error(), rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), \+\_\+part2d\+\_\+regression\+\_\+rj\+::xmax, and \+\_\+part2d\+\_\+regression\+\_\+rj\+::ymax.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+sigma@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+sigma}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+sigma@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+sigma}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+sigma(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current, part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$proposed, const dataset2d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$sigma\+\_\+prob)}{part2d_regression_rj_propose_sigma(const part2d_regression_rj_t *current, part2d_regression_rj_t *proposed, const dataset2d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *sigma_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+sigma (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{sigma\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_acae6ab3ff7ecae4595fd04add3747ff2}{}\label{part2d__regression__rj_8h_acae6ab3ff7ecae4595fd04add3747ff2}
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value@{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current, part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$proposed, const dataset2d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$value\+\_\+prob)}{part2d_regression_rj_propose_value(const part2d_regression_rj_t *current, part2d_regression_rj_t *proposed, const dataset2d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *value_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset2d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{value\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_a03cec4e16ef6dec5709d0145ab979d7c}{}\label{part2d__regression__rj_8h_a03cec4e16ef6dec5709d0145ab979d7c}
+
+
+References \+\_\+model\+::a, \+\_\+part2d\+\_\+regression\+\_\+rj\+::models, normal, \+\_\+part2d\+\_\+regression\+\_\+rj\+::npartitions, part2d\+\_\+regression\+\_\+rj\+\_\+clone(), \+\_\+part2d\+\_\+regression\+\_\+rj\+::pv, rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), and \+\_\+dataset2d\+::zmax.
+
+
+
+Referenced by part2d\+\_\+regression().
+
+\index{part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}!part2d\+\_\+regression\+\_\+rj\+\_\+value\+\_\+at@{part2d\+\_\+regression\+\_\+rj\+\_\+value\+\_\+at}}
+\index{part2d\+\_\+regression\+\_\+rj\+\_\+value\+\_\+at@{part2d\+\_\+regression\+\_\+rj\+\_\+value\+\_\+at}!part2d\+\_\+regression\+\_\+rj.\+h@{part2d\+\_\+regression\+\_\+rj.\+h}}
+\subsubsection[{\texorpdfstring{part2d\+\_\+regression\+\_\+rj\+\_\+value\+\_\+at(const part2d\+\_\+regression\+\_\+rj\+\_\+t $\ast$current, double x, double y)}{part2d_regression_rj_value_at(const part2d_regression_rj_t *current, double x, double y)}}]{\setlength{\rightskip}{0pt plus 5cm}double part2d\+\_\+regression\+\_\+rj\+\_\+value\+\_\+at (
+\begin{DoxyParamCaption}
+\item[{const {\bf part2d\+\_\+regression\+\_\+rj\+\_\+t} $\ast$}]{current, }
+\item[{double}]{x, }
+\item[{double}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{part2d__regression__rj_8h_ada40af1a5ba10e8d289dd5221d9cbdf6}{}\label{part2d__regression__rj_8h_ada40af1a5ba10e8d289dd5221d9cbdf6}
+
+
+Referenced by part2d\+\_\+regression().
+

@@ -1,0 +1,10 @@
+
+This example does a MCMC solution to finding a single target value
+in Fortran.
+
+Instructions:
+
+> make
+> ./simplef
+> python plot_misfit.py
+> python plot_history.py

@@ -1,0 +1,110 @@
+\hypertarget{rjmcmc__random_8c}{}\section{rjmcmc\+\_\+random.\+c File Reference}
+\label{rjmcmc__random_8c}\index{rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/rjmcmc\+\_\+random.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/wellrng.\+h\char`\"{}}\\*
+Include dependency graph for rjmcmc\+\_\+random.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{rjmcmc__random_8c_a0cbc991b84d0f6b749e9b45cbc018d2a}{rjmcmc\+\_\+seed} (int s)
+\item 
+double \hyperlink{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{rjmcmc\+\_\+uniform} (void)
+\item 
+double \hyperlink{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{rjmcmc\+\_\+normal} (void)
+\item 
+double \hyperlink{rjmcmc__random_8c_ab99a758b14f2202bfd823164b4f67640}{rjmcmc\+\_\+random\+\_\+choose\+\_\+double} (double low, double high, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} custom\+\_\+rand)
+\item 
+int \hyperlink{rjmcmc__random_8c_a82b6b15bdb127fea0987cec9c75cf3fe}{rjmcmc\+\_\+random\+\_\+choose\+\_\+int} (int low, int high, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} custom\+\_\+rand)
+\item 
+int \hyperlink{rjmcmc__random_8c_a6250098ef01086347f81f439ec225908}{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval} (const double $\ast$cdf, int n, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} custom\+\_\+rand)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}!rjmcmc\+\_\+normal@{rjmcmc\+\_\+normal}}
+\index{rjmcmc\+\_\+normal@{rjmcmc\+\_\+normal}!rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+normal(void)}{rjmcmc_normal(void)}}]{\setlength{\rightskip}{0pt plus 5cm}double rjmcmc\+\_\+normal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}{}\label{rjmcmc__random_8c_a0f9b049cec5095e2e1c1b3488de1d5c0}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2functionfit_2functionfit_8c-example}{1d/partitioned/fm/functionfit/functionfit.\+c}, \hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}, \hyperlink{1d_2partitioned_2regression_2multiquad_2multiquad_8c-example}{1d/partitioned/regression/multiquad/multiquad.\+c}, \hyperlink{1d_2partitioned_2regression_2multistep_2multistep_8c-example}{1d/partitioned/regression/multistep/multistep.\+c}, \hyperlink{1d_2partitioned_2regression_2sawtooth_2sawtooth_8c-example}{1d/partitioned/regression/sawtooth/sawtooth.\+c}, \hyperlink{1d_2partitioned_2regression_2zeromultistep_2zeromultistep_8c-example}{1d/partitioned/regression/zeromultistep/zeromultistep.\+c}, \hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}, \hyperlink{1d_2single_2regression_2cubic_2cubic_8c-example}{1d/single/regression/cubic/cubic.\+c}, \hyperlink{2d_2partitioned_2fm_2regression_2regression_8c-example}{2d/partitioned/fm/regression/regression.\+c}, \hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}, \hyperlink{2d_2partitioned_2regression_2disc_2disc_8c-example}{2d/partitioned/regression/disc/disc.\+c}, and \hyperlink{2d_2partitioned_2regression_2square_2square_8c-example}{2d/partitioned/regression/square/square.\+c}.\end{Desc}
+
+
+References wellrng\+\_\+init\+\_\+simple(), and wellrng\+\_\+sample().
+
+\index{rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}!rjmcmc\+\_\+random\+\_\+choose\+\_\+double@{rjmcmc\+\_\+random\+\_\+choose\+\_\+double}}
+\index{rjmcmc\+\_\+random\+\_\+choose\+\_\+double@{rjmcmc\+\_\+random\+\_\+choose\+\_\+double}!rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+random\+\_\+choose\+\_\+double(double low, double high, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t custom\+\_\+rand)}{rjmcmc_random_choose_double(double low, double high, rjmcmc_uniform_rand_t custom_rand)}}]{\setlength{\rightskip}{0pt plus 5cm}double rjmcmc\+\_\+random\+\_\+choose\+\_\+double (
+\begin{DoxyParamCaption}
+\item[{double}]{low, }
+\item[{double}]{high, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{custom\+\_\+rand}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8c_ab99a758b14f2202bfd823164b4f67640}{}\label{rjmcmc__random_8c_ab99a758b14f2202bfd823164b4f67640}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}, and \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}.\end{Desc}
+
+
+Referenced by part1d\+\_\+forwardmodel\+\_\+initialize(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part1d\+\_\+natural\+\_\+rj\+\_\+initialize(), part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+zero\+\_\+initialize(), part1d\+\_\+zero\+\_\+propose\+\_\+birth(), part1d\+\_\+zero\+\_\+propose\+\_\+death(), part1d\+\_\+zero\+\_\+propose\+\_\+move(), part1d\+\_\+zero\+\_\+propose\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+initialize(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+birth(), part2d\+\_\+regression\+\_\+rj\+\_\+initialize(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+birth(), single1d\+\_\+regression\+\_\+initialize(), and single\+\_\+forwardmodel\+\_\+hierarchical().
+
+\index{rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}!rjmcmc\+\_\+random\+\_\+choose\+\_\+int@{rjmcmc\+\_\+random\+\_\+choose\+\_\+int}}
+\index{rjmcmc\+\_\+random\+\_\+choose\+\_\+int@{rjmcmc\+\_\+random\+\_\+choose\+\_\+int}!rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+random\+\_\+choose\+\_\+int(int low, int high, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t custom\+\_\+rand)}{rjmcmc_random_choose_int(int low, int high, rjmcmc_uniform_rand_t custom_rand)}}]{\setlength{\rightskip}{0pt plus 5cm}int rjmcmc\+\_\+random\+\_\+choose\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{int}]{low, }
+\item[{int}]{high, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{custom\+\_\+rand}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8c_a82b6b15bdb127fea0987cec9c75cf3fe}{}\label{rjmcmc__random_8c_a82b6b15bdb127fea0987cec9c75cf3fe}
+
+
+Referenced by M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural(), M\+P\+I\+\_\+part1d\+\_\+forwardmodel\+\_\+natural\+\_\+hierarchical(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+checkpoint\+\_\+restart(), M\+P\+I\+\_\+part2d\+\_\+forwardmodel\+\_\+hierarchical\+\_\+restartable(), M\+P\+I\+\_\+single1d\+\_\+regression(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), part1d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+natural\+\_\+rj\+\_\+propose\+\_\+value(), part1d\+\_\+regression(), part1d\+\_\+regression\+\_\+rj\+\_\+initialize(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(), part1d\+\_\+zero\+\_\+propose\+\_\+death(), part1d\+\_\+zero\+\_\+propose\+\_\+lambda(), part1d\+\_\+zero\+\_\+propose\+\_\+move(), part1d\+\_\+zero\+\_\+propose\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+death(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+global\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+hierarchical(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+local\+\_\+value(), part2d\+\_\+forwardmodel\+\_\+propose\+\_\+move(), part2d\+\_\+regression(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+death(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+lambda(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), part2d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+value(), single1d\+\_\+regression\+\_\+initialize(), and single\+\_\+forwardmodel\+\_\+hierarchical().
+
+\index{rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}!rjmcmc\+\_\+random\+\_\+choose\+\_\+interval@{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval}}
+\index{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval@{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval}!rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+random\+\_\+choose\+\_\+interval(const double $\ast$cdf, int n, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t custom\+\_\+rand)}{rjmcmc_random_choose_interval(const double *cdf, int n, rjmcmc_uniform_rand_t custom_rand)}}]{\setlength{\rightskip}{0pt plus 5cm}int rjmcmc\+\_\+random\+\_\+choose\+\_\+interval (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{cdf, }
+\item[{int}]{n, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{custom\+\_\+rand}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8c_a6250098ef01086347f81f439ec225908}{}\label{rjmcmc__random_8c_a6250098ef01086347f81f439ec225908}
+
+
+Referenced by part1d\+\_\+regression\+\_\+rj\+\_\+propose\+\_\+move(), and single1d\+\_\+regression\+\_\+propose\+\_\+value().
+
+\index{rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}!rjmcmc\+\_\+seed@{rjmcmc\+\_\+seed}}
+\index{rjmcmc\+\_\+seed@{rjmcmc\+\_\+seed}!rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+seed(int s)}{rjmcmc_seed(int s)}}]{\setlength{\rightskip}{0pt plus 5cm}void rjmcmc\+\_\+seed (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8c_a0cbc991b84d0f6b749e9b45cbc018d2a}{}\label{rjmcmc__random_8c_a0cbc991b84d0f6b749e9b45cbc018d2a}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2regression_2zeromultistep_2zeromultistep_8c-example}{1d/partitioned/regression/zeromultistep/zeromultistep.\+c}, and \hyperlink{2d_2partitioned_2fm_2regression_2regression_8c-example}{2d/partitioned/fm/regression/regression.\+c}.\end{Desc}
+
+
+References wellrng\+\_\+destroy(), and wellrng\+\_\+init\+\_\+simple().
+
+\index{rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}!rjmcmc\+\_\+uniform@{rjmcmc\+\_\+uniform}}
+\index{rjmcmc\+\_\+uniform@{rjmcmc\+\_\+uniform}!rjmcmc\+\_\+random.\+c@{rjmcmc\+\_\+random.\+c}}
+\subsubsection[{\texorpdfstring{rjmcmc\+\_\+uniform(void)}{rjmcmc_uniform(void)}}]{\setlength{\rightskip}{0pt plus 5cm}double rjmcmc\+\_\+uniform (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}{}\label{rjmcmc__random_8c_ab82b2ece8acc3f5a05ff2f270794f9be}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{1d_2partitioned_2fm_2functionfit_2functionfit_8c-example}{1d/partitioned/fm/functionfit/functionfit.\+c}, \hyperlink{1d_2partitioned_2fm_2regression_2regression_8c-example}{1d/partitioned/fm/regression/regression.\+c}, \hyperlink{1d_2partitioned_2regression_2multiquad_2multiquad_8c-example}{1d/partitioned/regression/multiquad/multiquad.\+c}, \hyperlink{1d_2partitioned_2regression_2multistep_2multistep_8c-example}{1d/partitioned/regression/multistep/multistep.\+c}, \hyperlink{1d_2partitioned_2regression_2sawtooth_2sawtooth_8c-example}{1d/partitioned/regression/sawtooth/sawtooth.\+c}, \hyperlink{1d_2partitioned_2regression_2zeromultistep_2zeromultistep_8c-example}{1d/partitioned/regression/zeromultistep/zeromultistep.\+c}, \hyperlink{1d_2single_2fm_2simpleimage_2simpleimage_8c-example}{1d/single/fm/simpleimage/simpleimage.\+c}, \hyperlink{1d_2single_2fm_2spherefit_2spherefit_8c-example}{1d/single/fm/spherefit/spherefit.\+c}, \hyperlink{1d_2single_2regression_2cubic_2cubic_8c-example}{1d/single/regression/cubic/cubic.\+c}, \hyperlink{2d_2partitioned_2fm_2regression_2regression_8c-example}{2d/partitioned/fm/regression/regression.\+c}, \hyperlink{2d_2partitioned_2regression_2callbackex_2callbackex_8c-example}{2d/partitioned/regression/callbackex/callbackex.\+c}, \hyperlink{2d_2partitioned_2regression_2disc_2disc_8c-example}{2d/partitioned/regression/disc/disc.\+c}, and \hyperlink{2d_2partitioned_2regression_2square_2square_8c-example}{2d/partitioned/regression/square/square.\+c}.\end{Desc}
+
+
+References wellrng\+\_\+init\+\_\+simple(), and wellrng\+\_\+sample().
+

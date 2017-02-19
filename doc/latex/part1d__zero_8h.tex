@@ -1,0 +1,322 @@
+\hypertarget{part1d__zero_8h}{}\section{part1d\+\_\+zero.\+h File Reference}
+\label{part1d__zero_8h}\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+{\ttfamily \#include \char`\"{}rjmcmc/dataset1d.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rjmcmc/rjmcmc\+\_\+random.\+h\char`\"{}}\\*
+Include dependency graph for part1d\+\_\+zero.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__part1d__zero}{\+\_\+part1d\+\_\+zero} \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$ \hyperlink{part1d__zero_8h_a89f2b03964a27bcd125ce9981323f4a0}{part1d\+\_\+zero\+\_\+create} (int min\+\_\+part, int max\+\_\+part, int ndatasets, double xmin, double xmax, double pd)
+\item 
+void \hyperlink{part1d__zero_8h_a086ee9317e05265d01dd988fb39af9af}{part1d\+\_\+zero\+\_\+destroy} (\hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$p)
+\item 
+void \hyperlink{part1d__zero_8h_a06575107acd2b71640243e81c0e5fdee}{part1d\+\_\+zero\+\_\+clone} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$src, \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$dst)
+\item 
+double \hyperlink{part1d__zero_8h_aaed536dbbc3b52f12df1a8c40a186f93}{part1d\+\_\+zero\+\_\+value\+\_\+at} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current, double \hyperlink{wellrng_8c_a676e0da0ef83bbbdf42538e54b97506b}{x})
+\item 
+int \hyperlink{part1d__zero_8h_a64e16303d7fe12920ca706049f5b770c}{part1d\+\_\+zero\+\_\+evaluate} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current, int di, double xmin, double xmax, int xsamples, double $\ast$v)
+\item 
+double \hyperlink{part1d__zero_8h_a82b5b9f35264ecbbff950ea5e5199ec2}{part1d\+\_\+zero\+\_\+misfit} (\hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$p, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$$\ast$datasets, int ndatasets)
+\item 
+int \hyperlink{part1d__zero_8h_a52ad71f83bb2cf9413d66ccba7937d7e}{part1d\+\_\+zero\+\_\+initialize} (\hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$p, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal})
+\item 
+int \hyperlink{part1d__zero_8h_a9f9c34a97c07a5900ca20d33b00f1146}{part1d\+\_\+zero\+\_\+propose\+\_\+birth} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current, \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$proposed, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$birth\+\_\+prob)
+\item 
+int \hyperlink{part1d__zero_8h_a89d4ccb764547b68abe2d733e4fc0235}{part1d\+\_\+zero\+\_\+propose\+\_\+death} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current, \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$proposed, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$death\+\_\+prob)
+\item 
+int \hyperlink{part1d__zero_8h_a3587a034ca515b57e9e4b6a6812c6c6e}{part1d\+\_\+zero\+\_\+propose\+\_\+value} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current, \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$proposed, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$value\+\_\+prob)
+\item 
+int \hyperlink{part1d__zero_8h_aa9294d3d88a33b981799f4c46a27c827}{part1d\+\_\+zero\+\_\+propose\+\_\+lambda} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current, \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$proposed, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$sigma\+\_\+prob)
+\item 
+int \hyperlink{part1d__zero_8h_a4dda3aeb5891919fb067bfe2273bad0a}{part1d\+\_\+zero\+\_\+propose\+\_\+move} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current, \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$proposed, const \hyperlink{dataset1d_8h_a232f8372957af83ed6a261e9b89dd8f6}{dataset1d\+\_\+t} $\ast$$\ast$datasets, int ndatasets, \hyperlink{rjmcmc__random_8h_accc36e83459ada552d8f70962190dac0}{rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a361f30102277b1d490d4edc190afccf6}{random}, \hyperlink{rjmcmc__random_8h_a498625755d377b68ad37c9ab360e83b0}{rjmcmc\+\_\+normal\+\_\+rand\+\_\+t} \hyperlink{rjmcmcf__mpi_8h_a6304ff7c79f9217c47a3373e460e3cfc}{normal}, double $\ast$move\+\_\+prob)
+\item 
+int \hyperlink{part1d__zero_8h_ad17ecbfbd506d6137d3b3b8c633bbd44}{part1d\+\_\+zero\+\_\+partitions} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current)
+\item 
+double \hyperlink{part1d__zero_8h_a4cebbeb4367222992ae5d3e2a4d657b2}{part1d\+\_\+zero\+\_\+partition\+\_\+position} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current, int pi)
+\item 
+double \hyperlink{part1d__zero_8h_a2fd33afcf19d3c92637a3dc675116abc}{part1d\+\_\+zero\+\_\+lambda} (const \hyperlink{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{part1d\+\_\+zero\+\_\+t} $\ast$current, int di)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+t@{part1d\+\_\+zero\+\_\+t}}
+\index{part1d\+\_\+zero\+\_\+t@{part1d\+\_\+zero\+\_\+t}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+t}{part1d_zero_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+part1d\+\_\+zero} {\bf part1d\+\_\+zero\+\_\+t}}\hypertarget{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}{}\label{part1d__zero_8h_a03a856fcdfe27544c68d2d1a7cc16dc3}
+
+
+\subsection{Function Documentation}
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+clone@{part1d\+\_\+zero\+\_\+clone}}
+\index{part1d\+\_\+zero\+\_\+clone@{part1d\+\_\+zero\+\_\+clone}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+clone(const part1d\+\_\+zero\+\_\+t $\ast$src, part1d\+\_\+zero\+\_\+t $\ast$dst)}{part1d_zero_clone(const part1d_zero_t *src, part1d_zero_t *dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void part1d\+\_\+zero\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{src, }
+\item[{{\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a06575107acd2b71640243e81c0e5fdee}{}\label{part1d__zero_8h_a06575107acd2b71640243e81c0e5fdee}
+
+
+References \+\_\+part1d\+\_\+zero\+::max\+\_\+partitions, \+\_\+part1d\+\_\+zero\+::models, \+\_\+part1d\+\_\+zero\+::ndatasets, \+\_\+part1d\+\_\+zero\+::npartitions, \+\_\+part1d\+\_\+zero\+::p, position\+\_\+map1d\+\_\+clone(), R\+J\+M\+C\+M\+C\+\_\+\+C\+O\+N\+D\+I\+T\+I\+O\+N\+C\+H\+E\+C\+K\+V\+O\+ID, and R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+V\+O\+ID.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+propose\+\_\+birth(), part1d\+\_\+zero\+\_\+propose\+\_\+death(), part1d\+\_\+zero\+\_\+propose\+\_\+lambda(), part1d\+\_\+zero\+\_\+propose\+\_\+move(), part1d\+\_\+zero\+\_\+propose\+\_\+value(), and part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+create@{part1d\+\_\+zero\+\_\+create}}
+\index{part1d\+\_\+zero\+\_\+create@{part1d\+\_\+zero\+\_\+create}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+create(int min\+\_\+part, int max\+\_\+part, int ndatasets, double xmin, double xmax, double pd)}{part1d_zero_create(int min_part, int max_part, int ndatasets, double xmin, double xmax, double pd)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf part1d\+\_\+zero\+\_\+t}$\ast$ part1d\+\_\+zero\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{int}]{min\+\_\+part, }
+\item[{int}]{max\+\_\+part, }
+\item[{int}]{ndatasets, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{pd}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a89f2b03964a27bcd125ce9981323f4a0}{}\label{part1d__zero_8h_a89f2b03964a27bcd125ce9981323f4a0}
+
+
+References \+\_\+part1d\+\_\+zero\+::max\+\_\+partitions, \+\_\+part1d\+\_\+zero\+::min\+\_\+partitions, \+\_\+part1d\+\_\+zero\+::models, \+\_\+part1d\+\_\+zero\+::ndatasets, \+\_\+part1d\+\_\+zero\+::npartitions, \+\_\+part1d\+\_\+zero\+::p, \+\_\+part1d\+\_\+zero\+::pd, position\+\_\+map1d\+\_\+create(), \+\_\+part1d\+\_\+zero\+::xmax, and \+\_\+part1d\+\_\+zero\+::xmin.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+destroy@{part1d\+\_\+zero\+\_\+destroy}}
+\index{part1d\+\_\+zero\+\_\+destroy@{part1d\+\_\+zero\+\_\+destroy}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+destroy(part1d\+\_\+zero\+\_\+t $\ast$p)}{part1d_zero_destroy(part1d_zero_t *p)}}]{\setlength{\rightskip}{0pt plus 5cm}void part1d\+\_\+zero\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a086ee9317e05265d01dd988fb39af9af}{}\label{part1d__zero_8h_a086ee9317e05265d01dd988fb39af9af}
+
+
+References \+\_\+part1d\+\_\+zero\+::max\+\_\+partitions, \+\_\+part1d\+\_\+zero\+::models, \+\_\+part1d\+\_\+zero\+::ndatasets, \+\_\+part1d\+\_\+zero\+::p, and position\+\_\+map1d\+\_\+destroy().
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+evaluate@{part1d\+\_\+zero\+\_\+evaluate}}
+\index{part1d\+\_\+zero\+\_\+evaluate@{part1d\+\_\+zero\+\_\+evaluate}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+evaluate(const part1d\+\_\+zero\+\_\+t $\ast$current, int di, double xmin, double xmax, int xsamples, double $\ast$v)}{part1d_zero_evaluate(const part1d_zero_t *current, int di, double xmin, double xmax, int xsamples, double *v)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+zero\+\_\+evaluate (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current, }
+\item[{int}]{di, }
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{int}]{xsamples, }
+\item[{double $\ast$}]{v}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a64e16303d7fe12920ca706049f5b770c}{}\label{part1d__zero_8h_a64e16303d7fe12920ca706049f5b770c}
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+initialize@{part1d\+\_\+zero\+\_\+initialize}}
+\index{part1d\+\_\+zero\+\_\+initialize@{part1d\+\_\+zero\+\_\+initialize}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+initialize(part1d\+\_\+zero\+\_\+t $\ast$p, const dataset1d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal)}{part1d_zero_initialize(part1d_zero_t *p, const dataset1d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+zero\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{{\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{p, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a52ad71f83bb2cf9413d66ccba7937d7e}{}\label{part1d__zero_8h_a52ad71f83bb2cf9413d66ccba7937d7e}
+
+
+References initialize\+\_\+cb\+\_\+data\+::datasets, \+\_\+model\+::lambda, \+\_\+part1d\+\_\+zero\+::models, initialize\+\_\+cb\+\_\+data\+::ndatasets, normal, initialize\+\_\+cb\+\_\+data\+::normal, \+\_\+part1d\+\_\+zero\+::npartitions, \+\_\+part1d\+\_\+zero\+::p, initialize\+\_\+cb\+\_\+data\+::p, position\+\_\+map1d\+\_\+insert(), position\+\_\+map1d\+\_\+traverse\+\_\+intervals(), random, initialize\+\_\+cb\+\_\+data\+::random, rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), x, \+\_\+part1d\+\_\+zero\+::xmax, and \+\_\+part1d\+\_\+zero\+::xmin.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+lambda@{part1d\+\_\+zero\+\_\+lambda}}
+\index{part1d\+\_\+zero\+\_\+lambda@{part1d\+\_\+zero\+\_\+lambda}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+lambda(const part1d\+\_\+zero\+\_\+t $\ast$current, int di)}{part1d_zero_lambda(const part1d_zero_t *current, int di)}}]{\setlength{\rightskip}{0pt plus 5cm}double part1d\+\_\+zero\+\_\+lambda (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current, }
+\item[{int}]{di}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a2fd33afcf19d3c92637a3dc675116abc}{}\label{part1d__zero_8h_a2fd33afcf19d3c92637a3dc675116abc}
+
+
+References \+\_\+model\+::lambda, and \+\_\+part1d\+\_\+zero\+::models.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+misfit@{part1d\+\_\+zero\+\_\+misfit}}
+\index{part1d\+\_\+zero\+\_\+misfit@{part1d\+\_\+zero\+\_\+misfit}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+misfit(part1d\+\_\+zero\+\_\+t $\ast$p, const dataset1d\+\_\+t $\ast$$\ast$datasets, int ndatasets)}{part1d_zero_misfit(part1d_zero_t *p, const dataset1d_t **datasets, int ndatasets)}}]{\setlength{\rightskip}{0pt plus 5cm}double part1d\+\_\+zero\+\_\+misfit (
+\begin{DoxyParamCaption}
+\item[{{\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{p, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a82b5b9f35264ecbbff950ea5e5199ec2}{}\label{part1d__zero_8h_a82b5b9f35264ecbbff950ea5e5199ec2}
+
+
+References \+\_\+model\+::lambda, \+\_\+dataset1d\+::lambdastd, \+\_\+part1d\+\_\+zero\+::models, \+\_\+point1d\+::n, initialize\+\_\+cb\+\_\+data\+::ndatasets, \+\_\+dataset1d\+::npoints, \+\_\+dataset1d\+::points, \+\_\+point1d\+::x, \+\_\+point1d\+::y, and y.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+partition\+\_\+position@{part1d\+\_\+zero\+\_\+partition\+\_\+position}}
+\index{part1d\+\_\+zero\+\_\+partition\+\_\+position@{part1d\+\_\+zero\+\_\+partition\+\_\+position}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+partition\+\_\+position(const part1d\+\_\+zero\+\_\+t $\ast$current, int pi)}{part1d_zero_partition_position(const part1d_zero_t *current, int pi)}}]{\setlength{\rightskip}{0pt plus 5cm}double part1d\+\_\+zero\+\_\+partition\+\_\+position (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current, }
+\item[{int}]{pi}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a4cebbeb4367222992ae5d3e2a4d657b2}{}\label{part1d__zero_8h_a4cebbeb4367222992ae5d3e2a4d657b2}
+
+
+References \+\_\+part1d\+\_\+zero\+::p, and position\+\_\+map1d\+\_\+position\+\_\+of\+\_\+index().
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+partitions@{part1d\+\_\+zero\+\_\+partitions}}
+\index{part1d\+\_\+zero\+\_\+partitions@{part1d\+\_\+zero\+\_\+partitions}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+partitions(const part1d\+\_\+zero\+\_\+t $\ast$current)}{part1d_zero_partitions(const part1d_zero_t *current)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+zero\+\_\+partitions (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_ad17ecbfbd506d6137d3b3b8c633bbd44}{}\label{part1d__zero_8h_ad17ecbfbd506d6137d3b3b8c633bbd44}
+
+
+References \+\_\+part1d\+\_\+zero\+::npartitions.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+propose\+\_\+birth@{part1d\+\_\+zero\+\_\+propose\+\_\+birth}}
+\index{part1d\+\_\+zero\+\_\+propose\+\_\+birth@{part1d\+\_\+zero\+\_\+propose\+\_\+birth}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+propose\+\_\+birth(const part1d\+\_\+zero\+\_\+t $\ast$current, part1d\+\_\+zero\+\_\+t $\ast$proposed, const dataset1d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$birth\+\_\+prob)}{part1d_zero_propose_birth(const part1d_zero_t *current, part1d_zero_t *proposed, const dataset1d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *birth_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+zero\+\_\+propose\+\_\+birth (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{birth\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a9f9c34a97c07a5900ca20d33b00f1146}{}\label{part1d__zero_8h_a9f9c34a97c07a5900ca20d33b00f1146}
+
+
+References \+\_\+model\+::a, dataset1d\+\_\+mean\+\_\+variance(), dataset1d\+\_\+range(), \+\_\+part1d\+\_\+zero\+::max\+\_\+partitions, \+\_\+model\+::mean, \+\_\+part1d\+\_\+zero\+::models, initialize\+\_\+cb\+\_\+data\+::ndatasets, normal, \+\_\+part1d\+\_\+zero\+::npartitions, \+\_\+part1d\+\_\+zero\+::p, part1d\+\_\+zero\+\_\+clone(), position\+\_\+map1d\+\_\+insert(), position\+\_\+map1d\+\_\+next\+\_\+position(), position\+\_\+map1d\+\_\+position\+\_\+of\+\_\+index(), position\+\_\+map1d\+\_\+predecessor\+\_\+of\+\_\+index(), random, rjmcmc\+\_\+error(), rjmcmc\+\_\+gaussian\+\_\+probability(), rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), \+\_\+model\+::var, \+\_\+part1d\+\_\+zero\+::xmax, \+\_\+part1d\+\_\+zero\+::xmin, \+\_\+dataset1d\+::ymax, and \+\_\+dataset1d\+::ymin.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+propose\+\_\+death@{part1d\+\_\+zero\+\_\+propose\+\_\+death}}
+\index{part1d\+\_\+zero\+\_\+propose\+\_\+death@{part1d\+\_\+zero\+\_\+propose\+\_\+death}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+propose\+\_\+death(const part1d\+\_\+zero\+\_\+t $\ast$current, part1d\+\_\+zero\+\_\+t $\ast$proposed, const dataset1d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$death\+\_\+prob)}{part1d_zero_propose_death(const part1d_zero_t *current, part1d_zero_t *proposed, const dataset1d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *death_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+zero\+\_\+propose\+\_\+death (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{death\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a89d4ccb764547b68abe2d733e4fc0235}{}\label{part1d__zero_8h_a89d4ccb764547b68abe2d733e4fc0235}
+
+
+References \+\_\+model\+::a, dataset1d\+\_\+mean\+\_\+variance(), dataset1d\+\_\+range(), \+\_\+part1d\+\_\+zero\+::max\+\_\+partitions, \+\_\+model\+::mean, \+\_\+part1d\+\_\+zero\+::min\+\_\+partitions, \+\_\+part1d\+\_\+zero\+::models, \+\_\+part1d\+\_\+zero\+::ndatasets, initialize\+\_\+cb\+\_\+data\+::ndatasets, normal, \+\_\+part1d\+\_\+zero\+::npartitions, \+\_\+part1d\+\_\+zero\+::p, part1d\+\_\+zero\+\_\+clone(), position\+\_\+map1d\+\_\+delete(), position\+\_\+map1d\+\_\+position\+\_\+of\+\_\+index(), position\+\_\+map1d\+\_\+predecessor\+\_\+of\+\_\+index(), position\+\_\+map1d\+\_\+predecessor\+\_\+of\+\_\+point(), position\+\_\+map1d\+\_\+successor\+\_\+of\+\_\+point(), rjmcmc\+\_\+error(), rjmcmc\+\_\+gaussian\+\_\+probability(), rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), \+\_\+model\+::var, \+\_\+dataset1d\+::ymax, and \+\_\+dataset1d\+::ymin.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+propose\+\_\+lambda@{part1d\+\_\+zero\+\_\+propose\+\_\+lambda}}
+\index{part1d\+\_\+zero\+\_\+propose\+\_\+lambda@{part1d\+\_\+zero\+\_\+propose\+\_\+lambda}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+propose\+\_\+lambda(const part1d\+\_\+zero\+\_\+t $\ast$current, part1d\+\_\+zero\+\_\+t $\ast$proposed, const dataset1d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$sigma\+\_\+prob)}{part1d_zero_propose_lambda(const part1d_zero_t *current, part1d_zero_t *proposed, const dataset1d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *sigma_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+zero\+\_\+propose\+\_\+lambda (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{sigma\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_aa9294d3d88a33b981799f4c46a27c827}{}\label{part1d__zero_8h_aa9294d3d88a33b981799f4c46a27c827}
+
+
+References \+\_\+model\+::a, \+\_\+model\+::lambda, \+\_\+dataset1d\+::lambdamax, \+\_\+dataset1d\+::lambdastd, \+\_\+model\+::mean, \+\_\+part1d\+\_\+zero\+::models, initialize\+\_\+cb\+\_\+data\+::ndatasets, normal, \+\_\+dataset1d\+::npoints, part1d\+\_\+zero\+\_\+clone(), rjmcmc\+\_\+create\+\_\+array\+\_\+1d(), rjmcmc\+\_\+destroy\+\_\+array\+\_\+1d(), R\+J\+M\+C\+M\+C\+\_\+\+N\+U\+L\+L\+C\+H\+E\+C\+K\+V\+O\+ID, rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), and \+\_\+model\+::var.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+propose\+\_\+move@{part1d\+\_\+zero\+\_\+propose\+\_\+move}}
+\index{part1d\+\_\+zero\+\_\+propose\+\_\+move@{part1d\+\_\+zero\+\_\+propose\+\_\+move}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+propose\+\_\+move(const part1d\+\_\+zero\+\_\+t $\ast$current, part1d\+\_\+zero\+\_\+t $\ast$proposed, const dataset1d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$move\+\_\+prob)}{part1d_zero_propose_move(const part1d_zero_t *current, part1d_zero_t *proposed, const dataset1d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *move_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+zero\+\_\+propose\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{move\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a4dda3aeb5891919fb067bfe2273bad0a}{}\label{part1d__zero_8h_a4dda3aeb5891919fb067bfe2273bad0a}
+
+
+References \+\_\+model\+::a, dataset1d\+\_\+mean\+\_\+variance(), dataset1d\+\_\+range(), \+\_\+model\+::mean, \+\_\+part1d\+\_\+zero\+::models, initialize\+\_\+cb\+\_\+data\+::ndatasets, normal, \+\_\+part1d\+\_\+zero\+::npartitions, \+\_\+part1d\+\_\+zero\+::p, part1d\+\_\+zero\+\_\+clone(), \+\_\+part1d\+\_\+zero\+::pd, position\+\_\+map1d\+\_\+move(), position\+\_\+map1d\+\_\+position\+\_\+of\+\_\+index(), position\+\_\+map1d\+\_\+predecessor\+\_\+of\+\_\+index(), position\+\_\+map1d\+\_\+successor\+\_\+of\+\_\+index(), rjmcmc\+\_\+error(), rjmcmc\+\_\+gaussian\+\_\+probability(), rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), \+\_\+model\+::var, \+\_\+part1d\+\_\+zero\+::xmax, \+\_\+dataset1d\+::ymax, and \+\_\+dataset1d\+::ymin.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+propose\+\_\+value@{part1d\+\_\+zero\+\_\+propose\+\_\+value}}
+\index{part1d\+\_\+zero\+\_\+propose\+\_\+value@{part1d\+\_\+zero\+\_\+propose\+\_\+value}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+propose\+\_\+value(const part1d\+\_\+zero\+\_\+t $\ast$current, part1d\+\_\+zero\+\_\+t $\ast$proposed, const dataset1d\+\_\+t $\ast$$\ast$datasets, int ndatasets, rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t random, rjmcmc\+\_\+normal\+\_\+rand\+\_\+t normal, double $\ast$value\+\_\+prob)}{part1d_zero_propose_value(const part1d_zero_t *current, part1d_zero_t *proposed, const dataset1d_t **datasets, int ndatasets, rjmcmc_uniform_rand_t random, rjmcmc_normal_rand_t normal, double *value_prob)}}]{\setlength{\rightskip}{0pt plus 5cm}int part1d\+\_\+zero\+\_\+propose\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current, }
+\item[{{\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{proposed, }
+\item[{const {\bf dataset1d\+\_\+t} $\ast$$\ast$}]{datasets, }
+\item[{int}]{ndatasets, }
+\item[{{\bf rjmcmc\+\_\+uniform\+\_\+rand\+\_\+t}}]{random, }
+\item[{{\bf rjmcmc\+\_\+normal\+\_\+rand\+\_\+t}}]{normal, }
+\item[{double $\ast$}]{value\+\_\+prob}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_a3587a034ca515b57e9e4b6a6812c6c6e}{}\label{part1d__zero_8h_a3587a034ca515b57e9e4b6a6812c6c6e}
+
+
+References \+\_\+model\+::a, \+\_\+model\+::mean, \+\_\+part1d\+\_\+zero\+::models, normal, \+\_\+part1d\+\_\+zero\+::npartitions, part1d\+\_\+zero\+\_\+clone(), rjmcmc\+\_\+gaussian\+\_\+probability(), rjmcmc\+\_\+random\+\_\+choose\+\_\+double(), rjmcmc\+\_\+random\+\_\+choose\+\_\+int(), \+\_\+model\+::var, \+\_\+dataset1d\+::ymax, and \+\_\+dataset1d\+::ymin.
+
+
+
+Referenced by part1d\+\_\+zero\+\_\+regression().
+
+\index{part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}!part1d\+\_\+zero\+\_\+value\+\_\+at@{part1d\+\_\+zero\+\_\+value\+\_\+at}}
+\index{part1d\+\_\+zero\+\_\+value\+\_\+at@{part1d\+\_\+zero\+\_\+value\+\_\+at}!part1d\+\_\+zero.\+h@{part1d\+\_\+zero.\+h}}
+\subsubsection[{\texorpdfstring{part1d\+\_\+zero\+\_\+value\+\_\+at(const part1d\+\_\+zero\+\_\+t $\ast$current, double x)}{part1d_zero_value_at(const part1d_zero_t *current, double x)}}]{\setlength{\rightskip}{0pt plus 5cm}double part1d\+\_\+zero\+\_\+value\+\_\+at (
+\begin{DoxyParamCaption}
+\item[{const {\bf part1d\+\_\+zero\+\_\+t} $\ast$}]{current, }
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}\hypertarget{part1d__zero_8h_aaed536dbbc3b52f12df1a8c40a186f93}{}\label{part1d__zero_8h_aaed536dbbc3b52f12df1a8c40a186f93}
+
+
+References \+\_\+model\+::a, \+\_\+part1d\+\_\+zero\+::models, \+\_\+part1d\+\_\+zero\+::p, position\+\_\+map1d\+\_\+predecessor\+\_\+of\+\_\+index(), position\+\_\+map1d\+\_\+predecessor\+\_\+of\+\_\+point(), rjmcmc\+\_\+error(), and x.
+

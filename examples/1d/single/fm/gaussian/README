@@ -1,0 +1,13 @@
+
+This example does a MCMC solution to fit a 2D Gaussian with
+centred at 0,0 with a standard deviation of 1 (in x and y).
+
+Note that this example was used to generate an animation and
+as such it outputs GEO files that can be used by the Houdini
+3D Animation package.
+
+Instructions:
+
+> make
+> ./gaussian
+
