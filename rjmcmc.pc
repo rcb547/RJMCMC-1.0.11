@@ -1,4 +1,4 @@
-prefix=/short/public/rcb547/apps/iearth/LIBRJMCMC-1.0.11-installed-gcc-5.2.0
+prefix=/short/public/rcb547/apps/rjmcmcmt/submodules/RJMCMC-1.0.11/installed/gcc-5.2.0
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

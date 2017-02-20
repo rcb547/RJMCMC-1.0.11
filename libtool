@@ -2,7 +2,7 @@
 
 # libtool - Provide generalized library-building support services.
 # Generated automatically by config.status (RJMCMC) 1.0.11
-# Libtool was configured on host raijin4:
+# Libtool was configured on host raijin5:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 #
 #   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2003, 2004, 2005,
@@ -275,7 +275,7 @@ hardcode_into_libs=yes
 sys_lib_search_path_spec="/apps/gcc/5.2.0/lib64 /apps/gcc/5.2.0/lib/gcc/x86_64-unknown-linux-gnu/5.2.0 /lib64 /usr/lib64 /apps/openmpi/1.6.3/lib/GNU /apps/openmpi/1.6.3/lib /apps/openmpi/1.6.3/lib/profilers "
 
 # Run-time system search path for libraries.
-sys_lib_dlsearch_path_spec="/lib /usr/lib /opt/mellanox/fca/lib /usr/lib/fio /opt/ibutils/lib64 /opt/mellanox/libibperf/lib /opt/mellanox/mxm/lib /usr/lib64/mysql /usr/lib64/qt-3.3/lib /usr/lib64/tcl8.5/tclx8.4 /usr/lib64/tcl8.5 "
+sys_lib_dlsearch_path_spec="/lib /usr/lib /opt/mellanox/fca/lib /usr/lib/fio /opt/ibutils/lib64 /opt/mellanox/libibprof/lib /opt/mellanox/mxm/lib /usr/lib64/mysql /usr/lib64/qt-3.3/lib /opt/mellanox/sharp/lib /usr/lib64/tcl8.5/tclx8.4 /usr/lib64/tcl8.5 "
 
 # Whether dlopen is supported.
 dlopen_support=unknown
