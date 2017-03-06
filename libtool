@@ -161,7 +161,7 @@ old_postuninstall_cmds=""
 lock_old_archive_extraction=no
 
 # A C compiler.
-LTCC="gcc"
+LTCC="icc"
 
 # LTCC compiler flags.
 LTCFLAGS="-g -O2"
@@ -272,7 +272,7 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/apps/gcc/5.2.0/lib64 /apps/gcc/5.2.0/lib/gcc/x86_64-unknown-linux-gnu/5.2.0 /lib64 /usr/lib64 /apps/openmpi/1.6.3/lib/GNU /apps/openmpi/1.6.3/lib /apps/openmpi/1.6.3/lib/profilers "
+sys_lib_search_path_spec="/apps/intel-ct/composer_xe_2013_sp1.1.106/compiler/lib/intel64 /usr/lib64 "
 
 # Run-time system search path for libraries.
 sys_lib_dlsearch_path_spec="/lib /usr/lib /opt/mellanox/fca/lib /usr/lib/fio /opt/ibutils/lib64 /opt/mellanox/libibprof/lib /opt/mellanox/mxm/lib /usr/lib64/mysql /usr/lib64/qt-3.3/lib /opt/mellanox/sharp/lib /usr/lib64/tcl8.5/tclx8.4 /usr/lib64/tcl8.5 "
@@ -302,13 +302,13 @@ reload_cmds="\$LD\$reload_flag -o \$output\$reload_objs"
 old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$tool_oldlib"
 
 # A language specific compiler.
-CC="gcc"
+CC="icc"
 
 # Is the compiler the GNU compiler?
 with_gcc=yes
 
 # Compiler flag to turn off builtin functions.
-no_builtin_flag=" -fno-builtin"
+no_builtin_flag=" -fno-builtin -fno-rtti -fno-exceptions"
 
 # Additional compiler flags for building library objects.
 pic_flag=" -fPIC -DPIC"
