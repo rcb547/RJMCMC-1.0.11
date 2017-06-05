@@ -37,3 +37,7 @@ tests/.deps/
 # Debug files
 *.dSYM/
 *.su
+
+# Build results
+visualstudio/*/x64
+
