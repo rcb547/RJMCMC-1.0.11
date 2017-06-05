@@ -1333,12 +1333,12 @@ static double part1d_init(void *arg)
   part1d_forwardmodel_partition_fill_list(s->current,
 					  s->mf_partitions,
 					  &npartitions);
-
+  
   s->current_like = s->lp(s->user_arg,
 			  npartitions,
 			  s->mf_partitions,
-			  s->nglobalparameters,
-			  s->mf_global_parameters,
+			  s->nglobalparameters,			  
+			  part1d_forwardmodel_global_parameters(s->current),
 			  &state,
 			  part1d_fm_likelihood_value_callback,
 			  part1d_fm_likelihood_gradient_callback);
@@ -1464,8 +1464,8 @@ static double part1d_misfit(void *arg, void *_state)
 			     npartitions,
 			     s->mf_partitions,
 			     s->nglobalparameters,
-			     s->mf_global_parameters,
-			     &state,
+			     part1d_forwardmodel_global_parameters(s->proposed),
+				 &state,
 			     part1d_fm_likelihood_value_callback,
 			     part1d_fm_likelihood_gradient_callback);
     

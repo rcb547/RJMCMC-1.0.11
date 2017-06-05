@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\bbox2d.c" />
+    <ClCompile Include="..\..\src\curvefit.c" />
+    <ClCompile Include="..\..\src\dataset1d.c" />
+    <ClCompile Include="..\..\src\dataset2d.c" />
+    <ClCompile Include="..\..\src\delaunay2d.c" />
+    <ClCompile Include="..\..\src\engine.c" />
+    <ClCompile Include="..\..\src\forwardmodelparameter.c" />
+    <ClCompile Include="..\..\src\forwardmodel_f.c" />
+    <ClCompile Include="..\..\src\forwardmodel_part1d.c" />
+    <ClCompile Include="..\..\src\forwardmodel_part1d_hierarchical.c" />
+    <ClCompile Include="..\..\src\forwardmodel_part2d.c" />
+    <ClCompile Include="..\..\src\forwardmodel_part2d_hierarchical.c" />
+    <ClCompile Include="..\..\src\forwardmodel_single.c" />
+    <ClCompile Include="..\..\src\forwardmodel_util.c" />
+    <ClCompile Include="..\..\src\part1d_forwardmodel.c" />
+    <ClCompile Include="..\..\src\part1d_natural_rj.c" />
+    <ClCompile Include="..\..\src\part1d_regression_rj.c" />
+    <ClCompile Include="..\..\src\part1d_zero.c" />
+    <ClCompile Include="..\..\src\part2d_forwardmodel.c" />
+    <ClCompile Include="..\..\src\part2d_regression_rj.c" />
+    <ClCompile Include="..\..\src\position_map1d.c" />
+    <ClCompile Include="..\..\src\position_map2d.c" />
+    <ClCompile Include="..\..\src\position_map2d_delaunay.c" />
+    <ClCompile Include="..\..\src\position_map2d_linear.c" />
+    <ClCompile Include="..\..\src\position_map2d_quadtree.c" />
+    <ClCompile Include="..\..\src\quadtree.c" />
+    <ClCompile Include="..\..\src\regression.c" />
+    <ClCompile Include="..\..\src\regression_part1d.c" />
+    <ClCompile Include="..\..\src\regression_part1d_natural.c" />
+    <ClCompile Include="..\..\src\regression_part1d_zero.c" />
+    <ClCompile Include="..\..\src\regression_part2d.c" />
+    <ClCompile Include="..\..\src\resultset1d.c" />
+    <ClCompile Include="..\..\src\resultset1dfm.c" />
+    <ClCompile Include="..\..\src\resultset2d.c" />
+    <ClCompile Include="..\..\src\resultset2dfm.c" />
+    <ClCompile Include="..\..\src\resultsetfm.c" />
+    <ClCompile Include="..\..\src\rjmcmc_debug.c" />
+    <ClCompile Include="..\..\src\rjmcmc_random.c" />
+    <ClCompile Include="..\..\src\rjmcmc_util.c" />
+    <ClCompile Include="..\..\src\single1d_regression.c" />
+    <ClCompile Include="..\..\src\wellrng.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A829C131-8B79-4E64-81B2-4CF442101A71}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>librjmcmc</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\propertysheets\msmpi.x64.props" />
+    <Import Project="..\propertysheets\iearth-rjmcmc.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\propertysheets\msmpi.x64.props" />
+    <Import Project="..\propertysheets\iearth-rjmcmc.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\lib\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\lib\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
