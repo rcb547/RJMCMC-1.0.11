@@ -40,4 +40,5 @@ tests/.deps/
 
 # Build results
 visualstudio/*/x64
-
+visualstudio/*/*.sdf
+visualstudio/*/*.suo
