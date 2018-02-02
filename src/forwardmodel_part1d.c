@@ -12,7 +12,7 @@
 
 #include <rjmcmc/rjmcmc_util.h>
 #include <rjmcmc/rjmcmc_debug.h>
- 
+
 static double part1d_init(void *arg);
 static int part1d_select(void *arg);
 static void *part1d_perturb(void *arg, int proc);
@@ -90,6 +90,16 @@ struct _part1d_fm_likelihood_state {
   double *values;
   double *gradients;
 };
+
+extern void saveacceptedmodel(struct part1dfm* p);
+
+static void save_accepted_model(int process, void* userarg,
+	int npartitions, const double* partition_boundaries,
+	int nglobalparameters, const double* global_parameters,
+	part1d_fm_likelihood_state_t* state,
+	part1d_fm_value_at_t value_at,
+	part1d_fm_value_at_t gradient_at);
+
 
 static const double *
 part1d_fm_likelihood_value_callback(part1d_fm_likelihood_state_t *state,
@@ -1531,6 +1541,19 @@ static int part1d_accept(void *arg,
   }
 
   if (s->accepted) {
+	//saveacceptedmodel(s);
+	save_accepted_model(
+		s->process,
+		s->user_arg,		
+		s->proposed->npartitions,
+		s->proposed->partition_boundaries,
+		s->nglobalparameters,
+		s->proposed->global_parameters,
+		s->proposed->state,
+		s->proposed->value_at,
+		s->proposed->gradient_at);
+
+
     part1d_forwardmodel_clone(s->proposed, s->current);
     s->current_like = s->proposed_like;
 
