@@ -65,6 +65,9 @@ position_map1d_destroy(position_map1d_t *p)
   }
 }
 
+const double* position_map1d_getpos(const position_map1d_t *src){
+	return src->pos;
+}
 
 void
 position_map1d_clone(const position_map1d_t *src,

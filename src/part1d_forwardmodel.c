@@ -12,6 +12,7 @@
 
 #include "rjmcmc/rjmcmc_defines.h"
 #include "rjmcmc/rjmcmc_debug.h"
+#include <mpi.h>
 
 struct _model {
   double *local_parameter;
@@ -189,6 +190,48 @@ part1d_forwardmodel_destroy(part1d_forwardmodel_t *p)
 
   }
 }
+
+extern const double* position_map1d_getpos(const position_map1d_t *src);
+extern void get_output_dir(void* user_args, char* od);
+#include <rjmcmc/forwardmodel_mpi.h>
+
+void savetochainfile(part1d_fm_likelihood_state_t* state, void* user_args, const int sample, const double like, const part1d_forwardmodel_t *m, part1d_fm_value_at_t value_at)
+{		
+	static int pass = 0;	
+	static char filename[100];
+	
+	FILE* fp;
+	if (pass == 0){
+		char od[100];
+		int rank;
+		get_output_dir(user_args, od);
+		MPI_Comm_rank(MPI_COMM_WORLD, &rank);		
+		sprintf(filename, "%schain.%03d.txt", od, rank);
+		fp = fopen(filename, "w");
+	}
+	else{		
+		fp = fopen(filename, "a");
+	}	
+	pass++;
+
+	int nlayers = m->npartitions - 1;
+	fprintf(fp, "%d %lf %d", sample, like*2.0, nlayers);
+	
+	const double* pos = position_map1d_getpos(m->p);
+	for (int i = 0; i < nlayers; i++){				
+		fprintf(fp, " %lf", pos[i]);
+	}
+	
+	for (int i = 0; i < nlayers; i++){
+		const double* p = value_at(state, pos[i]);
+		fprintf(fp, " %lf", p[0]);
+		//double a1 = m->models[i].local_parameter[0];		
+		//fprintf(fp, " %lf", m->models[i].local_parameter[0]);
+	}
+
+	fprintf(fp, "\n");
+	fclose(fp);
+} 
 
 void
 part1d_forwardmodel_clone(const part1d_forwardmodel_t *src,

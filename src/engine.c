@@ -11,7 +11,7 @@ int rjmcmc_engine_run(rjmcmc_engine_cb_t *cb,
 		      int sample_rate)
 {
   int i;
-  int p;
+  //int p;
 
   if (rjmcmc_engine_init(cb,
 			 burn_iterations,
@@ -107,7 +107,7 @@ int rjmcmc_engine_restart(rjmcmc_engine_cb_t *cb,
   return 0;
 }
 
-
+extern void savetochainfile_ex(void *arg);
 int rjmcmc_engine_step(rjmcmc_engine_cb_t *cb)
 {
   void *state;
@@ -136,12 +136,13 @@ int rjmcmc_engine_step(rjmcmc_engine_cb_t *cb)
       cb->current_like = prop_like;
     }
   }
-  
+    
   if (cb->sample(cb->arg, cb->i) < 0) {
     rjmcmc_error("rjmcmc_engine_run: sampling error\n");
     return -1;
   }
-
+  
+  savetochainfile_ex(cb->arg);  
   cb->i ++;
   if (cb->i >= cb->total) {
     return 0;

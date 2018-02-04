@@ -91,16 +91,6 @@ struct _part1d_fm_likelihood_state {
   double *gradients;
 };
 
-extern void saveacceptedmodel(struct part1dfm* p);
-
-static void save_accepted_model(int process, void* userarg,
-	int npartitions, const double* partition_boundaries,
-	int nglobalparameters, const double* global_parameters,
-	part1d_fm_likelihood_state_t* state,
-	part1d_fm_value_at_t value_at,
-	part1d_fm_value_at_t gradient_at);
-
-
 static const double *
 part1d_fm_likelihood_value_callback(part1d_fm_likelihood_state_t *state,
 				    double x)
@@ -1485,6 +1475,18 @@ static double part1d_misfit(void *arg, void *_state)
   }
 }
 
+extern void savetochainfile(part1d_fm_likelihood_state_t* state, void* user_args, const int sample, const double like, const part1d_forwardmodel_t *m);
+void savetochainfile_ex(void *arg){
+	struct part1dfm *s = (struct part1dfm *)arg;	
+	part1d_fm_likelihood_state_t state;
+	state.model = s->current;
+	state.nlocalparameters = s->nlocalparameters;
+	state.values = s->mf_values;
+	state.gradients = s->mf_gradients;	
+	savetochainfile(&state, s->user_arg, s->cb.i, s->current_like, s->current, part1d_fm_likelihood_value_callback);	
+};
+
+
 static int part1d_accept(void *arg, 
 			 double current,
 			 double proposed)
@@ -1540,26 +1542,12 @@ static int part1d_accept(void *arg,
     break;
   }
 
-  if (s->accepted) {
-	//saveacceptedmodel(s);
-	save_accepted_model(
-		s->process,
-		s->user_arg,		
-		s->proposed->npartitions,
-		s->proposed->partition_boundaries,
-		s->nglobalparameters,
-		s->proposed->global_parameters,
-		s->proposed->state,
-		s->proposed->value_at,
-		s->proposed->gradient_at);
-
-
+  if (s->accepted){		
     part1d_forwardmodel_clone(s->proposed, s->current);
-    s->current_like = s->proposed_like;
-
+    s->current_like = s->proposed_like;	
     resultset1dfm_accept(s->results, s->process);
-  }
-
+  }  
+      
   return s->accepted;
 }
 
