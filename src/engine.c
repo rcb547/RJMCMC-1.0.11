@@ -107,7 +107,12 @@ int rjmcmc_engine_restart(rjmcmc_engine_cb_t *cb,
   return 0;
 }
 
-extern void savetochainfile_ex(void *arg);
+//extern void  savetochainfile_ex(void *arg);
+
+extern void* my_user_args(void *arg);
+extern void  flag_as_accepted(void* user_args);
+extern void  savetochainfile(void* user_args);
+
 int rjmcmc_engine_step(rjmcmc_engine_cb_t *cb)
 {
   void *state;
@@ -134,6 +139,7 @@ int rjmcmc_engine_step(rjmcmc_engine_cb_t *cb)
     
     if (cb->accept(cb->arg, cb->current_like, prop_like)) {
       cb->current_like = prop_like;
+	  flag_as_accepted(my_user_args(cb->arg));
     }
   }
     
@@ -141,8 +147,8 @@ int rjmcmc_engine_step(rjmcmc_engine_cb_t *cb)
     rjmcmc_error("rjmcmc_engine_run: sampling error\n");
     return -1;
   }
-  
-  savetochainfile_ex(cb->arg);  
+      
+  savetochainfile(my_user_args(cb->arg));
   cb->i ++;
   if (cb->i >= cb->total) {
     return 0;

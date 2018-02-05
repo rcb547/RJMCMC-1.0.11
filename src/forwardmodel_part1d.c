@@ -1475,17 +1475,10 @@ static double part1d_misfit(void *arg, void *_state)
   }
 }
 
-extern void savetochainfile(part1d_fm_likelihood_state_t* state, void* user_args, const int sample, const double like, const part1d_forwardmodel_t *m);
-void savetochainfile_ex(void *arg){
-	struct part1dfm *s = (struct part1dfm *)arg;	
-	part1d_fm_likelihood_state_t state;
-	state.model = s->current;
-	state.nlocalparameters = s->nlocalparameters;
-	state.values = s->mf_values;
-	state.gradients = s->mf_gradients;	
-	savetochainfile(&state, s->user_arg, s->cb.i, s->current_like, s->current, part1d_fm_likelihood_value_callback);	
+void* my_user_args(void* arg){
+	struct part1dfm *s = (struct part1dfm *)arg;
+	return s->user_arg;
 };
-
 
 static int part1d_accept(void *arg, 
 			 double current,
