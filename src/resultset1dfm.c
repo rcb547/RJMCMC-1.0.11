@@ -585,7 +585,7 @@ MPI_resultset1dfm_assemble_results(resultset1dfm_t *r,
    * Aggregate the histograms
    */
   if (r->histogram) {
-
+	printf("Combining on %d\n", mpirank);
     cred_samples = ((double)(r->total - r->burnin) * (1.0 - r->credible_interval)/2.0) * mpisize;
 
     for (i = 0; i < r->nlocalparameters; i ++) {
@@ -595,7 +595,9 @@ MPI_resultset1dfm_assemble_results(resultset1dfm_t *r,
 	MPI_Reduce(r->histogram[i][j], iv, r->ysamples, 
 		   MPI_INT, MPI_SUM, root, comm);
 
-	
+			if (mpirank == root) {
+				for (int k = 0; k < r->ysamples; k++) r->histogram[i][j][k] = iv[k];
+			}
 
 	if (mpirank == root) {
 
