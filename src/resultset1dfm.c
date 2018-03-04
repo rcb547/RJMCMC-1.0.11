@@ -594,10 +594,10 @@ MPI_resultset1dfm_assemble_results(resultset1dfm_t *r,
 
 	MPI_Reduce(r->histogram[i][j], iv, r->ysamples, 
 		   MPI_INT, MPI_SUM, root, comm);
-
-	
-
+		
 	if (mpirank == root) {
+
+	  for (int k = 0; k < r->ysamples; k++) r->histogram[i][j][k] = iv[k];
 
 	  if (r->local_median) {
 	    r->local_median[i][j] = 
