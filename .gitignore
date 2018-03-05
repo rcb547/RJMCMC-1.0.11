@@ -4,6 +4,8 @@ src/.deps/
 src/.libs/
 tests/.deps/
 
+Makefile*
+
 # Object files
 *.o
 *.ko
