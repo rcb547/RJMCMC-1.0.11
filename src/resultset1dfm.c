@@ -596,8 +596,8 @@ MPI_Comm comm)
 					MPI_INT, MPI_SUM, root, comm);
 
 				if (mpirank == root) {
-
-					for (int k = 0; k < r->ysamples; k++) r->histogram[i][j][k] = iv[k];
+					int k;
+					for (k = 0; k < r->ysamples; k++) r->histogram[i][j][k] = iv[k];
 
 					if (r->local_median) {
 						r->local_median[i][j] =
@@ -646,7 +646,8 @@ MPI_Comm comm)
 	if (r->partition_x_hist){
 		int* ix = rjmcmc_create_int_array_1d(r->xsamples);
 		MPI_Reduce(r->partition_x_hist, ix, r->xsamples, MPI_INT, MPI_SUM, root, comm);
-		for (int k = 0; k < r->xsamples; k++) r->partition_x_hist[k] = ix[k];
+		int k;
+		for (k = 0; k < r->xsamples; k++) r->partition_x_hist[k] = ix[k];
 		rjmcmc_destroy_int_array_1d(ix);
 	}
 	
