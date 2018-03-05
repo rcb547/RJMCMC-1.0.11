@@ -4,7 +4,14 @@ src/.deps/
 src/.libs/
 tests/.deps/
 
-Makefil*
+#Configure generated files
+autom4te.cache/
+config.log
+config.status
+libtool
+rjmcmc.pc
+Makefile
+Makefile.in
 
 # Object files
 *.o
