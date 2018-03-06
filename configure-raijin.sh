@@ -5,8 +5,8 @@
 #because on there is a /usr/bin/aclocal-1.11 but not a /usr/bin/aclocal-1.14
 	
 
-#module load librjmcmc/gnu
-module load librjmcmc/intel
+module load librjmcmc/gnu
+#module load librjmcmc/intel
 ./configure  --with-openmpi --prefix=$LIBRJMCMC_ROOT
 make
 make install
