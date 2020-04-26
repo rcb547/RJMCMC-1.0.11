@@ -1,3 +1,7 @@
+lib/
+.vs/
+*.vcxproj.user
+
 # Ignore installed files and .deps and .libs temporaries
 installed/
 src/.deps/
@@ -51,3 +55,4 @@ Makefile.in
 visualstudio/*/x64
 visualstudio/*/*.sdf
 visualstudio/*/*.suo
+
