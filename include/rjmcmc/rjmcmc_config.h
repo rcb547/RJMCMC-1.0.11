@@ -30,7 +30,7 @@
 #define HAVE_MEMORY_H 1
 
 /* Define to 1 if you have the <mpi.h> header file. */
-/* #undef HAVE_MPI_H */
+#define HAVE_MPI_H 1
 
 /* Define to 1 if you have the `sqrt' function. */
 #define HAVE_SQRT 1
