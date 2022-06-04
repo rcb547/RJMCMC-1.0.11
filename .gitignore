@@ -16,6 +16,7 @@ libtool
 rjmcmc.pc
 Makefile
 Makefile.in
+*.Po
 
 # Object files
 *.o
@@ -56,3 +57,4 @@ visualstudio/*/x64
 visualstudio/*/*.sdf
 visualstudio/*/*.suo
 
+ubuntu-win10/
