@@ -14,8 +14,6 @@ config.log
 config.status
 libtool
 rjmcmc.pc
-Makefile
-Makefile.in
 *.Po
 
 # Object files
